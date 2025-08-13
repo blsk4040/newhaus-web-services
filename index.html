@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewHaus Web Services</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Meta Pixel (Facebook) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'XXXXXXXXXXXXXXX');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="NewHaus Web Services - Empowering Small Businesses with Smart IT Solutions">
+  <meta name="keywords" content="Web Development, Cybersecurity, IT Support, Software Automation, Small Business IT Solutions">
+  <meta name="author" content="NewHaus Web Services">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://newhausweb.com">
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="NewHaus Web Services - Smart IT Solutions for Business" />
+  <meta property="og:description" content="Empowering Small Businesses with Web Development, IT Support, Cybersecurity, and Automation." />
+  <meta property="og:image" content="https://newhausweb.com/images/preview.jpg" />
+  <meta property="og:url" content="https://newhausweb.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NewHaus Web Services - Smart IT Solutions" />
+  <meta name="twitter:description" content="Helping small businesses grow with IT Support, Web Dev, Cybersecurity & Automation." />
+  <meta name="twitter:image" content="https://newhausweb.com/images/preview.jpg" />
+
+  <!-- External Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="icon" href="logo/1.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-roboto bg-gray-100">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/" class="flex items-center">
+        <img src="logo/1.png" alt="NewHaus Logo" class="h-16 logo">
+      </a>
+      <div class="hidden md:flex space-x-6">
+        <a href="#home" class="text-blue-900 hover:text-blue-600 font-semibold">Home</a>
+        <a href="#about" class="text-blue-900 hover:text-blue-600 font-semibold">About</a>
+        <a href="#services" class="text-blue-900 hover:text-blue-600 font-semibold">Services</a>
+        <a href="#testimonials" class="text-blue-900 hover:text-blue-600 font-semibold">Testimonials</a>
+        <a href="#faq" class="text-blue-900 hover:text-blue-600 font-semibold">FAQ</a>
+        <a href="#contact" class="text-blue-900 hover:text-blue-600 font-semibold">Contact</a>
+        <a href="/blog" class="text-blue-900 hover:text-blue-600 font-semibold">Blog</a>
+        <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Get a Quote</a>
+      </div>
+      <button id="nav-toggle" class="md:hidden text-blue-900 focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobile-nav" class="hidden md:hidden bg-white shadow-md">
+      <a href="#home" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Home</a>
+      <a href="#about" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">About</a>
+      <a href="#services" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Services</a>
+      <a href="#testimonials" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Testimonials</a>
+      <a href="#faq" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">FAQ</a>
+      <a href="#contact" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Contact</a>
+      <a href="/blog" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Blog</a>
+      <a href="#contact" class="block px-4 py-2 bg-blue-600 text-white text-center hover:bg-blue-700">Get a Quote</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Carousel -->
+  <section id="home" class="relative min-h-screen">
+    <div class="swiper-container h-full">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/3.jpg" alt="Smart IT Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Empowering Businesses with Smart IT Solutions</h1>
+              <p class="text-lg md:text-xl mb-6">Transform your business with cutting-edge technology.</p>
+              <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Get Started</a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/4.jpg" alt="Cybersecurity Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Secure Your Future with Cybersecurity</h1>
+              <p class="text-lg md:text-xl mb-6">Protect your data with our advanced solutions.</p>
+              <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/5.jpg" alt="Web Development Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Build Your Dream Website</h1>
+              <p class="text-lg md:text-xl mb-6">Custom web solutions for your business.</p>
+              <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Start Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="about" class="py-16 bg-white">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/2 text-left">
+          <h2 class="text-3xl font-bold mb-8">Your Trusted Partner in Digital Success</h2>
+          <p class="text-lg mb-4">We are a seasoned team of IT professionals committed to empowering businesses with cutting-edge web technologies, robust cybersecurity, and streamlined workflow automation. Serving both local and global clients, we deliver customized solutions designed to meet your unique needs and drive growth.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Over a Decade of Expertise: 10+ years of delivering innovative, reliable IT solutions.</li>
+            <li>Trusted Worldwide: A global client base with a 99% satisfaction rate.</li>
+            <li>Built for You: Tailored solutions crafted for small to medium businesses to scale and succeed.</li>
+          </ul>
+          <p class="text-lg">We combine creativity and practicality to create smart, scalable technology aligned with your goals. More than just a software development company, we are your strategic partner in progress, dedicated to designing and delivering exceptional digital solutions.</p>
+          <p class="text-lg">Our mission is clear: to foster trusted, consistent collaboration between skilled digital experts and businesses seeking high-quality, scalable solutions.</p>
+        </div>
+        <div class="md:w-1/2">
+          <img src="images/6.jpg" alt="About NewHaus" class="w-full h-96 object-cover rounded-lg shadow-md">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-8">Our IT Solutions</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105" data-aos="zoom-in">
+          <i class="fas fa-desktop text-4xl text-blue-600 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">IT Support Services</h3>
+          <p>Remote and onsite tech support for seamless operations.</p>
+          <a href="/services/it-support" class="text-blue-600 hover:underline mt-2 inline-block">Learn More</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-shield-alt text-4xl text-blue-600 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Cybersecurity</h3>
+          <p>Security audits, protection systems, and staff training.</p>
+          <a href="/services/cybersecurity" class="text-blue-600 hover:underline mt-2 inline-block">Learn More</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-code text-4xl text-blue-600 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+          <p>Custom websites, e-commerce, SEO, and maintenance.</p>
+          <a href="/services/web-development" class="text-blue-600 hover:underline mt-2 inline-block">Learn More</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-cogs text-4xl text-blue-600 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Software Automation</h3>
+          <p>Automate tasks with modern tools and scripts.</p>
+          <a href="/services/automation" class="text-blue-600 hover:underline mt-2 inline-block">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="py-16 bg-white">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Work</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
+          <img src="images/3.jpg" alt="E-Commerce Platform" class="w-full h-full object-cover absolute inset-0">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
+            <div class="text-center text-white">
+              <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
+              <p class="mb-2">Built a scalable online store for a retail client.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
+          <img src="images/6.jpg" alt="Network Security" class="w-full h-full object-cover absolute inset-0">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
+            <div class="text-center text-white">
+              <h3 class="text-xl font-semibold mb-2">Network Security</h3>
+              <p class="mb-2">Secured a logistics firm's infrastructure.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
+          <img src="images/7.jpg" alt="Automation Dashboard" class="w-full h-full object-cover absolute inset-0">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
+            <div class="text-center text-white">
+              <h3 class="text-xl font-semibold mb-2">Automation Dashboard</h3>
+              <p class="mb-2">Streamlined operations for a startup.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-8">What Our Clients Say</h2>
+      <div class="swiper-container-testimonials">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+              <p class="text-lg italic">"NewHaus Web Services helped us build a beautiful website and streamline our bookings. Highly recommend!"</p>
+              <span class="block mt-4 font-semibold">— CEO, Local Bakery</span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+              <p class="text-lg italic">"They secured our systems and trained our team. We now feel confident about cybersecurity."</p>
+              <span class="block mt-4 font-semibold">— Office Manager, Logistics Firm</span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+              <p class="text-lg italic">"Outstanding service and quick response times. Our IT infrastructure has never been better!"</p>
+              <span class="block mt-4 font-semibold">— CTO, Startup Inc.</span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination-testimonials"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-16 bg-white">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+      <div class="space-y-4 max-w-2xl mx-auto">
+        <details class="bg-gray-100 p-4 rounded-lg">
+          <summary class="cursor-pointer font-semibold">Do you work with businesses outside the country?</summary>
+          <p class="mt-2">Yes, we provide services internationally through online consultations and remote support.</p>
+        </details>
+        <details class="bg-gray-100 p-4 rounded-lg">
+          <summary class="cursor-pointer font-semibold">Can you maintain our website monthly?</summary>
+          <p class="mt-2">Yes, we offer monthly maintenance and security plans for ongoing support.</p>
+        </details>
+      </div>
+      <div class="text-center mt-6">
+        <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Still Have Questions?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/2">
+          <form action="https://formspree.io/f/xdkgaoel" method="POST" class="space-y-4 max-w-md mx-auto">
+            <input type="hidden" name="_redirect" value="thankyou.html" />
+            <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700">Send Message</button>
+          </form>
+          <div class="text-center mt-4">
+            <a href="https://calendly.com/newhaus" target="_blank" class="text-blue-600 hover:underline">Book a Free Consultation</a>
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
+            <p><i class="fas fa-map-marker-alt mr-2"></i> 123 Tech Lane, Innovation City</p>
+            <p><i class="fas fa-phone mr-2"></i> (123) 456-7890</p>
+            <p><i class="fas fa-envelope mr-2"></i> contact@newhausweb.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Teaser -->
+  <section id="blog" class="py-16 bg-white">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-8">Latest Insights</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in">
+          <h3 class="text-xl font-semibold mb-2">Top Cybersecurity Tips for 2025</h3>
+          <p>Stay ahead of threats with our expert advice.</p>
+          <a href="/blog/cybersecurity-tips" class="text-blue-600 hover:underline mt-2 inline-block">Read More</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-xl font-semibold mb-2">Why Your Business Needs Automation</h3>
+          <p>Boost efficiency with our automation solutions.</p>
+          <a href="/blog/automation-benefits" class="text-blue-600 hover:underline mt-2 inline-block">Read More</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="text-xl font-semibold mb-2">Building a Website That Converts</h3>
+          <p>Learn the secrets to a high-performing website.</p>
+          <a href="/blog/website-conversion" class="text-blue-600 hover:underline mt-2 inline-block">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Clients -->
+  <section id="clients" class="py-16 bg-white" data-aos="fade-up">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Clients</h2>
+      <div class="swiper-container-clients">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="images/client-logos/ace.png" alt="Ace Logo" class="client-logo h-12 mx-auto hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/client-logos/bullion.png" alt="Bullion Logo" class="client-logo h-12 mx-auto hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/client-logos/eventsboard.jpeg" alt="EventsBoard Logo" class="client-logo h-12 mx-auto hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/client-logos/logo-black.jpg" alt="Logo Black" class="client-logo h-12 mx-auto hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/client-logos/minerra.png" alt="Minerra Logo" class="client-logo h-12 mx-auto hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/client-logos/ice cream.jpg" alt="Ice Cream Logo" class="client-logo h-12 mx-auto hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/client-logos/coffee.png" alt="Coffee Logo" class="client-logo h-12 mx-auto hover:scale-110 transition-transform duration-300">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <img src="logo/1.png" alt="NewHaus Logo" class="h-16 mb-4 logo">
+          <p>&copy; 2025 NewHaus Web Services. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-4">
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f text-2xl hover:text-blue-300"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram text-2xl hover:text-blue-300"></i></a>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Newsletter</h3>
+          <form action="https://formspree.io/f/xdkgaoel" method="POST" class="flex">
+            <input type="email" name="email" placeholder="Your Email" required class="p-2 rounded-l-lg border-none focus:outline-none">
+            <button type="submit" class="bg-blue-600 text-white p-2 rounded-r-lg hover:bg-blue-700">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="#home" class="text-blue-300 hover:underline">Back to Top</a> | 
+        <a href="/privacy" class="text-blue-300 hover:underline">Privacy Policy</a> | 
+        <a href="/sitemap" class="text-blue-300 hover:underline">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type='text/javascript' src='https://www.bark.com/assets/js/frontend-v2/widgets-v2.24a197bed6.v2.js' defer></script>
+  <script>
+    // Initialize AOS
+    AOS.init({ duration: 1000 });
+
+    // Initialize Hero Carousel
+    const heroSwiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: { delay: 5000, disableOnInteraction: false },
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-prev', prevEl: '.swiper-button-next' },
+    });
+
+    // Initialize Testimonials Carousel
+    const testimonialSwiper = new Swiper('.swiper-container-testimonials', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination-testimonials', clickable: true },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+
+    // Initialize Clients Carousel
+    const clientsSwiper = new Swiper('.swiper-container-clients', {
+      slidesPerView: 2,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false, reverseDirection: true },
+      slidesPerGroup: 4,
+      breakpoints: {
+        640: { slidesPerView: 3, slidesPerGroup: 3 },
+        1024: { slidesPerView: 4, slidesPerGroup: 4 },
+      },
+    });
+
+    // Mobile Navigation Toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    navToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+      navToggle.querySelector('i').classList.toggle('fa-bars');
+      navToggle.querySelector('i').classList.toggle('fa-times');
+    });
+  </script>
+</body>
+</html>
