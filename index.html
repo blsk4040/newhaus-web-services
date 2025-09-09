@@ -55,8 +55,10 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="icon" href="logo/1.png" type="image/x-icon">
+  <link rel="icon" href="logo/1.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
+  <!-- reCAPTCHA Script -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="font-roboto bg-gray-100">
   <!-- Navigation -->
@@ -69,8 +71,7 @@
         <a href="#home" class="text-blue-900 hover:text-blue-600 font-semibold">Home</a>
         <a href="#about" class="text-blue-900 hover:text-blue-600 font-semibold">About</a>
         <a href="#services" class="text-blue-900 hover:text-blue-600 font-semibold">Services</a>
-        <a href="#testimonials" class="text-blue-900 hover:text-blue-600 font-semibold">Testimonials</a>
-        <a href="#faq" class="text-blue-900 hover:text-blue-600 font-semibold">FAQ</a>
+        <a href="#tailored-solutions" class="text-blue-900 hover:text-blue-600 font-semibold">Solutions</a>
         <a href="#contact" class="text-blue-900 hover:text-blue-600 font-semibold">Contact</a>
         <a href="/blog" class="text-blue-900 hover:text-blue-600 font-semibold">Blog</a>
         <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Get a Quote</a>
@@ -83,8 +84,7 @@
       <a href="#home" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Home</a>
       <a href="#about" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">About</a>
       <a href="#services" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Services</a>
-      <a href="#testimonials" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Testimonials</a>
-      <a href="#faq" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">FAQ</a>
+      <a href="#tailored-solutions" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Solutions</a>
       <a href="#contact" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Contact</a>
       <a href="/blog" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Blog</a>
       <a href="#contact" class="block px-4 py-2 bg-blue-600 text-white text-center hover:bg-blue-700">Get a Quote</a>
@@ -101,66 +101,35 @@
             <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
               <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Empowering Your Business with Smart IT – Secure, Innovative, Scalable</h1>
               <p class="text-lg md:text-xl mb-6">Streamline operations with cutting-edge IT support and automation.</p>
-              <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Get Started</a>
             </div>
           </div>
         </div>
         <div class="swiper-slide">
-          <img src="images/4.jpg" alt="Cybersecurity Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
+          <img src="images/Data center.jpg" alt="Cybersecurity Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
               <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Empowering Your Business with Smart IT – Secure, Innovative, Scalable</h1>
               <p class="text-lg md:text-xl mb-6">Safeguard your data with AI-driven cybersecurity solutions.</p>
-              <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Learn More</a>
             </div>
           </div>
         </div>
         <div class="swiper-slide">
-          <img src="images/5.jpg" alt="Web Development Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
+          <img src="images/banner-4.webp" alt="Web Development Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
               <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Empowering Your Business with Smart IT – Secure, Innovative, Scalable</h1>
               <p class="text-lg md:text-xl mb-6">Build high-converting websites tailored to your brand.</p>
-              <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Start Now</a>
             </div>
           </div>
         </div>
       </div>
       <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-      <!-- Stats Bar -->
-      <div class="absolute bottom-0 left-0 right-0 bg-blue-900 bg-opacity-90 py-4">
-        <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-white">
-          <div>
-            <p class="text-2xl font-bold">10+</p>
-            <p class="text-sm">Years of Expertise</p>
-          </div>
-          <div>
-            <p class="text-2xl font-bold">99%</p>
-            <p class="text-sm">Client Satisfaction</p>
-          </div>
-          <div>
-            <p class="text-2xl font-bold">100+</p>
-            <p class="text-sm">Global Clients</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Event Card -->
-  <section id="event-card" class="py-4 bg-blue-600 text-white">
-    <div class="container mx-auto px-4 relative" data-aos="fade-up">
-      <button id="close-event" class="absolute top-2 right-2 text-white hover:text-gray-300 focus:outline-none">
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="text-center">
-        <h3 class="text-2xl font-bold mb-2">Join Our 2025 Cybersecurity Webinar</h3>
-        <p class="text-lg mb-4">Learn how to protect your business with AI-driven solutions.</p>
-        <a href="https://calendly.com/newhaus/webinar" class="bg-white text-blue-600 px-6 py-2 rounded-full hover:bg-gray-200">Register Now</a>
-      </div>
-    </div>
+  <!-- Stats Bar Section -->
+  <section id="stats" class="bg-blue-900 bg-opacity-90 py-4" data-aos="fade-up">
+    <div class="container mx-auto px-4"></div>
   </section>
 
   <!-- About Us -->
@@ -179,7 +148,9 @@
           <p class="text-lg">Our mission is clear: to foster trusted, consistent collaboration between skilled digital experts and businesses seeking high-quality, scalable solutions.</p>
         </div>
         <div class="md:w-1/2">
-          <img src="images/9.png" alt="About NewHaus" class="w-full h-96 object-cover rounded-lg shadow-md">
+          <div class="img-container">
+            <img src="images/9.png" alt="About NewHaus" class="w-full fit-img">
+          </div>
         </div>
       </div>
     </div>
@@ -188,35 +159,92 @@
   <!-- Services -->
   <section id="services" class="py-16 bg-gray-100">
     <div class="container mx-auto px-4" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-center mb-8">Our AI-Powered IT Solutions</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">Our Solutions</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105" data-aos="zoom-in">
-          <i class="fas fa-desktop text-4xl text-blue-600 mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">AI-Powered IT Support Services</h3>
-          <p>Remote and onsite tech support enhanced with AI for seamless operations.</p>
-          <a href="/services/it-support" class="text-blue-600 hover:underline mt-2 inline-block">Learn More</a>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
+          <div class="flex justify-center">
+            <i class="fas fa-chalkboard-teacher text-4xl text-blue-600 mb-4 service-icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center">IT Consulting</h3>
+          <p class="text-center">Unlock your business’s potential with expert IT consulting, designed to boost efficiency, productivity, and reduce operational costs.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-delay="100">
-          <i class="fas fa-shield-alt text-4xl text-blue-600 mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">AI-Driven Cybersecurity</h3>
-          <p>Security audits, AI protection systems, and staff training.</p>
-          <a href="/services/cybersecurity" class="text-blue-600 hover:underline mt-2 inline-block">Learn More</a>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
+          <div class="flex justify-center">
+            <i class="fas fa-server text-4xl text-blue-600 mb-4 service-icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center">Managed IT</h3>
+          <p class="text-center">Keep your business running smoothly, reduce downtime, and improve system reliability with our complete managed IT services.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
-          <i class="fas fa-code text-4xl text-blue-600 mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">AI-Enhanced Web Development</h3>
-          <p>Custom websites, e-commerce, SEO, and AI-driven maintenance.</p>
-          <a href="/services/web-development" class="text-blue-600 hover:underline mt-2 inline-block">Learn More</a>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
+          <div class="flex justify-center">
+            <i class="fas fa-shield-virus text-4xl text-blue-600 mb-4 service-icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center">Cybersecurity</h3>
+          <p class="text-center">Your cybersecurity is our top priority. We take proactive, strong measures to ensure your IT systems stay safe and secure.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105" data-aos="zoom-in" data-aos-delay="300">
-          <i class="fas fa-cogs text-4xl text-blue-600 mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">AI-Driven Software Automation</h3>
-          <p>Automate tasks with AI tools and custom scripts.</p>
-          <a href="/services/automation" class="text-blue-600 hover:underline mt-2 inline-block">Learn More</a>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
+          <div class="flex justify-center">
+            <i class="fas fa-robot text-4xl text-blue-600 mb-4 service-icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center">AI-Driven Automation</h3>
+          <p class="text-center">Harness the power of AI to eliminate repetitive tasks, streamline workflows, and increase productivity.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
+          <div class="flex justify-center">
+            <i class="fas fa-cloud text-4xl text-blue-600 mb-4 service-icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center">Cloud Management</h3>
+          <p class="text-center">Seamlessly transition to and manage cloud solutions for enhanced flexibility and scalability.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
+          <div class="flex justify-center">
+            <i class="fas fa-network-wired text-4xl text-blue-600 mb-4 service-icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center">Network Support</h3>
+          <p class="text-center">Ensure reliable connectivity with our comprehensive network monitoring and support services.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
+          <div class="flex justify-center">
+            <i class="fas fa-tools text-4xl text-blue-600 mb-4 service-icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center">IT Maintenance</h3>
+          <p class="text-center">Proactive maintenance to keep your IT infrastructure optimized and operational.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
+          <div class="flex justify-center">
+            <i class="fas fa-headset text-4xl text-blue-600 mb-4 service-icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center">Call Center</h3>
+          <p class="text-center">Enhance customer support with our scalable call center solutions, designed for seamless communication.</p>
         </div>
       </div>
       <div class="text-center mt-8">
-        <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Schedule a Demo</a>
+        <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Talk to Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Empowering Your Business -->
+  <section id="empowering" class="py-16 bg-white">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/2 text-left">
+          <h2 class="text-3xl font-bold mb-8">Empowering Your Business with Smarter IT Solutions</h2>
+          <p class="text-lg mb-4">We’re more than IT support — we’re your strategic partner in growth. Combining technical expertise with business insight, we deliver customized solutions that align perfectly with your goals.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Our Mission: Empower small and mid-sized businesses to streamline operations, enhance efficiency, and drive profitability — while ensuring full IT compliance at no additional cost. With our experts handling the complexities of IT, you can focus on scaling your business.</li>
+            <li>Trusted Partner: Proudly maintaining a 99% client satisfaction rate through reliable and consistent service.</li>
+            <li>Tailored for You: Purpose-built solutions designed to help small and medium businesses adapt, scale, and succeed.</li>
+          </ul>
+          <p class="text-lg">No matter where you’re located, we offer tailored IT solutions designed to fit your unique business needs, enabling you to focus on what matters most growing your business.</p>
+          <p class="text-lg">We’re committed to helping you achieve your business goals, one step at a time.</p>
+          <p>Let’s work together to unlock the full potential of your IT systems.</p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="img-container">
+            <img src="images/footer.png" alt="About NewHaus" class="w-full fit-img">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -224,32 +252,59 @@
   <!-- Portfolio -->
   <section id="portfolio" class="py-16 bg-white">
     <div class="container mx-auto px-4" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-center mb-8">Our Work</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">Managed IT Services Tailored to Your Business Needs</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
-          <img src="images/3.jpg" alt="E-Commerce Platform" class="w-full h-full object-cover absolute inset-0">
+          <img src="images/managed IT.jpg" alt="Managed IT Support" class="w-full h-full object-cover absolute inset-0">
           <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
             <div class="text-center text-white">
-              <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
-              <p class="mb-2">Built a scalable online store for a retail client.</p>
+              <h3 class="text-xl font-semibold mb-2">Managed IT Support</h3>
+              <p class="mb-2">24/7 IT support that keeps your business running smoothly—issues resolved before they become problems.</p>
             </div>
           </div>
         </div>
         <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
-          <img src="images/6.jpg" alt="Network Security" class="w-full h-full object-cover absolute inset-0">
+          <img src="images/Cybersecurity Solutions.avif" alt="Cybersecurity Services" class="w-full h-full object-cover absolute inset-0">
           <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
             <div class="text-center text-white">
-              <h3 class="text-xl font-semibold mb-2">Network Security</h3>
-              <p class="mb-2">Secured a logistics firm's infrastructure.</p>
+              <h3 class="text-xl font-semibold mb-2">Cybersecurity Services</h3>
+              <p class="mb-2">Stay secure with advanced threat protection, vulnerability monitoring, and proactive cybersecurity—keeping your business safe and compliant.</p>
             </div>
           </div>
         </div>
         <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
-          <img src="images/7.jpg" alt="Automation Dashboard" class="w-full h-full object-cover absolute inset-0">
+          <img src="images/Cloud.webp" alt="Cloud Solutions" class="w-full h-full object-cover absolute inset-0">
           <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
             <div class="text-center text-white">
-              <h3 class="text-xl font-semibold mb-2">Automation Dashboard</h3>
-              <p class="mb-2">Streamlined operations for a startup.</p>
+              <h3 class="text-xl font-semibold mb-2">Cloud Solutions</h3>
+              <p class="mb-2">Power your business with cloud solutions that are agile, safe, and efficient.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
+          <img src="images/Data Backup.webp" alt="Data Backup and Recovery" class="w-full h-full object-cover absolute inset-0">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
+            <div class="text-center text-white">
+              <h3 class="text-xl font-semibold mb-2">Data Backup and Recovery</h3>
+              <p class="mb-2">Protect your critical data with reliable backup and rapid recovery solutions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
+          <img src="images/web-development.jpg" alt="Web Development" class="w-full h-full object-cover absolute inset-0">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
+            <div class="text-center text-white">
+              <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+              <p class="mb-2">Create stunning, responsive websites that engage and convert your audience.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative h-64 rounded-lg shadow-md overflow-hidden portfolio-card">
+          <img src="images/IT Consulting and Strategy.avif" alt="IT Consulting" class="w-full fit-img absolute inset-0">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 hover-content">
+            <div class="text-center text-white">
+              <h3 class="text-xl font-semibold mb-2">IT Consulting</h3>
+              <p class="mb-2">Strategic IT guidance to optimize operations and drive business growth.</p>
             </div>
           </div>
         </div>
@@ -257,52 +312,32 @@
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section id="testimonials" class="py-16 bg-gray-100">
+  <!-- Tailored IT Solutions -->
+  <section id="tailored-solutions" class="py-16 bg-white">
     <div class="container mx-auto px-4" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-center mb-8">What Our Clients Say</h2>
-      <div class="swiper-container-testimonials">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-              <p class="text-lg italic">"NewHaus Web Services helped us build a beautiful website and streamline our bookings. Highly recommend!"</p>
-              <span class="block mt-4 font-semibold">— CEO, Local Bakery</span>
-            </div>
+      <h2 class="text-3xl font-bold text-center mb-8">Tailored IT Solutions</h2>
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/2 text-left space-y-6">
+          <h3 class="text-2xl font-semibold text-blue-900">Customized for Your Success</h3>
+          <p class="text-lg">Every business is unique, with distinct IT needs, goals, and challenges. At NewHaus, we craft bespoke IT solutions tailored to your specific requirements, ensuring seamless integration and maximum impact.</p>
+          <ul class="list-disc pl-6 text-lg">
+            <li><span class="font-semibold">Personalized Approach:</span> We analyze your business to design solutions that align with your objectives.</li>
+            <li><span class="font-semibold">Scalable Technology:</span> Our solutions grow with your business, adapting to changing needs.</li>
+            <li><span class="font-semibold">Innovative Tools:</span> Leverage cutting-edge technology to stay ahead of the competition.</li>
+          </ul>
+          <p class="text-lg">Partner with us to transform your IT infrastructure into a strategic asset that drives growth and efficiency.</p>
+          <div>
+            <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all duration-300">Discover Your Solution</a>
           </div>
-          <div class="swiper-slide">
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-              <p class="text-lg italic">"They secured our systems and trained our team. We now feel confident about cybersecurity."</p>
-              <span class="block mt-4 font-semibold">— Office Manager, Logistics Firm</span>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-              <p class="text-lg italic">"Outstanding service and quick response times. Our IT infrastructure has never been better!"</p>
-              <span class="block mt-4 font-semibold">— CTO, Startup Inc.</span>
+        </div>
+        <div class="md:w-1/2 md:order-last">
+          <div class="img-container relative">
+            <img src="images/process.png" alt="Tailored IT Solutions" class="w-full h-64 md:h-96 max-w-full object-contain rounded-lg shadow-md">
+            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white text-lg font-semibold">Innovative IT Solutions</p>
             </div>
           </div>
         </div>
-        <div class="swiper-pagination-testimonials"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="py-16 bg-white">
-    <div class="container mx-auto px-4" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
-      <div class="space-y-4 max-w-2xl mx-auto">
-        <details class="bg-gray-100 p-4 rounded-lg">
-          <summary class="cursor-pointer font-semibold">Do you work with businesses outside the country?</summary>
-          <p class="mt-2">Yes, we provide services internationally through online consultations and remote support.</p>
-        </details>
-        <details class="bg-gray-100 p-4 rounded-lg">
-          <summary class="cursor-pointer font-semibold">Can you maintain our website monthly?</summary>
-          <p class="mt-2">Yes, we offer monthly maintenance and security plans for ongoing support.</p>
-        </details>
-      </div>
-      <div class="text-center mt-6">
-        <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Still Have Questions?</a>
       </div>
     </div>
   </section>
@@ -313,23 +348,38 @@
       <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
       <div class="flex flex-col md:flex-row gap-8">
         <div class="md:w-1/2">
-          <form action="https://formspree.io/f/xdkgaoel" method="POST" class="space-y-4 max-w-md mx-auto">
-            <input type="hidden" name="_redirect" value="thankyou.html" />
-            <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" />
-            <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" />
-            <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
-            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700">Send Message</button>
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg">
+            <input type="hidden" name="access_key" value="f05e801d-62aa-4b79-be32-540ce8b8aaa3">
+            <input type="hidden" name="subject" value="New Contact Form Submission">
+            <input type="hidden" name="recaptcha" value="true">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <div>
+              <input type="text" name="name" placeholder="Your Name" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
+            </div>
+            <div>
+              <input type="email" name="email" placeholder="Your Email" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
+            </div>
+            <div>
+              <input type="tel" name="phone" placeholder="Your Phone Number" pattern="[0-9]{10,15}" class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
+            </div>
+            <div>
+              <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input"></textarea>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LebpsMrAAAAAPXfME1P0B8S61pKI07Ulu4F96YK"></div>
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 contact-button">Send Message</button>
           </form>
-          <div class="text-center mt-4">
-            <a href="https://calendly.com/newhaus" target="_blank" class="text-blue-600 hover:underline">Book a Free Consultation</a>
+          <!-- Contact Modal -->
+          <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" role="dialog" aria-label="Submission Confirmation">
+            <div class="bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center">
+              <h3 id="contact-modal-title" class="text-2xl font-bold text-blue-900 mb-4">Thank You!</h3>
+              <p id="contact-modal-message" class="text-lg mb-6">We’ve received your message and will get back to you soon.</p>
+              <button id="contact-modal-close" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all duration-300">Close</button>
+            </div>
           </div>
         </div>
         <div class="md:w-1/2">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
-            <p><i class="fas fa-map-marker-alt mr-2"></i> 123 Tech Lane, Innovation City</p>
-            <p><i class="fas fa-phone mr-2"></i> (123) 456-7890</p>
-            <p><i class="fas fa-envelope mr-2"></i> contact@newhausweb.com</p>
+          <div class="img-container">
+            <img src="images/call us.avif" alt="Contact Us" class="w-full fit-img">
           </div>
         </div>
       </div>
@@ -394,7 +444,7 @@
           </div>
           <div class="swiper-slide text-center">
             <a href="/portfolio/ice-cream">
-              <img src="images/client-logos/ice cream.jpg" alt="Ice Cream Logo" class="client-logo mx-auto">
+              <img src="images/client-logos/ice-cream.jpg" alt="Ice Cream Logo" class="client-logo mx-auto">
             </a>
           </div>
           <div class="swiper-slide text-center">
@@ -408,29 +458,69 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-900 text-white py-8">
+  <footer class="bg-blue-900 text-white py-12" data-aos="fade-up">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div>
-          <img src="logo/1.png" alt="NewHaus Logo" class="h-16 mb-4 logo">
-          <p>&copy; 2025 NewHaus Web Services. All rights reserved.</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Branding -->
+        <div class="space-y-4">
+          <img src="logo/1.png" alt="NewHaus Logo" class="h-20 logo">
+          <p class="text-lg">Empowering Small Businesses with Smart IT Solutions</p>
+          <p class="text-sm">&copy; 2025 NewHaus Web Services. All rights reserved.</p>
         </div>
-        <div class="flex space-x-4">
-          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f text-2xl hover:text-blue-300"></i></a>
-          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram text-2xl hover:text-blue-300"></i></a>
+        <!-- Quick Links -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-semibold">Quick Links</h3>
+          <nav class="flex flex-col space-y-2">
+            <a href="#home" class="text-blue-300 hover:text-blue-100">Home</a>
+            <a href="#about" class="text-blue-300 hover:text-blue-100">About</a>
+            <a href="#services" class="text-blue-300 hover:text-blue-100">Services</a>
+            <a href="#tailored-solutions" class="text-blue-300 hover:text-blue-100">Solutions</a>
+            <a href="#contact" class="text-blue-300 hover:text-blue-100">Contact</a>
+            <a href="/blog" class="text-blue-300 hover:text-blue-100">Blog</a>
+          </nav>
         </div>
-        <div>
-          <h3 class="text-lg font-semibold mb-2">Newsletter</h3>
-          <form action="https://formspree.io/f/xdkgaoel" method="POST" class="flex">
-            <input type="email" name="email" placeholder="Your Email" required class="p-2 rounded-l-lg border-none focus:outline-none">
-            <button type="submit" class="bg-blue-600 text-white p-2 rounded-r-lg hover:bg-blue-700">Subscribe</button>
+        <!-- Contact Info -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-semibold">Contact Us</h3>
+          <p class="text-lg">Email: <a href="mailto:info@newhausweb.com" class="text-blue-300 hover:text-blue-100">info@newhausweb.com</a></p>
+          <p class="text-lg">Phone: <a href="tel:+18001234567" class="text-blue-300 hover:text-blue-100">+1-800-123-4567</a></p>
+          <p class="text-lg">Address: 123 Business Avenue, Suite 100, Tech City, TX 75001</p>
+        </div>
+        <!-- Newsletter & Social Media -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-semibold">Stay Connected</h3>
+          <form id="newsletter-form" action="https://api.web3forms.com/submit" method="POST" class="flex space-x-2">
+            <input type="hidden" name="access_key" value="f05e801d-62aa-4b79-be32-540ce8b8aaa3">
+            <input type="hidden" name="subject" value="Newsletter Signup">
+            <input type="hidden" name="recaptcha" value="true">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <input type="email" name="email" placeholder="Your Email" required class="p-3 rounded-lg bg-gray-100 text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-600 w-full">
+            <div class="g-recaptcha" data-sitekey="6LebpsMrAAAAAPXfME1P0B8S61pKI07Ulu4F96YK"></div>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-3 rounded-full hover:bg-blue-700 transition-all duration-300">Subscribe</button>
           </form>
+          <!-- Newsletter Modal -->
+          <div id="newsletter-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" role="dialog" aria-label="Newsletter Confirmation">
+            <div class="bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center">
+              <h3 id="newsletter-modal-title" class="text-2xl font-bold text-blue-900 mb-4">Thank You!</h3>
+              <p id="newsletter-modal-message" class="text-lg mb-6">You’re now subscribed to our newsletter.</p>
+              <button id="newsletter-modal-close" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all duration-300">Close</button>
+            </div>
+          </div>
+          <div class="flex space-x-6">
+            <a href="https://www.facebook.com/" target="_blank" aria-label="Follow us on Facebook" rel="noopener"><i class="fab fa-facebook-f text-3xl text-blue-300 hover:text-blue-100 hover:scale-110 transition-all duration-300"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" aria-label="Follow us on Instagram" rel="noopener"><i class="fab fa-instagram text-3xl text-blue-300 hover:text-blue-100 hover:scale-110 transition-all duration-300"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" aria-label="Follow us on LinkedIn" rel="noopener"><i class="fab fa-linkedin-in text-3xl text-blue-300 hover:text-blue-100 hover:scale-110 transition-all duration-300"></i></a>
+          </div>
         </div>
       </div>
-      <div class="text-center mt-4">
-        <a href="#home" class="text-blue-300 hover:underline">Back to Top</a> | 
-        <a href="/privacy" class="text-blue-300 hover:underline">Privacy Policy</a> | 
-        <a href="/sitemap" class="text-blue-300 hover:underline">Sitemap</a>
+      <div class="mt-8 pt-8 border-t border-blue-700 text-center">
+        <nav class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+          <a href="#home" class="text-blue-300 hover:text-blue-100">Back to Top</a>
+          <span class="hidden sm:inline text-blue-300">|</span>
+          <a href="/privacy" class="text-blue-300 hover:text-blue-100">Privacy Policy</a>
+          <span class="hidden sm:inline text-blue-300">|</span>
+          <a href="/sitemap" class="text-blue-300 hover:text-blue-100">Sitemap</a>
+        </nav>
       </div>
     </div>
   </footer>
@@ -450,20 +540,6 @@
       effect: 'fade',
       fadeEffect: { crossFade: true },
       pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: { nextEl: '.swiper-button-prev', prevEl: '.swiper-button-next' },
-    });
-
-    // Initialize Testimonials Carousel
-    const testimonialSwiper = new Swiper('.swiper-container-testimonials', {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: { delay: 4000, disableOnInteraction: false },
-      pagination: { el: '.swiper-pagination-testimonials', clickable: true },
-      breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      },
     });
 
     // Initialize Clients Carousel
@@ -488,14 +564,72 @@
       navToggle.querySelector('i').classList.toggle('fa-times');
     });
 
-    // Event Card Close Button
-    const closeEvent = document.getElementById('close-event');
-    const eventCard = document.getElementById('event-card');
-    if (closeEvent && eventCard) {
-      closeEvent.addEventListener('click', () => {
-        eventCard.style.display = 'none';
+    // Handle Form Submissions with AJAX
+    async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMessage, gaEvent, fbEvent) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (response.ok) {
+            modalTitle.textContent = 'Thank You!';
+            modalMessage.textContent = successMessage;
+            modal.classList.remove('hidden');
+            form.reset();
+            gtag('event', gaEvent, { 'event_category': gaEvent === 'form_submission' ? 'Contact' : 'Engagement', 'event_label': gaEvent === 'form_submission' ? 'Contact Form' : 'Newsletter Signup' });
+            fbq('track', fbEvent);
+          } else {
+            modalTitle.textContent = 'Error';
+            modalMessage.textContent = 'Something went wrong, please try again.';
+            modal.classList.remove('hidden');
+          }
+        } catch (error) {
+          modalTitle.textContent = 'Error';
+          modalMessage.textContent = 'Network error, please try again later.';
+          modal.classList.remove('hidden');
+        }
       });
     }
+
+    // Contact Form Submission
+    const contactForm = document.getElementById('contact-form');
+    const contactModal = document.getElementById('contact-modal');
+    const contactModalTitle = document.getElementById('contact-modal-title');
+    const contactModalMessage = document.getElementById('contact-modal-message');
+    handleFormSubmit(contactForm, contactModal, contactModalTitle, contactModalMessage, 'We’ve received your message and will get back to you soon.', 'form_submission', 'Lead');
+
+    // Newsletter Form Submission
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterModal = document.getElementById('newsletter-modal');
+    const newsletterModalTitle = document.getElementById('newsletter-modal-title');
+    const newsletterModalMessage = document.getElementById('newsletter-modal-message');
+    handleFormSubmit(newsletterForm, newsletterModal, newsletterModalTitle, newsletterModalMessage, 'You’re now subscribed to our newsletter.', 'newsletter_signup', 'CompleteRegistration');
+
+    // Close Modals
+    const contactModalClose = document.getElementById('contact-modal-close');
+    const newsletterModalClose = document.getElementById('newsletter-modal-close');
+    contactModalClose.addEventListener('click', () => contactModal.classList.add('hidden'));
+    newsletterModalClose.addEventListener('click', () => newsletterModal.classList.add('hidden'));
+
+    // Close Modals on Escape Key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        contactModal.classList.add('hidden');
+        newsletterModal.classList.add('hidden');
+      }
+    });
+
+    // Close Modals on Outside Click
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) contactModal.classList.add('hidden');
+    });
+    newsletterModal.addEventListener('click', (e) => {
+      if (e.target === newsletterModal) newsletterModal.classList.add('hidden');
+    });
   </script>
 </body>
 </html>
