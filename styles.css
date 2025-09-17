@@ -1,10 +1,15 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
 
 /* Base Styles */
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Logo Styling */
@@ -86,7 +91,7 @@ body {
 .portfolio-card {
   position: relative;
   overflow: hidden;
-  background: transparent; /* Ensure no white background */
+  background: transparent;
 }
 
 .portfolio-card img {
@@ -121,48 +126,39 @@ body {
   opacity: 1;
 }
 
-/* About Us Image */
-.about-img {
-  width: 100%;
-  height: 24rem; /* Matches h-96 in Tailwind */
-  object-fit: cover;
-  border-radius: 0.5rem; /* Matches rounded-lg in Tailwind */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Matches shadow-md in Tailwind */
-}
-
 /* Image Container */
 .img-container {
   width: 100%;
-  height: 100%; /* Ensure container takes full height of parent */
-  overflow: hidden; /* Hide any excess image or container space */
-  border-radius: 0.5rem; /* Match image border-radius for consistency */
-  background: transparent; /* Keep transparent background */
-  display: flex; /* Use flexbox to center image */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Fit Images to Prevent Cropping */
 .fit-img {
   width: 100%;
-  height: 100%; /* Fill the container height */
-  object-fit: cover; /* Fill container, cropping if necessary */
-  object-position: center; /* Center the image within the container */
-  border-radius: 0.5rem; /* Matches rounded-lg in Tailwind */
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Matches shadow-lg in Tailwind */
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background: transparent; /* Ensure no white background */
-  image-rendering: -webkit-optimize-contrast; /* Fallback for Edge */
+  background: transparent;
+  image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
 
 /* Client Logos */
 .client-logo {
-  height: 48px; /* Matches h-12 in Tailwind */
-  max-width: 120px; /* Prevent wide logos from overflowing */
+  height: 48px;
+  max-width: 120px;
   object-fit: contain;
-  border-radius: 0.375rem; /* Matches rounded-md in Tailwind */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Matches shadow-sm in Tailwind */
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .client-logo:hover {
@@ -172,7 +168,7 @@ body {
 
 /* Service Cards */
 .service-card:hover .service-icon {
-  color: #f97316; /* Orange on hover */
+  color: #f97316;
   transform: scale(1.2);
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
@@ -203,15 +199,12 @@ body {
   }
 }
 
-/* Custom Overrides */
-.service-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
+/* Footer Branding */
+.footer-branding p {
+  margin: 0.5rem 0;
 }
 
-/* Footer */
-.footer {
-  padding-bottom: 80px;
+/* Orange Text for IT */
+.text-orange {
+  color: #f97316; /* Tailwind's orange-500 */
 }
