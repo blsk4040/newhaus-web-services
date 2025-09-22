@@ -347,10 +347,8 @@
       <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
       <div class="flex flex-col md:flex-row gap-8">
         <div class="md:w-1/2">
-          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg">
-            <input type="hidden" name="access_key" value="9f3a9a43-8619-4406-9ee6-7d49588d82bc">
-            <input type="hidden" name="subject" value="New Contact Form Submission">
-            <input type="hidden" name="recaptcha" value="true">
+          <form id="contact-form" action="/" method="POST" data-netlify="true" data-netlify-recaptcha="true" name="contact" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg">
+            <input type="hidden" name="form-name" value="contact">
             <div>
               <input type="text" name="name" placeholder="Your Name" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
             </div>
@@ -493,10 +491,8 @@
         <!-- Newsletter & Social Media -->
         <div class="space-y-4">
           <h3 class="text-lg font-semibold">Stay Connected</h3>
-          <form id="newsletter-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
-            <input type="hidden" name="access_key" value="9f3a9a43-8619-4406-9ee6-7d49588d82bc">
-            <input type="hidden" name="subject" value="Newsletter Signup">
-            <input type="hidden" name="recaptcha" value="true">
+          <form id="newsletter-form" action="/" method="POST" data-netlify="true" data-netlify-recaptcha="true" name="newsletter" class="space-y-4">
+            <input type="hidden" name="form-name" value="newsletter">
             <div class="flex space-x-2">
               <input type="email" name="email" placeholder="Your Email" required class="p-3 rounded-lg bg-gray-100 text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-600 w-full">
               <button type="submit" class="bg-blue-600 text-white px-4 py-3 rounded-full hover:bg-blue-700 transition-all duration-300" disabled>Subscribe</button>
@@ -611,8 +607,7 @@
             body: formData,
             headers: { 'Accept': 'application/json' }
           });
-          const result = await response.json();
-          if (response.ok && result.success) {
+          if (response.ok) {
             modalTitle.textContent = 'Thank You!';
             modalMessage.textContent = successMessage;
             modal.classList.remove('hidden');
@@ -626,7 +621,7 @@
             fbq('track', fbEvent);
           } else {
             modalTitle.textContent = 'Error';
-            modalMessage.textContent = result.message || 'Something went wrong, please try again.';
+            modalMessage.textContent = 'Something went wrong, please try again.';
             modal.classList.remove('hidden');
             grecaptcha.reset();
           }
