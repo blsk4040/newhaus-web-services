@@ -617,6 +617,9 @@
             body: urlEncodedData
           });
 
+          const responseText = await response.text(); // Get full response for debugging
+          console.log('Netlify response:', response.status, responseText); // Debug log
+
           if (response.ok || response.status === 250) {
             modalTitle.textContent = 'Thank You!';
             modalMessage.textContent = successMessage;
@@ -630,9 +633,8 @@
             });
             fbq('track', fbEvent);
           } else {
-            const errorText = await response.text();
             modalTitle.textContent = 'Error';
-            modalMessage.textContent = errorText || 'Something went wrong, please try again.';
+            modalMessage.textContent = responseText || 'Something went wrong, please try again.';
             modal.classList.remove('hidden');
             grecaptcha.reset();
             submitBtn.disabled = false;
