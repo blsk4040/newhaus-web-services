@@ -27,8 +27,7 @@
     fbq('init', 'XXXXXXXXXXXXXXX');
     fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
+  <noscript><img height="1" width="1" class="hidden" src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1" alt="" /></noscript>
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="NewHaus IT Services - Empowering Small Businesses with Smart IT Solutions">
@@ -347,8 +346,9 @@
       <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
       <div class="flex flex-col md:flex-row gap-8">
         <div class="md:w-1/2">
-          <form id="contact-form" action="/" method="POST" data-netlify="true" data-netlify-recaptcha="true" name="contact" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg">
+          <form id="contact-form" action="/" method="POST" data-netlify="true" data-netlify-recaptcha="true" data-netlify-honeypot="bot-field" name="contact" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg contact-form" data-aos="fade-up">
             <input type="hidden" name="form-name" value="contact">
+            <input type="text" name="bot-field" class="honeypot-field" aria-hidden="true" />
             <div>
               <input type="text" name="name" placeholder="Your Name" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
             </div>
@@ -491,8 +491,9 @@
         <!-- Newsletter & Social Media -->
         <div class="space-y-4">
           <h3 class="text-lg font-semibold">Stay Connected</h3>
-          <form id="newsletter-form" action="/" method="POST" data-netlify="true" data-netlify-recaptcha="true" name="newsletter" class="space-y-4">
+          <form id="newsletter-form" action="/" method="POST" data-netlify="true" data-netlify-recaptcha="true" data-netlify-honeypot="bot-field" name="newsletter" class="space-y-4 contact-form" data-aos="fade-up">
             <input type="hidden" name="form-name" value="newsletter">
+            <input type="text" name="bot-field" class="honeypot-field" aria-hidden="true" />
             <div class="flex space-x-2">
               <input type="email" name="email" placeholder="Your Email" required class="p-3 rounded-lg bg-gray-100 text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-600 w-full">
               <button type="submit" class="bg-blue-600 text-white px-4 py-3 rounded-full hover:bg-blue-700 transition-all duration-300" disabled>Subscribe</button>
@@ -587,7 +588,6 @@
     // Enhanced Form Submission with reCAPTCHA Validation
     async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMessage, gaEvent, fbEvent) {
       const submitBtn = form.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -597,17 +597,27 @@
           modalTitle.textContent = 'Error';
           modalMessage.textContent = 'Please complete the reCAPTCHA verification.';
           modal.classList.remove('hidden');
+          submitBtn.disabled = false;
           return;
         }
 
         const formData = new FormData(form);
+        formData.append('g-recaptcha-response', recaptchaResponse); // Explicitly add reCAPTCHA token
+
         try {
-          const response = await fetch(form.action, {
+          // Convert FormData to URL-encoded string for Netlify
+          const urlEncodedData = new URLSearchParams(formData).toString();
+
+          const response = await fetch('/', {
             method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json'
+            },
+            body: urlEncodedData
           });
-          if (response.ok) {
+
+          if (response.ok || response.status === 250) {
             modalTitle.textContent = 'Thank You!';
             modalMessage.textContent = successMessage;
             modal.classList.remove('hidden');
@@ -620,16 +630,19 @@
             });
             fbq('track', fbEvent);
           } else {
+            const errorText = await response.text();
             modalTitle.textContent = 'Error';
-            modalMessage.textContent = 'Something went wrong, please try again.';
+            modalMessage.textContent = errorText || 'Something went wrong, please try again.';
             modal.classList.remove('hidden');
             grecaptcha.reset();
+            submitBtn.disabled = false;
           }
         } catch (error) {
           modalTitle.textContent = 'Error';
           modalMessage.textContent = 'Network error, please try again later.';
           modal.classList.remove('hidden');
           console.error('Form submit error:', error);
+          submitBtn.disabled = false;
         }
       });
     }

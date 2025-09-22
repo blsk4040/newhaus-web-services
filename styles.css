@@ -148,8 +148,8 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: transparent;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast; /* Prioritized for Edge compatibility */
+  image-rendering: optimizeQuality; /* Modern replacement for crisp-edges */
 }
 
 /* Client Logos */
@@ -234,4 +234,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Orange Text for IT */
 .text-orange {
   color: #f97316; /* Tailwind's orange-500 */
+}
+
+/* Honeypot Field for Forms */
+.honeypot-field {
+  display: none;
 }
