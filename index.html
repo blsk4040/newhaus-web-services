@@ -578,76 +578,77 @@
     }
 
     // Enhanced Form Submission
-    async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMessage, gaEvent, fbEvent) {
-      const submitBtn = form.querySelector('button[type="submit"]');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMessage, gaEvent, fbEvent) {
+  const submitBtn = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        if (typeof grecaptcha === 'undefined') {
-          modalTitle.textContent = 'Error';
-          modalMessage.textContent = 'reCAPTCHA not loaded. Please refresh and try again.';
-          modal.classList.remove('hidden');
-          submitBtn.disabled = false;
-          return;
-        }
-
-        const recaptchaResponse = grecaptcha.getResponse();
-        console.log('reCAPTCHA token:', recaptchaResponse);
-        if (!recaptchaResponse) {
-          modalTitle.textContent = 'Error';
-          modalMessage.textContent = 'Please complete the reCAPTCHA verification.';
-          modal.classList.remove('hidden');
-          submitBtn.disabled = false;
-          return;
-        }
-
-        const formData = new FormData(form);
-        formData.append('form-name', form.getAttribute('name')); // Ensure form-name
-        formData.append('g-recaptcha-response', recaptchaResponse);
-        const urlEncodedData = new URLSearchParams(formData).toString();
-        console.log('Form data:', urlEncodedData);
-
-        try {
-          const response = await fetch('/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: urlEncodedData
-          });
-
-          const responseText = await response.text();
-          console.log('Response status:', response.status);
-          console.log('Response text:', responseText);
-
-          if (response.ok || response.status === 250) {
-            modalTitle.textContent = 'Thank You!';
-            modalMessage.textContent = successMessage;
-            modal.classList.remove('hidden');
-            form.reset();
-            grecaptcha.reset();
-            submitBtn.disabled = true;
-            gtag('event', gaEvent, { 
-              'event_category': gaEvent === 'form_submission' ? 'Contact' : 'Engagement', 
-              'event_label': gaEvent === 'form_submission' ? 'Contact Form' : 'Newsletter Signup' 
-            });
-            fbq('track', fbEvent);
-          } else {
-            modalTitle.textContent = 'Error';
-            modalMessage.textContent = `Submission failed with status ${response.status}: ${responseText}`;
-            modal.classList.remove('hidden');
-            grecaptcha.reset();
-            submitBtn.disabled = false;
-          }
-        } catch (error) {
-          modalTitle.textContent = 'Error';
-          modalMessage.textContent = 'Network error, please try again later.';
-          modal.classList.remove('hidden');
-          console.error('Form submit error:', error);
-          submitBtn.disabled = false;
-        }
-      });
+    if (typeof grecaptcha === 'undefined') {
+      modalTitle.textContent = 'Error';
+      modalMessage.textContent = 'reCAPTCHA not loaded. Please refresh and try again.';
+      modal.classList.remove('hidden');
+      submitBtn.disabled = false;
+      return;
     }
+
+    const recaptchaResponse = grecaptcha.getResponse();
+    console.log('reCAPTCHA token:', recaptchaResponse ? 'Valid' : 'Missing');
+    if (!recaptchaResponse) {
+      modalTitle.textContent = 'Error';
+      modalMessage.textContent = 'Please complete the reCAPTCHA verification.';
+      modal.classList.remove('hidden');
+      submitBtn.disabled = false;
+      return;
+    }
+
+    const formData = new FormData(form);
+    formData.append('form-name', form.getAttribute('name')); // Explicitly ensure form-name is sent
+    console.log('Form name appended:', form.getAttribute('name')); // Debug
+    formData.append('g-recaptcha-response', recaptchaResponse);
+    const urlEncodedData = new URLSearchParams(formData).toString();
+    console.log('Full form data payload:', urlEncodedData); // Debug full payload
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: urlEncodedData
+      });
+
+      const responseText = await response.text();
+      console.log('Response status:', response.status);
+      console.log('Response text:', responseText);
+
+      if (response.ok || response.status === 250) {
+        modalTitle.textContent = 'Thank You!';
+        modalMessage.textContent = successMessage;
+        modal.classList.remove('hidden');
+        form.reset();
+        grecaptcha.reset();
+        submitBtn.disabled = true;
+        gtag('event', gaEvent, { 
+          'event_category': gaEvent === 'form_submission' ? 'Contact' : 'Engagement', 
+          'event_label': gaEvent === 'form_submission' ? 'Contact Form' : 'Newsletter Signup' 
+        });
+        fbq('track', fbEvent);
+      } else {
+        modalTitle.textContent = 'Error';
+        modalMessage.textContent = `Submission failed with status ${response.status}: ${responseText}`;
+        modal.classList.remove('hidden');
+        grecaptcha.reset();
+        submitBtn.disabled = false;
+      }
+    } catch (error) {
+      modalTitle.textContent = 'Error';
+      modalMessage.textContent = 'Network error, please try again later.';
+      modal.classList.remove('hidden');
+      console.error('Form submit error:', error);
+      submitBtn.disabled = false;
+    }
+  });
+}
 
     // Contact Form Submission
     const contactForm = document.getElementById('contact-form');
