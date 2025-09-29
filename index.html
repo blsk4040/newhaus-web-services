@@ -60,6 +60,9 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="icon" href="logo/1.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Cloudflare Turnstile Script -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body class="font-inter bg-gray-100">
   <!-- Navigation -->
@@ -344,10 +347,11 @@
       <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
       <div class="flex flex-col md:flex-row gap-8">
         <div class="md:w-1/2">
-          <form id="contact-form" action="/" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="contact" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg contact-form" data-aos="fade-up">
+          <form id="contact-form" action="/validator/validate-turnstile" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="contact" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg contact-form" data-aos="fade-up">
             <input type="hidden" name="form-name" value="contact">
             <input type="hidden" name="subject" value="New Contact Form Submission from nhx.co.za">
             <input type="text" name="bot-field" class="honeypot-field" aria-hidden="true" />
+            <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
             <div>
               <input type="text" name="name" placeholder="Your Name" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
             </div>
@@ -360,7 +364,8 @@
             <div>
               <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input"></textarea>
             </div>
-            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 contact-button">Send Message</button>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAB34vhIDOcEyMCNS" data-callback="onTurnstileSuccess"></div>
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 contact-button" disabled>Send Message</button>
           </form>
         </div>
         <div class="md:w-1/2">
@@ -473,7 +478,7 @@
           <p class="text-lg">Phone: <a href="tel:+27(0)642903654" class="text-blue-300 hover:text-blue-100">+27(0)642903654</a></p>
           <p class="text-lg">Address: 1 Sullivan Street, Die Hoewes, Centurion, Gauteng</p>
         </div>
-        <!-- Connect with Us (Replacement) -->
+        <!-- Connect with Us -->
         <div class="space-y-4">
           <h3 class="text-lg font-semibold">Connect with Us</h3>
           <p class="text-sm">Join the conversation and stay updated!</p>
@@ -546,7 +551,13 @@
       navToggle.querySelector('i').classList.toggle('fa-times');
     });
 
-    // Enhanced Form Submission (Updated for No reCAPTCHA)
+    // Turnstile Callback
+    function onTurnstileSuccess(token) {
+      document.getElementById('cf-turnstile-response').value = token;
+      document.querySelector('.contact-button').disabled = false;
+    }
+
+    // Enhanced Form Submission with Turnstile
     async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMessage, gaEvent, fbEvent) {
       const submitBtn = form.querySelector('button[type="submit"]');
       form.addEventListener('submit', async (e) => {
@@ -557,7 +568,7 @@
         const urlEncodedData = new URLSearchParams(formData).toString();
 
         try {
-          const response = await fetch('/', {
+          const response = await fetch('/validator/validate-turnstile', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
@@ -565,28 +576,34 @@
             body: urlEncodedData
           });
 
-          const responseText = await response.text();
+          const responseData = await response.json();
 
-          if (response.ok || response.status === 250) {
+          if (response.ok && responseData.success) {
             modalTitle.textContent = 'Thank You!';
             modalMessage.textContent = successMessage;
             modal.classList.remove('hidden');
             form.reset();
+            window.turnstile.reset();
+            submitBtn.disabled = true;
             gtag('event', gaEvent, { 
-              'event_category': gaEvent === 'form_submission' ? 'Contact' : 'Engagement', 
-              'event_label': gaEvent === 'form_submission' ? 'Contact Form' : 'Newsletter Signup' 
+              'event_category': 'Contact', 
+              'event_label': 'Contact Form' 
             });
             fbq('track', fbEvent);
           } else {
             modalTitle.textContent = 'Error';
-            modalMessage.textContent = `Submission failed with status ${response.status}: ${responseText}`;
+            modalMessage.textContent = responseData.error || 'Submission failed, please try again.';
             modal.classList.remove('hidden');
+            window.turnstile.reset();
+            submitBtn.disabled = true;
           }
         } catch (error) {
           modalTitle.textContent = 'Error';
           modalMessage.textContent = 'Network error, please try again later.';
           modal.classList.remove('hidden');
           console.error('Form submit error:', error);
+          window.turnstile.reset();
+          submitBtn.disabled = true;
         }
       });
     }
