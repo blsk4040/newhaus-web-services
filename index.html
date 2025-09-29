@@ -60,7 +60,6 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="icon" href="logo/1.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="font-inter bg-gray-100">
   <!-- Navigation -->
@@ -345,7 +344,7 @@
       <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
       <div class="flex flex-col md:flex-row gap-8">
         <div class="md:w-1/2">
-          <form id="contact-form" action="/" method="POST" data-netlify="true" data-netlify-recaptcha="true" data-netlify-honeypot="bot-field" name="contact" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg contact-form" data-aos="fade-up">
+          <form id="contact-form" action="/" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="contact" class="space-y-6 max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg contact-form" data-aos="fade-up">
             <input type="hidden" name="form-name" value="contact">
             <input type="hidden" name="subject" value="New Contact Form Submission from nhx.co.za">
             <input type="text" name="bot-field" class="honeypot-field" aria-hidden="true" />
@@ -361,8 +360,7 @@
             <div>
               <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input"></textarea>
             </div>
-            <div class="g-recaptcha" data-sitekey="6Lewm8wrAAAAAD6tAPYF195NhMa1ZFcg13yRJC6R" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
-            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 contact-button" disabled>Send Message</button>
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 contact-button">Send Message</button>
           </form>
         </div>
         <div class="md:w-1/2">
@@ -475,24 +473,17 @@
           <p class="text-lg">Phone: <a href="tel:+27(0)642903654" class="text-blue-300 hover:text-blue-100">+27(0)642903654</a></p>
           <p class="text-lg">Address: 1 Sullivan Street, Die Hoewes, Centurion, Gauteng</p>
         </div>
-        <!-- Newsletter & Social Media -->
+        <!-- Connect with Us (Replacement) -->
         <div class="space-y-4">
-          <h3 class="text-lg font-semibold">Stay Connected</h3>
-          <form id="newsletter-form" action="/" method="POST" data-netlify="true" data-netlify-recaptcha="true" data-netlify-honeypot="bot-field" name="newsletter" class="space-y-4 contact-form" data-aos="fade-up">
-            <input type="hidden" name="form-name" value="newsletter">
-            <input type="hidden" name="subject" value="New Newsletter Signup from nhx.co.za">
-            <input type="text" name="bot-field" class="honeypot-field" aria-hidden="true" />
-            <div class="flex space-x-2">
-              <input type="email" name="email" placeholder="Your Email" required class="p-3 rounded-lg bg-gray-100 text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-blue-600 w-full">
-              <div class="g-recaptcha" data-sitekey="6Lewm8wrAAAAAD6tAPYF195NhMa1ZFcg13yRJC6R" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
-              <button type="submit" class="bg-blue-600 text-white px-4 py-3 rounded-full hover:bg-blue-700 transition-all duration-300" disabled>Subscribe</button>
-            </div>
-          </form>
+          <h3 class="text-lg font-semibold">Connect with Us</h3>
+          <p class="text-sm">Join the conversation and stay updated!</p>
           <div class="flex space-x-6">
             <a href="https://www.facebook.com/" target="_blank" aria-label="Follow us on Facebook" rel="noopener"><i class="fab fa-facebook-f text-3xl text-blue-300 hover:text-blue-100 hover:scale-110 transition-all duration-300"></i></a>
             <a href="https://www.instagram.com/" target="_blank" aria-label="Follow us on Instagram" rel="noopener"><i class="fab fa-instagram text-3xl text-blue-300 hover:text-blue-100 hover:scale-110 transition-all duration-300"></i></a>
             <a href="https://www.linkedin.com/" target="_blank" aria-label="Follow us on LinkedIn" rel="noopener"><i class="fab fa-linkedin-in text-3xl text-blue-300 hover:text-blue-100 hover:scale-110 transition-all duration-300"></i></a>
+            <a href="https://x.com/" target="_blank" aria-label="Follow us on X" rel="noopener"><i class="fab fa-x-twitter text-3xl text-blue-300 hover:text-blue-100 hover:scale-110 transition-all duration-300"></i></a>
           </div>
+          <a href="https://wa.me/27642903654" target="_blank" class="inline-block bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition-all duration-300" rel="noopener">Chat on WhatsApp</a>
         </div>
       </div>
       <div class="mt-8 pt-8 border-t border-blue-700 text-center">
@@ -513,13 +504,6 @@
       <h3 id="contact-modal-title" class="text-xl font-semibold mb-4"></h3>
       <p id="contact-modal-message" class="mb-4"></p>
       <button id="contact-modal-close" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Close</button>
-    </div>
-  </div>
-  <div id="newsletter-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-8 rounded-lg max-w-md mx-auto text-center">
-      <h3 id="newsletter-modal-title" class="text-xl font-semibold mb-4"></h3>
-      <p id="newsletter-modal-message" class="mb-4"></p>
-      <button id="newsletter-modal-close" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Close</button>
     </div>
   </div>
 
@@ -562,93 +546,50 @@
       navToggle.querySelector('i').classList.toggle('fa-times');
     });
 
-    // reCAPTCHA Callbacks
-    function onRecaptchaSuccess() {
-      const contactButton = document.querySelector('.contact-button');
-      const newsletterButton = document.querySelector('#newsletter-form button[type="submit"]');
-      if (contactButton) contactButton.disabled = false;
-      if (newsletterButton) newsletterButton.disabled = false;
-    }
+    // Enhanced Form Submission (Updated for No reCAPTCHA)
+    async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMessage, gaEvent, fbEvent) {
+      const submitBtn = form.querySelector('button[type="submit"]');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    function onRecaptchaExpired() {
-      const contactButton = document.querySelector('.contact-button');
-      const newsletterButton = document.querySelector('#newsletter-form button[type="submit"]');
-      if (contactButton) contactButton.disabled = true;
-      if (newsletterButton) newsletterButton.disabled = true;
-    }
+        const formData = new FormData(form);
+        formData.append('form-name', form.getAttribute('name'));
+        const urlEncodedData = new URLSearchParams(formData).toString();
 
-    // Enhanced Form Submission
-async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMessage, gaEvent, fbEvent) {
-  const submitBtn = form.querySelector('button[type="submit"]');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+        try {
+          const response = await fetch('/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: urlEncodedData
+          });
 
-    if (typeof grecaptcha === 'undefined') {
-      modalTitle.textContent = 'Error';
-      modalMessage.textContent = 'reCAPTCHA not loaded. Please refresh and try again.';
-      modal.classList.remove('hidden');
-      submitBtn.disabled = false;
-      return;
-    }
+          const responseText = await response.text();
 
-    const recaptchaResponse = grecaptcha.getResponse();
-    console.log('reCAPTCHA token:', recaptchaResponse ? 'Valid' : 'Missing');
-    if (!recaptchaResponse) {
-      modalTitle.textContent = 'Error';
-      modalMessage.textContent = 'Please complete the reCAPTCHA verification.';
-      modal.classList.remove('hidden');
-      submitBtn.disabled = false;
-      return;
-    }
-
-    const formData = new FormData(form);
-    formData.append('form-name', form.getAttribute('name')); // Explicitly ensure form-name is sent
-    console.log('Form name appended:', form.getAttribute('name')); // Debug
-    formData.append('g-recaptcha-response', recaptchaResponse);
-    const urlEncodedData = new URLSearchParams(formData).toString();
-    console.log('Full form data payload:', urlEncodedData); // Debug full payload
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: urlEncodedData
+          if (response.ok || response.status === 250) {
+            modalTitle.textContent = 'Thank You!';
+            modalMessage.textContent = successMessage;
+            modal.classList.remove('hidden');
+            form.reset();
+            gtag('event', gaEvent, { 
+              'event_category': gaEvent === 'form_submission' ? 'Contact' : 'Engagement', 
+              'event_label': gaEvent === 'form_submission' ? 'Contact Form' : 'Newsletter Signup' 
+            });
+            fbq('track', fbEvent);
+          } else {
+            modalTitle.textContent = 'Error';
+            modalMessage.textContent = `Submission failed with status ${response.status}: ${responseText}`;
+            modal.classList.remove('hidden');
+          }
+        } catch (error) {
+          modalTitle.textContent = 'Error';
+          modalMessage.textContent = 'Network error, please try again later.';
+          modal.classList.remove('hidden');
+          console.error('Form submit error:', error);
+        }
       });
-
-      const responseText = await response.text();
-      console.log('Response status:', response.status);
-      console.log('Response text:', responseText);
-
-      if (response.ok || response.status === 250) {
-        modalTitle.textContent = 'Thank You!';
-        modalMessage.textContent = successMessage;
-        modal.classList.remove('hidden');
-        form.reset();
-        grecaptcha.reset();
-        submitBtn.disabled = true;
-        gtag('event', gaEvent, { 
-          'event_category': gaEvent === 'form_submission' ? 'Contact' : 'Engagement', 
-          'event_label': gaEvent === 'form_submission' ? 'Contact Form' : 'Newsletter Signup' 
-        });
-        fbq('track', fbEvent);
-      } else {
-        modalTitle.textContent = 'Error';
-        modalMessage.textContent = `Submission failed with status ${response.status}: ${responseText}`;
-        modal.classList.remove('hidden');
-        grecaptcha.reset();
-        submitBtn.disabled = false;
-      }
-    } catch (error) {
-      modalTitle.textContent = 'Error';
-      modalMessage.textContent = 'Network error, please try again later.';
-      modal.classList.remove('hidden');
-      console.error('Form submit error:', error);
-      submitBtn.disabled = false;
     }
-  });
-}
 
     // Contact Form Submission
     const contactForm = document.getElementById('contact-form');
@@ -657,33 +598,20 @@ async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMe
     const contactModalMessage = document.getElementById('contact-modal-message');
     handleFormSubmit(contactForm, contactModal, contactModalTitle, contactModalMessage, 'We’ve received your message and will get back to you soon.', 'form_submission', 'Lead');
 
-    // Newsletter Form Submission
-    const newsletterForm = document.getElementById('newsletter-form');
-    const newsletterModal = document.getElementById('newsletter-modal');
-    const newsletterModalTitle = document.getElementById('newsletter-modal-title');
-    const newsletterModalMessage = document.getElementById('newsletter-modal-message');
-    handleFormSubmit(newsletterForm, newsletterModal, newsletterModalTitle, newsletterModalMessage, 'You’re now subscribed to our newsletter.', 'newsletter_signup', 'CompleteRegistration');
-
     // Close Modals
     const contactModalClose = document.getElementById('contact-modal-close');
-    const newsletterModalClose = document.getElementById('newsletter-modal-close');
     contactModalClose.addEventListener('click', () => contactModal.classList.add('hidden'));
-    newsletterModalClose.addEventListener('click', () => newsletterModal.classList.add('hidden'));
 
     // Close Modals on Escape Key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         contactModal.classList.add('hidden');
-        newsletterModal.classList.add('hidden');
       }
     });
 
     // Close Modals on Outside Click
     contactModal.addEventListener('click', (e) => {
       if (e.target === contactModal) contactModal.classList.add('hidden');
-    });
-    newsletterModal.addEventListener('click', (e) => {
-      if (e.target === newsletterModal) newsletterModal.classList.add('hidden');
     });
   </script>
 </body>
