@@ -1,10 +1,8 @@
-const fetch = require('node-fetch');
-
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: JSON.stringify({ error: 'Method not allowed' }),
+      body: JSON.stringify({ error: 'Method not allowed' })
     };
   }
 
@@ -13,54 +11,59 @@ exports.handler = async (event) => {
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
 
   if (!turnstileToken) {
+    console.error('No Turnstile token provided');
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: 'Missing Turnstile token' }),
+      body: JSON.stringify({ error: 'Missing Turnstile token' })
     };
   }
 
   try {
-    // Verify Turnstile token
     const turnstileResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
         secret: secretKey,
         response: turnstileToken,
-      }).toString(),
+        remoteip: event.headers['client-ip'] || event.headers['x-nf-client-connection-ip'] || 'unknown'
+      }).toString()
     });
 
     const turnstileData = await turnstileResponse.json();
+    console.log('Turnstile response:', turnstileData); // Log full response
 
     if (!turnstileData.success) {
+      console.error('Turnstile verification failed:', turnstileData['error-codes']);
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Turnstile verification failed', details: turnstileData['error-codes'] }),
+        body: JSON.stringify({ error: 'Turnstile verification failed', details: turnstileData['error-codes'] })
       };
     }
 
-    // Forward to Netlify's form handling endpoint
-    const netlifyFormResponse = await fetch('/', {
+    // Forward to Netlify form handling
+    const netlifyResponse = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: event.body,
+      body: event.body
     });
 
-    if (netlifyFormResponse.ok) {
+    if (netlifyResponse.ok) {
       return {
         statusCode: 200,
-        body: JSON.stringify({ success: true }),
+        body: JSON.stringify({ success: true })
       };
     } else {
+      console.error('Netlify form submission failed:', netlifyResponse.status);
       return {
-        statusCode: netlifyFormResponse.status,
-        body: JSON.stringify({ error: 'Failed to process form submission' }),
+        statusCode: netlifyResponse.status,
+        body: JSON.stringify({ error: 'Failed to process form submission' })
       };
     }
   } catch (error) {
+    console.error('Server error:', error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Server error', details: error.message }),
+      body: JSON.stringify({ error: 'Server error', details: error.message })
     };
   }
 };

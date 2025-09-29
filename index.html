@@ -639,6 +639,14 @@
     contactModal.addEventListener('click', (e) => {
       if (e.target === contactModal) contactModal.classList.add('hidden');
     });
+
+
+    //Add temporary debug code
+    function onTurnstileSuccess(token) {
+  console.log('Turnstile Token:', token); // Debug token
+  document.getElementById('cf-turnstile-response').value = token;
+  document.querySelector('.contact-button').disabled = false;
+}
   </script>
 </body>
 </html>
