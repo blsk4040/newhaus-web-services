@@ -2,5 +2,8 @@
   publish = "."
   functions = "validator"
 
-[functions]
-  directory = "validator"
+[[redirects]]
+  from = "/validator/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
