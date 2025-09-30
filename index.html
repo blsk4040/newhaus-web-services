@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <title>NewHaus IT Services</title>
 
   <!-- Google Analytics -->
@@ -63,6 +64,14 @@
 
   <!-- Cloudflare Turnstile Script -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <!-- Turnstile Callback Definition -->
+  <script>
+    window.onTurnstileSuccess = function(token) {
+      console.log('Turnstile Token: ' + token);
+      document.getElementById('cf-turnstile-response').value = token;
+      document.querySelector('.contact-button').disabled = false;
+    };
+  </script>
 </head>
 <body class="font-inter bg-gray-100">
   <!-- Navigation -->
@@ -364,7 +373,7 @@
             <div>
               <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input"></textarea>
             </div>
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAB34vhIDOcEyMCNS" data-appearance="always" data-callback="onTurnstileSuccess"></div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAB4DiaF01hBH79st"data-callback="onTurnstileSuccess"></div>
             <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 contact-button" disabled>Send Message</button>
           </form>
         </div>
@@ -551,12 +560,6 @@
       navToggle.querySelector('i').classList.toggle('fa-times');
     });
 
-    // Turnstile Callback
-    function onTurnstileSuccess(token) {
-      document.getElementById('cf-turnstile-response').value = token;
-      document.querySelector('.contact-button').disabled = false;
-    }
-
     // Enhanced Form Submission with Turnstile
     async function handleFormSubmit(form, modal, modalTitle, modalMessage, successMessage, gaEvent, fbEvent) {
       const submitBtn = form.querySelector('button[type="submit"]');
@@ -639,14 +642,6 @@
     contactModal.addEventListener('click', (e) => {
       if (e.target === contactModal) contactModal.classList.add('hidden');
     });
-
-
-    //Add temporary debug code
-    function onTurnstileSuccess(token) {
-  console.log('Turnstile Token:', token); // Debug token
-  document.getElementById('cf-turnstile-response').value = token;
-  document.querySelector('.contact-button').disabled = false;
-}
   </script>
 </body>
 </html>
