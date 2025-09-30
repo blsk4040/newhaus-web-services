@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Logo Styling */
 .logo {
-  height: 64px; /* Matches h-16 in Tailwind */
+  height: 138px; /* Increased from 64px to make nav logo larger */
   padding: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
