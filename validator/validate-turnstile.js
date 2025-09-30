@@ -41,7 +41,7 @@ exports.handler = async (event) => {
     }
 
     // Forward to Netlify form handling
-    const netlifyResponse = await fetch('/', {
+    const netlifyResponse = await fetch(process.env.URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: event.body
