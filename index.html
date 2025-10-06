@@ -62,7 +62,7 @@
   <link rel="icon" href="logo/1.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Cloudflare Turnstile Script -->
+  <!-- Cloudflare Turnstile Script (Kept for contact form) -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <!-- Turnstile Callback Definition -->
   <script>
@@ -70,8 +70,6 @@
       console.log('Turnstile Token: ' + token);
       document.getElementById('cf-turnstile-response').value = token;
       document.querySelector('.contact-button').disabled = false;
-      document.getElementById('cf-turnstile-response-plan').value = token;
-      document.querySelector('.service-plan-button').disabled = false;
     };
   </script>
 </head>
@@ -155,11 +153,11 @@
           <p class="text-lg mb-4">More than just an IT provider, we’re your strategic technology partner—dedicated to transforming your vision into measurable results. Our team believes in fostering long-term collaboration built on trust, reliability, and transparency.</p>
           <h3 class="text-xl font-semibold mb-4">Why Businesses Choose Us:</h3>
           <ul class="list-disc pl-6 mb-4">
-            <li>🧠 <span class="font-semibold">Proven Expertise:</span> Over 10 years of delivering reliable, future-ready IT solutions.</li>
-            <li>🌍 <span class="font-semibold">Trusted Globally:</span> Serving clients worldwide with a 99% satisfaction rate.</li>
-            <li>⚙️ <span class="font-semibold">Tailored for Growth:</span> Custom-built solutions designed for small to medium businesses to thrive.</li>
-            <li>🔒 <span class="font-semibold">Security First:</span> Comprehensive protection for your data, network, and operations.</li>
-            <li>🤝 <span class="font-semibold">Long-Term Partnership:</span> We focus on building relationships that empower and evolve with your business.</li>
+            <li> <span class="font-semibold">Proven Expertise:</span> Over 10 years of delivering reliable, future-ready IT solutions.</li>
+            <li> <span class="font-semibold">Trusted Globally:</span> Serving clients worldwide with a 99% satisfaction rate.</li>
+            <li> <span class="font-semibold">Tailored for Growth:</span> Custom-built solutions designed for small to medium businesses to thrive.</li>
+            <li> <span class="font-semibold">Security First:</span> Comprehensive protection for your data, network, and operations.</li>
+            <li> <span class="font-semibold">Long-Term Partnership:</span> We focus on building relationships that empower and evolve with your business.</li>
           </ul>
           <p class="text-lg">Wherever you are, our bespoke IT solutions are built to meet your needs—freeing you to focus on what matters most: growing your business. Together, let’s unlock your IT potential, one step at a time.</p>
         </div>
@@ -485,15 +483,19 @@
             <input type="text" name="bot-field" class="honeypot-field" aria-hidden="true" />
             <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
             <div>
-              <input type="text" name="name" placeholder="Your Name" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+              <input type="text" name="name" id="name" placeholder="Your Name" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
             </div>
             <div>
-              <input type="email" name="email" placeholder="Your Email" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+              <input type="email" name="email" id="email" placeholder="Your Email" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
             </div>
             <div>
-              <input type="tel" name="phone" placeholder="Your Phone Number" pattern="[0-9\+\(\)-]{10,15}" title="Enter a 10-15 character phone number (e.g., +27(0)642903654)" class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Your Phone Number</label>
+              <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" pattern="[0-9\+\(\)-]{10,15}" title="Enter a 10-15 character phone number (e.g., +27(0)642903654)" class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input" />
             </div>
             <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
               <textarea name="message" id="message" rows="5" placeholder="Your Message" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input"></textarea>
             </div>
             <div class="cf-turnstile" data-sitekey="0x4AAAAAAB4DiaF01hBH79st" data-callback="onTurnstileSuccess"></div>
@@ -647,11 +649,10 @@
   <div id="service-plan-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
     <div class="bg-white p-8 rounded-lg max-w-md mx-auto">
       <h3 class="text-xl font-semibold mb-4">Service Plan Request</h3>
-      <form id="service-plan-form" action="/validator/validate-turnstile" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="Service Plan" class="space-y-6">
+      <form id="service-plan-form" action="/validator/submit-service-plan" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="Service Plan" class="space-y-6">
         <input type="hidden" name="form-name" value="Service Plan">
         <input type="hidden" name="subject" value="New Service Plan Quote Request from nhx.co.za">
         <input type="text" name="bot-field" class="honeypot-field" aria-hidden="true" />
-        <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response-plan">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
           <input type="text" name="name" id="name" placeholder="Your Name" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300" />
@@ -692,9 +693,8 @@
           <label for="service-plan-message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
           <textarea name="message" id="service-plan-message" rows="5" placeholder="Your Message" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300"></textarea>
         </div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAB4DiaF01hBH79st" data-callback="onTurnstileSuccess"></div>
         <div>
-          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 service-plan-button" disabled>Submit</button>
+          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 service-plan-button">Submit</button>
         </div>
         <p id="service-plan-modal-message" class="text-red-600 hidden"></p>
       </form>
@@ -753,27 +753,18 @@
       });
     });
 
-    // Enhanced Form Submission with Turnstile
+    // Form Submission Handler
     async function handleFormSubmit(form, modal, modalMessage, successMessage, gaEvent, fbEvent) {
       const submitBtn = form.querySelector('button[type="submit"]');
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        // Check if Turnstile token is present
-        const turnstileToken = form.querySelector('[name="cf-turnstile-response"]').value;
-        if (!turnstileToken) {
-          modalMessage.textContent = 'Please complete the "I am human" verification.';
-          modalMessage.classList.remove('hidden');
-          modalMessage.classList.add('text-red-600');
-          return;
-        }
 
         const formData = new FormData(form);
         formData.append('form-name', form.getAttribute('name'));
         const urlEncodedData = new URLSearchParams(formData).toString();
 
         try {
-          const response = await fetch('/validator/validate-turnstile', {
+          const response = await fetch(form.getAttribute('action'), {
             method: 'POST',
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
@@ -788,67 +779,77 @@
             modalMessage.classList.remove('hidden', 'text-red-600');
             modalMessage.classList.add('text-green-600');
             form.reset();
-            window.turnstile.reset();
-            submitBtn.disabled = true;
             gtag('event', gaEvent, { 
               'event_category': 'Form Submission', 
               'event_label': form.getAttribute('name') 
             });
             fbq('track', fbEvent);
+            // Disable submit button after successful submission
+            submitBtn.disabled = true;
+            // Re-enable submit button after 5 seconds
+            setTimeout(() => {
+              submitBtn.disabled = false;
+            }, 5000);
           } else {
             modalMessage.textContent = responseData.error || 'Submission failed, please try again.';
             modalMessage.classList.remove('hidden');
             modalMessage.classList.add('text-red-600');
-            window.turnstile.reset();
-            submitBtn.disabled = true;
+            submitBtn.disabled = false;
           }
         } catch (error) {
           modalMessage.textContent = 'Network error, please try again later.';
           modalMessage.classList.remove('hidden');
           modalMessage.classList.add('text-red-600');
           console.error('Form submit error:', error);
-          window.turnstile.reset();
-          submitBtn.disabled = true;
+          submitBtn.disabled = false;
         }
       });
     }
 
-    // Contact Form Submission
+    // Contact Form Submission (with Turnstile)
     const contactForm = document.getElementById('contact-form');
     const contactModal = document.getElementById('contact-modal');
     const contactModalTitle = document.getElementById('contact-modal-title');
     const contactModalMessage = document.getElementById('contact-modal-message');
     handleFormSubmit(contactForm, contactModal, contactModalMessage, 'We’ve received your message and will get back to you soon.', 'contact_form_submission', 'ContactLead');
 
-    // Service Plan Form Submission
+    // Service Plan Form Submission (without Turnstile)
     const servicePlanForm = document.getElementById('service-plan-form');
+    const servicePlanModal = document.getElementById('service-plan-modal');
     const servicePlanModalMessage = document.getElementById('service-plan-modal-message');
-    handleFormSubmit(servicePlanForm, document.getElementById('service-plan-modal'), servicePlanModalMessage, 'Thank you for your interest! We’ve received your quote request and will contact you soon.', 'service_plan_form_submission', 'ServicePlanLead');
+    handleFormSubmit(servicePlanForm, servicePlanModal, servicePlanModalMessage, 'Thank you for your interest! We’ve received your quote request and will contact you soon.', 'service_plan_form_submission', 'ServicePlanLead');
 
     // Close Modals
     const contactModalClose = document.getElementById('contact-modal-close');
-    contactModalClose.addEventListener('click', () => contactModal.classList.add('hidden'));
+    contactModalClose.addEventListener('click', () => {
+      contactModal.classList.add('hidden');
+      contactModalMessage.classList.add('hidden');
+      contactForm.reset();
+      window.turnstile.reset();
+      document.querySelector('.contact-button').disabled = true;
+    });
 
     // Close Service Plan Modal on Outside Click or Escape Key
-    const servicePlanModal = document.getElementById('service-plan-modal');
     servicePlanModal.addEventListener('click', (e) => {
       if (e.target === servicePlanModal) {
         servicePlanModal.classList.add('hidden');
         servicePlanModalMessage.classList.add('hidden');
         servicePlanForm.reset();
-        window.turnstile.reset();
-        document.querySelector('.service-plan-button').disabled = true;
+        document.querySelector('.service-plan-button').disabled = false;
       }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         contactModal.classList.add('hidden');
+        contactModalMessage.classList.add('hidden');
+        contactForm.reset();
+        window.turnstile.reset();
+        document.querySelector('.contact-button').disabled = true;
         servicePlanModal.classList.add('hidden');
         servicePlanModalMessage.classList.add('hidden');
         servicePlanForm.reset();
-        window.turnstile.reset();
-        document.querySelector('.service-plan-button').disabled = true;
+        document.querySelector('.service-plan-button').disabled = false;
       }
     });
   </script>
