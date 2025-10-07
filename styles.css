@@ -240,3 +240,38 @@ h1, h2, h3, h4, h5, h6 {
 .honeypot-field {
   display: none;
 }
+
+
+/* Service Plan Modal Styling */
+.service-plan-modal-content {
+  max-height: 80vh; /* Limit modal height to 80% of viewport height */
+  overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+  width: 100%;
+  max-width: 640px; /* Increased from max-w-md (448px) to max-w-lg (640px) */
+  padding: 1.5rem; /* p-6 for better spacing */
+  box-sizing: border-box;
+}
+
+/* Webkit scrollbar styling for better appearance */
+.service-plan-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+.service-plan-modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.service-plan-modal-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+.service-plan-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .service-plan-modal-content {
+    width: 91.666667%; /* w-11/12 for mobile */
+    padding: 1rem; /* p-4 for smaller screens */
+  }
+}
