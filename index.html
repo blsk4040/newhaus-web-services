@@ -62,9 +62,8 @@
   <link rel="icon" href="logo/1.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Cloudflare Turnstile Script (Kept for contact form) -->
+  <!-- Cloudflare Turnstile Script (for contact form) -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  <!-- Turnstile Callback Definition -->
   <script>
     window.onTurnstileSuccess = function(token) {
       console.log('Turnstile Token: ' + token);
@@ -72,6 +71,30 @@
       document.querySelector('.contact-button').disabled = false;
     };
   </script>
+
+  <!-- Inline CSS for Service Plan Modal Scrollbar -->
+  <style>
+    .service-plan-modal-content {
+      max-height: 80vh; /* Limit modal height to 80% of viewport height */
+      overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+      padding-right: 8px; /* Prevent content from touching scrollbar */
+    }
+    /* Webkit scrollbar styling for better appearance */
+    .service-plan-modal-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    .service-plan-modal-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+    .service-plan-modal-content::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+    .service-plan-modal-content::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
 </head>
 <body class="font-inter bg-gray-100">
   <!-- Navigation -->
@@ -153,11 +176,11 @@
           <p class="text-lg mb-4">More than just an IT provider, we’re your strategic technology partner—dedicated to transforming your vision into measurable results. Our team believes in fostering long-term collaboration built on trust, reliability, and transparency.</p>
           <h3 class="text-xl font-semibold mb-4">Why Businesses Choose Us:</h3>
           <ul class="list-disc pl-6 mb-4">
-            <li> <span class="font-semibold">Proven Expertise:</span> Over 10 years of delivering reliable, future-ready IT solutions.</li>
-            <li> <span class="font-semibold">Trusted Globally:</span> Serving clients worldwide with a 99% satisfaction rate.</li>
-            <li> <span class="font-semibold">Tailored for Growth:</span> Custom-built solutions designed for small to medium businesses to thrive.</li>
-            <li> <span class="font-semibold">Security First:</span> Comprehensive protection for your data, network, and operations.</li>
-            <li> <span class="font-semibold">Long-Term Partnership:</span> We focus on building relationships that empower and evolve with your business.</li>
+            <li>🧠 <span class="font-semibold">Proven Expertise:</span> Over 10 years of delivering reliable, future-ready IT solutions.</li>
+            <li>🌍 <span class="font-semibold">Trusted Globally:</span> Serving clients worldwide with a 99% satisfaction rate.</li>
+            <li>⚙️ <span class="font-semibold">Tailored for Growth:</span> Custom-built solutions designed for small to medium businesses to thrive.</li>
+            <li>🔒 <span class="font-semibold">Security First:</span> Comprehensive protection for your data, network, and operations.</li>
+            <li>🤝 <span class="font-semibold">Long-Term Partnership:</span> We focus on building relationships that empower and evolve with your business.</li>
           </ul>
           <p class="text-lg">Wherever you are, our bespoke IT solutions are built to meet your needs—freeing you to focus on what matters most: growing your business. Together, let’s unlock your IT potential, one step at a time.</p>
         </div>
@@ -647,9 +670,9 @@
     </div>
   </div>
   <div id="service-plan-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-8 rounded-lg max-w-md mx-auto">
+    <div class="bg-white p-8 rounded-lg max-w-md mx-auto service-plan-modal-content">
       <h3 class="text-xl font-semibold mb-4">Service Plan Request</h3>
-      <form id="service-plan-form" action="/validator/submit-service-plan" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="Service Plan" class="space-y-6">
+      <form id="service-plan-form" action="/" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="Service Plan" class="space-y-6">
         <input type="hidden" name="form-name" value="Service Plan">
         <input type="hidden" name="subject" value="New Service Plan Quote Request from nhx.co.za">
         <input type="text" name="bot-field" class="honeypot-field" aria-hidden="true" />
@@ -745,81 +768,88 @@
       btn.addEventListener('click', (e) => {
         const plan = btn.dataset.plan;
         document.getElementById('plan').value = plan;
-        // Pre-fill message with plan-specific template
         const messageTextarea = document.getElementById('service-plan-message');
         messageTextarea.value = `I’m interested in the ${plan} Plan for my business. Please provide more details.`;
-        // Show the service plan modal
         document.getElementById('service-plan-modal').classList.remove('hidden');
       });
     });
-
-    // Form Submission Handler
-    async function handleFormSubmit(form, modal, modalMessage, successMessage, gaEvent, fbEvent) {
-      const submitBtn = form.querySelector('button[type="submit"]');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-        formData.append('form-name', form.getAttribute('name'));
-        const urlEncodedData = new URLSearchParams(formData).toString();
-
-        try {
-          const response = await fetch(form.getAttribute('action'), {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: urlEncodedData
-          });
-
-          const responseData = await response.json();
-
-          if (response.ok && responseData.success) {
-            modalMessage.textContent = successMessage;
-            modalMessage.classList.remove('hidden', 'text-red-600');
-            modalMessage.classList.add('text-green-600');
-            form.reset();
-            gtag('event', gaEvent, { 
-              'event_category': 'Form Submission', 
-              'event_label': form.getAttribute('name') 
-            });
-            fbq('track', fbEvent);
-            // Disable submit button after successful submission
-            submitBtn.disabled = true;
-            // Re-enable submit button after 5 seconds
-            setTimeout(() => {
-              submitBtn.disabled = false;
-            }, 5000);
-          } else {
-            modalMessage.textContent = responseData.error || 'Submission failed, please try again.';
-            modalMessage.classList.remove('hidden');
-            modalMessage.classList.add('text-red-600');
-            submitBtn.disabled = false;
-          }
-        } catch (error) {
-          modalMessage.textContent = 'Network error, please try again later.';
-          modalMessage.classList.remove('hidden');
-          modalMessage.classList.add('text-red-600');
-          console.error('Form submit error:', error);
-          submitBtn.disabled = false;
-        }
-      });
-    }
 
     // Contact Form Submission (with Turnstile)
     const contactForm = document.getElementById('contact-form');
     const contactModal = document.getElementById('contact-modal');
     const contactModalTitle = document.getElementById('contact-modal-title');
     const contactModalMessage = document.getElementById('contact-modal-message');
-    handleFormSubmit(contactForm, contactModal, contactModalMessage, 'We’ve received your message and will get back to you soon.', 'contact_form_submission', 'ContactLead');
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const turnstileToken = document.getElementById('cf-turnstile-response').value;
+      if (!turnstileToken) {
+        contactModalTitle.textContent = 'Verification Required';
+        contactModalMessage.textContent = 'Please complete the "I am human" verification.';
+        contactModalMessage.classList.remove('hidden', 'text-green-600');
+        contactModalMessage.classList.add('text-red-600');
+        contactModal.classList.remove('hidden');
+        return;
+      }
 
-    // Service Plan Form Submission (without Turnstile)
+      const formData = new FormData(contactForm);
+      formData.append('form-name', contactForm.getAttribute('name'));
+      const urlEncodedData = new URLSearchParams(formData).toString();
+
+      try {
+        const response = await fetch('/validator/validate-turnstile', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: urlEncodedData
+        });
+        const responseData = await response.json();
+        contactModalTitle.textContent = response.ok && responseData.success ? 'Message Sent' : 'Submission Error';
+        contactModalMessage.textContent = response.ok && responseData.success 
+          ? 'We’ve received your message and will get back to you soon.'
+          : responseData.error || 'Submission failed, please try again.';
+        contactModalMessage.classList.remove('hidden');
+        contactModalMessage.classList.add(response.ok && responseData.success ? 'text-green-600' : 'text-red-600');
+        contactModal.classList.remove('hidden');
+        if (response.ok && responseData.success) {
+          contactForm.reset();
+          window.turnstile.reset();
+          submitBtn.disabled = true;
+          gtag('event', 'contact_form_submission', { 'event_category': 'Form Submission', 'event_label': 'contact' });
+          fbq('track', 'ContactLead');
+        }
+      } catch (error) {
+        contactModalTitle.textContent = 'Network Error';
+        contactModalMessage.textContent = 'Network error, please try again later.';
+        contactModalMessage.classList.remove('hidden', 'text-green-600');
+        contactModalMessage.classList.add('text-red-600');
+        contactModal.classList.remove('hidden');
+        console.error('Form submit error:', error);
+      }
+    });
+
+    // Service Plan Form Submission (no Turnstile, native Netlify)
     const servicePlanForm = document.getElementById('service-plan-form');
     const servicePlanModal = document.getElementById('service-plan-modal');
     const servicePlanModalMessage = document.getElementById('service-plan-modal-message');
-    handleFormSubmit(servicePlanForm, servicePlanModal, servicePlanModalMessage, 'Thank you for your interest! We’ve received your quote request and will contact you soon.', 'service_plan_form_submission', 'ServicePlanLead');
+    servicePlanForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = servicePlanForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      servicePlanModalMessage.textContent = 'Thank you for your interest! We’ve received your quote request and will contact you soon.';
+      servicePlanModalMessage.classList.remove('hidden', 'text-red-600');
+      servicePlanModalMessage.classList.add('text-green-600');
+      servicePlanForm.submit(); // Native form submission to Netlify
+      servicePlanForm.reset();
+      gtag('event', 'service_plan_form_submission', { 'event_category': 'Form Submission', 'event_label': 'Service Plan' });
+      fbq('track', 'ServicePlanLead');
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        servicePlanModal.classList.add('hidden');
+        servicePlanModalMessage.classList.add('hidden');
+      }, 3000);
+    });
 
-    // Close Modals
+    // Close Contact Modal
     const contactModalClose = document.getElementById('contact-modal-close');
     contactModalClose.addEventListener('click', () => {
       contactModal.classList.add('hidden');
