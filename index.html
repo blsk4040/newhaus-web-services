@@ -94,6 +94,22 @@
     .service-plan-modal-content::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
+    /* Styling for the close button (X) */
+    .modal-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .modal-close-btn:hover {
+      color: #ff0000;
+    }
   </style>
 </head>
 <body class="font-inter bg-gray-100">
@@ -699,14 +715,15 @@
 
   <!-- Modals -->
   <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-8 rounded-lg max-w-md mx-auto text-center">
+    <div class="bg-white p-8 rounded-lg max-w-md mx-auto text-center relative">
+      <button class="modal-close-btn" id="contact-modal-close">×</button>
       <h3 id="contact-modal-title" class="text-xl font-semibold mb-4"></h3>
       <p id="contact-modal-message" class="mb-4"></p>
-      <button id="contact-modal-close" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Close</button>
     </div>
   </div>
   <div id="service-plan-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-8 rounded-lg max-w-md mx-auto service-plan-modal-content">
+    <div class="bg-white p-8 rounded-lg max-w-md mx-auto service-plan-modal-content relative">
+      <button class="modal-close-btn" onclick="document.getElementById('service-plan-modal').classList.add('hidden'); document.getElementById('service-plan-form').style.display='block'; document.getElementById('service-plan-form').reset(); document.querySelector('.service-plan-button').disabled=false;">×</button>
       <h3 class="text-xl font-semibold mb-4">Service Plan Request</h3>
       <form id="service-plan-form" action="/" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="Service Plan" class="space-y-6">
         <input type="hidden" name="form-name" value="Service Plan">
@@ -757,6 +774,13 @@
         </div>
         <p id="service-plan-modal-message" class="text-red-600 hidden"></p>
       </form>
+    </div>
+  </div>
+  <div id="thank-you-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-8 rounded-lg max-w-md mx-auto text-center relative">
+      <button class="modal-close-btn" id="thank-you-modal-close">×</button>
+      <h3 class="text-xl font-semibold mb-4">Thank You!</h3>
+      <p id="thank-you-modal-message" class="mb-4 text-green-600"></p>
     </div>
   </div>
 
@@ -863,15 +887,17 @@
       }
     });
 
-    // Service Plan Form Submission (no Turnstile, async Netlify)
+    // Service Plan Form Submission
     const servicePlanForm = document.getElementById('service-plan-form');
     const servicePlanModal = document.getElementById('service-plan-modal');
-    const servicePlanModalMessage = document.getElementById('service-plan-modal-message');
+    const thankYouModal = document.getElementById('thank-you-modal');
+    const thankYouModalMessage = document.getElementById('thank-you-modal-message');
     servicePlanForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const submitBtn = servicePlanForm.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
 
+      const plan = document.getElementById('plan').value;
       const formData = new FormData(servicePlanForm);
       formData.append('form-name', servicePlanForm.getAttribute('name'));
       const urlEncodedData = new URLSearchParams(formData).toString();
@@ -883,29 +909,36 @@
           body: urlEncodedData
         });
 
-        servicePlanModalMessage.textContent = response.ok 
-          ? 'Thank you for your interest! We’ve received your quote request and will contact you soon.'
-          : 'Submission failed, please try again.';
-        servicePlanModalMessage.classList.remove('hidden', response.ok ? 'text-red-600' : 'text-green-600');
-        servicePlanModalMessage.classList.add(response.ok ? 'text-green-600' : 'text-red-600');
-
         if (response.ok) {
+          // Close the service plan modal
+          servicePlanModal.classList.add('hidden');
           servicePlanForm.reset();
+          submitBtn.disabled = false;
+
+          // Show the thank you modal
+          thankYouModalMessage.textContent = `Thank you for choosing the ${plan} Plan! We’ve received your quote request and will contact you soon.`;
+          thankYouModal.classList.remove('hidden');
+
+          // Track events
           gtag('event', 'service_plan_form_submission', { 'event_category': 'Form Submission', 'event_label': 'Service Plan' });
           fbq('track', 'ServicePlanLead');
+        } else {
+          // Show error message in service plan modal
+          const servicePlanModalMessage = document.getElementById('service-plan-modal-message');
+          servicePlanModalMessage.textContent = 'Submission failed, please try again.';
+          servicePlanModalMessage.classList.remove('hidden', 'text-green-600');
+          servicePlanModalMessage.classList.add('text-red-600');
+          submitBtn.disabled = false;
         }
       } catch (error) {
+        // Show network error in service plan modal
+        const servicePlanModalMessage = document.getElementById('service-plan-modal-message');
         servicePlanModalMessage.textContent = 'Network error, please try again later.';
         servicePlanModalMessage.classList.remove('hidden', 'text-green-600');
         servicePlanModalMessage.classList.add('text-red-600');
+        submitBtn.disabled = false;
         console.error('Service plan form submit error:', error);
       }
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        servicePlanModal.classList.add('hidden');
-        servicePlanModalMessage.classList.add('hidden');
-      }, 3000);
     });
 
     // Close Contact Modal
@@ -918,14 +951,33 @@
       document.querySelector('.contact-button').disabled = true;
     });
 
-    // Close Service Plan Modal on Outside Click or Escape Key
-    servicePlanModal.addEventListener('click', (e) => {
-      if (e.target === servicePlanModal) {
-        servicePlanModal.classList.add('hidden');
-        servicePlanModalMessage.classList.add('hidden');
-        servicePlanForm.reset();
-        document.querySelector('.service-plan-button').disabled = false;
-      }
+    // Close Thank You Modal
+    const thankYouModalClose = document.getElementById('thank-you-modal-close');
+    thankYouModalClose.addEventListener('click', () => {
+      thankYouModal.classList.add('hidden');
+      thankYouModalMessage.classList.add('hidden');
+    });
+
+    // Close Modals on Outside Click or Escape Key
+    document.querySelectorAll('#service-plan-modal, #thank-you-modal, #contact-modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          if (modal.id === 'service-plan-modal') {
+            servicePlanForm.style.display = 'block';
+            servicePlanForm.reset();
+            document.querySelector('.service-plan-button').disabled = false;
+            document.getElementById('service-plan-modal-message').classList.add('hidden');
+          } else if (modal.id === 'contact-modal') {
+            contactForm.reset();
+            window.turnstile.reset();
+            document.querySelector('.contact-button').disabled = true;
+            contactModalMessage.classList.add('hidden');
+          } else if (modal.id === 'thank-you-modal') {
+            thankYouModalMessage.classList.add('hidden');
+          }
+        }
+      });
     });
 
     document.addEventListener('keydown', (e) => {
@@ -936,9 +988,12 @@
         window.turnstile.reset();
         document.querySelector('.contact-button').disabled = true;
         servicePlanModal.classList.add('hidden');
-        servicePlanModalMessage.classList.add('hidden');
+        servicePlanForm.style.display = 'block';
         servicePlanForm.reset();
         document.querySelector('.service-plan-button').disabled = false;
+        document.getElementById('service-plan-modal-message').classList.add('hidden');
+        thankYouModal.classList.add('hidden');
+        thankYouModalMessage.classList.add('hidden');
       }
     });
   </script>
