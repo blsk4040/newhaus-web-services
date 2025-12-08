@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow:
 
 Sitemap: https://nhx.co.za/sitemap.xml
+Crawl-delay: 10
