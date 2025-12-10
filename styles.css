@@ -275,3 +275,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem; /* p-4 for smaller screens */
   }
 }
+/* Clients Section Enhancements */
+.swiper-container-clients {
+  overflow: hidden;  /* Prevents any overflow issues */
+  padding: 0 10px;   /* Slight padding to avoid edge clipping */
+}
+
+.client-logo {
+  transition: transform 0.3s ease-in-out;  /* Existing hover scale, but with easing for smoothness */
+}

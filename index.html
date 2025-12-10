@@ -700,7 +700,13 @@
           <div class="swiper-slide text-center">
             <a href="/portfolio/myfixer">
               <img src="images/client-logos/myfixer_logo.png" alt="myfixer Client Logo" class="client-logo mx-auto">
+             </a>
+          </div>
+          <div class="swiper-slide text-center">
+            <a href="/portfolio/iba beauty spa">
+              <img src="images/client-logos/iba.png" alt="myfixer Client Logo" class="client-logo mx-auto">
             </a>
+          </div>
           </div>
         </div>
       </div>
@@ -846,16 +852,17 @@
     });
     // Initialize Clients Carousel
     const clientsSwiper = new Swiper('.swiper-container-clients', {
-      slidesPerView: 2,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: { delay: 3000, disableOnInteraction: false, reverseDirection: true },
-      slidesPerGroup: 2,
-      breakpoints: {
-        640: { slidesPerView: 3, slidesPerGroup: 3 },
-        1024: { slidesPerView: 4, slidesPerGroup: 4 },
-      },
-    });
+    slidesPerView: 2,
+    spaceBetween: 5,  // Reduced from 20 for closer logos
+    loop: true,
+    speed: 800,  // Added: 1-second transition for slower, smoother sliding
+    autoplay: { delay: 3000, disableOnInteraction: false, reverseDirection: true },
+    slidesPerGroup: 2,
+    breakpoints: {
+    640: { slidesPerView: 3, slidesPerGroup: 3 },
+    1024: { slidesPerView: 4, slidesPerGroup: 4 },
+  },
+});
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('nav-toggle');
     const mobileNav = document.getElementById('mobile-nav');
