@@ -14,16 +14,26 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Logo Styling */
 .logo {
-  height: 138px; /* Increased from 64px to make nav logo larger */
+  height: 80px; /* Reduced from 138px for better proportion; falls back to Tailwind h-16/h-20 if needed */
+  max-height: 80px; /* Prevents overflow */
   padding: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.9);
   transition: transform 0.2s ease-in-out;
+  object-fit: contain; /* Ensures the logo scales without distortion */
 }
 
 .logo:hover {
   transform: scale(1.05);
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+  .logo {
+    height: 60px; /* Smaller on mobile to fit nav better */
+    max-height: 60px;
+  }
 }
 
 /* Hero Carousel */
