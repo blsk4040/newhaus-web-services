@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <!-- ==================== SEO & LOCAL OPTIMIZED TITLE & META ==================== -->
   <title>NewHaus IT Services | IT Support, Cybersecurity & Automation in Centurion, Gauteng</title>
   <meta name="description" content="Professional IT support, managed services, cybersecurity, web development and automation for small & medium businesses in Centurion, Pretoria and Gauteng. Your trusted local IT partner." />
@@ -11,7 +10,6 @@
   <meta name="author" content="NewHaus IT Services" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nhx.co.za/" />
-
   <!-- OpenGraph / Facebook -->
   <meta property="og:title" content="NewHaus IT Services - Smart IT Solutions for Business in Centurion" />
   <meta property="og:description" content="Empowering small & growing businesses in Gauteng with reliable IT support, cybersecurity, automation and web development." />
@@ -19,16 +17,13 @@
   <meta property="og:url" content="https://nhx.co.za" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_ZA" />
-
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="NewHaus IT Services - IT Support & Cybersecurity Centurion" />
   <meta name="twitter:description" content="Helping Gauteng businesses grow with secure, smart IT solutions." />
   <meta name="twitter:image" content="https://nhx.co.za/images/preview.jpg" />
-
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
   <!-- FAVICON --->
 <link rel="shortcut icon" href="/favicon_io/favicon.ico">
 <link rel="icon" href="/favicon_io/favicon.ico">
@@ -36,7 +31,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
 <link rel="manifest" href="/favicon_io/site.webmanifest">
-
   <!-- ==================== LOCAL BUSINESS SCHEMA (JSON-LD) ==================== -->
   <script type="application/ld+json">
   {
@@ -109,7 +103,6 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="icon" href="logo/1.png" type="image/png">
   <link rel="stylesheet" href="styles.css?v=2" />
   <!-- Cloudflare Turnstile Script (for contact form) -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -173,6 +166,7 @@
         <a href="#services" class="text-blue-900 hover:text-blue-600 font-semibold">Services</a>
         <a href="#tailored-solutions" class="text-blue-900 hover:text-blue-600 font-semibold">Solutions</a>
         <a href="#pricing" class="text-blue-900 hover:text-blue-600 font-semibold">Pricing</a>
+        <a href="/shop.html" class="text-blue-900 hover:text-blue-600 font-semibold">Shop</a> <!-- Corrected href -->
         <a href="#contact" class="text-blue-900 hover:text-blue-600 font-semibold">Contact</a>
         <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Get a Quote</a>
       </div>
@@ -186,6 +180,7 @@
       <a href="#services" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Services</a>
       <a href="#tailored-solutions" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Solutions</a>
       <a href="#pricing" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Pricing</a>
+      <a href="/shop.html" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Shop</a> <!-- Corrected href -->
       <a href="#contact" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Contact</a>
       <a href="#contact" class="block px-4 py-2 bg-blue-600 text-white text-center hover:bg-blue-700">Get a Quote</a>
     </div>
@@ -241,7 +236,7 @@
             <li><span class="font-semibold">Tailored for Growth:</span> Custom-built solutions designed for small to medium businesses to thrive.</li>
             <li><span class="font-semibold">Security First:</span> Comprehensive protection for your data, network, and operations.</li>
             <li><span class="font-semibold">Long-Term Partnership:</span> We focus on building relationships that empower and evolve with your business.</li>
-            
+           
           </ul>
           <p class="text-lg">Whether you’re right here in Centurion, elsewhere in South Africa, or anywhere in the world — our bespoke IT and web solutions are built to meet your exact needs. We free you to focus on what matters most: growing your business. Together, let’s unlock your full digital potential.</p>
         </div>
@@ -367,7 +362,7 @@
       <div class="text-center mb-12">
         <p class="text-lg text-gray-700 max-w-4xl mx-auto">
           Our <strong>Basic, Intermediate and Advanced</strong> plans cover complete managed IT support & cybersecurity.<br>
-          For <strong>Web Development, AI & Automation projects, Cloud migrations</strong> or <strong>one-off services</strong>, 
+          For <strong>Web Development, AI & Automation projects, Cloud migrations</strong> or <strong>one-off services</strong>,
           we provide custom quotes tailored to your needs.
         </p>
         <a href="#contact" class="mt-6 inline-block bg-orange-600 text-white px-8 py-3 rounded-full hover:bg-orange-700 font-semibold">
@@ -863,9 +858,9 @@
     // Initialize Clients Carousel
     const clientsSwiper = new Swiper('.swiper-container-clients', {
     slidesPerView: 2,
-    spaceBetween: 5,  // Reduced from 20 for closer logos
+    spaceBetween: 5, // Reduced from 20 for closer logos
     loop: true,
-    speed: 800,  // Added: 1-second transition for slower, smoother sliding
+    speed: 800, // Added: 1-second transition for slower, smoother sliding
     autoplay: { delay: 3000, disableOnInteraction: false, reverseDirection: true },
     slidesPerGroup: 2,
     breakpoints: {
