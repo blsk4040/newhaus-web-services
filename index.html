@@ -25,12 +25,12 @@
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   <!-- FAVICON --->
-<link rel="shortcut icon" href="/favicon_io/favicon.ico">
-<link rel="icon" href="/favicon_io/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-<link rel="manifest" href="/favicon_io/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon_io/favicon.ico">
+  <link rel="icon" href="/favicon_io/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
   <!-- ==================== LOCAL BUSINESS SCHEMA (JSON-LD) ==================== -->
   <script type="application/ld+json">
   {
@@ -113,14 +113,13 @@
       document.querySelector('.contact-button').disabled = false;
     };
   </script>
-  <!-- Inline CSS for Service Plan Modal Scrollbar -->
+  <!-- Inline CSS for Service Plan Modal + Modern Cards + WhatsApp -->
   <style>
     .service-plan-modal-content {
-      max-height: 80vh; /* Limit modal height to 80% of viewport height */
-      overflow-y: auto; /* Enable vertical scrollbar when content overflows */
-      padding-right: 8px; /* Prevent content from touching scrollbar */
+      max-height: 80vh;
+      overflow-y: auto;
+      padding-right: 8px;
     }
-    /* Webkit scrollbar styling for better appearance */
     .service-plan-modal-content::-webkit-scrollbar {
       width: 8px;
     }
@@ -135,7 +134,6 @@
     .service-plan-modal-content::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
-    /* Styling for the close button (X) */
     .modal-close-btn {
       position: absolute;
       top: 10px;
@@ -151,9 +149,156 @@
     .modal-close-btn:hover {
       color: #ff0000;
     }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1001;
+      background: #25D366;
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      text-decoration: none;
+      font-size: 2.2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    @keyframes pulse-whatsapp {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+    .whatsapp-float {
+      animation: pulse-whatsapp 2.5s infinite ease-in-out;
+    }
+    @media (max-width: 640px) {
+      .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        font-size: 2rem;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    /* ────────────────────────────────────────────────
+       MODERN CARD STYLES (Why Outsource + SLA)
+    ──────────────────────────────────────────────── */
+    .modern-card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .modern-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+    }
+    .card-header {
+      padding: 1.5rem 1.5rem 1rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: white;
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .card-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .card-content li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .card-content li i {
+      margin-right: 1rem;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    /* Why Outsource cards */
+    .in-house-card .card-header {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+    }
+    .nhx-card .card-header {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+    }
+
+    /* SLA cards */
+    .critical-card .card-header {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+    }
+    .high-priority-card .card-header {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+    .standard-card .card-header {
+      background: linear-gradient(135deg, #eab308, #ca8a04);
+    }
+    .onsite-card .card-header {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    }
+
+    .severity-icon-critical { color: #dc2626; }
+    .severity-icon-high     { color: #f59e0b; }
+    .severity-icon-standard { color: #eab308; }
+    .severity-icon-onsite   { color: #3b82f6; }
+
+    @media (max-width: 768px) {
+      .modern-card { margin-bottom: 1.5rem; }
+      .card-header { font-size: 1.25rem; padding: 1.25rem 1rem 0.75rem; }
+    }
+
+
+
+    /* Loading Spinner for Submit Buttons */
+.submitting {
+  pointer-events: none; /* Prevent multiple clicks */
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.submitting::after {
+  content: " Sending...";
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 0.95rem;
+}
+
+.submitting i.spinner {
+  display: inline-block;
+  margin-right: 8px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
   </style>
 </head>
 <body class="font-inter bg-gray-100">
+
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -166,7 +311,6 @@
         <a href="#services" class="text-blue-900 hover:text-blue-600 font-semibold">Services</a>
         <a href="#tailored-solutions" class="text-blue-900 hover:text-blue-600 font-semibold">Solutions</a>
         <a href="#pricing" class="text-blue-900 hover:text-blue-600 font-semibold">Pricing</a>
-        <a href="/shop.html" class="text-blue-900 hover:text-blue-600 font-semibold">Shop</a> <!-- Corrected href -->
         <a href="#contact" class="text-blue-900 hover:text-blue-600 font-semibold">Contact</a>
         <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Get a Quote</a>
       </div>
@@ -180,11 +324,11 @@
       <a href="#services" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Services</a>
       <a href="#tailored-solutions" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Solutions</a>
       <a href="#pricing" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Pricing</a>
-      <a href="/shop.html" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Shop</a> <!-- Corrected href -->
       <a href="#contact" class="block px-4 py-2 text-blue-900 hover:bg-blue-100">Contact</a>
       <a href="#contact" class="block px-4 py-2 bg-blue-600 text-white text-center hover:bg-blue-700">Get a Quote</a>
     </div>
   </nav>
+
   <!-- Hero Section with Carousel -->
   <section id="home" class="relative min-h-screen">
     <div class="swiper-container h-full">
@@ -193,8 +337,8 @@
           <img src="images/3.jpg" alt="Smart IT Solutions" class="w-full h-full object-cover absolute inset-0" loading="eager">
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
-              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Empowering Your Business with Smart IT</h1>
-              <p class="text-lg md:text-xl mb-6">Streamline operations with cutting-edge IT support and automation.</p>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">We Keep Your Business IT Running</h1>
+              <p class="text-lg md:text-xl mb-6">Reliable IT support for growing businesses — no downtime, no surprises, predictable monthly costs.</p>
             </div>
           </div>
         </div>
@@ -202,8 +346,8 @@
           <img src="images/Data center.jpg" alt="Cybersecurity Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
-              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Secure Your Business Future</h1>
-              <p class="text-lg md:text-xl mb-6">Safeguard your data with AI-driven cybersecurity solutions.</p>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Protect Your Business From IT Failures & Cyber Threats</h1>
+              <p class="text-lg md:text-xl mb-6">Proactive monitoring, backups, and security to keep your systems safe and operational.</p>
             </div>
           </div>
         </div>
@@ -211,8 +355,8 @@
           <img src="images/banner-4.webp" alt="Web Development Solutions" class="w-full h-full object-cover absolute inset-0" loading="lazy">
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white max-w-3xl mx-auto px-4 hero-text">
-              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Build Your Digital Presence</h1>
-              <p class="text-lg md:text-xl mb-6">Create high-converting websites tailored to your brand.</p>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Outsourced IT That Costs Less Than Hiring Staff</h1>
+              <p class="text-lg md:text-xl mb-6">Get expert IT support without the cost, risk, or hassle of an internal IT department.</p>
             </div>
           </div>
         </div>
@@ -220,25 +364,30 @@
       <div class="swiper-pagination"></div>
     </div>
   </section>
+
   <!-- About Us -->
   <section id="about" class="py-16 bg-white">
     <div class="container mx-auto px-4" data-aos="fade-up">
       <div class="flex flex-col md:flex-row gap-8">
         <div class="md:w-1/2 text-left">
-          <h2 class="text-3xl font-bold mb-8">Your Trusted Partner in Digital Success</h2>
-          <p class="text-lg mb-4">At NewHaus IT Services, we empower businesses with innovative web technologies, robust cybersecurity, and seamless automation. With over a decade of proven expertise, our mission is to help small and mid-sized enterprises grow, scale, and stay secure in an ever-evolving digital world.</p>
-          <p class="text-lg mb-4">We blend creativity with technical precision to deliver tailored IT solutions that align perfectly with your unique goals. By combining deep technical knowledge with strategic business insight, we ensure every solution we craft enhances efficiency, strengthens security, and drives sustainable success.</p>
-          <p class="text-lg mb-4">More than just an IT provider, we’re your strategic technology partner—dedicated to transforming your vision into measurable results. Our team believes in fostering long-term collaboration built on trust, reliability, and transparency.</p>
-          <h3 class="text-xl font-semibold mb-4">Why Businesses Choose Us:</h3>
-          <ul class="list-disc pl-6 mb-4">
-            <li><span class="font-semibold">Proven Expertise:</span> Over 10 years of delivering reliable, future-ready IT solutions.</li>
-            <li><span class="font-semibold">Trusted Globally:</span> Trusted by Local & Global Clients: 99% satisfaction rate across Gauteng and worldwide</li>
-            <li><span class="font-semibold">Tailored for Growth:</span> Custom-built solutions designed for small to medium businesses to thrive.</li>
-            <li><span class="font-semibold">Security First:</span> Comprehensive protection for your data, network, and operations.</li>
-            <li><span class="font-semibold">Long-Term Partnership:</span> We focus on building relationships that empower and evolve with your business.</li>
-           
+          <h2 class="text-3xl font-bold mb-8">Reliable IT Support for Small & Mid-Sized Businesses</h2>
+          
+          <p class="text-lg mb-4">When IT fails, businesses lose time, money, customers — and trust. Most SMEs can’t justify a full in-house IT team, yet they still need fast, secure, always-on systems to compete and grow.</p>
+          
+          <p class="text-lg mb-4">NewHaus IT Services delivers fully managed IT support that keeps everything running smoothly — so you focus on your business, not firefighting tech problems. We handle your systems, security, backups, and users with proactive care.</p>
+          
+          <p class="text-lg mb-4">With over 15 years of hands-on experience supporting businesses, we know the real cost of downtime, cyber risks, and scaling infrastructure. Our approach is structured, transparent, and built for SMEs — no guesswork, no hidden fees.</p>
+          
+          <h3 class="text-xl font-semibold mb-4">Why Growing Businesses Choose NewHaus IT Services:</h3>
+          <ul class="list-disc pl-6 mb-6 text-lg">
+            <li><strong>Lightning-Fast Response</strong>: Clear SLAs — issues get fixed before they hurt your day.</li>
+            <li><strong>Predictable Fixed Costs</strong>: No surprise bills, no expensive emergency call-outs — ever.</li>
+            <li><strong>Proactive Prevention</strong>: We stop problems before they stop your business.</li>
+            <li><strong>Security & Data Protection First</strong>: Robust backups, monitoring, and cyber defences that actually work.</li>
+            <li><strong>Made for SMEs</strong>: Affordable, scalable solutions designed specifically for small and growing teams.</li>
           </ul>
-          <p class="text-lg">Whether you’re right here in Centurion, elsewhere in South Africa, or anywhere in the world — our bespoke IT and web solutions are built to meet your exact needs. We free you to focus on what matters most: growing your business. Together, let’s unlock your full digital potential.</p>
+          
+          <p class="text-lg">Whether you're in Gauteng or anywhere in South Africa, NewHaus IT Services becomes your trusted long-term IT partner — not just a break-fix provider.</p>
         </div>
         <div class="md:w-1/2">
           <div class="img-container">
@@ -248,12 +397,23 @@
       </div>
     </div>
   </section>
+
+  <!-- Short Why Outsource Teaser -->
+  <section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-2xl font-bold mb-4">Why Outsource IT?</h3>
+      <p class="text-lg max-w-3xl mx-auto">
+        Hiring internal IT staff can cost R25,000+ per month — excluding leave, benefits, and downtime.
+        NHX provides reliable IT support at a fixed monthly cost, without HR headaches.
+      </p>
+    </div>
+  </section>
+
   <!-- Services -->
   <section id="services" class="py-16 bg-gray-100">
     <div class="container mx-auto px-4" data-aos="fade-up">
       <h2 class="text-3xl font-bold text-center mb-8">Our Solutions</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Web Development -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
           <div class="flex justify-center">
             <i class="fas fa-laptop-code text-4xl text-blue-600 mb-4 service-icon"></i>
@@ -261,7 +421,6 @@
           <h3 class="text-xl font-semibold mb-2 text-center">Web Development</h3>
           <p class="text-center">Fast, secure & conversion-focused websites + online stores tailored for your brand.</p>
         </div>
-        <!-- IT Support -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
           <div class="flex justify-center">
             <i class="fas fa-headset text-4xl text-blue-600 mb-4 service-icon"></i>
@@ -269,7 +428,6 @@
           <h3 class="text-xl font-semibold mb-2 text-center">IT Support</h3>
           <p class="text-center">24/7 remote & on-site helpdesk – we fix issues before you even notice them.</p>
         </div>
-        <!-- Cybersecurity -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
           <div class="flex justify-center">
             <i class="fas fa-shield-alt text-4xl text-blue-600 mb-4 service-icon"></i>
@@ -277,7 +435,6 @@
           <h3 class="text-xl font-semibold mb-2 text-center">Cybersecurity</h3>
           <p class="text-center">Proactive monitoring, ransomware protection & compliance made simple.</p>
         </div>
-        <!-- Managed IT -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
           <div class="flex justify-center">
             <i class="fas fa-server text-4xl text-blue-600 mb-4 service-icon"></i>
@@ -285,7 +442,6 @@
           <h3 class="text-xl font-semibold mb-2 text-center">Managed IT</h3>
           <p class="text-center">Your full IT department for a fixed monthly fee – no surprises.</p>
         </div>
-        <!-- Cloud Solutions -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
           <div class="flex justify-center">
             <i class="fas fa-cloud text-4xl text-blue-600 mb-4 service-icon"></i>
@@ -293,7 +449,6 @@
           <h3 class="text-xl font-semibold mb-2 text-center">Cloud Solutions</h3>
           <p class="text-center">Microsoft 365, Google Workspace, Azure/AWS migrations & management.</p>
         </div>
-        <!-- AI-Driven Automation -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
           <div class="flex justify-center">
             <i class="fas fa-robot text-4xl text-blue-600 mb-4 service-icon"></i>
@@ -301,7 +456,6 @@
           <h3 class="text-xl font-semibold mb-2 text-center">AI-Driven Automation</h3>
           <p class="text-center">Eliminate repetitive tasks with Power Automate, Zapier & custom AI tools.</p>
         </div>
-        <!-- Network Support -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
           <div class="flex justify-center">
             <i class="fas fa-network-wired text-4xl text-blue-600 mb-4 service-icon"></i>
@@ -309,7 +463,6 @@
           <h3 class="text-xl font-semibold mb-2 text-center">Network Support</h3>
           <p class="text-center">Fast, secure office & branch networks that just work.</p>
         </div>
-        <!-- Backup & Recovery -->
         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-3 service-card">
           <div class="flex justify-center">
             <i class="fas fa-cloud-download-alt text-4xl text-blue-600 mb-4 service-icon"></i>
@@ -323,6 +476,7 @@
       </div>
     </div>
   </section>
+
   <!-- Tailored IT Solutions -->
   <section id="tailored-solutions" class="py-16 bg-white">
     <div class="container mx-auto px-4" data-aos="fade-up">
@@ -354,250 +508,219 @@
       </div>
     </div>
   </section>
-  <!-- Pricing Section -->
-  <section id="pricing" class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-center mb-8">Choose Your IT Service Plan</h2>
-      <!-- Add this right after the <h2>Choose Your IT Service Plan</h2> or just before the pricing cards -->
+
+  <!-- Modernized Why Outsource IT Comparison -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
       <div class="text-center mb-12">
-        <p class="text-lg text-gray-700 max-w-4xl mx-auto">
-          Our <strong>Basic, Intermediate and Advanced</strong> plans cover complete managed IT support & cybersecurity.<br>
-          For <strong>Web Development, AI & Automation projects, Cloud migrations</strong> or <strong>one-off services</strong>,
-          we provide custom quotes tailored to your needs.
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Why Outsource IT Instead of Hiring In-House?
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Hiring internal IT staff in South Africa can cost R25,000+ per month before benefits.
+          Outsourcing gives you a full team of experts at a predictable monthly cost.
         </p>
-        <a href="#contact" class="mt-6 inline-block bg-orange-600 text-white px-8 py-3 rounded-full hover:bg-orange-700 font-semibold">
-          Get a Custom Quote
-        </a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <!-- Basic Tier Card -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 service-tier-card">
-          <div class="mb-4">
-            <i class="fas fa-seedling text-4xl text-green-500 mb-2"></i>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Basic</h3>
-            <p class="text-sm text-gray-600">For Startups & Small Teams</p>
+      <div class="grid md:grid-cols-2 gap-10 items-stretch">
+        <div class="modern-card in-house-card">
+          <div class="card-header">Hiring Internal IT</div>
+          <div class="card-content">
+            <ul>
+              <li><i class="fas fa-money-bill-wave"></i>Salary: R25,000 – R35,000+ per month</li>
+              <li><i class="fas fa-file-contract"></i>Leave, HR & employment admin costs</li>
+              <li><i class="fas fa-user"></i>One technician with limited skillset</li>
+              <li><i class="fas fa-bed"></i>Sick days & availability gaps</li>
+              <li><i class="fas fa-exclamation-triangle"></i>High business risk if they resign</li>
+              <li><i class="fas fa-shield-alt"></i>One person managing all security & backups</li>
+            </ul>
           </div>
-          <div class="mb-6">
-            <div class="text-3xl font-bold text-blue-600 mb-1">From R4,999 /month</div>
-            <p class="text-sm text-gray-600">(Billed annually, cancel anytime)</p>
-          </div>
-          <h4 class="text-md font-semibold mb-2">What’s Included:</h4>
-          <ul class="text-left space-y-3 mb-4 text-sm">
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Basic IT Support:</strong> 24/7 helpdesk, remote assistance, and software updates (Operating system and apps).</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Basic Security:</strong> Firewall, antivirus protection, and security patches to safeguard your business data and systems.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Network Setup:</strong> Basic network configuration and Wi-Fi support (including router configuration) to ensure your team stays connected securely.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Data Backup:</strong> Daily automated cloud backups for data protection and easy recovery in case of system failure or data loss.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>On-Site Support:</strong> 1 on-site visit per month included. Additional visits can be arranged at an hourly rate of R X per hour (for clients within a set service area).</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Advanced Cybersecurity:</strong> Real-time threat detection, vulnerability assessments, and proactive security monitoring to protect your network and data from potential threats.</span>
-            </li>
-          </ul>
-          <h4 class="text-md font-semibold mb-2">Additional Benefits:</h4>
-          <ul class="text-left space-y-3 mb-8 text-sm">
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Monthly Reporting:</strong> A basic system health report that includes an overview of security status, performance, and actionable insights for improving your IT infrastructure.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Wi-Fi Support:</strong> Ensure secure, stable, and optimized Wi-Fi connections for your team to minimize downtime and connectivity issues.</span>
-            </li>
-          </ul>
-          <p class="text-sm text-gray-600 mb-4"><strong>Ideal For:</strong> Startups or small teams with limited IT resources, Businesses in need of essential IT support, basic cybersecurity, and proactive solutions to keep operations running smoothly and securely.</p>
-          <button class="get-started-btn block w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold" data-plan="Basic">Get Started</button>
         </div>
-        <!-- Intermediate Tier Card (Recommended) -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-blue-600 relative service-tier-card">
-          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">Recommended</div>
-          <div class="mb-4">
-            <i class="fas fa-arrow-up text-4xl text-blue-600 mb-2"></i>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Intermediate</h3>
-            <p class="text-sm text-gray-600">For Growing Businesses • Best value for 5–30 users in Gauteng</p>
+        <div class="modern-card nhx-card">
+          <div class="card-header">Outsourcing to NHX</div>
+          <div class="card-content">
+            <ul>
+              <li><i class="fas fa-check-circle"></i>Fixed, predictable monthly fee</li>
+              <li><i class="fas fa-check-circle"></i>No HR or employment costs</li>
+              <li><i class="fas fa-users-cog"></i>Multi-skilled IT support team</li>
+              <li><i class="fas fa-clock"></i>Structured SLA & guaranteed response times</li>
+              <li><i class="fas fa-shield-virus"></i>Proactive monitoring & cybersecurity</li>
+              <li><i class="fas fa-cloud-upload-alt"></i>Business continuity & backup protection</li>
+            </ul>
           </div>
-          <div class="mb-6">
-            <div class="text-3xl font-bold text-blue-600 mb-1">From R8,999 /month</div>
-            <p class="text-sm text-gray-600">(Save 21% annually, cancel anytime)</p>
-          </div>
-          <h4 class="text-md font-semibold mb-2">What’s Included:</h4>
-          <ul class="text-left space-y-3 mb-4 text-sm">
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span>Everything in Basic, plus:</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Comprehensive IT Support:</strong> On-site support (up to 2 visits per month), proactive system monitoring, and regular maintenance to ensure your IT infrastructure is always running smoothly and securely.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Enhanced Security:</strong> Intrusion detection systems, security audits, and proactive vulnerability management to mitigate threats before they affect your business.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Email Security:</strong> Spam filtering, encryption, and phishing protection to secure email communications and safeguard your business from cyber threats.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Network Management:</strong> Advanced network monitoring, VLAN setup, and performance optimization to maintain a high-performance and secure network as your team grows.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Cloud Integration:</strong> Setup and management of Microsoft 365 or Google Workspace, including email setup, collaboration tools, and cloud storage for improved productivity and seamless communication.</span>
-            </li>
-          </ul>
-          <h4 class="text-md font-semibold mb-2">Additional Benefits:</h4>
-          <ul class="text-left space-y-3 mb-8 text-sm">
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Business Continuity:</strong> Basic disaster recovery and business continuity planning to ensure minimal downtime and smooth operations during critical system failures or disasters.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>End-User Training:</strong> Basic security training for employees to reduce human error and increase overall security awareness, helping your team avoid common security threats.</span>
-            </li>
-          </ul>
-          <p class="text-sm text-gray-600 mb-4"><strong>Ideal For:</strong> Growing businesses with expanding teams and IT needs, Organizations requiring both on-site and remote support for a more comprehensive IT infrastructure.</p>
-          <button class="get-started-btn block w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold" data-plan="Intermediate">Get Started</button>
-        </div>
-        <!-- Advanced Tier Card -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 service-tier-card">
-          <div class="mb-4">
-            <i class="fas fa-rocket text-4xl text-purple-600 mb-2"></i>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Advanced</h3>
-            <p class="text-sm text-gray-600">For Enterprises & Large Teams</p>
-          </div>
-          <div class="mb-6">
-            <div class="text-3xl font-bold text-blue-600 mb-1">Custom Quote</div>
-            <p class="text-sm text-gray-600">(for larger teams or special needs, billed annually, cancel anytime)</p>
-          </div>
-          <h4 class="text-md font-semibold mb-2">What’s Included:</h4>
-          <ul class="text-left space-y-3 mb-4 text-sm">
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span>Everything in Intermediate, plus:</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Enterprise IT Support:</strong> Dedicated account manager, priority support, and fast-tracked escalation handling for critical issues, ensuring your IT needs are addressed swiftly and efficiently.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Advanced Cybersecurity:</strong> Endpoint Detection and Response (EDR), penetration testing, and compliance support to protect your organization against sophisticated cyber threats and meet industry security standards.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Advanced Email Security:</strong> AI-powered threat detection, email archiving, and advanced spam filtering to safeguard all communications and prevent phishing, malware, and email-based attacks.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Enterprise Network:</strong> SD-WAN deployment, high-availability solutions, and performance optimization for secure, resilient, and high-performance network infrastructure to support your large-scale operations.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Advanced Cloud:</strong> Hybrid cloud solutions, Infrastructure as a Service (IaaS), and scalable cloud resources to ensure your infrastructure grows alongside your business needs.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Managed IT Services:</strong> Complete IT operations management, proactive strategic planning, and IT roadmapping to align with your business growth, ensuring your IT infrastructure supports long-term success.</span>
-            </li>
-          </ul>
-          <h4 class="text-md font-semibold mb-2">Additional Benefits:</h4>
-          <ul class="text-left space-y-3 mb-8 text-sm">
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Disaster Recovery Planning:</strong> Comprehensive business continuity and recovery strategies tailored to ensure minimal downtime and rapid recovery from disasters, keeping your business up and running.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Compliance Reporting:</strong> Regular compliance reports tailored to industry regulations (e.g., GDPR, HIPAA), helping you stay aligned with legal requirements and avoid costly penalties.</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-              <span><strong>Service Level Agreement (SLA):</strong> Guaranteed response times for priority support and incident resolution, ensuring your IT operations remain smooth and any issues are quickly addressed.</span>
-            </li>
-          </ul>
-          <p class="text-sm text-gray-600 mb-4"><strong>Ideal For:</strong> Large enterprises or teams with complex IT infrastructures, Businesses requiring high-level IT security, advanced network solutions, and strategic IT planning for growth and compliance.</p>
-          <button class="get-started-btn block w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold" data-plan="Advanced">Get Started</button>
-        </div>
-      </div>
-      <p class="text-center text-sm text-gray-600 mt-4">Prices are starting points and may vary based on number of devices/users, on-site requirements, or additional services. All packages billed annually with monthly payment option.</p>
-      <!-- Features Comparison Table -->
-      <div class="mt-16 bg-white rounded-lg shadow-md overflow-hidden">
-        <div class="px-6 py-4 bg-gray-50 border-b">
-          <h3 class="text-lg font-semibold text-center">Compare Our IT Service Plans</h3>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="bg-gray-100">
-                <th class="p-4 text-left font-semibold">Feature</th>
-                <th class="p-4 text-center font-semibold">Basic</th>
-                <th class="p-4 text-center font-semibold">Intermediate</th>
-                <th class="p-4 text-center font-semibold">Advanced</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <tr>
-                <td class="p-4 font-medium">24/7 Helpdesk Support</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Yes</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Yes</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Yes</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">On-Site Support</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> 1 Visit/Month</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> 2 Visits/Month</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Dedicated Support (Priority & Escalation)</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Advanced Cybersecurity</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Basic Protection</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Enhanced Protection</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Advanced (EDR, Penetration Testing, Compliance)</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Email Security</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Basic Spam Filtering</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Spam Filtering + Encryption + Phishing Protection</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> AI-Powered Threat Detection, Archiving, Spam Filters</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Cloud Integration</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Basic Setup (Microsoft 365/Google Workspace)</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Full Setup & Management (Microsoft 365/Google Workspace)</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Hybrid Cloud Solutions, IaaS, Scalable Resources</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Enterprise Features</td>
-                <td class="p-4 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Network Management, Business Continuity, End-User Training</td>
-                <td class="p-4 text-center"><i class="fas fa-check text-green-500"></i> Enterprise IT Support, SD-WAN, SLA, Compliance Reporting, Advanced Network Solutions</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
       <div class="text-center mt-12">
-        <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 text-lg font-semibold">Ready? Contact Us</a>
+        <p class="text-xl md:text-2xl font-semibold text-gray-800">
+          More expertise. Lower risk. Predictable cost.
+        </p>
+        <p class="text-lg text-gray-600 mt-2">
+          Smart businesses outsource. They don’t gamble with downtime.
+        </p>
       </div>
     </div>
   </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-4">
+        Choose Your Managed IT Plan
+      </h2>
+      <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-12">
+        Simple, predictable IT support pricing. No hidden costs. No IT headaches. <br>
+        <strong>Note:</strong> Web Development, Cloud Migrations, AI/Automation projects, and other custom services are quoted separately.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- BASIC -->
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-gray-200 hover:border-blue-600 transition-all duration-300">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Basic</h3>
+          <p class="text-sm text-gray-600 mb-4">For Startups & Small Teams</p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">
+            From R4,999 /month
+          </div>
+          <p class="text-sm text-gray-600 mb-6">
+            Essential IT support without hiring in-house.
+          </p>
+          <ul class="text-left space-y-3 mb-6 text-sm">
+            <li>✔ 4-Hour Response SLA</li>
+            <li>✔ Business Hours Helpdesk</li>
+            <li>✔ Remote IT Support</li>
+            <li>✔ Antivirus & Patch Management</li>
+            <li>✔ Daily Cloud Backups</li>
+            <li>✔ 1 On-Site Visit / Month</li>
+          </ul>
+          <button class="block w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold">
+            Get Started
+          </button>
+        </div>
+
+        <!-- INTERMEDIATE (MOST POPULAR) -->
+        <div class="bg-white rounded-lg shadow-xl p-6 text-center border-2 border-blue-600 relative">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+            Most Popular
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Intermediate</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            For Growing Businesses (5–30 Users)
+          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">
+            From R8,999 /month
+          </div>
+          <p class="text-sm text-gray-600 mb-6">
+            Priority support with stronger security & faster response.
+          </p>
+          <ul class="text-left space-y-3 mb-6 text-sm">
+            <li>✔ 2-Hour Priority SLA</li>
+            <li>✔ Remote + On-Site Support (2 Visits)</li>
+            <li>✔ Advanced Cybersecurity Protection</li>
+            <li>✔ Email Security & Phishing Protection</li>
+            <li>✔ Microsoft 365 / Google Workspace Management</li>
+            <li>✔ Proactive System Monitoring</li>
+          </ul>
+          <button class="block w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold">
+            Get Started
+          </button>
+        </div>
+
+        <!-- ADVANCED -->
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-gray-200 hover:border-blue-600 transition-all duration-300">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Advanced</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            For Larger Teams & Complex IT Environments
+          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">
+            Custom Quote
+          </div>
+          <p class="text-sm text-gray-600 mb-6">
+            Full IT partnership with strategic oversight.
+          </p>
+          <ul class="text-left space-y-3 mb-6 text-sm">
+            <li>✔ 1-Hour Critical Response</li>
+            <li>✔ Dedicated Account Manager</li>
+            <li>✔ Enterprise-Grade Cybersecurity (EDR)</li>
+            <li>✔ Compliance & Reporting</li>
+            <li>✔ Disaster Recovery Planning</li>
+            <li>✔ Strategic IT Roadmapping</li>
+          </ul>
+          <button class="block w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold">
+            Contact Sales
+          </button>
+        </div>
+      </div>
+
+      <!-- Cost Anchor -->
+      <div class="text-center mt-12">
+        <p class="text-lg font-semibold text-gray-800">
+          One in-house IT hire ≈ R25,000–R35,000/month
+        </p>
+        <p class="text-gray-600">
+          NHX Managed IT starts at R4,999/month.
+        </p>
+      </div>
+
+      <p class="text-center text-sm text-gray-600 mt-6">
+        Prices are starting points and may vary depending on number of users, devices, and on-site requirements. Custom projects like web development, cloud migrations, or AI solutions are quoted separately.
+      </p>
+    </div>
+  </section>
+
+  <!-- Modernized SLA Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold mb-4">
+          Our Service Commitment
+        </h2>
+        <p class="text-lg text-gray-700">
+          Clear response times. No uncertainty. No delays.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="modern-card critical-card">
+          <div class="card-header">Critical Issues</div>
+          <div class="card-content">
+            <p class="font-bold mb-1">Response Time: Within 2 Hours</p>
+            <p class="text-gray-700">
+              <i class="fas fa-exclamation-triangle severity-icon-critical mr-2"></i>
+              Server down, internet outage, system-wide failure
+            </p>
+          </div>
+        </div>
+        <div class="modern-card high-priority-card">
+          <div class="card-header">High Priority</div>
+          <div class="card-content">
+            <p class="font-bold mb-1">Response Time: Within 4 Business Hours</p>
+            <p class="text-gray-700">
+              <i class="fas fa-exclamation-circle severity-icon-high mr-2"></i>
+              Email downtime, multiple users affected
+            </p>
+          </div>
+        </div>
+        <div class="modern-card standard-card">
+          <div class="card-header">Standard Support</div>
+          <div class="card-content">
+            <p class="font-bold mb-1">Response Time: Same Business Day</p>
+            <p class="text-gray-700">
+              <i class="fas fa-info-circle severity-icon-standard mr-2"></i>
+              User issues, software troubleshooting
+            </p>
+          </div>
+        </div>
+        <div class="modern-card onsite-card">
+          <div class="card-header">On-Site Support</div>
+          <div class="card-content">
+            <p class="font-bold mb-1">Scheduled: Within 24 Business Hours</p>
+            <p class="text-gray-700">
+              <i class="fas fa-wrench severity-icon-onsite mr-2"></i>
+              Where remote resolution is not possible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="py-16 bg-gray-100">
     <div class="container mx-auto px-4" data-aos="fade-up">
@@ -626,7 +749,9 @@
               <textarea name="message" id="message" rows="5" placeholder="Your Message" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300 contact-input"></textarea>
             </div>
             <div class="cf-turnstile" data-sitekey="0x4AAAAAAB4DiaF01hBH79st" data-callback="onTurnstileSuccess"></div>
-            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 contact-button" disabled>Send Message</button>
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 contact-button" disabled>
+              <i class="fas fa-spinner spinner hidden"></i> Send Message
+            </button>
           </form>
         </div>
         <div class="md:w-1/2">
@@ -637,6 +762,7 @@
       </div>
     </div>
   </section>
+
   <!-- Blog Teaser -->
   <section id="blog" class="py-16 bg-white">
     <div class="container mx-auto px-4" data-aos="fade-up">
@@ -660,6 +786,7 @@
       </div>
     </div>
   </section>
+
   <!-- Our Clients -->
   <section id="clients" class="py-16 bg-white" data-aos="fade-up">
     <div class="container mx-auto px-4">
@@ -705,18 +832,18 @@
           <div class="swiper-slide text-center">
             <a href="/portfolio/myfixer">
               <img src="images/client-logos/myfixer_logo.png" alt="myfixer Client Logo" class="client-logo mx-auto">
-             </a>
+            </a>
           </div>
           <div class="swiper-slide text-center">
             <a href="/portfolio/iba beauty spa">
-              <img src="images/client-logos/iba.png" alt="myfixer Client Logo" class="client-logo mx-auto">
+              <img src="images/client-logos/iba.png" alt="IBA Beauty Spa Client Logo" class="client-logo mx-auto">
             </a>
-          </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Footer -->
   <footer class="bg-blue-900 text-white py-12" data-aos="fade-up">
     <div class="container mx-auto px-4">
@@ -771,6 +898,16 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/27642903654?text=Hello%20NHX%20IT%20Services%2C%20I%20would%20like%20to%20enquire%20about%20your%20Managed%20IT%20Support."
+     target="_blank"
+     rel="noopener noreferrer"
+     class="whatsapp-float"
+     title="Chat with us on WhatsApp – we usually reply very quickly">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <!-- Modals -->
   <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
     <div class="bg-white p-8 rounded-lg max-w-md mx-auto text-center relative">
@@ -828,7 +965,9 @@
           <textarea name="message" id="service-plan-message" rows="5" placeholder="Your Message" required class="w-full p-4 border-none rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300"></textarea>
         </div>
         <div>
-          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 service-plan-button">Submit</button>
+          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all duration-300 service-plan-button">
+            <i class="fas fa-spinner spinner hidden"></i> Submit
+          </button>
         </div>
         <p id="service-plan-modal-message" class="text-red-600 hidden"></p>
       </form>
@@ -841,13 +980,13 @@
       <p id="thank-you-modal-message" class="mb-4 text-green-600"></p>
     </div>
   </div>
+
   <!-- Scripts -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Initialize AOS
     AOS.init({ duration: 1000 });
-    // Initialize Hero Carousel
+
     const heroSwiper = new Swiper('.swiper-container', {
       loop: true,
       autoplay: { delay: 5000, disableOnInteraction: false },
@@ -855,20 +994,20 @@
       fadeEffect: { crossFade: true },
       pagination: { el: '.swiper-pagination', clickable: true },
     });
-    // Initialize Clients Carousel
+
     const clientsSwiper = new Swiper('.swiper-container-clients', {
-    slidesPerView: 2,
-    spaceBetween: 5, // Reduced from 20 for closer logos
-    loop: true,
-    speed: 800, // Added: 1-second transition for slower, smoother sliding
-    autoplay: { delay: 3000, disableOnInteraction: false, reverseDirection: true },
-    slidesPerGroup: 2,
-    breakpoints: {
-    640: { slidesPerView: 3, slidesPerGroup: 3 },
-    1024: { slidesPerView: 4, slidesPerGroup: 4 },
-  },
-});
-    // Mobile Navigation Toggle
+      slidesPerView: 2,
+      spaceBetween: 5,
+      loop: true,
+      speed: 800,
+      autoplay: { delay: 3000, disableOnInteraction: false, reverseDirection: true },
+      slidesPerGroup: 2,
+      breakpoints: {
+        640: { slidesPerView: 3, slidesPerGroup: 3 },
+        1024: { slidesPerView: 4, slidesPerGroup: 4 },
+      },
+    });
+
     const navToggle = document.getElementById('nav-toggle');
     const mobileNav = document.getElementById('mobile-nav');
     navToggle.addEventListener('click', () => {
@@ -877,24 +1016,52 @@
       navToggle.querySelector('i').classList.toggle('fa-bars');
       navToggle.querySelector('i').classList.toggle('fa-times');
     });
-    // Plan Selection for Service Plan Modal
-    document.querySelectorAll('.get-started-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const plan = btn.dataset.plan;
-        document.getElementById('plan').value = plan;
-        const messageTextarea = document.getElementById('service-plan-message');
-        messageTextarea.value = `I’m interested in the ${plan} Plan for my business. Please provide more details.`;
-        document.getElementById('service-plan-modal').classList.remove('hidden');
+
+    // Make "Get Started" buttons open the service plan modal with pre-selected plan
+    document.querySelectorAll('#pricing button').forEach(button => {
+      button.addEventListener('click', function() {
+        // Find which plan this button belongs to
+        const card = this.closest('.bg-white');
+        let planName = '';
+
+        if (card) {
+          const title = card.querySelector('h3').textContent.trim();
+          if (title.includes('Basic')) planName = 'Basic';
+          else if (title.includes('Intermediate')) planName = 'Intermediate';
+          else if (title.includes('Advanced')) planName = 'Advanced';
+        }
+
+        // Open the modal
+        const modal = document.getElementById('service-plan-modal');
+        modal.classList.remove('hidden');
+
+        // Pre-select the plan in dropdown
+        const planSelect = document.getElementById('plan');
+        if (planSelect && planName) {
+          planSelect.value = planName;
+        }
+
+        // Optional: pre-fill message
+        const messageField = document.getElementById('service-plan-message');
+        if (messageField && planName) {
+          messageField.value = `I'm interested in the ${planName} plan. Please contact me with more details and a quote.`;
+        }
+
+        // Scroll modal into view if needed
+        modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
-    // Contact Form Submission (with Turnstile)
+
     const contactForm = document.getElementById('contact-form');
     const contactModal = document.getElementById('contact-modal');
     const contactModalTitle = document.getElementById('contact-modal-title');
     const contactModalMessage = document.getElementById('contact-modal-message');
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      // Show spinner and disable button
       const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.classList.add('submitting');
+      submitBtn.querySelector('.spinner').classList.remove('hidden');
       const turnstileToken = document.getElementById('cf-turnstile-response').value;
       if (!turnstileToken) {
         contactModalTitle.textContent = 'Verification Required';
@@ -902,6 +1069,9 @@
         contactModalMessage.classList.remove('hidden', 'text-green-600');
         contactModalMessage.classList.add('text-red-600');
         contactModal.classList.remove('hidden');
+        // Reset button on error
+        submitBtn.classList.remove('submitting');
+        submitBtn.querySelector('.spinner').classList.add('hidden');
         return;
       }
       const formData = new FormData(contactForm);
@@ -927,6 +1097,13 @@
           submitBtn.disabled = true;
           gtag('event', 'contact_form_submission', { 'event_category': 'Form Submission', 'event_label': 'contact' });
           fbq('track', 'ContactLead');
+          // Reset button
+          submitBtn.classList.remove('submitting');
+          submitBtn.querySelector('.spinner').classList.add('hidden');
+        } else {
+          // Reset button on error
+          submitBtn.classList.remove('submitting');
+          submitBtn.querySelector('.spinner').classList.add('hidden');
         }
       } catch (error) {
         contactModalTitle.textContent = 'Network Error';
@@ -935,17 +1112,22 @@
         contactModalMessage.classList.add('text-red-600');
         contactModal.classList.remove('hidden');
         console.error('Form submit error:', error);
+        // Reset on error
+        submitBtn.classList.remove('submitting');
+        submitBtn.querySelector('.spinner').classList.add('hidden');
       }
     });
-    // Service Plan Form Submission
+
     const servicePlanForm = document.getElementById('service-plan-form');
     const servicePlanModal = document.getElementById('service-plan-modal');
     const thankYouModal = document.getElementById('thank-you-modal');
     const thankYouModalMessage = document.getElementById('thank-you-modal-message');
     servicePlanForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      // Show spinner
       const submitBtn = servicePlanForm.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
+      submitBtn.classList.add('submitting');
+      submitBtn.querySelector('.spinner').classList.remove('hidden');
       const plan = document.getElementById('plan').value;
       const formData = new FormData(servicePlanForm);
       formData.append('form-name', servicePlanForm.getAttribute('name'));
@@ -957,35 +1139,39 @@
           body: urlEncodedData
         });
         if (response.ok) {
-          // Close the service plan modal
           servicePlanModal.classList.add('hidden');
           servicePlanForm.reset();
-          submitBtn.disabled = false;
-          // Show the thank you modal
           thankYouModalMessage.textContent = `Thank you for choosing the ${plan} Plan! We’ve received your quote request and will contact you soon.`;
           thankYouModal.classList.remove('hidden');
-          // Track events
           gtag('event', 'service_plan_form_submission', { 'event_category': 'Form Submission', 'event_label': 'Service Plan' });
           fbq('track', 'ServicePlanLead');
+          // Reset button
+          submitBtn.classList.remove('submitting');
+          submitBtn.querySelector('.spinner').classList.add('hidden');
+          submitBtn.disabled = false; // Re-enable if needed
         } else {
-          // Show error message in service plan modal
           const servicePlanModalMessage = document.getElementById('service-plan-modal-message');
           servicePlanModalMessage.textContent = 'Submission failed, please try again.';
           servicePlanModalMessage.classList.remove('hidden', 'text-green-600');
           servicePlanModalMessage.classList.add('text-red-600');
+          // Reset button on error
+          submitBtn.classList.remove('submitting');
+          submitBtn.querySelector('.spinner').classList.add('hidden');
           submitBtn.disabled = false;
         }
       } catch (error) {
-        // Show network error in service plan modal
         const servicePlanModalMessage = document.getElementById('service-plan-modal-message');
         servicePlanModalMessage.textContent = 'Network error, please try again later.';
         servicePlanModalMessage.classList.remove('hidden', 'text-green-600');
         servicePlanModalMessage.classList.add('text-red-600');
-        submitBtn.disabled = false;
         console.error('Service plan form submit error:', error);
+        // Reset on error
+        submitBtn.classList.remove('submitting');
+        submitBtn.querySelector('.spinner').classList.add('hidden');
+        submitBtn.disabled = false;
       }
     });
-    // Close Contact Modal
+
     const contactModalClose = document.getElementById('contact-modal-close');
     contactModalClose.addEventListener('click', () => {
       contactModal.classList.add('hidden');
@@ -994,13 +1180,13 @@
       window.turnstile.reset();
       document.querySelector('.contact-button').disabled = true;
     });
-    // Close Thank You Modal
+
     const thankYouModalClose = document.getElementById('thank-you-modal-close');
     thankYouModalClose.addEventListener('click', () => {
       thankYouModal.classList.add('hidden');
       thankYouModalMessage.classList.add('hidden');
     });
-    // Close Modals on Outside Click or Escape Key
+
     document.querySelectorAll('#service-plan-modal, #thank-you-modal, #contact-modal').forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -1021,6 +1207,7 @@
         }
       });
     });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         contactModal.classList.add('hidden');
