@@ -153,9 +153,9 @@
     /* Floating WhatsApp Button */
     .whatsapp-float {
       position: fixed;
-      bottom: 30px;
+      bottom: 100px;          /* ← Increase this value so it's higher than Tawk.to */
       right: 30px;
-      z-index: 1001;
+      z-index: 1000;          /* Keep below Tawk.to if needed, or 1002 to be on top */
       background: #25D366;
       color: white;
       width: 64px;
@@ -181,13 +181,14 @@
     .whatsapp-float {
       animation: pulse-whatsapp 2.5s infinite ease-in-out;
     }
+    /* Mobile adjustment – make sure it doesn't go off-screen */
     @media (max-width: 640px) {
       .whatsapp-float {
+        bottom: 90px;         /* Still above Tawk.to on mobile */
+        right: 20px;
         width: 56px;
         height: 56px;
         font-size: 2rem;
-        bottom: 20px;
-        right: 20px;
       }
     }
 
