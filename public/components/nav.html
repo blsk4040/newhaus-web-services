@@ -1,0 +1,104 @@
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+
+    <!-- Logo -->
+    <a href="/public/index.html#home" class="flex items-center" aria-label="NewHaus IT Services Home">
+      <img src="/public/assets/logo/1.png" alt="NewHaus IT Services Logo" class="logo h-14">
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="/public/index.html#home" data-link="home" class="nav-link text-gray-700 hover:text-blue-600 font-medium">
+        Home
+      </a>
+
+      <a href="/public/index.html#about" data-link="about" class="nav-link text-gray-700 hover:text-blue-600 font-medium">
+        About
+      </a>
+
+      <a href="/public/index.html#services" data-link="services" class="nav-link text-gray-700 hover:text-blue-600 font-medium">
+        Services
+      </a>
+
+      <a href="/public/index.html#pricing" data-link="pricing" class="nav-link text-gray-700 hover:text-blue-600 font-medium">
+        Pricing
+      </a>
+
+      <a href="/public/shop.html" data-link="shop" class="nav-link text-orange-600 font-bold text-lg">
+        Shop
+      </a>
+
+      <a href="/public/index.html#contact" data-link="contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">
+        Contact
+      </a>
+
+      <!-- CTA -->
+      <a href="/public/index.html#contact"
+         class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition font-medium">
+        Get a Quote
+      </a>
+
+      <!-- Cart -->
+      <button
+        type="button"
+        class="snipcart-checkout relative text-2xl text-gray-700 hover:text-blue-600"
+        aria-label="View cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="snipcart-items-count absolute -top-3 -right-3 bg-orange-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-medium"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button
+      id="nav-toggle"
+      type="button"
+      class="md:hidden text-gray-700 text-3xl focus:outline-none"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="mobile-nav">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-nav" class="hidden md:hidden bg-white shadow-lg border-t">
+    <div class="flex flex-col py-2">
+      <a href="/public/shop.html" data-link="shop" class="nav-link px-6 py-4 text-orange-600 font-bold border-b">
+        🛒 Shop
+      </a>
+
+      <a href="/public/index.html#home" data-link="home" class="nav-link px-6 py-4 border-b hover:bg-gray-50">
+        Home
+      </a>
+
+      <a href="/public/index.html#about" data-link="about" class="nav-link px-6 py-4 border-b hover:bg-gray-50">
+        About
+      </a>
+
+      <a href="/public/index.html#services" data-link="services" class="nav-link px-6 py-4 border-b hover:bg-gray-50">
+        Services
+      </a>
+
+      <a href="/public/index.html#pricing" data-link="pricing" class="nav-link px-6 py-4 border-b hover:bg-gray-50">
+        Pricing
+      </a>
+
+      <a href="/public/index.html#contact" data-link="contact" class="nav-link px-6 py-4 border-b hover:bg-gray-50">
+        Contact
+      </a>
+
+      <a href="/public/index.html#contact"
+         class="px-6 py-4 bg-blue-600 text-white text-center font-medium">
+        Get a Quote
+      </a>
+
+      <button
+        type="button"
+        class="snipcart-checkout px-6 py-4 text-left border-b hover:bg-gray-50 flex items-center gap-2">
+        <i class="fas fa-shopping-cart"></i>
+        Cart (<span class="snipcart-items-count"></span>)
+      </button>
+    </div>
+  </div>
+</nav>

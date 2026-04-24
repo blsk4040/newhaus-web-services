@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Free Business System Assessment | NewHaus IT</title>
+
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+  <!-- NAV -->
+  <div id="nav-container"></div>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-r from-indigo-700 to-purple-800 text-white py-24 pt-32">
+    <div class="container mx-auto px-6 text-center max-w-4xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Free Business System Assessment
+      </h1>
+
+      <p class="text-lg md:text-xl text-indigo-100 mb-6">
+        We analyse your business and design a complete system for Communication, Operations, and Automation.
+      </p>
+
+      <p class="text-sm text-indigo-200">
+        Takes 2–3 minutes • No obligation • Tailored to your business
+      </p>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="py-16">
+    <div class="container mx-auto px-6 max-w-3xl">
+      <div class="bg-white rounded-3xl shadow-xl p-8">
+
+        <h2 class="text-2xl font-bold mb-6 text-center">
+          Tell Us About Your Business
+        </h2>
+
+        <form id="assessmentForm" class="space-y-5">
+
+          <!-- BASIC -->
+          <input id="fullName" class="w-full border p-3 rounded-xl" placeholder="Full Name" required />
+          <input id="email" type="email" class="w-full border p-3 rounded-xl" placeholder="Email Address" required />
+          <input id="phone" class="w-full border p-3 rounded-xl" placeholder="Phone Number" />
+
+          <!-- COMPANY NAME -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">
+              Company Name <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="company"
+              type="text"
+              class="w-full border p-3 rounded-xl"
+              placeholder="Enter your company name"
+              required
+            />
+          </div>
+
+          <!-- BUSINESS TYPE -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">Business Type</label>
+            <select id="businessType" class="w-full border rounded-xl p-3">
+              <option>Service Business</option>
+              <option>Logistics / Transport</option>
+              <option>Retail</option>
+              <option>Professional Services</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- COMPANY SIZE -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">Company Size</label>
+            <select id="companySize" class="w-full border rounded-xl p-3">
+              <option>1–5 Employees</option>
+              <option>6–10 Employees</option>
+              <option>11–20 Employees</option>
+              <option>21–50 Employees</option>
+              <option>50+ Employees</option>
+            </select>
+          </div>
+
+          <!-- REVENUE -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">Monthly Revenue (Optional)</label>
+            <select id="revenue" class="w-full border rounded-xl p-3">
+              <option>Under R50k</option>
+              <option>R50k – R200k</option>
+              <option>R200k – R500k</option>
+              <option>R500k – R1M</option>
+              <option>R1M+</option>
+            </select>
+          </div>
+
+          <!-- LEAD GENERATION -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">How do you get customers?</label>
+            <select id="leadSource" class="w-full border rounded-xl p-3">
+              <option>Referrals</option>
+              <option>WhatsApp / Calls</option>
+              <option>Social Media</option>
+              <option>Website</option>
+              <option>Multiple channels</option>
+            </select>
+          </div>
+
+          <!-- LEAD TRACKING -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">How do you track leads?</label>
+            <select id="leadTracking" class="w-full border rounded-xl p-3">
+              <option>We don’t track leads</option>
+              <option>Manual (Excel / Notebook)</option>
+              <option>WhatsApp only</option>
+              <option>CRM system</option>
+            </select>
+          </div>
+
+          <!-- COMMUNICATION -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">Current Communication Setup</label>
+            <select id="communication" class="w-full border rounded-xl p-3">
+              <option>Personal phones</option>
+              <option>Business lines</option>
+              <option>VoIP system</option>
+              <option>Mix of everything</option>
+            </select>
+          </div>
+
+          <!-- AUTOMATION -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">Automation Level</label>
+            <select id="automation" class="w-full border rounded-xl p-3">
+              <option>No automation</option>
+              <option>Basic (emails / reminders)</option>
+              <option>Some workflows</option>
+              <option>Fully automated processes</option>
+            </select>
+          </div>
+
+          <!-- BUDGET -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">Estimated Budget</label>
+            <select id="budget" class="w-full border rounded-xl p-3">
+              <option>Not sure yet</option>
+              <option>R1k – R5k</option>
+              <option>R5k – R15k</option>
+              <option>R15k – R50k</option>
+              <option>R50k+</option>
+            </select>
+          </div>
+
+          <!-- URGENCY -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">How soon do you want to implement?</label>
+            <select id="urgency" class="w-full border rounded-xl p-3">
+              <option>Immediately</option>
+              <option>Within 1 month</option>
+              <option>1–3 months</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+
+          <!-- CURRENT TOOLS -->
+          <textarea id="tools" class="w-full border p-3 rounded-xl" rows="3" placeholder="Current Tools (Optional)"></textarea>
+
+          <!-- CHALLENGE -->
+          <textarea id="challenge" class="w-full border p-3 rounded-xl" rows="3" placeholder="Biggest Challenge"></textarea>
+
+          <!-- STATUS MESSAGE -->
+          <div id="formStatus" class="hidden rounded-xl p-4 text-sm font-medium"></div>
+
+          <!-- SUBMIT -->
+          <button
+            id="submitBtn"
+            type="submit"
+            class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            Get My Free System Assessment
+          </button>
+
+          <p class="text-xs text-gray-500 text-center">
+            We respond within 24 hours
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="footer-container"></div>
+
+  <!-- LOADER -->
+  <script src="../js/loader.js"></script>
+
+  <script>
+    const assessmentForm = document.getElementById("assessmentForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    function showStatus(message, type = "info") {
+      formStatus.classList.remove(
+        "hidden",
+        "bg-red-100", "text-red-700",
+        "bg-green-100", "text-green-700",
+        "bg-blue-100", "text-blue-700"
+      );
+
+      if (type === "error") {
+        formStatus.classList.add("bg-red-100", "text-red-700");
+      } else if (type === "success") {
+        formStatus.classList.add("bg-green-100", "text-green-700");
+      } else {
+        formStatus.classList.add("bg-blue-100", "text-blue-700");
+      }
+
+      formStatus.innerHTML = message;
+    }
+
+    function setSubmitting(isSubmitting) {
+      submitBtn.disabled = isSubmitting;
+      submitBtn.textContent = isSubmitting ? "Submitting..." : "Get My Free System Assessment";
+    }
+
+    assessmentForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const payload = {
+        formType: "System Assessment",
+        crmLeadSource: "Website System Assessment",
+        fullName: document.getElementById("fullName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        company: document.getElementById("company").value.trim(),
+        businessType: document.getElementById("businessType").value,
+        companySize: document.getElementById("companySize").value,
+        revenue: document.getElementById("revenue").value,
+        leadSource: document.getElementById("leadSource").value,
+        leadTracking: document.getElementById("leadTracking").value,
+        communication: document.getElementById("communication").value,
+        automation: document.getElementById("automation").value,
+        budget: document.getElementById("budget").value,
+        urgency: document.getElementById("urgency").value,
+        tools: document.getElementById("tools").value.trim(),
+        challenge: document.getElementById("challenge").value.trim(),
+        pageUrl: window.location.href
+      };
+
+      if (!payload.fullName || !payload.email || !payload.company) {
+        showStatus("Please fill in your full name, email address, and company name.", "error");
+        return;
+      }
+
+      try {
+        setSubmitting(true);
+        showStatus("Submitting your assessment...", "info");
+
+        const response = await fetch("http://localhost:3000/api/create-lead", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Failed to submit assessment");
+        }
+
+        const leadTemperature = result.leadTemperature || "COLD";
+
+        assessmentForm.classList.add("hidden");
+
+        showStatus(
+          `<div class="text-center">
+            <div class="text-2xl font-bold mb-2">Thank you</div>
+            <div class="mb-2">Your assessment has been submitted successfully.</div>
+            <div class="mb-4">Lead rating: <strong>${leadTemperature}</strong></div>
+            <div class="text-sm opacity-90 mb-4">We’ll review your details and contact you shortly.</div>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+              <button onclick="window.location.href='/public/index.html'" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+                Back to Home
+              </button>
+              <button onclick="window.location.reload()" class="bg-white text-indigo-700 border border-indigo-200 px-6 py-2 rounded-lg hover:bg-indigo-50 transition">
+                Submit Another Response
+              </button>
+            </div>
+          </div>`,
+          "success"
+        );
+
+        setTimeout(() => {
+          window.location.href = "/public/index.html";
+        }, 4500);
+
+      } catch (error) {
+        console.error("Assessment submit error:", error);
+        showStatus("There was a problem submitting your assessment. Please try again.", "error");
+      } finally {
+        setSubmitting(false);
+      }
+    });
+  </script>
+</body>
+</html>
