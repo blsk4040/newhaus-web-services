@@ -12,10 +12,13 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "price": {
-      "type": "integer"
+      "type": "integer",
+      "required": true,
+      "min": 0
     },
     "description": {
       "type": "blocks"
@@ -32,9 +35,29 @@
     },
     "category": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::category.category",
-      "mappedBy": "product"
+      "inversedBy": "products",
+      "required": true
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "stock": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "condition": {
+      "type": "enumeration",
+      "enum": [
+        "Refurbished",
+        "New"
+      ],
+      "required": true
     }
   }
 }

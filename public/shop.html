@@ -3,184 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop Refurbished Hardware & Accessories | NewHaus IT Services</title>
-  <meta name="description" content="Browse and buy high-quality refurbished laptops, desktops, keyboards, mice, bags, headphones, mugs and more in Centurion, Gauteng." />
-  <meta name="keywords" content="refurbished laptops Centurion, refurbished desktops Gauteng, computer accessories South Africa, keyboards, mice, headphones, mugs" />
+  <meta name="nhx-api-base" content="" />
+  <meta name="nhx-strapi-base" content="" />
+  <title>Business IT Hardware & Accessories | NewHaus IT Services</title>
+  <meta name="description" content="Browse business IT hardware, VoIP devices, refurbished laptops, accessories, and office technology supplied by NewHaus IT Services in Centurion, Gauteng." />
+  <meta name="keywords" content="business IT hardware South Africa, refurbished laptops Centurion, VoIP devices Gauteng, computer accessories South Africa, office technology, NewHaus IT Services" />
   <meta name="author" content="NewHaus IT Services" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://nhx.co.za/shop" />
-  <meta property="og:title" content="Shop Refurbished Hardware & Accessories - NewHaus IT Services" />
-  <meta property="og:description" content="Quality refurbished IT products and accessories with warranty." />
-  <meta property="og:image" content="https://nhx.co.za/images/preview-shop.jpg" />
-  <meta property="og:url" content="https://nhx.co.za/shop" />
+  <link rel="canonical" href="https://nhx.co.za/shop.html" />
+  <meta property="og:title" content="Business IT Hardware & Accessories | NewHaus IT Services" />
+  <meta property="og:description" content="Business IT hardware, VoIP devices, refurbished laptops, and accessories supplied by NewHaus IT Services." />
+  <meta property="og:url" content="https://nhx.co.za/shop.html" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NewHaus IT Services" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Business IT Hardware & Accessories | NewHaus IT Services" />
+  <meta name="twitter:description" content="Browse business IT hardware, VoIP devices, refurbished laptops, and accessories for business use." />
   <link rel="shortcut icon" href="/favicon_io/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#1e40af">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
 
-  <link rel="stylesheet" href="styles.css?v=10" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 
-  <script>
-    window.SnipcartSettings = {
-      publicApiKey: 'NmM1OTQ3MDMtOTE2ZS00YTJlLWFlZjItYjY0YjgzMGQxZWZmNjM5MTE4NjE3MTIzNzYwMDQy',
-      currency: 'zar',
-      locale: 'en',
-      loadStrategy: 'on-user-interaction',
-      modalStyle: 'side',
-      templatesUrl: null,
-      addProductBehavior: 'none',
-      shippingRatesEndpoint: 'http://localhost:3000/api/shipping'
-    };
-  </script>
 
-  <script>
-    (() => {
-      var c, d;
-      (d = (c = window.SnipcartSettings).version) != null || (c.version = "3.0");
+  <style>
+    /* NHX condition badge fallback: supports Strapi condition = New */
+    .product-chip.chip-new {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+  </style>
 
-      var s, S;
-      (S = (s = window.SnipcartSettings).timeoutDuration) != null || (s.timeoutDuration = 2750);
-
-      var l, p;
-      (p = (l = window.SnipcartSettings).domain) != null || (l.domain = "cdn.snipcart.com");
-
-      var w, u;
-      (u = (w = window.SnipcartSettings).protocol) != null || (w.protocol = "https");
-
-      var f =
-        window.SnipcartSettings.version.includes("v3.0.0-ci") ||
-        (window.SnipcartSettings.version != "3.0" &&
-          window.SnipcartSettings.version.localeCompare("3.4.0", void 0, {
-            numeric: true,
-            sensitivity: "base"
-          }) === -1);
-
-      var m = ["focus", "mouseover", "touchmove", "scroll", "keydown"];
-
-      window.LoadSnipcart = o;
-
-      document.readyState === "loading"
-        ? document.addEventListener("DOMContentLoaded", r)
-        : r();
-
-      function r() {
-        if (window.SnipcartSettings.loadStrategy === "on-user-interaction") {
-          m.forEach(t => document.addEventListener(t, o));
-          setTimeout(o, window.SnipcartSettings.timeoutDuration);
-        } else {
-          o();
-        }
-      }
-
-      var a = false;
-
-      function o() {
-        if (a) return;
-        a = true;
-
-        let t = document.getElementsByTagName("head")[0];
-        let e = document.querySelector("#snipcart");
-
-        if (!e) {
-          e = document.createElement("div");
-          e.id = "snipcart";
-          e.setAttribute("hidden", "true");
-          document.body.appendChild(e);
-        }
-
-        v(e);
-
-        let i = document.createElement("script");
-        i.src = `${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`;
-        i.async = true;
-        t.appendChild(i);
-
-        let n = document.createElement("link");
-        n.rel = "stylesheet";
-        n.href = `${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`;
-        t.prepend(n);
-
-        m.forEach(g => document.removeEventListener(g, o));
-      }
-
-      function v(t) {
-        if (!f) return;
-
-        t.dataset.apiKey = window.SnipcartSettings.publicApiKey;
-
-        if (window.SnipcartSettings.currency) {
-          t.dataset.currency = window.SnipcartSettings.currency;
-        }
-
-        if (window.SnipcartSettings.modalStyle) {
-          t.dataset.configModalStyle = window.SnipcartSettings.modalStyle;
-        }
-
-        if (window.SnipcartSettings.addProductBehavior) {
-          t.dataset.configAddProductBehavior = window.SnipcartSettings.addProductBehavior;
-        }
-
-        if (window.SnipcartSettings.templatesUrl) {
-          t.dataset.templatesUrl = window.SnipcartSettings.templatesUrl;
-        }
-
-        if (window.SnipcartSettings.shippingRatesEndpoint) {
-          t.dataset.configShippingRatesEndpoint = window.SnipcartSettings.shippingRatesEndpoint;
-        }
-      }
-    })();
-  </script>
 </head>
 <body class="min-h-screen shop-page">
 
+<!-- NAV Menu -->
+
   <div id="nav-container"></div>
 
-  <!-- HERO -->
-  <section id="shop-hero" class="relative h-screen overflow-hidden">
-    <div class="swiper h-full w-full">
-      <div class="swiper-wrapper h-full">
-        <div class="swiper-slide relative h-full">
-          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=2071&q=90" alt="Refurbished Laptops" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div class="text-center px-6">
-              <h1 class="text-white text-4xl md:text-6xl font-bold mb-4">Refurbished Laptops</h1>
-              <p class="text-white text-lg md:text-2xl max-w-2xl mx-auto">Business-grade devices, tested and ready for work.</p>
-            </div>
-          </div>
-        </div>
+<!-- HERO -->
+<section id="shop-hero" class="relative overflow-hidden bg-white">
+  <div class="swiper h-full w-full">
+    <div class="swiper-wrapper h-full">
 
-        <div class="swiper-slide relative h-full">
-          <img src="https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&w=2070&q=80" alt="Accessories" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div class="text-center px-6">
-              <h1 class="text-white text-4xl md:text-6xl font-bold mb-4">High-Quality Accessories</h1>
-              <p class="text-white text-lg md:text-2xl max-w-2xl mx-auto">Reliable accessories and add-ons for business and everyday use.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide relative h-full">
-          <img src="https://images.unsplash.com/photo-1581093588401-1d2c23edfb3b?auto=format&fit=crop&w=2070&q=80" alt="Tech Deals" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div class="text-center px-6">
-              <h1 class="text-white text-4xl md:text-6xl font-bold mb-4">Amazing Tech Deals</h1>
-              <p class="text-white text-lg md:text-2xl max-w-2xl mx-auto">Affordable refurbished tech with warranty and support.</p>
-            </div>
+      <!-- SLIDE 1 -->
+      <div class="swiper-slide relative h-full">
+        <img
+          src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=2071&q=90"
+          alt="Refurbished Laptops"
+          class="shop-hero-img shop-hero-img-1"
+        >
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center px-6 hero-text">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Refurbished Laptops</h1>
+            <p class="text-lg md:text-2xl max-w-2xl mx-auto">
+              Business-grade devices, tested and ready for work.
+            </p>
           </div>
         </div>
       </div>
 
-      <div class="swiper-pagination absolute bottom-8 left-1/2 -translate-x-1/2 z-20"></div>
+      <!-- SLIDE 2 -->
+      <div class="swiper-slide relative h-full">
+        <img
+          src="https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&w=2070&q=80"
+          alt="Accessories"
+          class="shop-hero-img shop-hero-img-2"
+        >
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center px-6 hero-text">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">High-Quality Accessories</h2>
+            <p class="text-lg md:text-2xl max-w-2xl mx-auto">
+              Reliable accessories and add-ons for business and everyday use.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="swiper-slide relative h-full">
+        <img
+          src="https://res.cloudinary.com/dz7dr3wku/image/upload/v1777192096/conference_2_g3qlfb.png"
+          alt="Conference Phones"
+          class="shop-hero-img shop-hero-img-3"
+        >
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center px-6 hero-text">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Conference Phones</h2>
+            <p class="text-lg md:text-2xl max-w-2xl mx-auto">
+              Professional VoIP conference solutions for clear business meetings.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="swiper-slide relative h-full">
+        <img
+          src="https://res.cloudinary.com/dz7dr3wku/image/upload/v1777193170/new-cisco-headsets_eu4cgv.avif"
+          alt="Business VoIP Communication"
+          class="shop-hero-img shop-hero-img-4"
+        >
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center px-6 hero-text">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Business VoIP Solutions</h2>
+            <p class="text-lg md:text-2xl max-w-2xl mx-auto">
+              Upgrade your calls with reliable VoIP phones, headsets, and communication devices.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="swiper-slide relative h-full">
+        <img
+          src="https://res.cloudinary.com/dz7dr3wku/image/upload/v1777193178/calling-02_ewruxa.avif"
+          alt="Professional Headsets"
+          class="shop-hero-img shop-hero-img-5"
+        >
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center px-6 hero-text">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Professional Headsets</h2>
+            <p class="text-lg md:text-2xl max-w-2xl mx-auto">
+              Clear audio, comfortable design, and reliable devices for office and remote teams.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination absolute bottom-8 left-1/2 -translate-x-1/2 z-20"></div>
+  </div>
+</section>
 
   <!-- TRUST STRIP -->
   <section id="shop-trust-strip" class="shop-trust-strip py-5 bg-white border-b border-gray-200">
@@ -196,7 +160,7 @@
         </div>
         <div class="trust-item">
           <i class="fas fa-lock"></i>
-          <span>Secure Checkout</span>
+          <span>Secure Order Request</span>
         </div>
         <div class="trust-item">
           <i class="fas fa-headset"></i>
@@ -323,7 +287,7 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-              <button id="detail-add-to-cart" class="snipcart-add-item w-full bg-blue-800 text-white py-4 rounded-xl hover:bg-blue-900 transition font-semibold flex items-center justify-center gap-2">
+              <button id="detail-add-to-cart" type="button" class="cart-add-btn w-full bg-blue-800 text-white py-4 rounded-xl hover:bg-blue-900 transition font-semibold flex items-center justify-center gap-2">
                 <i class="fas fa-cart-plus"></i> Add to Cart
               </button>
 
@@ -452,6 +416,7 @@
         </div>
 
         <div class="hidden lg:flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+          <label for="sort-select" class="sr-only">Sort products</label>
           <select id="sort-select" class="p-4 rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-700 min-w-[220px]">
             <option value="featured">Featured</option>
             <option value="price-low">Price: Low to High</option>
@@ -537,6 +502,7 @@
 
             <div class="mt-8">
               <h3 class="font-semibold text-lg mb-3 text-gray-800">Price Range</h3>
+              <label for="price-range" class="sr-only">Maximum price</label>
               <input id="price-range" type="range" min="0" max="50000" step="500" value="50000" class="w-full accent-blue-700">
               <div class="text-sm mt-2 text-gray-600 flex justify-between">
                 <span>R0</span>
@@ -618,6 +584,7 @@
 
               <div class="mt-8">
                 <h3 class="font-semibold text-lg mb-3 text-gray-800">Price Range</h3>
+                <label for="mobile-price-range" class="sr-only">Maximum price</label>
                 <input id="mobile-price-range" type="range" min="0" max="50000" step="500" value="50000" class="w-full accent-blue-700">
                 <div class="text-sm mt-2 text-gray-600 flex justify-between">
                   <span>R0</span>
@@ -685,7 +652,7 @@
   <div id="product-modal" role="dialog" aria-modal="true" aria-hidden="true" class="fixed inset-0 bg-black bg-opacity-80 hidden z-[10000] flex items-center justify-center p-0 md:p-6">
     <div class="modal-shell bg-white w-full h-full md:rounded-2xl overflow-hidden relative flex flex-col md:flex-row">
 
-      <button id="modal-close" class="absolute top-4 right-4 bg-white rounded-full p-2 text-gray-600 hover:text-gray-900 text-3xl z-50 shadow modal-close-main" aria-label="Close modal">&times;</button>
+      <button id="modal-close" class="absolute top-4 right-4 bg-white rounded-full p-4 md:p-2 text-gray-600 hover:text-gray-900 text-3xl z-50 shadow modal-close-main" aria-label="Close modal">&times;</button>
 
       <div class="modal-left w-full md:w-2/3 bg-gray-50 flex flex-col">
         <div class="modal-image-stage">
@@ -710,6 +677,9 @@
 
       <div class="modal-right w-full md:w-1/3 p-5 md:p-8 flex flex-col justify-between">
         <div>
+          <button id="modal-back-mobile" type="button" class="md:hidden w-full bg-gray-100 text-gray-800 py-3 rounded-lg mb-4 flex items-center justify-center gap-2 font-semibold" aria-label="Back to products">
+            <i class="fas fa-arrow-left"></i> Back to Products
+          </button>
           <div class="flex items-center gap-2 mb-3 flex-wrap">
             <span id="modal-card-badge" class="product-chip chip-refurbished">Refurbished</span>
             <span id="modal-stock-badge" class="product-chip chip-stock">In Stock</span>
@@ -746,7 +716,7 @@
         </div>
 
         <div class="grid grid-cols-1 gap-3">
-          <button id="modal-add-to-cart" class="snipcart-add-item w-full bg-blue-800 text-white py-3 md:py-4 text-base md:text-lg rounded-lg hover:bg-blue-900 transition font-semibold flex items-center justify-center gap-2">
+          <button id="modal-add-to-cart" type="button" class="cart-add-btn w-full bg-blue-800 text-white py-3 md:py-4 text-base md:text-lg rounded-lg hover:bg-blue-900 transition font-semibold flex items-center justify-center gap-2">
             <i class="fas fa-cart-plus"></i> Add to Cart
           </button>
 
@@ -758,12 +728,146 @@
     </div>
   </div>
 
+  <!-- CART DRAWER -->
+  <button id="floating-cart-btn" type="button" class="fixed right-5 bottom-5 z-[9990] bg-blue-800 text-white rounded-full shadow-2xl w-16 h-16 flex items-center justify-center hover:bg-blue-900 transition" aria-label="Open cart">
+    <i class="fas fa-shopping-cart text-xl"></i>
+    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full min-w-[26px] h-[26px] flex items-center justify-center px-2">0</span>
+  </button>
+
+  <div id="cart-drawer" class="fixed inset-0 z-[10020] hidden" aria-hidden="true">
+    <div id="cart-overlay" class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <aside class="absolute right-0 top-0 h-full w-full sm:max-w-lg bg-white shadow-2xl flex flex-col">
+      <div class="p-5 border-b border-gray-200 flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900">Your Cart</h2>
+          <p class="text-sm text-gray-500">Review items before checkout</p>
+        </div>
+        <button id="cart-close" type="button" class="w-11 h-11 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center" aria-label="Close cart">
+          <i class="fas fa-times text-gray-700"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-5">
+        <div id="cart-items" class="space-y-4"></div>
+
+        <div id="cart-empty" class="hidden text-center py-14">
+          <div class="text-5xl text-gray-300 mb-4"><i class="fas fa-shopping-cart"></i></div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Your cart is empty</h3>
+          <p class="text-gray-500 mb-5">Add products from the shop to continue.</p>
+          <button id="cart-continue-shopping" type="button" class="bg-blue-800 text-white px-5 py-3 rounded-xl hover:bg-blue-900 transition font-semibold">Continue Shopping</button>
+        </div>
+
+        <div id="cart-checkout-wrap" class="mt-6 border-t border-gray-200 pt-6">
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between text-gray-700">
+              <span>Subtotal</span>
+              <strong id="cart-subtotal">R0</strong>
+            </div>
+
+
+            <div class="flex justify-between text-gray-700">
+              <span>Delivery</span>
+              <strong id="cart-shipping">R0</strong>
+            </div>
+
+            <div class="flex justify-between text-xl text-gray-900 border-t border-gray-200 pt-3">
+              <span class="font-bold">Total</span>
+              <strong id="cart-total">R0</strong>
+            </div>
+          </div>
+
+          <form id="cart-checkout-form" class="space-y-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div>
+      <label for="checkout-full-name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+      <input id="checkout-full-name" type="text" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700" required>
+    </div>
+
+    <div>
+      <label for="checkout-phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone *</label>
+      <input id="checkout-phone" type="tel" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700" required>
+    </div>
+  </div>
+
+  <div>
+    <label for="checkout-email" class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
+    <input id="checkout-email" type="email" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700" required>
+  </div>
+
+  <div>
+    <label for="checkout-company" class="block text-sm font-semibold text-gray-700 mb-2">Company / Business Name</label>
+    <input id="checkout-company" type="text" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700" placeholder="Optional">
+  </div>
+
+  <div>
+    <label for="checkout-address" class="block text-sm font-semibold text-gray-700 mb-2">Delivery Address *</label>
+    <textarea id="checkout-address" rows="3" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700" required></textarea>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div>
+      <label for="checkout-city" class="block text-sm font-semibold text-gray-700 mb-2">City *</label>
+      <input id="checkout-city" type="text" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700" required>
+    </div>
+
+    <div>
+      <label for="checkout-province" class="block text-sm font-semibold text-gray-700 mb-2">Province *</label>
+      <input id="checkout-province" type="text" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700" placeholder="Gauteng" required>
+    </div>
+  </div>
+
+  <!-- DELIVERY METHOD MOVED HERE -->
+  <div class="cart-shipping-field">
+    <label for="cart-shipping-method" class="cart-shipping-label">Delivery Method *</label>
+
+    <div class="cart-shipping-select-wrap">
+      <select id="cart-shipping-method" class="cart-shipping-select" disabled required>
+        <option value="">Enter province first</option>
+      </select>
+    </div>
+
+    <p class="cart-shipping-help">
+      Delivery options will load after you enter your province.
+    </p>
+  </div>
+
+  <div id="cart-status" class="hidden rounded-xl p-4 text-sm"></div>
+
+  <button id="cart-checkout-submit" type="submit" class="w-full bg-green-600 text-white py-4 rounded-xl hover:bg-green-700 transition font-bold flex items-center justify-center gap-2">
+    <i class="fas fa-paper-plane"></i> Submit Order Request
+  </button>
+
+  <p class="text-xs text-gray-500 text-center">
+    Payment details are confirmed after we review stock and delivery.
+  </p>
+</form>
+        </div>
+      </div>
+    </aside>
+  </div>
+
   <!-- IMAGE ZOOM -->
   <div id="image-zoom-overlay" class="image-zoom-overlay hidden" aria-hidden="true">
     <button id="image-zoom-close" class="image-zoom-close" aria-label="Close zoom">
       <i class="fas fa-times"></i>
     </button>
     <img id="image-zoom-target" src="" alt="Zoomed product image" class="image-zoom-target">
+  </div>
+
+
+  <!-- SUCCESS MODAL -->
+  <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[20000] flex items-center justify-center">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-2xl mx-4">
+      <div class="text-green-600 text-5xl mb-4">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">Order Sent Successfully</h2>
+      <p id="success-message" class="text-gray-600 mb-6"></p>
+
+      <button id="success-close" type="button" class="bg-blue-800 text-white px-6 py-3 rounded-xl hover:bg-blue-900 font-semibold">
+        Continue Shopping
+      </button>
+    </div>
   </div>
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -784,9 +888,21 @@
       window.location.hostname === "localhost" ||
       window.location.hostname === "127.0.0.1";
 
-    const STRAPI_URL = isLocalhost
-      ? "http://localhost:1337"
-      : "https://your-live-strapi-url.com";
+    function getShopMetaContent(name) {
+      return document.querySelector(`meta[name="${name}"]`)?.content?.trim() || "";
+    }
+
+    const STRAPI_URL = (
+      window.__NHX_STRAPI_URL__ ||
+      getShopMetaContent("nhx-strapi-base") ||
+      (isLocalhost ? "http://localhost:1337" : window.location.origin)
+    ).replace(/\/$/, "");
+
+    const SERVER_URL = (
+      window.__NHX_SERVER_URL__ ||
+      getShopMetaContent("nhx-api-base") ||
+      (isLocalhost ? "http://localhost:3000" : window.location.origin)
+    ).replace(/\/$/, "");
 
     const PRODUCTS_API = `${STRAPI_URL}/api/products?populate=*`;
 
@@ -887,6 +1003,23 @@
     const imageZoomTarget = document.getElementById('image-zoom-target');
     const imageZoomClose = document.getElementById('image-zoom-close');
 
+    const floatingCartBtn = document.getElementById('floating-cart-btn');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartOverlay = document.getElementById('cart-overlay');
+    const cartClose = document.getElementById('cart-close');
+    const cartCount = document.getElementById('cart-count');
+    const cartItems = document.getElementById('cart-items');
+    const cartEmpty = document.getElementById('cart-empty');
+    const cartContinueShopping = document.getElementById('cart-continue-shopping');
+    const cartCheckoutWrap = document.getElementById('cart-checkout-wrap');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+    const cartShipping = document.getElementById('cart-shipping');
+    const cartTotal = document.getElementById('cart-total');
+    const cartShippingMethod = document.getElementById('cart-shipping-method');
+    const cartCheckoutForm = document.getElementById('cart-checkout-form');
+    const cartCheckoutSubmit = document.getElementById('cart-checkout-submit');
+    const cartStatus = document.getElementById('cart-status');
+
     let productData = [];
     let categoriesData = [];
     let brandsData = [];
@@ -903,6 +1036,8 @@
 
     const WISHLIST_KEY = 'newhaus_shop_wishlist_v1';
     const REVIEWS_KEY = 'newhaus_shop_reviews_v1';
+    const CART_KEY = 'newhaus_shop_cart_v1';
+    const SHIPPING_KEY = 'newhaus_shop_shipping_v1';
 
     function fallbackImageSvg(label = "No Image") {
       return `data:image/svg+xml;utf8,
@@ -1022,6 +1157,30 @@
         .replace(/'/g, "&#039;");
     }
 
+    function formatCurrency(value = 0) {
+      return `R${Number(value || 0).toLocaleString()}`;
+    }
+
+    function configureCartButton(button, product) {
+      if (!button || !product) return;
+
+      const stockState = getStockState(product);
+      const outOfStock = stockState.key === "out-of-stock";
+
+      button.dataset.productId = product.id;
+      button.dataset.documentId = product.documentId || "";
+      button.disabled = outOfStock;
+      button.classList.toggle('opacity-60', outOfStock);
+      button.classList.toggle('cursor-not-allowed', outOfStock);
+      button.title = outOfStock ? "This product is currently out of stock" : `Add ${product.name} to cart`;
+
+      if (outOfStock) {
+        button.innerHTML = `<i class="fas fa-ban"></i> Out of Stock`;
+      } else {
+        button.innerHTML = `<i class="fas fa-cart-plus"></i> Add to Cart`;
+      }
+    }
+
     function highlightMatch(text = "", query = "") {
       if (!query) return escapeHtml(text);
       const safeText = escapeHtml(text);
@@ -1089,6 +1248,333 @@
       localStorage.setItem(REVIEWS_KEY, JSON.stringify(data));
     }
 
+    function getCart() {
+      try {
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveCart(items) {
+      localStorage.setItem(CART_KEY, JSON.stringify(items));
+      renderCart();
+    }
+
+    function getSavedShipping() {
+      try {
+        return JSON.parse(localStorage.getItem(SHIPPING_KEY)) || null;
+      } catch {
+        return null;
+      }
+    }
+
+    function saveShipping(option = null) {
+      if (!option || !option.value) {
+        localStorage.removeItem(SHIPPING_KEY);
+        return;
+      }
+
+      localStorage.setItem(SHIPPING_KEY, JSON.stringify({
+        value: option.value,
+        label: option.label || option.text || 'Delivery',
+        price: Number(option.price || 0)
+      }));
+    }
+
+    function clearSavedShipping() {
+      localStorage.removeItem(SHIPPING_KEY);
+    }
+
+    function restoreShippingSelection() {
+      const select = document.getElementById("cart-shipping-method");
+      if (!select) return;
+
+      const savedShipping = getSavedShipping();
+      if (!savedShipping?.value) return;
+
+      const matchingOption = Array.from(select.options).find(option => option.value === savedShipping.value);
+      if (matchingOption) {
+        select.value = savedShipping.value;
+      }
+    }
+
+    function getCartTotals() {
+      const items = getCart();
+      const subtotal = items.reduce((sum, item) => {
+        return sum + (Number(item.price || 0) * Number(item.quantity || 1));
+      }, 0);
+
+      const savedShipping = getSavedShipping();
+      const shippingFee = savedShipping ? Number(savedShipping.price || 0) : 0;
+
+      return {
+        subtotal,
+        shippingFee,
+        total: subtotal + shippingFee
+      };
+    }
+
+    function updateCartCount() {
+      const count = getCart().reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+
+      if (cartCount) {
+        cartCount.textContent = count;
+      }
+
+      document.querySelectorAll('.nhx-cart-count, .snipcart-items-count').forEach(el => {
+        el.textContent = count;
+      });
+    }
+    function addToCart(product, quantity = 1) {
+      if (!product) return;
+
+      const safeStock = Number(product.stock || 0);
+
+      if (safeStock <= 0) {
+        alert("This product is currently out of stock.");
+        return;
+      }
+
+      if (!product.documentId) {
+        console.error("Missing Strapi documentId for product:", product);
+        alert("This product is missing its Strapi document ID. Please refresh the page and try again.");
+        return;
+      }
+
+      const items = getCart();
+      const existing = items.find(item => String(item.documentId || item.id) === String(product.documentId || product.id));
+
+      if (existing) {
+        existing.id = product.id;
+        existing.documentId = product.documentId;
+        existing.quantity = Math.min(Number(existing.quantity || 1) + quantity, safeStock);
+        existing.stock = safeStock;
+      } else {
+        items.push({
+          id: product.id,
+          documentId: product.documentId,
+          name: product.name,
+          price: Number(product.price || 0),
+          image: product.image || fallbackImageSvg("No Image"),
+          quantity: Math.min(quantity, safeStock),
+          stock: safeStock,
+          brand: product.brand || "General",
+          delivery: product.delivery || "Delivery in 2-3 days",
+          warranty: product.warranty || "6 Month Warranty",
+          condition: normalizeCondition(product.condition)
+        });
+      }
+
+      saveCart(items);
+      openCartDrawer();
+    }
+
+    function updateCartItemQuantity(productId, quantity) {
+      const items = getCart();
+      const item = items.find(cartItem => String(cartItem.id) === String(productId));
+      if (!item) return;
+
+      item.quantity = Math.max(1, Math.min(Number(quantity || 1), Number(item.stock || 99)));
+      saveCart(items);
+    }
+
+    function removeCartItem(productId) {
+      saveCart(getCart().filter(item => String(item.id) !== String(productId)));
+    }
+
+    function openCartDrawer() {
+      renderCart();
+      cartDrawer.classList.remove('hidden');
+      cartDrawer.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('overflow-hidden');
+      document.body.classList.add('overflow-hidden');
+
+      const province = document.getElementById("checkout-province")?.value?.trim();
+
+      if (province) {
+        loadShippingOptions({ preserveSelected: true });
+      }
+    }
+
+    function closeCartDrawer() {
+      cartDrawer.classList.add('hidden');
+      cartDrawer.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('overflow-hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    function initNavCartSync() {
+      document.addEventListener('click', (event) => {
+        const cartButton = event.target.closest('.nhx-cart-trigger, .snipcart-checkout');
+        if (!cartButton) return;
+
+        event.preventDefault();
+        openCartDrawer();
+      });
+
+      updateCartCount();
+    }
+
+    function showCartStatus(message, type = 'info') {
+      if (!cartStatus) return;
+
+      cartStatus.className = 'rounded-xl p-4 text-sm';
+      cartStatus.classList.remove('hidden');
+
+      if (type === 'success') cartStatus.classList.add('bg-green-100', 'text-green-700');
+      else if (type === 'error') cartStatus.classList.add('bg-red-100', 'text-red-700');
+      else cartStatus.classList.add('bg-blue-100', 'text-blue-700');
+
+      cartStatus.innerHTML = message;
+    }
+
+    let shippingOptionsLoading = false;
+    let lastShippingProvince = null;
+
+    async function loadShippingOptions(options = {}) {
+      const { force = false, preserveSelected = true } = options;
+
+      const select = document.getElementById("cart-shipping-method");
+      const provinceInput = document.getElementById("checkout-province");
+
+      if (!select || !provinceInput) return;
+
+      const province = provinceInput.value.trim();
+      const country = "ZA";
+      const savedShipping = preserveSelected ? getSavedShipping() : null;
+
+      if (!province) {
+        select.disabled = true;
+        select.innerHTML = '<option value="">Enter province first</option>';
+        clearSavedShipping();
+        renderCart();
+        return;
+      }
+
+      if (!force && lastShippingProvince === province && select.options.length > 1) {
+        restoreShippingSelection();
+        renderCart();
+        return;
+      }
+
+      if (shippingOptionsLoading) return;
+      shippingOptionsLoading = true;
+
+      select.disabled = true;
+      select.innerHTML = '<option value="">Loading delivery methods...</option>';
+
+      try {
+        const res = await fetch(`${SERVER_URL}/api/shipping`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ country, province })
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        select.innerHTML = '<option value="">Select delivery method</option>';
+
+        const rates = res.ok && data.success && Array.isArray(data.rates) && data.rates.length
+          ? data.rates
+          : [];
+
+        if (!rates.length) {
+          select.innerHTML = '<option value="">No delivery method available</option>';
+          clearSavedShipping();
+          renderCart();
+          return;
+        }
+
+        rates.forEach(rate => {
+          const price = Number(rate.price || 0);
+          const description = rate.description || "Delivery";
+          const value = String(rate.id || rate.code || description || "delivery");
+
+          const option = document.createElement("option");
+          option.value = value;
+          option.dataset.price = String(price);
+          option.dataset.label = description;
+          option.textContent = `${description} - R${price}`;
+          select.appendChild(option);
+        });
+
+        lastShippingProvince = province;
+
+        if (savedShipping?.value) {
+          const matchingOption = Array.from(select.options).find(option => option.value === savedShipping.value);
+
+          if (matchingOption) {
+            select.value = savedShipping.value;
+          } else {
+            clearSavedShipping();
+            select.value = "";
+          }
+        }
+
+        restoreShippingSelection();
+        renderCart();
+
+      } catch (err) {
+        console.error("Shipping load error:", err);
+        select.innerHTML = '<option value="">Could not load delivery methods</option>';
+        clearSavedShipping();
+        renderCart();
+
+      } finally {
+        select.disabled = false;
+        shippingOptionsLoading = false;
+      }
+    }
+
+    function renderCart() {
+      if (!cartItems) return;
+
+      const items = getCart();
+      updateCartCount();
+      restoreShippingSelection();
+
+      const hasItems = items.length > 0;
+      cartEmpty.classList.toggle('hidden', hasItems);
+      cartCheckoutWrap.classList.toggle('hidden', !hasItems);
+
+      cartItems.innerHTML = items.map(item => `
+        <div class="border border-gray-200 rounded-2xl p-4 flex gap-4" data-cart-item="${item.id}">
+          <img src="${item.image}" alt="${escapeHtml(item.name)}" class="w-20 h-20 rounded-xl object-cover bg-gray-100">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-bold text-gray-900 line-clamp-2">${escapeHtml(item.name)}</h3>
+                <p class="text-sm text-gray-500">${escapeHtml(item.brand || 'General')}</p>
+              </div>
+              <button type="button" class="cart-remove-btn text-red-600 hover:text-red-800" data-product-id="${item.id}" aria-label="Remove item">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between mt-4 gap-3">
+              <div class="flex items-center border border-gray-300 rounded-xl overflow-hidden">
+                <button type="button" class="cart-qty-btn px-3 py-2 bg-gray-100 hover:bg-gray-200" data-action="decrease" data-product-id="${item.id}">−</button>
+                <input type="number" min="1" max="${item.stock || 99}" value="${item.quantity}" class="cart-qty-input w-14 text-center border-0 focus:outline-none" data-product-id="${item.id}">
+                <button type="button" class="cart-qty-btn px-3 py-2 bg-gray-100 hover:bg-gray-200" data-action="increase" data-product-id="${item.id}">+</button>
+              </div>
+              <div class="text-right">
+                <p class="font-bold text-blue-800">${formatCurrency(Number(item.price || 0) * Number(item.quantity || 1))}</p>
+                <p class="text-xs text-gray-500">${formatCurrency(item.price)} each</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      const totals = getCartTotals();
+      cartSubtotal.textContent = formatCurrency(totals.subtotal);
+      cartShipping.textContent = formatCurrency(totals.shippingFee);
+      cartTotal.textContent = formatCurrency(totals.total);
+    }
+
     function getReviewsForProduct(product) {
       const saved = getSavedReviews();
       const base = Array.isArray(product.reviews) ? product.reviews : [];
@@ -1111,24 +1597,28 @@
       return total / reviews.length;
     }
 
-    function getBadgeLabel(product, index) {
-      if (product.stock <= 3) return "Low Stock";
-      if (index % 5 === 0) return "Top Seller";
-      if (index % 4 === 0) return "New";
+    function normalizeCondition(value) {
+      const raw = String(value || "").trim().toLowerCase();
+
+      // Strapi should send exactly: New or Refurbished.
+      // These fallbacks make the frontend safe if casing/spaces change later.
+      if (["new", "brand new", "new item"].includes(raw)) return "New";
+      if (["refurbished", "refurb", "refurbished item", "pre-owned", "pre owned"].includes(raw)) return "Refurbished";
+
+      // Default only when Strapi has no value, so old products do not break.
       return "Refurbished";
     }
 
-    function getBadgeClass(label) {
-      switch (label) {
-        case "Top Seller":
-          return "chip-top-seller";
-        case "New":
-          return "chip-new";
-        case "Low Stock":
-          return "chip-low-stock";
-        default:
-          return "chip-refurbished";
-      }
+    function getBadgeLabel(product = {}) {
+      return normalizeCondition(product.condition || product.badge);
+    }
+
+    function getBadgeClass(value) {
+      const normalized = normalizeCondition(
+        typeof value === "object" && value !== null ? value.condition || value.badge : value
+      );
+
+      return normalized === "New" ? "chip-new" : "chip-refurbished";
     }
 
     function showLoading() {
@@ -1293,27 +1783,67 @@
       attachFilterCheckboxListeners();
     }
 
+    let isFetchingProducts = false;
+    let lastProductSnapshot = "";
+
+    function buildProductSnapshot(products = []) {
+      return JSON.stringify(
+        products
+          .map(product => ({
+            id: product.id,
+            documentId: product.documentId,
+            name: product.name,
+            price: product.price,
+            desc: product.desc,
+            category: product.category,
+            categoryNames: product.categoryNames,
+            brand: product.brand,
+            condition: product.condition,
+            image: product.image,
+            images: product.images,
+            stock: product.stock,
+            warranty: product.warranty,
+            delivery: product.delivery,
+            returns: product.returns,
+            zohoProductUrl: product.zohoProductUrl
+          }))
+          .sort((a, b) => Number(a.id || 0) - Number(b.id || 0))
+      );
+    }
+
     async function smartFetchProducts(force = false) {
-      if (!force && Date.now() - lastFetchTime < MIN_REFRESH) return;
+      const hasExistingProducts = Array.isArray(productData) && productData.length > 0;
+      const shouldRespectRefreshWindow = !force && hasExistingProducts && Date.now() - lastFetchTime < MIN_REFRESH;
+
+      if (shouldRespectRefreshWindow) return;
+      if (isFetchingProducts) return;
+
+      isFetchingProducts = true;
       lastFetchTime = Date.now();
 
       try {
-        showLoading();
+        // Only show skeletons on the first load. Background refresh must stay silent.
+        if (!hasExistingProducts) {
+          showLoading();
+        }
 
-        const res = await fetch(PRODUCTS_API);
+        const res = await fetch(PRODUCTS_API, { cache: "no-store" });
+
+        if (!res.ok) {
+          throw new Error(`Products API failed with status ${res.status}`);
+        }
+
         const json = await res.json();
-
         const categoryMap = new Map(categoriesData.map(cat => [cat.slug, cat.name]));
 
         const newData = (json.data || []).map((item, index) => {
           const images = getMediaUrls(item);
           const name = item.name || item.attributes?.name || "Unnamed Product";
-          const desc = richTextToPlainText(item.description || item.attributes?.description) || "Quality refurbished product from NewHaus IT Services.";
+          const desc = richTextToPlainText(item.description || item.attributes?.description) || "Quality product from NewHaus IT Services.";
           const stock = Number(item.stock || item.attributes?.stock || 0);
           const price = Number(item.price || item.attributes?.price || 0);
           const categorySlugs = getCategorySlugs(item);
           const categoryNames = getCategoryNames(item, categoryMap);
-          const badge = getBadgeLabel({ stock }, index);
 
           const rawBrand =
             item.brand ||
@@ -1323,10 +1853,12 @@
             categoryNames[0] ||
             "General";
 
-          const condition =
+          const condition = normalizeCondition(
             item.condition ||
-            item.attributes?.condition ||
-            (badge === "New" ? "New" : "Refurbished");
+            item.attributes?.condition
+          );
+
+          const badge = getBadgeLabel({ condition });
 
           const warranty =
             item.warranty ||
@@ -1379,6 +1911,7 @@
 
           return {
             id: item.id,
+            documentId: item.documentId || item.attributes?.documentId || item.document_id || item.attributes?.document_id || "",
             name,
             price,
             desc,
@@ -1397,14 +1930,46 @@
             delivery,
             returns,
             specs,
-            reviews: defaultReviews
+            reviews: defaultReviews,
+            zohoProductUrl:
+              item.zohoProductUrl ||
+              item.attributes?.zohoProductUrl ||
+              item.zoho_product_url ||
+              item.attributes?.zoho_product_url ||
+              item.zohoCommerceUrl ||
+              item.attributes?.zohoCommerceUrl ||
+              item.zohoCheckoutUrl ||
+              item.attributes?.zohoCheckoutUrl ||
+              item.buyUrl ||
+              item.attributes?.buyUrl ||
+              item.checkoutUrl ||
+              item.attributes?.checkoutUrl ||
+              ""
           };
         });
 
+        const newSnapshot = buildProductSnapshot(newData);
+
+        // Silent refresh rule: if nothing changed, keep the current DOM exactly as it is.
+        if (hasExistingProducts && newSnapshot === lastProductSnapshot) {
+          console.info("Products checked silently — no changes found.");
+          return;
+        }
+
         productData = newData;
+        lastProductSnapshot = newSnapshot;
+
+        console.table(productData.map(product => ({
+          id: product.id,
+          name: product.name,
+          condition: product.condition,
+          stock: product.stock,
+          stockState: getStockState(product).key
+        })));
+
         updateCategoryCounts();
         buildBrandData();
-        applyFiltersAndSort(true);
+        applyFiltersAndSort(!hasExistingProducts);
 
         const productIdFromUrl = getProductIdFromUrl();
         if (productIdFromUrl) {
@@ -1415,25 +1980,32 @@
         }
       } catch (err) {
         console.error("Smart fetch error:", err);
-        productGrid.innerHTML = `
-          <div class="col-span-full">
-            <div class="shop-empty-state">
-              <div class="shop-empty-icon"><i class="fas fa-exclamation-circle"></i></div>
-              <h3>We couldn't load products right now</h3>
-              <p>Please refresh the page or try again in a moment.</p>
-              <button type="button" class="shop-empty-btn" onclick="window.location.reload()">Reload Page</button>
+
+        // On background refresh failure, do not wipe existing products.
+        if (!hasExistingProducts) {
+          productGrid.innerHTML = `
+            <div class="col-span-full">
+              <div class="shop-empty-state">
+                <div class="shop-empty-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <h3>We couldn't load products right now</h3>
+                <p>Please refresh the page or try again in a moment.</p>
+                <button type="button" class="shop-empty-btn" onclick="window.location.reload()">Reload Page</button>
+              </div>
             </div>
-          </div>
-        `;
+          `;
+        }
+      } finally {
+        isFetchingProducts = false;
       }
     }
 
     function createProductCard(product, query = "") {
+
       const safeImage = product.image || fallbackImageSvg("No Image");
-      const badgeClass = getBadgeClass(product.badge);
-      const stockBadge = product.stock <= 5
-        ? `<span class="product-chip chip-low-stock">Low Stock</span>`
-        : `<span class="product-chip chip-stock">In Stock</span>`;
+      const conditionLabel = getBadgeLabel(product);
+      const badgeClass = getBadgeClass(conditionLabel);
+      const stockState = getStockState(product.stock);
+      const stockBadge = `<span class="product-chip ${stockState.className}">${stockState.label}</span>`;
 
       const categoryText = product.categoryNames?.length ? product.categoryNames[0] : "General";
       const wished = isWishlisted(product.id);
@@ -1443,6 +2015,7 @@
       card.dataset.category = Array.isArray(product.category) ? product.category.join(' ') : product.category;
       card.dataset.price = product.price;
       card.dataset.name = product.name.toLowerCase();
+      card.dataset.productId = product.id;
 
       card.innerHTML = `
         <div class="relative overflow-hidden bg-gray-100 product-card-image-wrap">
@@ -1450,7 +2023,7 @@
                class="w-full h-72 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105 product-card-image">
 
           <div class="absolute top-4 left-4 flex flex-col gap-2 items-start">
-            <span class="product-chip ${badgeClass}">${product.badge}</span>
+            <span class="product-chip ${badgeClass}">${escapeHtml(conditionLabel)}</span>
             ${stockBadge}
           </div>
 
@@ -1495,13 +2068,10 @@
             <div class="grid grid-cols-1 gap-3">
               <button
                 type="button"
-                class="snipcart-add-item w-full bg-blue-800 text-white py-3 rounded-xl hover:bg-blue-900 transition font-semibold flex items-center justify-center gap-2"
-                data-item-id="${product.id}"
-                data-item-name="${escapeHtml(product.name)}"
-                data-item-price="${product.price}"
-                data-item-url="/shop.html?product=${product.id}"
-                data-item-image="${safeImage}"
-                data-item-description="${escapeHtml(product.desc)}"
+                class="cart-add-btn w-full bg-blue-800 text-white py-3 rounded-xl hover:bg-blue-900 transition font-semibold flex items-center justify-center gap-2 ${Number(product.stock || 0) <= 0 ? 'opacity-60 cursor-not-allowed' : ''}"
+                data-product-id="${product.id}"
+                title="${Number(product.stock || 0) <= 0 ? 'This product is currently out of stock' : 'Add to cart'}"
+                ${Number(product.stock || 0) <= 0 ? 'disabled' : ''}
               >
                 <i class="fas fa-cart-plus"></i> Add to Cart
               </button>
@@ -1622,7 +2192,7 @@
 
     function getSelectedConditions() {
       return Array.from(document.querySelectorAll('.condition-filter:checked'))
-        .map(cb => cb.value);
+        .map(cb => normalizeCondition(cb.value));
     }
 
     function getSelectedStock() {
@@ -1661,11 +2231,12 @@
           selectedBrands.length === 0 ||
           selectedBrands.includes(product.brand);
 
+        const productCondition = normalizeCondition(product.condition);
         const matchesCondition =
           selectedConditions.length === 0 ||
-          selectedConditions.includes(product.condition);
+          selectedConditions.includes(productCondition);
 
-        const stockState = product.stock <= 5 ? 'low-stock' : 'in-stock';
+        const stockState = getStockState(product).key;
         const matchesStock =
           selectedStock.length === 0 ||
           selectedStock.includes(stockState);
@@ -1730,10 +2301,12 @@
     function lockBodyScroll() {
       scrollPosition = window.scrollY || window.pageYOffset;
       document.body.style.top = `-${scrollPosition}px`;
+      document.documentElement.classList.add('modal-open');
       document.body.classList.add('modal-open');
     }
 
     function unlockBodyScroll() {
+      document.documentElement.classList.remove('modal-open');
       document.body.classList.remove('modal-open');
       const savedScroll = Math.abs(parseInt(document.body.style.top || '0', 10));
       document.body.style.top = '';
@@ -1761,14 +2334,17 @@
     }
 
     function updateModalStockState(product) {
-      const isLow = product.stock <= 5;
-      modalStock.textContent = isLow
-        ? `Low stock (${product.stock} units left)`
-        : `In stock (${product.stock} units available)`;
+      const stockState = getStockState(product);
 
-      modalStock.className = `text-sm font-medium mb-5 ${isLow ? 'text-red-600' : 'text-green-600'}`;
-      modalStockBadge.textContent = isLow ? 'Low Stock' : 'In Stock';
-      modalStockBadge.className = `product-chip ${isLow ? 'chip-low-stock' : 'chip-stock'}`;
+      modalStock.textContent = stockState.key === "out-of-stock"
+        ? stockState.message
+        : stockState.key === "low-stock"
+          ? `Low stock (${stockState.quantity} units left)`
+          : `In stock (${stockState.quantity} units available)`;
+
+      modalStock.className = `text-sm font-medium mb-5 ${stockState.key === "in-stock" ? 'text-green-600' : 'text-red-600'}`;
+      modalStockBadge.textContent = stockState.label;
+      modalStockBadge.className = `product-chip ${stockState.className}`;
     }
 
     function openQuickView(product) {
@@ -1779,8 +2355,8 @@
       modalTitle.textContent = product.name;
       modalPrice.textContent = `R${product.price.toLocaleString()}`;
       modalDesc.textContent = product.desc;
-      modalCardBadge.textContent = product.badge || 'Refurbished';
-      modalCardBadge.className = `product-chip ${getBadgeClass(product.badge || 'Refurbished')}`;
+      modalCardBadge.textContent = getBadgeLabel(product);
+      modalCardBadge.className = `product-chip ${getBadgeClass(product.condition)}`;
       modalRatingValue.textContent = calculateAverageRating(product).toFixed(1);
       modalDeliveryText.textContent = product.delivery;
       modalWarrantyText.textContent = product.warranty;
@@ -1788,14 +2364,7 @@
       updateModalStockState(product);
       updateModalWishlistButton(product.id);
 
-      const safeImage = product.image || fallbackImageSvg("No Image");
-
-      modalAddToCart.dataset.itemId = product.id;
-      modalAddToCart.dataset.itemName = product.name;
-      modalAddToCart.dataset.itemPrice = product.price;
-      modalAddToCart.dataset.itemUrl = `/shop.html?product=${product.id}`;
-      modalAddToCart.dataset.itemImage = safeImage;
-      modalAddToCart.dataset.itemDescription = product.desc;
+      configureCartButton(modalAddToCart, product);
 
       renderThumbnails();
       updateModalImage();
@@ -2009,16 +2578,19 @@
       detailPrice.textContent = `R${product.price.toLocaleString()}`;
       detailShortDesc.textContent = product.desc;
       detailDescription.innerHTML = `<p>${escapeHtml(product.fullDescription || product.desc)}</p>`;
-      detailBadge.textContent = product.badge;
-      detailBadge.className = `product-chip ${getBadgeClass(product.badge)}`;
-      detailStockBadge.textContent = product.stock <= 5 ? 'Low Stock' : 'In Stock';
-      detailStockBadge.className = `product-chip ${product.stock <= 5 ? 'chip-low-stock' : 'chip-stock'}`;
+      detailBadge.textContent = getBadgeLabel(product);
+      detailBadge.className = `product-chip ${getBadgeClass(product)}`;
+      const detailStockState = getStockState(product);
+      detailStockBadge.textContent = detailStockState.label;
+      detailStockBadge.className = `product-chip ${detailStockState.className}`;
       detailDelivery.textContent = product.delivery;
       detailWarranty.textContent = product.warranty;
       detailReturns.textContent = product.returns;
-      detailStockText.textContent = product.stock <= 5
-        ? `Low stock (${product.stock} units left)`
-        : `In stock (${product.stock} units available)`;
+      detailStockText.textContent = detailStockState.key === "out-of-stock"
+        ? detailStockState.message
+        : detailStockState.key === "low-stock"
+          ? `Low stock (${detailStockState.quantity} units left)`
+          : `In stock (${detailStockState.quantity} units available)`;
       detailBrandChip.textContent = product.brand;
 
       const average = calculateAverageRating(product);
@@ -2034,13 +2606,7 @@
       detailMainImage.alt = product.name;
       renderDetailThumbnails(product);
 
-      const safeImage = product.image || fallbackImageSvg("No Image");
-      detailAddToCart.dataset.itemId = product.id;
-      detailAddToCart.dataset.itemName = product.name;
-      detailAddToCart.dataset.itemPrice = product.price;
-      detailAddToCart.dataset.itemUrl = `/shop.html?product=${product.id}`;
-      detailAddToCart.dataset.itemImage = safeImage;
-      detailAddToCart.dataset.itemDescription = product.desc;
+      configureCartButton(detailAddToCart, product);
     }
 
     function openProductDetail(product, pushHistory = true) {
@@ -2124,6 +2690,7 @@
       mobilePriceLabel.textContent = `R${maxPriceFilter.toLocaleString()}`;
       desktopPriceRange.value = maxPriceFilter;
       desktopPriceLabel.textContent = `R${maxPriceFilter.toLocaleString()}`;
+      applyFiltersAndSort(true);
     });
 
     desktopFilterSearch.addEventListener('input', (e) => {
@@ -2184,11 +2751,13 @@
 
     function openMobileFilters() {
       mobileFilterDrawer.classList.remove('hidden');
+      document.documentElement.classList.add('drawer-open');
       document.body.classList.add('drawer-open');
     }
 
     function closeMobileFilters() {
       mobileFilterDrawer.classList.add('hidden');
+      document.documentElement.classList.remove('drawer-open');
       document.body.classList.remove('drawer-open');
     }
 
@@ -2211,6 +2780,12 @@
     });
 
     modalClose.addEventListener('click', closeQuickView);
+
+    const modalBackMobile = document.getElementById('modal-back-mobile');
+    if (modalBackMobile) {
+      modalBackMobile.addEventListener('click', closeQuickView);
+    }
+
     modalPrev.addEventListener('click', showPrevImage);
     modalNext.addEventListener('click', showNextImage);
 
@@ -2256,17 +2831,14 @@
     });
 
     productGrid.addEventListener('click', (e) => {
-      if (e.target.closest('.snipcart-add-item')) return;
+      if (e.target.closest('.cart-add-btn')) return;
       if (e.target.closest('.wishlist-toggle-btn')) return;
       if (e.target.closest('.open-detail-btn')) return;
 
       const card = e.target.closest('.product-card');
       if (!card) return;
 
-      const button = card.querySelector('.snipcart-add-item');
-      if (!button) return;
-
-      const productId = button.dataset.itemId;
+      const productId = card.dataset.productId;
       const product = productData.find(p => String(p.id) === String(productId));
       if (product) openQuickView(product);
     });
@@ -2338,32 +2910,469 @@
       reviewForm.reset();
     });
 
-    document.addEventListener('snipcart.order.completed', async (event) => {
-      const order = event.detail.order;
+    document.addEventListener('click', (e) => {
+      const addButton = e.target.closest('.cart-add-btn');
+      if (!addButton) return;
 
-      const orderData = {
-        orderId: order.token,
-        email: order.email,
-        total: order.total,
-        items: order.items.map(i => ({
-          name: i.name,
-          quantity: i.quantity,
-          price: i.price
-        })),
-        status: "paid"
-      };
+      e.preventDefault();
+      e.stopPropagation();
 
-      try {
-        await fetch(`${STRAPI_URL}/api/orders`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ data: orderData })
-        });
-        console.log("Order saved to Strapi successfully");
-      } catch (err) {
-        console.error("Failed to save order to Strapi:", err);
+      const productId = addButton.dataset.productId;
+      const product = productData.find(p => String(p.id) === String(productId));
+
+      if (product) {
+        addToCart(product, 1);
       }
     });
+
+    floatingCartBtn.addEventListener('click', openCartDrawer);
+    cartClose.addEventListener('click', closeCartDrawer);
+    cartOverlay.addEventListener('click', closeCartDrawer);
+    cartContinueShopping.addEventListener('click', closeCartDrawer);
+    cartShippingMethod.addEventListener('change', () => {
+      const selectedOption = cartShippingMethod.selectedOptions[0];
+
+      if (!selectedOption || !selectedOption.value) {
+        clearSavedShipping();
+        renderCart();
+        return;
+      }
+
+      saveShipping({
+        value: selectedOption.value,
+        label: selectedOption.dataset.label || selectedOption.textContent,
+        text: selectedOption.textContent,
+        price: Number(selectedOption.dataset.price || 0)
+      });
+
+      renderCart();
+    });
+
+    const checkoutProvinceInput = document.getElementById("checkout-province");
+    if (checkoutProvinceInput) {
+      checkoutProvinceInput.addEventListener("blur", () => {
+        clearSavedShipping();
+        loadShippingOptions({ force: true, preserveSelected: false });
+      });
+
+      checkoutProvinceInput.addEventListener("change", () => {
+        clearSavedShipping();
+        loadShippingOptions({ force: true, preserveSelected: false });
+      });
+    }
+
+    cartItems.addEventListener('click', (e) => {
+      const removeBtn = e.target.closest('.cart-remove-btn');
+      if (removeBtn) {
+        removeCartItem(removeBtn.dataset.productId);
+        return;
+      }
+
+      const qtyBtn = e.target.closest('.cart-qty-btn');
+      if (!qtyBtn) return;
+
+      const productId = qtyBtn.dataset.productId;
+      const item = getCart().find(cartItem => String(cartItem.id) === String(productId));
+      if (!item) return;
+
+      const currentQty = Number(item.quantity || 1);
+      updateCartItemQuantity(productId, qtyBtn.dataset.action === 'increase' ? currentQty + 1 : currentQty - 1);
+    });
+
+    cartItems.addEventListener('change', (e) => {
+      const input = e.target.closest('.cart-qty-input');
+      if (!input) return;
+      updateCartItemQuantity(input.dataset.productId, input.value);
+    });
+
+    cartCheckoutForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const btn = cartCheckoutSubmit;
+      const items = getCart();
+      const stockIssues = getCartStockIssues();
+
+      if (!items.length) {
+        showCartStatus("Your cart is empty. Please add an item first.", "error");
+        return;
+      }
+
+      if (stockIssues.length) {
+        showCartStatus("Some cart items are out of stock or exceed available stock. Please adjust your cart before submitting.", "error");
+        renderCart();
+        return;
+      }
+
+      const savedShipping = getSavedShipping();
+
+      if (!savedShipping || !savedShipping.value) {
+        showCartStatus("Please select a delivery method before submitting your order.", "error");
+        return;
+      }
+
+      const shippingMethod = savedShipping.value;
+      const shippingPrice = Number(savedShipping.price || 0);
+
+      const orderItems = items.map(item => ({
+        id: item.id,
+        documentId: item.documentId,
+        name: item.name,
+        price: Number(item.price || 0),
+        quantity: Number(item.quantity || 1),
+        stock: Number(item.stock || 0),
+        brand: item.brand || "General"
+      }));
+
+      const missingDocumentIds = orderItems.filter(item => !item.documentId);
+      if (missingDocumentIds.length) {
+        console.error("Cart items missing Strapi documentId:", missingDocumentIds);
+        showCartStatus("Some cart items are missing Strapi product IDs. Please clear your cart, refresh the shop, and add the products again.", "error");
+        return;
+      }
+
+      const subtotal = orderItems.reduce((sum, item) => sum + (Number(item.price || 0) * Number(item.quantity || 1)), 0);
+      const total = subtotal + shippingPrice;
+
+      const payload = {
+        source: "Website Cart",
+        formType: "Shop Order",
+        crmLeadSource: "Website Shop",
+        items: orderItems,
+        fullName: document.getElementById("checkout-full-name").value.trim(),
+        email: document.getElementById("checkout-email").value.trim(),
+        phone: document.getElementById("checkout-phone").value.trim(),
+        company: document.getElementById("checkout-company").value.trim() || "Website Shop Customer",
+        address: document.getElementById("checkout-address").value.trim(),
+        deliveryAddress: document.getElementById("checkout-address").value.trim(),
+        city: document.getElementById("checkout-city").value.trim(),
+        province: document.getElementById("checkout-province").value.trim(),
+        country: "ZA",
+        shippingMethod,
+        shippingAmount: shippingPrice,
+        shippingFee: shippingPrice,
+        subtotal,
+        total,
+        currency: "ZAR",
+        pageUrl: window.location.href
+      };
+
+      if (!payload.fullName || !payload.email || !payload.phone || !payload.deliveryAddress || !payload.city || !payload.province) {
+        showCartStatus("Please complete all required checkout fields.", "error");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing...`;
+
+      try {
+        const res = await fetch(`${SERVER_URL}/api/create-order`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.success) {
+          showSuccessModal(data.orderNumber || data.order?.orderNumber || "Pending");
+
+          localStorage.removeItem(CART_KEY);
+          clearSavedShipping();
+          renderCart();
+          cartCheckoutForm.reset();
+        } else {
+          showCartStatus(escapeHtml(data.message || "Failed to submit order."), "error");
+        }
+
+      } catch (err) {
+        console.error("Checkout submit error:", err);
+        showCartStatus("❌ Network error. Try again.", "error");
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = `<i class="fas fa-paper-plane"></i> Submit Order Request`;
+    });
+
+
+    function showSuccessModal(orderNumber) {
+      const modal = document.getElementById("success-modal");
+      const message = document.getElementById("success-message");
+
+      if (!modal || !message) return;
+
+      const safeOrder = escapeHtml(String(orderNumber));
+
+      message.innerHTML = `
+        <strong>Your order has been received.</strong><br>
+        Order #: <strong>${safeOrder}</strong><br><br>
+        We have sent the order to our team. You will receive confirmation shortly.<br><br>
+        <a href="https://wa.me/27642903654?text=Hi%20NewHaus%2C%20I%20placed%20order%20${encodeURIComponent(orderNumber)}%20and%20need%20assistance." target="_blank" rel="noopener">
+          Chat to us on WhatsApp
+        </a>
+      `;
+
+      modal.classList.remove("hidden");
+    }
+
+    const successCloseBtn = document.getElementById("success-close");
+    if (successCloseBtn) {
+      successCloseBtn.addEventListener("click", () => {
+        document.getElementById("success-modal").classList.add("hidden");
+        closeCartDrawer();
+      });
+    }
+
+    /* =========================================================
+       SHOP CHECKOUT UX / CONVERSION UPGRADE - JS ONLY
+       CSS for these classes must stay in styles.css
+    ========================================================= */
+    function getStockState(productOrStock = 0) {
+      const rawStock = typeof productOrStock === "object" && productOrStock !== null
+        ? productOrStock.stock
+        : productOrStock;
+
+      const stock = Number(rawStock || 0);
+
+      if (stock <= 0) {
+        return {
+          key: "out-of-stock",
+          label: "Out of Stock",
+          className: "chip-out-stock",
+          message: "Currently unavailable",
+          quantity: stock
+        };
+      }
+
+      if (stock <= 3) {
+        return {
+          key: "low-stock",
+          label: `Low Stock (${stock} left)`,
+          className: "chip-low-stock",
+          message: `Only ${stock} left`,
+          quantity: stock
+        };
+      }
+
+      return {
+        key: "in-stock",
+        label: "In Stock",
+        className: "chip-stock",
+        message: "Available",
+        quantity: stock
+      };
+    }
+
+    function getCartStockIssues() {
+      return getCart().filter(item => {
+        const stock = Number(item.stock || 0);
+        const quantity = Number(item.quantity || 1);
+        return stock <= 0 || quantity > stock;
+      });
+    }
+
+    function canSubmitCheckout() {
+      const items = getCart();
+      const stockIssues = getCartStockIssues();
+      const savedShipping = getSavedShipping();
+
+      if (!items.length) return false;
+      if (stockIssues.length) return false;
+      if (!savedShipping || !savedShipping.value) return false;
+
+      return true;
+    }
+
+    function ensureCheckoutUxBlocks() {
+      const checkoutForm = document.getElementById("cart-checkout-form");
+      const shippingField = document.querySelector(".cart-shipping-field");
+      const submitButton = document.getElementById("cart-checkout-submit");
+
+      if (!checkoutForm || !submitButton) return;
+
+      if (!document.getElementById("checkout-trust-badges")) {
+        const trust = document.createElement("div");
+        trust.id = "checkout-trust-badges";
+        trust.className = "checkout-trust-badges";
+        trust.innerHTML = `
+          <div><i class="fas fa-shield-alt"></i><span>Warranty Included</span></div>
+          <div><i class="fas fa-truck"></i><span>Delivery in 1–4 Days</span></div>
+          <div><i class="fas fa-lock"></i><span>Secure Order Request</span></div>
+          <div><i class="fab fa-whatsapp"></i><span>Support Available</span></div>
+        `;
+        checkoutForm.insertBefore(trust, checkoutForm.firstChild);
+      }
+
+      if (shippingField && !document.getElementById("delivery-estimate-box")) {
+        const estimate = document.createElement("div");
+        estimate.id = "delivery-estimate-box";
+        estimate.className = "delivery-estimate-box";
+        estimate.innerHTML = `
+          <i class="fas fa-info-circle"></i>
+          <span>Enter your province to see delivery options and estimated timing.</span>
+        `;
+        shippingField.appendChild(estimate);
+      }
+
+      if (!document.getElementById("checkout-order-summary")) {
+        const summary = document.createElement("div");
+        summary.id = "checkout-order-summary";
+        summary.className = "checkout-order-summary";
+        submitButton.parentNode.insertBefore(summary, submitButton);
+      }
+
+      if (!document.getElementById("checkout-whatsapp-help")) {
+        const whatsapp = document.createElement("a");
+        whatsapp.id = "checkout-whatsapp-help";
+        whatsapp.className = "checkout-whatsapp-help";
+        whatsapp.href = "https://wa.me/27642903654?text=Hi%20NewHaus%2C%20I%20need%20help%20with%20my%20shop%20order.";
+        whatsapp.target = "_blank";
+        whatsapp.rel = "noopener";
+        whatsapp.innerHTML = `<i class="fab fa-whatsapp"></i> Need help before ordering? Chat on WhatsApp`;
+        submitButton.parentNode.insertBefore(whatsapp, submitButton.nextSibling);
+      }
+    }
+
+    function renderCheckoutSummary() {
+      const summary = document.getElementById("checkout-order-summary");
+      const estimate = document.getElementById("delivery-estimate-box");
+      const submitButton = document.getElementById("cart-checkout-submit");
+      const items = getCart();
+      const totals = getCartTotals();
+      const savedShipping = getSavedShipping();
+      const stockIssues = getCartStockIssues();
+
+      if (!summary || !submitButton) return;
+
+      if (!items.length) {
+        summary.innerHTML = "";
+        submitButton.disabled = true;
+        submitButton.classList.add("opacity-60", "cursor-not-allowed");
+        return;
+      }
+
+      const itemRows = items.map(item => {
+        const stock = Number(item.stock || 0);
+        const qty = Number(item.quantity || 1);
+        const stockState = getStockState(stock);
+        const issue = stock <= 0 || qty > stock;
+
+        return `
+          <div class="checkout-summary-row ${issue ? "checkout-summary-warning" : ""}">
+            <div>
+              <strong>${escapeHtml(item.name)}</strong>
+              <small>Qty: ${qty} • ${stockState.message}</small>
+            </div>
+            <span>${formatCurrency(Number(item.price || 0) * qty)}</span>
+          </div>
+        `;
+      }).join("");
+
+      const shippingLabel = savedShipping?.label || "Select delivery method";
+      const shippingFee = Number(savedShipping?.price || 0);
+
+      summary.innerHTML = `
+        <div class="checkout-summary-header">
+          <h3>Order Summary</h3>
+          <span>${items.length} item${items.length === 1 ? "" : "s"}</span>
+        </div>
+
+        <div class="checkout-summary-items">
+          ${itemRows}
+        </div>
+
+        <div class="checkout-summary-totals">
+          <div><span>Subtotal</span><strong>${formatCurrency(totals.subtotal)}</strong></div>
+          <div><span>Delivery</span><strong>${formatCurrency(shippingFee)}</strong></div>
+          <div class="checkout-summary-grand"><span>Total</span><strong>${formatCurrency(totals.total)}</strong></div>
+        </div>
+
+        ${stockIssues.length ? `
+          <div class="checkout-stock-alert">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Some items are unavailable or exceed available stock. Adjust the quantity before submitting.</span>
+          </div>
+        ` : ""}
+      `;
+
+      if (estimate) {
+        if (savedShipping?.value) {
+          estimate.innerHTML = `
+            <i class="fas fa-truck"></i>
+            <span>${escapeHtml(shippingLabel)} selected. Estimated delivery is shown in the selected method.</span>
+          `;
+        } else {
+          estimate.innerHTML = `
+            <i class="fas fa-info-circle"></i>
+            <span>Enter your province and choose a delivery method to continue.</span>
+          `;
+        }
+      }
+
+      const allowed = canSubmitCheckout();
+      submitButton.disabled = !allowed;
+      submitButton.classList.toggle("opacity-60", !allowed);
+      submitButton.classList.toggle("cursor-not-allowed", !allowed);
+
+      if (!allowed) {
+        submitButton.title = stockIssues.length
+          ? "Fix unavailable stock items before submitting"
+          : "Select delivery method before submitting";
+      } else {
+        submitButton.title = "Submit your order request";
+      }
+    }
+
+    function enhanceCartStockMessages() {
+      document.querySelectorAll(".cart-item-stock-note").forEach(el => el.remove());
+
+      getCart().forEach(item => {
+        const productId = String(item.id);
+        const qtyInput = document.querySelector(`.cart-qty-input[data-product-id="${productId}"]`);
+        if (!qtyInput) return;
+
+        const stock = Number(item.stock || 0);
+        const qty = Number(item.quantity || 1);
+        const state = getStockState(stock);
+        const note = document.createElement("div");
+        note.className = `cart-item-stock-note ${state.key}`;
+
+        if (stock <= 0) {
+          note.innerHTML = `<i class="fas fa-times-circle"></i> Out of stock — remove this item to continue.`;
+        } else if (qty > stock) {
+          note.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Only ${stock} available. Reduce quantity to continue.`;
+        } else if (stock <= 3) {
+          note.innerHTML = `<i class="fas fa-fire"></i> Low stock: only ${stock} left.`;
+        } else {
+          note.innerHTML = `<i class="fas fa-check-circle"></i> In stock.`;
+        }
+
+        qtyInput.closest("div")?.parentNode?.appendChild(note);
+      });
+    }
+
+    function installCheckoutUxUpgrades() {
+      ensureCheckoutUxBlocks();
+      renderCheckoutSummary();
+      enhanceCartStockMessages();
+    }
+
+    const originalRenderCartForUx = renderCart;
+    renderCart = function() {
+      originalRenderCartForUx();
+      ensureCheckoutUxBlocks();
+      renderCheckoutSummary();
+      enhanceCartStockMessages();
+    };
+
+    installCheckoutUxUpgrades();
+
+
+
+    initNavCartSync();
+
+    renderCart();
 
     setInterval(() => {
       smartFetchProducts();
@@ -2383,11 +3392,8 @@
 
     fetchCategories().then(() => smartFetchProducts(true));
 
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW failed:', err));
-    }
   </script>
-
+  
   <script src="js/loader.js"></script>
 </body>
 </html>

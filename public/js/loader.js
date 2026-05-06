@@ -1,24 +1,65 @@
-// ==================== PRODUCTION UNIVERSAL LOADER (STABLE FINAL) ====================
+// ==================== PRODUCTION UNIVERSAL LOADER ====================
 
 function getComponentBasePath() {
-  return "/public/components/";
+  const loaderScript = document.currentScript || document.querySelector('script[src$="js/loader.js"]');
+
+  if (loaderScript && loaderScript.src) {
+    return new URL("../components/", loaderScript.src).pathname;
+  }
+
+  return "/components/";
+}
+
+function getSiteBasePath() {
+  const loaderScript = document.currentScript || document.querySelector('script[src$="js/loader.js"]');
+
+  if (loaderScript && loaderScript.src) {
+    return new URL("../", loaderScript.src).pathname;
+  }
+
+  return "/";
+}
+
+function toSitePath(path) {
+  const basePath = getSiteBasePath();
+
+  if (path === "/") {
+    return `${basePath}index.html`;
+  }
+
+  if (path.startsWith("/#")) {
+    return `${basePath}index.html${path.slice(1)}`;
+  }
+
+  const cleanPath = path.replace(/^\//, "");
+  return `${basePath}${cleanPath}`;
+}
+
+function getComponentVersion() {
+  return "v=20260502-1";
+}
+
+function getApiBaseUrl() {
+  const metaValue = document.querySelector('meta[name="nhx-api-base"]')?.content?.trim();
+  const runtimeValue = typeof window.NHX_API_BASE === "string" ? window.NHX_API_BASE.trim() : "";
+  const baseUrl = metaValue || runtimeValue || "";
+  return baseUrl.replace(/\/$/, "");
 }
 
 async function safeFetch(url) {
   try {
-    console.log("🔍 Fetching:", url);
+    console.log("Fetching:", url);
 
     const res = await fetch(url);
 
     if (!res.ok) {
-      console.warn("⚠️ Failed:", url, "Status:", res.status);
+      console.warn("Failed:", url, "Status:", res.status);
       return null;
     }
 
     return await res.text();
-
   } catch (err) {
-    console.error("❌ Fetch error:", url, err);
+    console.error("Fetch error:", url, err);
     return null;
   }
 }
@@ -27,44 +68,56 @@ async function loadComponent(id, file) {
   const container = document.getElementById(id);
 
   if (!container) {
-    console.warn(`⚠️ Missing container: #${id}`);
+    console.warn(`Missing container: #${id}`);
     return;
   }
 
-  const base = getComponentBasePath();
-  const url = base + file;
-
+  const url = `${getComponentBasePath()}${file}?${getComponentVersion()}`;
   const html = await safeFetch(url);
 
   if (!html) {
-    console.error(`❌ Component failed to load: ${file}`);
+    console.error(`Component failed to load: ${file}`);
     return;
   }
 
   const cleanHTML = html.replace(/<script[\s\S]*?<\/script>/gi, "");
   container.innerHTML = cleanHTML;
 
-  console.log(`✅ Loaded: ${file} → #${id}`);
+  console.log(`Loaded: ${file} -> #${id}`);
 }
-
-// ====================== INIT FUNCTIONS ======================
 
 function initNavToggle() {
   const navToggle = document.getElementById("nav-toggle");
   const mobileNav = document.getElementById("mobile-nav");
 
   if (!navToggle || !mobileNav) return;
+  if (navToggle.dataset.initialized === "true") return;
+
+  navToggle.dataset.initialized = "true";
 
   navToggle.addEventListener("click", () => {
     mobileNav.classList.toggle("hidden");
 
     const expanded = !mobileNav.classList.contains("hidden");
-    navToggle.setAttribute("aria-expanded", expanded);
+    navToggle.setAttribute("aria-expanded", String(expanded));
 
     const icon = navToggle.querySelector("i");
     if (icon) {
       icon.classList.toggle("fa-bars", !expanded);
       icon.classList.toggle("fa-times", expanded);
+    }
+  });
+
+  mobileNav.addEventListener("click", (event) => {
+    if (!event.target.closest("a, button")) return;
+
+    mobileNav.classList.add("hidden");
+    navToggle.setAttribute("aria-expanded", "false");
+
+    const icon = navToggle.querySelector("i");
+    if (icon) {
+      icon.classList.add("fa-bars");
+      icon.classList.remove("fa-times");
     }
   });
 }
@@ -74,43 +127,72 @@ function initFooterYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+function normalizeInternalPaths() {
+  document.querySelectorAll("a[href^='/']").forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("//")) return;
+    link.setAttribute("href", toSitePath(href));
+  });
+
+  document.querySelectorAll("img[src^='/']").forEach((image) => {
+    const src = image.getAttribute("src");
+    if (!src || src.startsWith("//")) return;
+    image.setAttribute("src", toSitePath(src));
+  });
+}
+
 function setActiveNav() {
   const links = document.querySelectorAll(".nav-link");
   const path = window.location.pathname.toLowerCase();
 
-  links.forEach(l => l.classList.remove("active"));
+  links.forEach((link) => link.classList.remove("active"));
 
   if (path.includes("system-assessment")) {
-    const a = document.querySelector('.nav-link[href*="system-assessment"]');
-    if (a) a.classList.add("active");
+    const assessmentLink = document.querySelector('.nav-link[href*="system-assessment"]');
+    if (assessmentLink) assessmentLink.classList.add("active");
     return;
   }
 
   if (path.includes("shop")) {
-    const s = document.querySelector('.nav-link[data-link="shop"]');
-    if (s) s.classList.add("active");
+    const shopLink = document.querySelector('.nav-link[data-link="shop"]');
+    if (shopLink) shopLink.classList.add("active");
     return;
   }
 
-  const home = document.querySelector('.nav-link[data-link="home"]');
-  if (home) home.classList.add("active");
+  const homeLink = document.querySelector('.nav-link[data-link="home"]');
+  if (homeLink) homeLink.classList.add("active");
 }
 
 function handleAnchorLinks() {
-  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(a => {
-    a.addEventListener("click", (e) => {
-      const id = a.getAttribute("href").replace(/^\/#?/, "");
+  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+      const id = href ? href.replace(/^\/#?/, "") : "";
       const target = document.getElementById(id);
 
       if (target) {
-        e.preventDefault();
+        event.preventDefault();
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
 }
 
-// ====================== PRICING MODAL INIT ======================
+function initScrollTargetButtons() {
+  document.querySelectorAll("[data-scroll-target]").forEach((button) => {
+    if (button.dataset.initialized === "true") return;
+
+    button.dataset.initialized = "true";
+    button.addEventListener("click", () => {
+      const targetId = button.dataset.scrollTarget;
+      const target = targetId ? document.getElementById(targetId) : null;
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+}
 
 function initPricingLeadModal() {
   const modal = document.getElementById("pricingLeadModal");
@@ -121,9 +203,17 @@ function initPricingLeadModal() {
   const pricingLeadForm = document.getElementById("pricingLeadForm");
   const pricingLeadSubmit = document.getElementById("pricingLeadSubmit");
   const pricingLeadStatus = document.getElementById("pricingLeadStatus");
+  const pricingMainChallenge = document.getElementById("pricingMainChallenge");
+
+  const packageChallengeMap = {
+    "Business Communication System": "Improve communication and calls",
+    "Customer, Sales & Automation System": "Track customers and follow-ups",
+    "Managed IT & Support": "Improve IT reliability and security",
+    "Complete Business Operating System": "Build a complete connected system",
+    "Cybersecurity & Compliance System": "Improve IT reliability and security"
+  };
 
   if (!modal || !pricingLeadForm || pricingButtons.length === 0) {
-    console.warn("⚠️ Pricing modal elements not found, skipping init.");
     return;
   }
 
@@ -139,12 +229,16 @@ function initPricingLeadModal() {
   function openModal() {
     modal.classList.remove("hidden");
     modal.classList.add("flex");
+    document.body.classList.add("pricing-modal-open");
+    document.documentElement.classList.add("overflow-hidden");
     document.body.classList.add("overflow-hidden");
   }
 
   function closeModal() {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
+    document.body.classList.remove("pricing-modal-open");
+    document.documentElement.classList.remove("overflow-hidden");
     document.body.classList.remove("overflow-hidden");
   }
 
@@ -169,7 +263,7 @@ function initPricingLeadModal() {
 
   function setSubmitting(isSubmitting) {
     pricingLeadSubmit.disabled = isSubmitting;
-    pricingLeadSubmit.textContent = isSubmitting ? "Submitting..." : "Submit Request";
+    pricingLeadSubmit.textContent = isSubmitting ? "Submitting..." : "Submit System Advice Request";
   }
 
   pricingButtons.forEach((button) => {
@@ -182,6 +276,10 @@ function initPricingLeadModal() {
 
       pricingLeadStatus.classList.add("hidden");
       pricingLeadForm.reset();
+      pricingLeadForm.classList.remove("hidden");
+      if (pricingMainChallenge && packageChallengeMap[selectedPackage]) {
+        pricingMainChallenge.value = packageChallengeMap[selectedPackage];
+      }
 
       openModal();
     });
@@ -191,20 +289,20 @@ function initPricingLeadModal() {
     modalClose.addEventListener("click", closeModal);
   }
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
       closeModal();
     }
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.classList.contains("hidden")) {
       closeModal();
     }
   });
 
-  pricingLeadForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
+  pricingLeadForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
     const payload = {
       formType: "Pricing CTA",
@@ -213,14 +311,26 @@ function initPricingLeadModal() {
       email: document.getElementById("pricingEmail").value.trim(),
       phone: document.getElementById("pricingPhone").value.trim(),
       company: document.getElementById("pricingCompany").value.trim(),
+      website: document.getElementById("pricingWebsite")?.value.trim() || "",
+      mainChallenge: document.getElementById("pricingMainChallenge")?.value || "",
+      businessSize: document.getElementById("pricingBusinessSize")?.value || "",
       selectedPackage,
       selectedPrice,
       notes: document.getElementById("pricingNotes").value.trim(),
       pageUrl: window.location.href
     };
 
-    if (!payload.fullName || !payload.email) {
-      showStatus("Please fill in your full name and email address.", "error");
+    payload.message = [
+      `Selected System: ${payload.selectedPackage}`,
+      `Selected Price: ${payload.selectedPrice}`,
+      `Main Challenge: ${payload.mainChallenge}`,
+      `Business Size: ${payload.businessSize || "Not provided"}`,
+      `Website: ${payload.website || "Not provided"}`,
+      `Notes: ${payload.notes || "Not provided"}`
+    ].join("\n");
+
+    if (!payload.fullName || !payload.email || !payload.phone || !payload.company || !payload.mainChallenge) {
+      showStatus("Please fill in your full name, email address, phone number, company, and main improvement area.", "error");
       return;
     }
 
@@ -228,7 +338,7 @@ function initPricingLeadModal() {
       setSubmitting(true);
       showStatus("Submitting your request...", "info");
 
-      const response = await fetch("http://localhost:3000/api/create-lead", {
+      const response = await fetch(`${getApiBaseUrl()}/api/create-lead`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -245,9 +355,9 @@ function initPricingLeadModal() {
       showStatus(
         `<div class="text-center">
           <div class="text-xl font-bold mb-2">Thank you</div>
-          <div class="mb-4">Your request has been submitted successfully. We’ll contact you shortly.</div>
+          <div class="mb-4">Your request has been submitted successfully. We&rsquo;ll contact you shortly.</div>
           <div class="flex justify-center">
-            <button type="button" onclick="window.location.href='/public/index.html#pricing'" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+            <button type="button" onclick="window.location.href='${toSitePath('/#pricing')}'" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
               Back to Home
             </button>
           </div>
@@ -261,7 +371,6 @@ function initPricingLeadModal() {
         pricingLeadForm.classList.remove("hidden");
         pricingLeadStatus.classList.add("hidden");
       }, 3500);
-
     } catch (error) {
       console.error("Pricing lead submit error:", error);
       showStatus("There was a problem submitting your request. Please try again.", "error");
@@ -270,10 +379,8 @@ function initPricingLeadModal() {
     }
   });
 
-  console.log("✅ Pricing modal initialized");
+  console.log("Pricing modal initialized");
 }
-
-// ====================== CONTACT FORM INIT ======================
 
 function initContactLeadForm() {
   const contactLeadForm = document.getElementById("contactLeadForm");
@@ -281,7 +388,7 @@ function initContactLeadForm() {
   const contactLeadStatus = document.getElementById("contactLeadStatus");
 
   if (!contactLeadForm || !contactLeadSubmit || !contactLeadStatus) {
-    console.warn("⚠️ Contact form elements not found, skipping init.");
+    console.warn("Contact form elements not found, skipping init.");
     return;
   }
 
@@ -315,8 +422,8 @@ function initContactLeadForm() {
     contactLeadSubmit.textContent = isSubmitting ? "Sending..." : "Send Message";
   }
 
-  contactLeadForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
+  contactLeadForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
     const payload = {
       formType: "Contact Us",
@@ -340,7 +447,7 @@ function initContactLeadForm() {
       setContactSubmitting(true);
       showContactStatus("Submitting your message...", "info");
 
-      const response = await fetch("http://localhost:3000/api/create-lead", {
+      const response = await fetch(`${getApiBaseUrl()}/api/create-lead`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -354,20 +461,19 @@ function initContactLeadForm() {
 
       contactLeadForm.innerHTML = `
         <div class="bg-green-100 text-green-700 rounded-2xl p-8 text-center">
-          <div class="text-4xl mb-3">✅</div>
+          <div class="text-4xl mb-3">&#10003;</div>
           <div class="text-2xl font-bold mb-2">Thank you for submitting</div>
           <div class="mb-3">Your message has been sent successfully.</div>
           <div class="text-sm mb-6">Our team will get back to you shortly.</div>
           <button
             type="button"
-            onclick="window.location.href='/public/index.html#contact'"
+            onclick="window.location.href='${toSitePath('/#contact')}'"
             class="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition"
           >
             Back to Contact Section
           </button>
         </div>
       `;
-
     } catch (error) {
       console.error("Contact form submit error:", error);
       showContactStatus("There was a problem sending your message. Please try again.", "error");
@@ -376,54 +482,29 @@ function initContactLeadForm() {
     }
   });
 
-  console.log("✅ Contact form initialized");
+  console.log("Contact form initialized");
 }
 
-// ====================== MAIN BOOT ======================
-
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("🚀 Loader starting...");
+  console.log("Loader starting...");
 
   const tasks = [
     loadComponent("nav-container", "nav.html"),
     loadComponent("footer-container", "footer.html")
   ];
 
-  if (document.getElementById("services-container")) {
-    tasks.push(loadComponent("services-container", "services.html"));
-  }
-
-  if (document.getElementById("pricing-container")) {
-    tasks.push(loadComponent("pricing-container", "pricing.html"));
-  }
-
-  if (document.getElementById("trust-container")) {
-    tasks.push(loadComponent("trust-container", "trust.html"));
-  }
-
-  if (document.getElementById("sla-container")) {
-    tasks.push(loadComponent("sla-container", "sla.html"));
-  }
-
-  if (document.getElementById("contact-container")) {
-    tasks.push(loadComponent("contact-container", "contact.html"));
-  }
-
   await Promise.allSettled(tasks);
 
-  console.log("✅ All components loaded (final pass)");
+  console.log("All components loaded");
 
-  if (document.getElementById("pricing-container")) {
-    initPricingLeadModal();
-  }
-
-  if (document.getElementById("contact-container")) {
-    initContactLeadForm();
-  }
+  normalizeInternalPaths();
+  initPricingLeadModal();
+  initContactLeadForm();
 
   initNavToggle();
   initFooterYear();
   handleAnchorLinks();
+  initScrollTargetButtons();
   setActiveNav();
 
   if (typeof AOS !== "undefined") {

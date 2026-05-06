@@ -2,210 +2,423 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="nhx-api-base" content="" />
+  <meta name="description" content="Complete a free business system assessment and get a tailored recommendation for CRM, VoIP, IT support, automation, and business operations." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://nhx.co.za/pages/system-assessment.html" />
+  <meta property="og:title" content="Free Business System Assessment | NewHaus IT Services" />
+  <meta property="og:description" content="Get a tailored recommendation for your business systems, communication, IT support, and automation needs." />
+  <meta property="og:url" content="https://nhx.co.za/pages/system-assessment.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NewHaus IT Services" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Free Business System Assessment | NewHaus IT Services" />
+  <meta name="twitter:description" content="Complete a short assessment and get a tailored business systems recommendation." />
 
-  <title>Free Business System Assessment | NewHaus IT</title>
+  <title>Free Business System Assessment | NewHaus IT Services</title>
 
-  <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <!-- Main CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="bg-gray-100 font-sans">
 
-  <!-- NAV -->
   <div id="nav-container"></div>
 
-  <!-- HERO -->
   <section class="bg-gradient-to-r from-indigo-700 to-purple-800 text-white py-24 pt-32">
     <div class="container mx-auto px-6 text-center max-w-4xl">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+      <p class="text-sm uppercase tracking-widest text-indigo-200 font-semibold mb-4">
         Free Business System Assessment
+      </p>
+
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+        Fix Your Business Systems & Stop Losing Opportunities
       </h1>
 
       <p class="text-lg md:text-xl text-indigo-100 mb-6">
-        We analyse your business and design a complete system for Communication, Operations, and Automation.
+        We design the right setup for your communication, customers, IT, and automation so your business runs smoothly and grows faster.
       </p>
 
       <p class="text-sm text-indigo-200">
-        Takes 2–3 minutes • No obligation • Tailored to your business
+        Takes 2-3 minutes - No obligation - Tailored to your business
       </p>
     </div>
   </section>
 
-  <!-- FORM -->
   <section class="py-16">
     <div class="container mx-auto px-6 max-w-3xl">
       <div class="bg-white rounded-3xl shadow-xl p-8">
 
-        <h2 class="text-2xl font-bold mb-6 text-center">
-          Tell Us About Your Business
-        </h2>
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold mb-3">
+            Get Your Free Recommendation
+          </h2>
+          <p class="text-gray-600">
+            Step 1 tells us who you are. Step 2 helps us understand what system your business needs.
+          </p>
+        </div>
+
+        <div class="mb-8">
+          <div class="flex justify-between text-sm font-semibold text-gray-500 mb-2">
+            <span id="stepLabel">Step 1 of 2</span>
+            <span id="stepTitle">Contact Details</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3">
+            <div id="progressBar" class="bg-indigo-600 h-3 rounded-full transition-all duration-300 progress-50"></div>
+          </div>
+        </div>
 
         <form id="assessmentForm" class="space-y-5">
 
-          <!-- BASIC -->
-          <input id="fullName" class="w-full border p-3 rounded-xl" placeholder="Full Name" required />
-          <input id="email" type="email" class="w-full border p-3 rounded-xl" placeholder="Email Address" required />
-          <input id="phone" class="w-full border p-3 rounded-xl" placeholder="Phone Number" />
+          <div id="stepOne" class="space-y-5">
+            <div>
+              <label for="fullName" class="block text-sm font-semibold mb-2">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input id="fullName" class="w-full border p-3 rounded-xl" placeholder="Your full name" required />
+            </div>
 
-          <!-- COMPANY NAME -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              Company Name <span class="text-red-500">*</span>
-            </label>
-            <input
-              id="company"
-              type="text"
-              class="w-full border p-3 rounded-xl"
-              placeholder="Enter your company name"
-              required
-            />
+            <div>
+              <label for="email" class="block text-sm font-semibold mb-2">
+                Email Address <span class="text-red-500">*</span>
+              </label>
+              <input id="email" type="email" class="w-full border p-3 rounded-xl" placeholder="you@company.com" required />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-semibold mb-2">
+                Phone Number <span class="text-red-500">*</span>
+              </label>
+              <input id="phone" class="w-full border p-3 rounded-xl" placeholder="+27 64 290 3654" required />
+            </div>
+
+            <div>
+              <label for="company" class="block text-sm font-semibold mb-2">
+                Company Name <span class="text-red-500">*</span>
+              </label>
+              <input id="company" type="text" class="w-full border p-3 rounded-xl" placeholder="Enter your company name" required />
+            </div>
+
+            <div>
+              <label for="businessType" class="block text-sm font-semibold mb-2">Business Type</label>
+              <select id="businessType" class="w-full border rounded-xl p-3">
+                <option>Service Business</option>
+                <option>Logistics / Transport</option>
+                <option>Retail</option>
+                <option>Professional Services</option>
+                <option>Construction / Contractors</option>
+                <option>Healthcare / Medical</option>
+                <option>Real Estate</option>
+                <option>Legal / Accounting Firm</option>
+                <option>Security Company</option>
+                <option>Call Centre / Sales Team</option>
+                <option>Education / Training</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="preferredContactMethod" class="block text-sm font-semibold mb-2">Preferred Contact Method</label>
+              <select id="preferredContactMethod" class="w-full border rounded-xl p-3">
+                <option>Phone Call</option>
+                <option>WhatsApp</option>
+                <option>Email</option>
+                <option>Phone Call or WhatsApp</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="problems" class="block text-sm font-semibold mb-2">
+                What problems are you currently facing?
+              </label>
+              <select id="problems" class="w-full border rounded-xl p-3">
+                <option>Missing customer enquiries</option>
+                <option>No proper system to track customers</option>
+                <option>Too much manual work</option>
+                <option>Staff not organised</option>
+                <option>Business is growing but systems are not</option>
+                <option>Not sure what system we need</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="goal" class="block text-sm font-semibold mb-2">
+                What is your main goal right now?
+              </label>
+              <select id="goal" class="w-full border rounded-xl p-3">
+                <option>Get more customers</option>
+                <option>Organise my business</option>
+                <option>Improve communication</option>
+                <option>Automate processes</option>
+                <option>Scale the business</option>
+              </select>
+            </div>
+
+            <button
+              id="nextStepBtn"
+              type="button"
+              class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition"
+            >
+              Continue to Step 2
+            </button>
           </div>
 
-          <!-- BUSINESS TYPE -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">Business Type</label>
-            <select id="businessType" class="w-full border rounded-xl p-3">
-              <option>Service Business</option>
-              <option>Logistics / Transport</option>
-              <option>Retail</option>
-              <option>Professional Services</option>
-              <option>Other</option>
-            </select>
+          <div id="stepTwo" class="hidden space-y-5">
+            <div>
+              <label for="companySize" class="block text-sm font-semibold mb-2">Company Size</label>
+              <select id="companySize" class="w-full border rounded-xl p-3">
+                <option>1-5 Employees</option>
+                <option>6-10 Employees</option>
+                <option>11-20 Employees</option>
+                <option>21-50 Employees</option>
+                <option>50+ Employees</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="mainNeed" class="block text-sm font-semibold mb-2">
+                What do you need help with?
+              </label>
+              <select id="mainNeed" class="w-full border rounded-xl p-3">
+                <option>Not sure yet</option>
+                <option>VoIP / Business phone system</option>
+                <option>Zoho setup and support</option>
+                <option>Customer and sales management</option>
+                <option>Automation and workflows</option>
+                <option>General IT support</option>
+                <option>Cybersecurity</option>
+                <option>Full business system</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="revenue" class="block text-sm font-semibold mb-2">Monthly Revenue (Optional)</label>
+              <select id="revenue" class="w-full border rounded-xl p-3">
+                <option>Prefer not to say</option>
+                <option>Under R50k</option>
+                <option>R50k - R200k</option>
+                <option>R200k - R500k</option>
+                <option>R500k - R1M</option>
+                <option>R1M+</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="leadSource" class="block text-sm font-semibold mb-2">How do you currently get customers?</label>
+              <select id="leadSource" class="w-full border rounded-xl p-3">
+                <option>Referrals</option>
+                <option>WhatsApp / Calls</option>
+                <option>Social Media</option>
+                <option>Website</option>
+                <option>Google Ads / Facebook Ads</option>
+                <option>Multiple channels</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="leadTracking" class="block text-sm font-semibold mb-2">How do you currently track leads or customers?</label>
+              <select id="leadTracking" class="w-full border rounded-xl p-3">
+                <option>We don't track leads properly</option>
+                <option>Manual tracking / Excel / Notebook</option>
+                <option>WhatsApp only</option>
+                <option>CRM system</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="communication" class="block text-sm font-semibold mb-2">Current Communication Setup</label>
+              <select id="communication" class="w-full border rounded-xl p-3">
+                <option>Personal phones</option>
+                <option>Business lines</option>
+                <option>VoIP system</option>
+                <option>WhatsApp only</option>
+                <option>Mix of everything</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="itSupport" class="block text-sm font-semibold mb-2">Current IT Support Setup</label>
+              <select id="itSupport" class="w-full border rounded-xl p-3">
+                <option>No dedicated IT support</option>
+                <option>We handle IT internally</option>
+                <option>We use an external IT provider</option>
+                <option>We need better IT support</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="automation" class="block text-sm font-semibold mb-2">Automation Level</label>
+              <select id="automation" class="w-full border rounded-xl p-3">
+                <option>No automation</option>
+                <option>Basic emails / reminders</option>
+                <option>Some workflows</option>
+                <option>Fully automated processes</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="budget" class="block text-sm font-semibold mb-2">Estimated Budget</label>
+              <select id="budget" class="w-full border rounded-xl p-3">
+                <option>Not sure yet</option>
+                <option>R1k - R5k</option>
+                <option>R5k - R15k</option>
+                <option>R15k - R50k</option>
+                <option>R50k+</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="urgency" class="block text-sm font-semibold mb-2">How soon do you want to implement?</label>
+              <select id="urgency" class="w-full border rounded-xl p-3">
+                <option>Immediately</option>
+                <option>Within 1 month</option>
+                <option>1-3 months</option>
+                <option>Just exploring</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="contactTime" class="block text-sm font-semibold mb-2">Best Time to Contact You</label>
+              <select id="contactTime" class="w-full border rounded-xl p-3">
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Any time during business hours</option>
+                <option>Send email first</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="tools" class="block text-sm font-semibold mb-2">Current Tools (Optional)</label>
+              <textarea id="tools" class="w-full border p-3 rounded-xl" rows="3" placeholder="Example: WhatsApp, Excel, Gmail, Outlook, Zoho, Sage, QuickBooks, etc."></textarea>
+            </div>
+
+            <div>
+              <label for="challenge" class="block text-sm font-semibold mb-2">Biggest Challenge</label>
+              <textarea id="challenge" class="w-full border p-3 rounded-xl" rows="3" placeholder="What is the biggest issue you want to fix?"></textarea>
+            </div>
+
+            <div id="formStatus" class="hidden rounded-xl p-4 text-sm font-medium"></div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button
+                id="backStepBtn"
+                type="button"
+                class="w-full bg-white text-indigo-700 border border-indigo-200 font-bold py-3 rounded-xl hover:bg-indigo-50 transition"
+              >
+                Back
+              </button>
+
+              <button
+                id="submitBtn"
+                type="submit"
+                class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                Get My Free System Assessment
+              </button>
+            </div>
+
+            <p class="text-xs text-gray-500 text-center">
+              We'll review your details and contact you with the best recommendation.
+            </p>
           </div>
-
-          <!-- COMPANY SIZE -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">Company Size</label>
-            <select id="companySize" class="w-full border rounded-xl p-3">
-              <option>1–5 Employees</option>
-              <option>6–10 Employees</option>
-              <option>11–20 Employees</option>
-              <option>21–50 Employees</option>
-              <option>50+ Employees</option>
-            </select>
-          </div>
-
-          <!-- REVENUE -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">Monthly Revenue (Optional)</label>
-            <select id="revenue" class="w-full border rounded-xl p-3">
-              <option>Under R50k</option>
-              <option>R50k – R200k</option>
-              <option>R200k – R500k</option>
-              <option>R500k – R1M</option>
-              <option>R1M+</option>
-            </select>
-          </div>
-
-          <!-- LEAD GENERATION -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">How do you get customers?</label>
-            <select id="leadSource" class="w-full border rounded-xl p-3">
-              <option>Referrals</option>
-              <option>WhatsApp / Calls</option>
-              <option>Social Media</option>
-              <option>Website</option>
-              <option>Multiple channels</option>
-            </select>
-          </div>
-
-          <!-- LEAD TRACKING -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">How do you track leads?</label>
-            <select id="leadTracking" class="w-full border rounded-xl p-3">
-              <option>We don’t track leads</option>
-              <option>Manual (Excel / Notebook)</option>
-              <option>WhatsApp only</option>
-              <option>CRM system</option>
-            </select>
-          </div>
-
-          <!-- COMMUNICATION -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">Current Communication Setup</label>
-            <select id="communication" class="w-full border rounded-xl p-3">
-              <option>Personal phones</option>
-              <option>Business lines</option>
-              <option>VoIP system</option>
-              <option>Mix of everything</option>
-            </select>
-          </div>
-
-          <!-- AUTOMATION -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">Automation Level</label>
-            <select id="automation" class="w-full border rounded-xl p-3">
-              <option>No automation</option>
-              <option>Basic (emails / reminders)</option>
-              <option>Some workflows</option>
-              <option>Fully automated processes</option>
-            </select>
-          </div>
-
-          <!-- BUDGET -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">Estimated Budget</label>
-            <select id="budget" class="w-full border rounded-xl p-3">
-              <option>Not sure yet</option>
-              <option>R1k – R5k</option>
-              <option>R5k – R15k</option>
-              <option>R15k – R50k</option>
-              <option>R50k+</option>
-            </select>
-          </div>
-
-          <!-- URGENCY -->
-          <div>
-            <label class="block text-sm font-semibold mb-2">How soon do you want to implement?</label>
-            <select id="urgency" class="w-full border rounded-xl p-3">
-              <option>Immediately</option>
-              <option>Within 1 month</option>
-              <option>1–3 months</option>
-              <option>Just exploring</option>
-            </select>
-          </div>
-
-          <!-- CURRENT TOOLS -->
-          <textarea id="tools" class="w-full border p-3 rounded-xl" rows="3" placeholder="Current Tools (Optional)"></textarea>
-
-          <!-- CHALLENGE -->
-          <textarea id="challenge" class="w-full border p-3 rounded-xl" rows="3" placeholder="Biggest Challenge"></textarea>
-
-          <!-- STATUS MESSAGE -->
-          <div id="formStatus" class="hidden rounded-xl p-4 text-sm font-medium"></div>
-
-          <!-- SUBMIT -->
-          <button
-            id="submitBtn"
-            type="submit"
-            class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-            Get My Free System Assessment
-          </button>
-
-          <p class="text-xs text-gray-500 text-center">
-            We respond within 24 hours
-          </p>
 
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <div id="footer-container"></div>
 
-  <!-- LOADER -->
   <script src="../js/loader.js"></script>
 
   <script>
     const assessmentForm = document.getElementById("assessmentForm");
     const submitBtn = document.getElementById("submitBtn");
     const formStatus = document.getElementById("formStatus");
+    const stepOne = document.getElementById("stepOne");
+    const stepTwo = document.getElementById("stepTwo");
+    const nextStepBtn = document.getElementById("nextStepBtn");
+    const backStepBtn = document.getElementById("backStepBtn");
+    const progressBar = document.getElementById("progressBar");
+    const stepLabel = document.getElementById("stepLabel");
+    const stepTitle = document.getElementById("stepTitle");
+
+    function getAssessmentApiBaseUrl() {
+      if (typeof getApiBaseUrl === "function") {
+        return getApiBaseUrl();
+      }
+
+      if (window.location.protocol === "file:") {
+        return "http://localhost:3000";
+      }
+
+      return window.location.origin.replace(/\/$/, "");
+    }
+
+    function buildAssessmentSummary(payload) {
+      return [
+        `Assessment Type: ${payload.formType}`,
+        `Business: ${payload.company}`,
+        `Contact: ${payload.fullName} | ${payload.email} | ${payload.phone}`,
+        `Preferred Contact: ${payload.preferredContactMethod} | Best Time: ${payload.contactTime}`,
+        `Business Type: ${payload.businessType}`,
+        `Main Problem: ${payload.problems}`,
+        `Main Goal: ${payload.goal}`,
+        `Company Size: ${payload.companySize}`,
+        `Main Need: ${payload.mainNeed}`,
+        `Revenue: ${payload.revenue}`,
+        `Lead Source: ${payload.leadSource}`,
+        `Lead Tracking: ${payload.leadTracking}`,
+        `Communication Setup: ${payload.communication}`,
+        `IT Support: ${payload.itSupport}`,
+        `Automation Level: ${payload.automation}`,
+        `Budget: ${payload.budget}`,
+        `Urgency: ${payload.urgency}`,
+        `Current Tools: ${payload.tools || "Not provided"}`,
+        `Biggest Challenge: ${payload.challenge || "Not provided"}`,
+        `Page URL: ${payload.pageUrl}`
+      ].join("\n");
+    }
+
+    function showStep(step) {
+      if (step === 1) {
+        stepOne.classList.remove("hidden");
+        stepTwo.classList.add("hidden");
+        progressBar.style.width = "50%";
+        stepLabel.textContent = "Step 1 of 2";
+        stepTitle.textContent = "Contact Details";
+      } else {
+        stepOne.classList.add("hidden");
+        stepTwo.classList.remove("hidden");
+        progressBar.style.width = "100%";
+        stepLabel.textContent = "Step 2 of 2";
+        stepTitle.textContent = "Business Needs";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+
+    nextStepBtn.addEventListener("click", function () {
+      const fullName = document.getElementById("fullName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const company = document.getElementById("company").value.trim();
+
+      if (!fullName || !email || !phone || !company) {
+        alert("Please fill in your full name, email address, phone number, and company name before continuing.");
+        return;
+      }
+
+      showStep(2);
+    });
+
+    backStepBtn.addEventListener("click", function () {
+      showStep(1);
+    });
 
     function showStatus(message, type = "info") {
       formStatus.classList.remove(
@@ -242,21 +455,30 @@
         phone: document.getElementById("phone").value.trim(),
         company: document.getElementById("company").value.trim(),
         businessType: document.getElementById("businessType").value,
+        preferredContactMethod: document.getElementById("preferredContactMethod").value,
+        problems: document.getElementById("problems").value,
+        goal: document.getElementById("goal").value,
         companySize: document.getElementById("companySize").value,
+        mainNeed: document.getElementById("mainNeed").value,
         revenue: document.getElementById("revenue").value,
         leadSource: document.getElementById("leadSource").value,
         leadTracking: document.getElementById("leadTracking").value,
         communication: document.getElementById("communication").value,
+        itSupport: document.getElementById("itSupport").value,
         automation: document.getElementById("automation").value,
         budget: document.getElementById("budget").value,
         urgency: document.getElementById("urgency").value,
+        contactTime: document.getElementById("contactTime").value,
         tools: document.getElementById("tools").value.trim(),
         challenge: document.getElementById("challenge").value.trim(),
         pageUrl: window.location.href
       };
 
-      if (!payload.fullName || !payload.email || !payload.company) {
-        showStatus("Please fill in your full name, email address, and company name.", "error");
+      payload.message = buildAssessmentSummary(payload);
+
+      if (!payload.fullName || !payload.email || !payload.phone || !payload.company) {
+        showStep(1);
+        alert("Please fill in your full name, email address, phone number, and company name.");
         return;
       }
 
@@ -264,7 +486,7 @@
         setSubmitting(true);
         showStatus("Submitting your assessment...", "info");
 
-        const response = await fetch("http://localhost:3000/api/create-lead", {
+        const response = await fetch(`${getAssessmentApiBaseUrl()}/api/create-lead`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -278,18 +500,17 @@
           throw new Error(result.message || "Failed to submit assessment");
         }
 
-        const leadTemperature = result.leadTemperature || "COLD";
-
         assessmentForm.classList.add("hidden");
 
         showStatus(
           `<div class="text-center">
             <div class="text-2xl font-bold mb-2">Thank you</div>
             <div class="mb-2">Your assessment has been submitted successfully.</div>
-            <div class="mb-4">Lead rating: <strong>${leadTemperature}</strong></div>
-            <div class="text-sm opacity-90 mb-4">We’ll review your details and contact you shortly.</div>
+            <div class="text-sm opacity-90 mb-4">
+              We'll review your details and contact you shortly with the best system recommendation for your business.
+            </div>
             <div class="flex flex-col sm:flex-row gap-3 justify-center">
-              <button onclick="window.location.href='/public/index.html'" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+              <button onclick="window.location.href='../index.html'" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
                 Back to Home
               </button>
               <button onclick="window.location.reload()" class="bg-white text-indigo-700 border border-indigo-200 px-6 py-2 rounded-lg hover:bg-indigo-50 transition">
@@ -301,12 +522,12 @@
         );
 
         setTimeout(() => {
-          window.location.href = "/public/index.html";
+          window.location.href = "../index.html";
         }, 4500);
 
       } catch (error) {
         console.error("Assessment submit error:", error);
-        showStatus("There was a problem submitting your assessment. Please try again.", "error");
+        showStatus("There was a problem submitting your assessment. Please try again or contact us directly.", "error");
       } finally {
         setSubmitting(false);
       }

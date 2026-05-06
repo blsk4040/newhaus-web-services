@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="nhx-api-base" content="" />
 
   <!-- ==================== SEO (2025 OPTIMIZED) ==================== -->
   <title>Smart Business Systems & IT Solutions | Zoho CRM, VoIP & Automation | NewHaus IT Services</title>
@@ -22,17 +23,16 @@
 
   <!-- OpenGraph -->
   <meta property="og:title" content="Smart Business Systems | CRM, VoIP & Automation | NewHaus IT" />
-  <meta property="og:description" content="Replace manual work with a fully integrated business system. CRM, VoIP, automation, and IT — all in one solution for growing businesses." />
-  <meta property="og:image" content="https://nhx.co.za/images/preview.jpg" />
-  <meta property="og:url" content="https://nhx.co.za" />
+  <meta property="og:description" content="Replace manual work with a fully integrated business system. CRM, VoIP, automation, and IT support all in one solution for growing businesses." />
+  <meta property="og:url" content="https://nhx.co.za/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_ZA" />
+  <meta property="og:site_name" content="NewHaus IT Services" />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Smart Business Systems | NewHaus IT" />
   <meta name="twitter:description" content="CRM, VoIP, automation & IT infrastructure built into one seamless system." />
-  <meta name="twitter:image" content="https://nhx.co.za/images/preview.jpg" />
 
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
@@ -129,23 +129,8 @@
     gtag('config', 'G-LPB98XR47S');
   </script>
 
-  <!-- Meta Pixel (Facebook) -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'XXXXXXXXXXXXXXX');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" class="hidden" src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1" alt="" /></noscript>
-
   <!-- Preload Critical Image -->
-  <link rel="preload" href="images/3.jpg" as="image">
+  <link rel="preload" href="assets/images/3.jpg" as="image">
 
   <!-- External Libraries -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -168,10 +153,14 @@
 
 </head>
 <body class="font-inter bg-gray-100">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-blue-900 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">
+    Skip to main content
+  </a>
 
   <!-- Navigation -->
   <div id="nav-container"></div>
 
+  <main id="main-content">
 
 <!-- Hero Section with Carousel -->
 
@@ -187,6 +176,7 @@
           alt="Smart Business Systems, Zoho CRM, VoIP and IT Support in Gauteng"
           class="w-full h-full object-cover absolute inset-0"
           loading="eager"
+          decoding="async"
         >
 
         <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-blue-950/75 to-black/80 flex items-center justify-center">
@@ -194,7 +184,7 @@
 
             <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md text-blue-100 px-4 py-2 rounded-full text-xs md:text-sm font-semibold mb-5">
               <i class="fas fa-bolt text-orange-400"></i>
-              CRM • VoIP • Automation • IT Support
+              CRM &bull; VoIP &bull; Automation &bull; IT Support
             </div>
 
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight drop-shadow-xl">
@@ -211,7 +201,7 @@
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <a
-                href="./pages/system-assessment.html"
+                href="/pages/system-assessment.html"
                 class="w-full sm:w-auto bg-white text-blue-900 font-bold px-8 py-4 rounded-2xl hover:bg-gray-100 transition-all duration-300 shadow-2xl text-center"
               >
                 Get Free System Assessment
@@ -227,23 +217,23 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto text-sm text-left">
               <div class="bg-white/10 border border-white/15 rounded-2xl p-4 backdrop-blur-md">
-                <div class="font-bold text-white mb-1">✔ Capture Every Lead</div>
+                <div class="font-bold text-white mb-1">&#10003; Capture Every Lead</div>
                 <div class="text-blue-100">Website, calls and forms into CRM.</div>
               </div>
 
               <div class="bg-white/10 border border-white/15 rounded-2xl p-4 backdrop-blur-md">
-                <div class="font-bold text-white mb-1">✔ Automate Follow-Ups</div>
+                <div class="font-bold text-white mb-1">&#10003; Automate Follow-Ups</div>
                 <div class="text-blue-100">Reduce manual admin and missed opportunities.</div>
               </div>
 
               <div class="bg-white/10 border border-white/15 rounded-2xl p-4 backdrop-blur-md">
-                <div class="font-bold text-white mb-1">✔ Stay Connected</div>
+                <div class="font-bold text-white mb-1">&#10003; Stay Connected</div>
                 <div class="text-blue-100">VoIP, support and business continuity.</div>
               </div>
             </div>
 
             <p class="text-xs text-gray-300 mt-5">
-              Free assessment • No obligation • Built for growing South African businesses
+              Free assessment &bull; No obligation &bull; Built for growing South African businesses
             </p>
 
           </div>
@@ -257,6 +247,7 @@
           alt="Managed IT Support, Monitoring and Cybersecurity for Businesses"
           class="w-full h-full object-cover absolute inset-0"
           loading="lazy"
+          decoding="async"
         >
 
         <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-blue-950/75 to-black/80 flex items-center justify-center">
@@ -264,7 +255,7 @@
 
             <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md text-blue-100 px-4 py-2 rounded-full text-xs md:text-sm font-semibold mb-5">
               <i class="fas fa-shield-alt text-orange-400"></i>
-              Managed IT • Monitoring • Security
+              Managed IT &bull; Monitoring &bull; Security
             </div>
 
             <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight drop-shadow-xl">
@@ -272,7 +263,7 @@
             </h2>
 
             <p class="text-lg md:text-2xl text-blue-100 max-w-3xl mx-auto mb-6 leading-relaxed">
-              From proactive monitoring to backups, security and support — we help reduce downtime and keep your team productive.
+              From proactive monitoring to backups, security and support &mdash; we help reduce downtime and keep your team productive.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -302,6 +293,7 @@
           alt="Zoho CRM, VoIP and Automation Systems for Growing Businesses"
           class="w-full h-full object-cover absolute inset-0"
           loading="lazy"
+          decoding="async"
         >
 
         <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-blue-950/75 to-black/80 flex items-center justify-center">
@@ -329,7 +321,7 @@
               </a>
 
               <a
-                href="./pages/system-assessment.html"
+                href="/pages/system-assessment.html"
                 class="w-full sm:w-auto bg-blue-600 text-white font-bold px-8 py-4 rounded-2xl hover:bg-blue-700 transition-all duration-300 shadow-xl text-center"
               >
                 Start Free Assessment
@@ -347,83 +339,999 @@
 </section>
 
     <!-- About Us -->
-    <section id="about" class="py-16 bg-white">
-      <div class="container mx-auto px-4" data-aos="fade-up">
-        <div class="flex flex-col md:flex-row gap-10 items-center">
-          <div class="md:w-1/2 text-left">
-            <p class="text-sm uppercase text-blue-600 font-semibold mb-2">About Us</p>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-              Building Smart Business Systems for Growing Companies
-            </h2>
-            <p class="text-lg mb-4">
-              At NewHaus IT Services, we help businesses reduce costs, eliminate manual work, and operate more efficiently using modern technology systems.
-            </p>
-            <p class="text-lg mb-4">
-              We go beyond traditional IT support — we design and implement <strong>complete business systems</strong> that combine IT infrastructure, VoIP communication, CRM (Zoho), automation, and cloud solutions into one seamless environment.
-            </p>
-            <p class="text-lg mb-6">
-              Our goal is simple: to give you a fully connected, secure, and scalable system that allows your business to run smoothly — whether you're in the office or remote.
-            </p>
-            <h3 class="text-xl font-semibold mb-4">Why Businesses Choose NewHaus IT Services:</h3>
-            <ul class="list-disc pl-6 mb-6 text-lg space-y-3">
-              <li><strong>Complete Business Systems</strong> – IT support, VoIP, CRM, and automation in one solution.</li>
-              <li><strong>Automation & Efficiency</strong> – Reduce manual admin and streamline daily operations.</li>
-              <li><strong>Managed IT & System Monitoring</strong> – Proactive monitoring and fast response when needed.</li>
-              <li><strong>Scalable Solutions</strong> – Systems that grow with your business from startup to enterprise.</li>
-              <li><strong>Always Connected</strong> – VoIP and backup connectivity to keep your business online.</li>
-              <li><strong>Zoho & Cloud Integration</strong> – Centralize your operations with powerful business tools.</li>
-              <li><strong>Transparent Pricing</strong> – Simple, predictable monthly pricing with no hidden costs.</li>
-            </ul>
-            <p class="text-lg">
-              We support businesses across Centurion, Pretoria, Midrand, Johannesburg, and surrounding areas — helping them modernize operations and stay competitive.
-            </p>
+<section id="about" class="py-16 bg-white">
+  <div class="container mx-auto px-4" data-aos="fade-up">
+    <div class="flex flex-col md:flex-row gap-10 items-center">
+      
+      <div class="md:w-1/2 text-left">
+        <p class="text-sm uppercase text-blue-600 font-semibold mb-2">About Us</p>
+        
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+          Building Smart Business Systems That Drive Growth
+        </h2>
+
+        <p class="text-lg mb-4">
+          At NewHaus IT Services, we help businesses streamline operations, generate more opportunities, and scale efficiently using fully integrated technology systems.
+        </p>
+
+        <p class="text-lg mb-4">
+          We go beyond traditional IT support. Our focus is on building complete business operating systems that combine IT infrastructure, VoIP communication, CRM (Zoho), automation, and lead generation tools into one seamless environment.
+        </p>
+
+        <p class="text-lg mb-6">
+          Our goal is simple: to give your business a connected, secure, and scalable system that not only runs smoothly — but also helps you attract, manage, and convert more customers consistently.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-4">Why Businesses Choose NewHaus IT Services:</h3>
+
+        <ul class="list-disc pl-6 mb-6 text-lg space-y-3">
+          <li><strong>Complete Business Systems</strong> – IT, VoIP, CRM, automation, and lead generation working together.</li>
+          <li><strong>Automation & Efficiency</strong> – Reduce manual admin and streamline daily operations.</li>
+          <li><strong>Revenue-Focused Systems</strong> – Systems designed to help you generate and close more business.</li>
+          <li><strong>Managed IT & System Monitoring</strong> – Proactive monitoring and fast response when needed.</li>
+          <li><strong>Scalable Solutions</strong> – Built to grow with your business from startup to scale.</li>
+          <li><strong>Always Connected</strong> – Reliable VoIP and backup connectivity to keep your business online.</li>
+          <li><strong>Zoho & Cloud Integration</strong> – Centralize and manage your entire business from one platform.</li>
+          <li><strong>Transparent Pricing</strong> – Simple, predictable monthly pricing with no hidden costs.</li>
+        </ul>
+
+        <p class="text-lg">
+          We partner with growing businesses to modernize operations, improve performance, and build systems that support long-term scalability in a digital-first world.
+        </p>
+      </div>
+
+      <div class="md:w-1/2">
+        <div class="rounded-2xl overflow-hidden shadow-xl">
+          <img src="assets/images/9.png" 
+               alt="Business Systems, Zoho CRM, Automation and IT Solutions by NewHaus IT Services in Gauteng"
+               class="w-full h-full object-cover" 
+               loading="lazy" 
+               decoding="async">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- SERVICES SECTION -->
+<section id="services" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+  <div class="container mx-auto px-6">
+
+    <!-- HEADER -->
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-bold text-gray-900 mb-6">What Your Business Gets</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        We don&rsquo;t just install systems &mdash; we connect your calls, customers, and operations into one automated flow that works for you 24/7.
+      </p>
+    </div>
+
+    <!-- CARDS -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- CARD 1 -->
+      <div class="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-xl">
+        <div class="mb-6 rounded-xl overflow-hidden">
+          <img
+            src="assets/images/ways-to-automate.jpg"
+            alt="Business Operations"
+            loading="lazy"
+            class="w-full h-52 object-cover">
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Operate Like a Pro</h3>
+
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Professional email & communication setup</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Structured workflows across your business</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Clear daily operations for your team</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Systems built to scale as you grow</span></li>
+        </ul>
+
+        <p class="mt-8 text-sm text-gray-500 text-center italic">
+          Your business runs structured, professional, and ready to grow.
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-xl">
+        <div class="mb-6 rounded-xl overflow-hidden">
+          <img
+            src="assets/images/13.jfif"
+            alt="Business Dashboard"
+            loading="lazy"
+            class="w-full h-52 object-cover">
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Full Visibility</h3>
+
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Track every customer, deal, and interaction</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Real-time team activity & performance</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Central dashboards for decision-making</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Identify gaps and opportunities instantly</span></li>
+        </ul>
+
+        <p class="mt-8 text-sm text-gray-500 text-center italic">
+          Know exactly what&rsquo;s happening in your business at all times.
+        </p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-xl">
+        <div class="mb-6 rounded-xl overflow-hidden">
+          <img
+            src="assets/images/0_O.jpg"
+            alt="Workflow Automation"
+            loading="lazy"
+            class="w-full h-52 object-cover">
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Smart Automation</h3>
+
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Auto-create leads from calls and forms</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Trigger tasks, emails, and follow-ups instantly</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Move deals through your pipeline automatically</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Reduce manual work and human error</span></li>
+        </ul>
+
+        <p class="mt-8 text-sm text-gray-500 text-center italic">
+          Your business works even when you&rsquo;re not.
+        </p>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-xl">
+        <div class="mb-6 rounded-xl overflow-hidden">
+          <img
+            src="assets/images/phone.webp"
+            alt="Cloud Communication"
+            loading="lazy"
+            class="w-full h-52 object-cover">
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Always Connected</h3>
+
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Capture every call and customer interaction</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Cloud-based communication systems</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Reliable uptime and business continuity</span></li>
+          <li class="flex items-start gap-3"><span class="text-green-500 mt-1 text-lg">&#10003;</span><span>Access your system from anywhere</span></li>
+        </ul>
+
+        <p class="mt-8 text-sm text-gray-500 text-center italic">
+          Your business never misses an opportunity.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section id="pricing" class="py-20 bg-gray-100">
+  <div class="w-full px-4">
+
+    <!-- HEADER -->
+
+   <div class="text-center mb-14">
+  <h2 class="text-4xl md:text-5xl font-bold mb-4">
+    Intelligent Business Systems Built to Scale
+  </h2>
+
+  <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
+    We design and implement fully integrated business systems that combine communication, CRM, automation, IT infrastructure, and security — giving you complete control, visibility, and efficiency across your operations.
+  </p>
+
+  <p class="text-sm text-gray-500">
+    Each system is designed to work independently or as part of a complete, connected business operating environment.
+  </p>
+
+  <!-- ✅ ADD THIS LINE HERE -->
+  <p class="text-sm text-gray-500 mt-3">
+    Not sure where to start? Most clients begin with a system assessment and we design the right solution for you.
+  </p>
+
+  <p class="text-sm text-gray-500 mt-2">
+    Transparent pricing. Scalable as your business grows.
+  </p>
+
+  <p class="text-sm text-gray-500 mt-2">
+    *Pricing excludes VAT, hardware, call usage, Zoho licence fees, and custom integrations unless stated.
+  </p>
+</div>
+
+    <!-- SYSTEM LAYERS LABEL -->
+    <div class="text-center mb-10">
+      <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+        Communication &bull; CRM &bull; Automation &bull; IT Infrastructure &bull; Cybersecurity
+      </p>
+    </div>
+
+   <!-- MAIN PACKAGES -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+
+  <!-- PACKAGE 1 -->
+  <div class="bg-green-50 rounded-3xl shadow-xl p-8 text-center border-2 border-green-600 flex flex-col h-full">
+    <h3 class="text-2xl font-bold mb-2">Business Communication System</h3>
+    <p class="text-sm text-gray-500 mb-4">Professional communication with intelligent call handling</p>
+
+    <div class="text-3xl font-bold text-green-600 mb-2">From R1,999/month</div>
+    <p class="text-sm text-gray-500 mb-6">
+      Professional communication infrastructure for growing businesses
+    </p>
+
+    <ul class="text-left text-gray-600 space-y-2 mb-6">
+      <li>&#10003; Smart call routing and handling workflows</li>
+      <li>&#10003; Centralised communication across devices</li>
+      <li>&#10003; Improve response times and customer experience</li>
+      <li>&#10003; Hosted switchboard and VoIP calling</li>
+      <li>&#10003; Foundation for integrated communication systems</li>
+    </ul>
+
+    <div class="bg-green-100 p-3 rounded-lg mb-6 text-center">
+      <p class="font-semibold text-sm">Setup &amp; Configuration</p>
+      <p class="text-gray-600 text-sm">From R3,000 &ndash; R8,000 once-off</p>
+      <p class="text-gray-500 text-xs mt-1">Calls billed separately based on usage.</p>
+    </div>
+
+    <button
+      type="button"
+      class="pricing-lead-btn w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-medium transition-colors mt-auto"
+      data-package="Business Communication System"
+      data-price="From R1,999/month"
+    >
+      Get Expert Advice
+    </button>
+  </div>
+
+  <!-- PACKAGE 2 -->
+  <div class="bg-red-50 rounded-3xl shadow-xl p-8 text-center border-2 border-red-600 flex flex-col h-full">
+    <h3 class="text-2xl font-bold mb-2">Managed IT &amp; Support</h3>
+    <p class="text-sm text-gray-500 mb-4">Operational stability, system performance, and user support</p>
+
+    <div class="text-3xl font-bold text-red-600 mb-2">From R3,500/month</div>
+    <p class="text-sm text-gray-500 mb-6">
+      Managed support, monitoring, and operational stability tailored to your business size and support requirements
+    </p>
+
+    <ul class="text-left text-gray-600 space-y-2 mb-6">
+      <li>&#10003; Proactive monitoring and issue resolution</li>
+      <li>&#10003; Support for agreed users, devices, and business systems</li>
+      <li>&#10003; Performance optimisation and reliability</li>
+      <li>&#10003; Help with email, cloud tools, and access issues</li>
+      <li>&#10003; Security baseline and system integrity</li>
+    </ul>
+
+    <div class="bg-red-100 p-3 rounded-lg mb-6 text-center">
+      <p class="font-semibold text-sm">IT Setup &amp; Security Review</p>
+      <p class="text-gray-600 text-sm">From R3,000 &ndash; R20,000 once-off</p>
+      <p class="text-gray-500 text-xs mt-1">Advanced security quoted after assessment.</p>
+    </div>
+
+    <button
+      type="button"
+      class="pricing-lead-btn w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-medium transition-colors mt-auto"
+      data-package="Managed IT & Support"
+      data-price="From R3,500/month"
+    >
+      Get Expert Advice
+    </button>
+  </div>
+
+  <!-- PACKAGE 3 -->
+  <div class="bg-blue-50 rounded-3xl shadow-xl p-8 text-center border-2 border-blue-600 flex flex-col h-full">
+    <h3 class="text-2xl font-bold mb-2">Customer, Sales &amp; Automation System</h3>
+    <p class="text-sm text-gray-500 mb-4">Centralised CRM with automation and workflow intelligence</p>
+
+    <div class="text-3xl font-bold text-blue-600 mb-2">From R4,999/month</div>
+    <p class="text-sm text-gray-500 mb-6">
+      Advanced CRM, automation, and operational workflows built around your business
+    </p>
+
+    <ul class="text-left text-gray-600 space-y-2 mb-6">
+      <li>&#10003; Full visibility of leads, customers, and sales activity</li>
+      <li>&#10003; Automated follow-ups and task management</li>
+      <li>&#10003; Workflow automation to eliminate manual processes</li>
+      <li>&#10003; Manage sales, quotes, tasks, and operations</li>
+      <li>&#10003; Customised system built around your business</li>
+    </ul>
+
+    <div class="bg-blue-100 p-3 rounded-lg mb-6 text-center">
+      <p class="font-semibold text-sm">System Implementation</p>
+      <p class="text-gray-600 text-sm">From R8,000 &ndash; R35,000 once-off</p>
+      <p class="text-gray-500 text-xs mt-1">Zoho licence fees quoted separately.</p>
+    </div>
+
+    <button
+      type="button"
+      class="pricing-lead-btn w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-medium transition-colors mt-auto"
+      data-package="Customer, Sales & Automation System"
+      data-price="From R4,999/month"
+    >
+      Get Expert Advice
+    </button>
+  </div>
+
+  <!-- PACKAGE 4 -->
+  <div class="bg-purple-50 rounded-3xl shadow-2xl p-8 text-center border-2 border-purple-600 relative flex flex-col h-full">
+    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+      Recommended
+    </div>
+
+    <h3 class="text-2xl font-bold mb-2">Complete Business Operating System</h3>
+    <p class="text-sm text-gray-500 mb-4">A fully integrated system connecting your entire business</p>
+
+    <div class="text-3xl font-bold text-purple-600 mb-2">From R9,999/month</div>
+    <p class="text-sm text-gray-500 mb-6">
+      Integrated operational system connecting communication, customers, workflows, and support
+    </p>
+
+    <ul class="text-left text-gray-600 space-y-2 mb-6">
+      <li>&#10003; Communication, CRM, automation, and IT in one system</li>
+      <li>&#10003; Eliminate disconnected tools and manual workflows</li>
+      <li>&#10003; Centralised visibility across your operations</li>
+      <li>&#10003; Designed to reduce manual work and increase business performance</li>
+      <li>&#10003; Built for scalability, performance, and growth</li>
+    </ul>
+
+    <div class="bg-purple-100 p-3 rounded-lg mb-6 text-center">
+      <p class="font-semibold text-sm">Full System Deployment</p>
+      <p class="text-gray-600 text-sm">From R15,000 &ndash; R100,000+ once-off</p>
+      <p class="text-gray-500 text-xs mt-1">Best for businesses needing one connected system.</p>
+    </div>
+
+    <button
+      type="button"
+      class="pricing-lead-btn w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-medium transition-colors mt-auto"
+      data-package="Complete Business Operating System"
+      data-price="From R9,999/month"
+    >
+      Get Expert Advice
+    </button>
+  </div>
+
+  <!-- PACKAGE 5 -->
+  <div class="bg-gray-900 rounded-3xl shadow-xl p-8 text-center border-2 border-gray-900 text-white flex flex-col h-full">
+    <h3 class="text-2xl font-bold mb-2">Cybersecurity &amp; Compliance System</h3>
+    <p class="text-sm text-gray-300 mb-4">Structured security, risk management, and compliance systems</p>
+
+    <div class="text-3xl font-bold text-white mb-2">Custom Pricing</div>
+    <p class="text-sm text-gray-300 mb-6">Based on your business size, systems, and requirements</p>
+
+    <ul class="text-left text-gray-200 space-y-2 mb-6">
+      <li>&#10003; Identify risks and system vulnerabilities</li>
+      <li>&#10003; Protect data, access, and critical systems</li>
+      <li>&#10003; Compliance frameworks and governance structure</li>
+      <li>&#10003; Policies, access control, and security structure</li>
+      <li>&#10003; Continuous monitoring and improvement</li>
+    </ul>
+
+    <div class="bg-gray-800 p-3 rounded-lg mb-6 text-center">
+      <p class="font-semibold text-sm text-white">Security &amp; Compliance Review</p>
+      <p class="text-gray-300 text-sm">Risk, compliance, and protection plan</p>
+      <p class="text-gray-400 text-xs mt-1">Quoted after assessment for businesses handling customer data or growing teams.</p>
+    </div>
+
+    <button
+      type="button"
+      class="pricing-lead-btn w-full bg-white hover:bg-gray-100 text-gray-900 py-3 rounded-xl font-medium transition-colors mt-auto"
+      data-package="Cybersecurity & Compliance System"
+      data-price="Custom Pricing"
+    >
+      Get Expert Advice
+    </button>
+  </div>
+
+</div>
+
+    <!-- TRUST LINE -->
+    <div class="mt-12 text-center text-gray-600 text-sm leading-7">
+      &#10003; Designed for modern, scalable businesses<br>
+      &#10003; Built as modular or fully integrated systems<br>
+      &#10003; Focused on efficiency, automation, and performance<br>
+      &#10003; No unnecessary tools or complexity
+    </div>
+
+  </div>
+</section>
+
+    <!-- SYSTEM ASSESSMENT CTA -->
+    <div class="mt-16 bg-gradient-to-r from-indigo-600 to-purple-700 text-white rounded-3xl shadow-2xl p-10 text-center">
+      <h3 class="text-3xl md:text-4xl font-bold mb-4">
+        Not Sure Which System You Need?
+      </h3>
+
+      <p class="text-lg text-indigo-100 max-w-2xl mx-auto mb-6">
+        Get a free Business System Assessment. We&rsquo;ll review your communication, customer management, IT support, cybersecurity, and automation needs before recommending the right setup.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left max-w-4xl mx-auto mb-8">
+        <div>&#10003; Identify the right system for your business</div>
+        <div>&#10003; Review VoIP and call flow needs</div>
+        <div>&#10003; Assess Zoho and automation opportunities</div>
+        <div>&#10003; Check IT support requirements</div>
+        <div>&#10003; Estimate implementation cost</div>
+        <div>&#10003; No-obligation consultation</div>
+      </div>
+
+      <a href="/pages/system-assessment.html"
+         class="inline-block bg-white text-indigo-700 font-bold px-10 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300">
+        Get My Free System Assessment
+      </a>
+
+      <p class="text-sm text-indigo-200 mt-4">
+        Takes less than 2 minutes
+      </p>
+    </div>
+
+    <!-- HARDWARE NOTICE -->
+    <div class="mt-16 text-center max-w-3xl mx-auto">
+      <h3 class="text-2xl font-bold mb-4">Hardware, Licences &amp; Infrastructure</h3>
+      <p class="text-gray-600">
+        IP phones, routers, laptops, security tools, Zoho licences, call usage, and other third-party subscriptions are not included in base pricing.
+        These are quoted separately based on your business requirements.
+      </p>
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="container mx-auto mt-20">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold mb-3">Add-On Services</h3>
+        <p class="text-gray-600 max-w-md mx-auto">
+          Expand your system with extra users, support, communication features, and automation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- User Expansion -->
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+          <div class="h-2 bg-blue-500"></div>
+          <div class="p-8 text-center">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-blue-100 text-blue-600 text-5xl rounded-2xl">
+              <i class="fas fa-users" aria-hidden="true"></i>
+            </div>
+            <h4 class="text-2xl font-semibold mb-3">User Expansion</h4>
+            <p class="text-gray-600">Additional users, extensions, Zoho seats, access setup, and onboarding.</p>
+            <p class="text-sm font-semibold text-blue-600 mt-3">Starting from R150/user per month</p>
+          </div>
+        </div>
+
+        <!-- VoIP Add-ons -->
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+          <div class="h-2 bg-green-500"></div>
+          <div class="p-8 text-center">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-green-100 text-green-600 text-5xl rounded-2xl">
+              <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </div>
+            <h4 class="text-2xl font-semibold mb-3">VoIP Add-ons</h4>
+            <p class="text-gray-600">Call recording, extra numbers, advanced routing, IVR updates, and call reports.</p>
+            <p class="text-sm font-semibold text-green-600 mt-3">Starting from R99/month</p>
+          </div>
+        </div>
+
+        <!-- Automation -->
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+          <div class="h-2 bg-purple-500"></div>
+          <div class="p-8 text-center">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-purple-100 text-purple-600 text-5xl rounded-2xl">
+              <i class="fas fa-bolt" aria-hidden="true"></i>
+            </div>
+            <h4 class="text-2xl font-semibold mb-3">Automation Engine</h4>
+            <p class="text-gray-600">Automated workflows, reminders, follow-ups, alerts, and business processes.</p>
+            <p class="text-sm font-semibold text-purple-600 mt-3">Starting from R499/month</p>
+          </div>
+        </div>
+
+        <!-- IT Support -->
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+          <div class="h-2 bg-yellow-500"></div>
+          <div class="p-8 text-center">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-yellow-100 text-yellow-600 text-5xl rounded-2xl">
+              <i class="fas fa-tools" aria-hidden="true"></i>
+            </div>
+            <h4 class="text-2xl font-semibold mb-3">IT Support</h4>
+            <p class="text-gray-600">Remote support, troubleshooting, maintenance, user support, and technical assistance.</p>
+            <p class="text-sm font-semibold text-yellow-600 mt-3">Starting from R499/month</p>
+          </div>
+        </div>
+
+        <!-- Hardware -->
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+          <div class="h-2 bg-gray-500"></div>
+          <div class="p-8 text-center">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-gray-100 text-gray-600 text-5xl rounded-2xl">
+              <i class="fas fa-laptop" aria-hidden="true"></i>
+            </div>
+            <h4 class="text-2xl font-semibold mb-3">Hardware &amp; Devices</h4>
+            <p class="text-gray-600">IP phones, routers, laptops, headsets, security tools, and device configuration.</p>
+            <p class="text-sm font-semibold text-gray-600 mt-3">Quoted separately</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING LEAD MODAL -->
+<div id="pricingLeadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-[9999] px-3 sm:px-4 py-4">
+  <div class="bg-white rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-xl relative max-h-[calc(100dvh-2rem)] overflow-y-auto">
+    <div class="sticky top-0 z-10 bg-white border-b border-gray-100 rounded-t-2xl sm:rounded-t-3xl px-5 py-4 sm:px-8 sm:py-5 flex items-start justify-between gap-4">
+      <div>
+        <h3 class="text-2xl md:text-3xl font-bold mb-2 text-gray-900">
+          Request System Advice
+        </h3>
+
+        <p class="text-gray-600 text-sm sm:text-base">
+          Tell us what you want to improve, and we&rsquo;ll recommend the right system for your business.
+        </p>
+      </div>
+
+      <button
+        id="pricingLeadModalClose"
+        type="button"
+        class="flex-shrink-0 w-11 h-11 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 text-3xl leading-none flex items-center justify-center"
+        aria-label="Close advice request"
+      >
+        &times;
+      </button>
+    </div>
+
+    <div class="p-5 sm:p-8">
+
+    <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 mb-6">
+      <p class="text-sm text-gray-500 mb-1">Selected System</p>
+      <p id="selectedPackageName" class="font-bold text-indigo-700 text-lg"></p>
+      <p id="selectedPackagePrice" class="text-sm text-gray-600 mt-1"></p>
+    </div>
+
+    <form id="pricingLeadForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Full Name <span class="text-red-500">*</span>
+        </label>
+        <input
+          id="pricingFullName"
+          type="text"
+          required
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          placeholder="Your full name"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Email <span class="text-red-500">*</span>
+        </label>
+        <input
+          id="pricingEmail"
+          type="email"
+          required
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          placeholder="you@company.com"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Phone Number <span class="text-red-500">*</span>
+        </label>
+        <input
+          id="pricingPhone"
+          type="text"
+          required
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          placeholder="+27 64 290 3654"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Company <span class="text-red-500">*</span>
+        </label>
+        <input
+          id="pricingCompany"
+          type="text"
+          required
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          placeholder="Company name"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Business Website
+        </label>
+        <input
+          id="pricingWebsite"
+          type="text"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          placeholder="https://yourcompany.com"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          What do you want to improve most? <span class="text-red-500">*</span>
+        </label>
+        <select
+          id="pricingMainChallenge"
+          required
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        >
+          <option value="">Select one</option>
+          <option value="Generate more leads">Generate more leads</option>
+          <option value="Track customers and follow-ups">Track customers and follow-ups</option>
+          <option value="Automate manual work">Automate manual work</option>
+          <option value="Improve communication and calls">Improve communication and calls</option>
+          <option value="Improve IT reliability and security">Improve IT reliability and security</option>
+          <option value="Build a complete connected system">Build a complete connected system</option>
+          <option value="Not sure yet">Not sure yet</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Business Size
+        </label>
+        <select
+          id="pricingBusinessSize"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        >
+          <option value="">Select business size</option>
+          <option value="1-5 users">1&ndash;5 users</option>
+          <option value="6-15 users">6&ndash;15 users</option>
+          <option value="16-50 users">16&ndash;50 users</option>
+          <option value="50+ users">50+ users</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Notes
+        </label>
+        <textarea
+          id="pricingNotes"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          rows="4"
+          placeholder="Tell us briefly what is happening in your business"
+        ></textarea>
+      </div>
+
+      <div id="pricingLeadStatus" class="hidden rounded-xl p-4 text-sm font-medium"></div>
+
+      <button
+        id="pricingLeadSubmit"
+        type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold transition"
+      >
+        Submit System Advice Request
+      </button>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- Trust Section -->
+<section id="trust" class="py-16 bg-white">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Real Results</h2>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+      We help businesses reduce admin, improve response time, and close more deals using smart systems.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-gray-50 p-6 rounded-xl shadow">
+        <p class="font-semibold text-lg text-gray-900">40% Less Admin Work</p>
+        <p class="text-sm text-gray-500 mt-2">Automation reduced manual tasks significantly.</p>
+      </div>
+
+      <div class="bg-gray-50 p-6 rounded-xl shadow">
+        <p class="font-semibold text-lg text-gray-900">Faster Response Time</p>
+        <p class="text-sm text-gray-500 mt-2">VoIP and CRM improved communication.</p>
+      </div>
+
+      <div class="bg-gray-50 p-6 rounded-xl shadow">
+        <p class="font-semibold text-lg text-gray-900">Better Lead Tracking</p>
+        <p class="text-sm text-gray-500 mt-2">No more lost customer inquiries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLA Section -->
+<section id="sla" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-3 bg-blue-100 text-blue-700 px-6 py-3 rounded-full text-sm font-semibold mb-4">
+        <i class="fas fa-shield-alt"></i> OUR SLA COMMITMENT
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Response Times You Can Count On</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        NewHaus guarantees fast, professional support so your business stays productive and protected.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+        <div class="h-4 bg-red-600"></div>
+        <div class="p-8 text-center">
+          <div class="w-20 h-20 mx-auto flex items-center justify-center bg-red-100 text-red-600 rounded-2xl mb-6">
+            <i class="fas fa-exclamation-triangle text-4xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-1">Critical</h3>
+          <div class="text-red-600 font-semibold text-2xl mb-6">Within 2 Hours</div>
+          <p class="text-gray-600 leading-relaxed">
+            System outages, server failures, workflow halts, or VoIP downtime &mdash; immediate action to keep your business running.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+        <div class="h-4 bg-yellow-600"></div>
+        <div class="p-8 text-center">
+          <div class="w-20 h-20 mx-auto flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-2xl mb-6">
+            <i class="fas fa-clock text-4xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-1">High Priority</h3>
+          <div class="text-yellow-600 font-semibold text-2xl mb-6">Within 4 Business Hours</div>
+          <p class="text-gray-600 leading-relaxed">
+            Automation errors, integration failures, multi-user disruptions, or VoIP and network issues.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+        <div class="h-4 bg-blue-600"></div>
+        <div class="p-8 text-center">
+          <div class="w-20 h-20 mx-auto flex items-center justify-center bg-blue-100 text-blue-600 rounded-2xl mb-6">
+            <i class="fas fa-check-circle text-4xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-1">Standard Support</h3>
+          <div class="text-blue-600 font-semibold text-2xl mb-6">Same Business Day</div>
+          <p class="text-gray-600 leading-relaxed">
+            Routine system checks, workflow adjustments, user queries, software updates, and minor VoIP or Zoho support.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+        <div class="h-4 bg-purple-600"></div>
+        <div class="p-8 text-center">
+          <div class="w-20 h-20 mx-auto flex items-center justify-center bg-purple-100 text-purple-600 rounded-2xl mb-6">
+            <i class="fas fa-tools text-4xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-1">On-Site & Specialized</h3>
+          <div class="text-purple-600 font-semibold text-2xl mb-6">Within 24 Business Hours</div>
+          <p class="text-gray-600 leading-relaxed">
+            Complex system setups, hardware and VoIP integrations, multi-site configurations, or critical process optimization.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-20">
+      <div class="max-w-xl mx-auto bg-white rounded-3xl shadow-xl p-10">
+        <h3 class="text-3xl font-bold mb-4 text-gray-900">Stop Running Your Business Manually</h3>
+        <p class="text-lg text-gray-600 mb-8">
+          Upgrade to a fully integrated system with reliable support &mdash; so you can focus on growth instead of firefighting.
+        </p>
+        <button
+          type="button"
+          data-scroll-target="contact"
+          class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-5 rounded-2xl font-semibold text-lg shadow-xl transition-colors flex items-center gap-3 mx-auto"
+        >
+          Book My Free Consultation <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-3 bg-blue-100 text-blue-700 px-6 py-3 rounded-full text-sm font-semibold mb-4">
+        <i class="fas fa-envelope"></i> GET IN TOUCH
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Ready to Transform Your IT?</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Fill out the form below and our team will contact you shortly to discuss your business needs.
+      </p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-12 items-start">
+      <div class="lg:w-3/5 w-full">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+          <div class="p-8 pb-4">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Send us a message</h3>
           </div>
 
-          <div class="md:w-1/2">
-            <div class="rounded-2xl overflow-hidden shadow-xl">
-              <img src="assets/images/9.png" 
-                   alt="Zoho CRM and IT Business Systems by NewHaus IT Services in Gauteng"
-                   class="w-full h-full object-cover" loading="lazy">
+          <div class="px-8 pb-8">
+            <form id="contactLeadForm" class="space-y-5">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label for="contactFullName" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Full Name <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="contactFullName"
+                    type="text"
+                    class="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label for="contactCompany" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Company Name
+                  </label>
+                  <input
+                    id="contactCompany"
+                    type="text"
+                    class="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    placeholder="Enter your company name"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label for="contactEmail" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Email Address <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="contactEmail"
+                    type="email"
+                    class="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label for="contactPhone" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    id="contactPhone"
+                    type="text"
+                    class="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="contactService" class="block text-sm font-semibold text-gray-700 mb-2">
+                  Service of Interest
+                </label>
+                <select
+                  id="contactService"
+                  class="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600"
+                >
+                  <option value="">Select a service</option>
+                  <option value="IT Support">IT Support</option>
+                  <option value="VoIP">VoIP</option>
+                  <option value="Zoho CRM">Zoho CRM</option>
+                  <option value="Automation">Automation</option>
+                  <option value="Cybersecurity">Cybersecurity</option>
+                  <option value="General Enquiry">General Enquiry</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="contactMessage" class="block text-sm font-semibold text-gray-700 mb-2">
+                  Message <span class="text-red-500">*</span>
+                </label>
+                <textarea
+                  id="contactMessage"
+                  rows="6"
+                  class="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  placeholder="Tell us about your business needs"
+                  required
+                ></textarea>
+              </div>
+
+              <div id="contactLeadStatus" class="hidden rounded-xl p-4 text-sm font-medium"></div>
+
+              <button
+                id="contactLeadSubmit"
+                type="submit"
+                class="w-full bg-blue-600 text-white py-4 rounded-2xl font-semibold hover:bg-blue-700 transition-colors"
+              >
+                Send Message
+              </button>
+
+              <p class="text-xs text-gray-500 text-center">
+                We&rsquo;ll review your enquiry and get back to you shortly.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-2/5 w-full hidden lg:block">
+        <div class="sticky top-8 space-y-8">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+            <img src="assets/images/call-us.avif" alt="Contact NewHaus IT Services" class="w-full h-auto object-cover" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-8 left-8 text-white">
+              <h4 class="text-2xl font-semibold mb-1">Talk to an Expert</h4>
+              <p class="text-sm opacity-90 max-w-[220px]">Get personalised advice for your business systems</p>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-3xl p-8 shadow-2xl overflow-hidden relative">
+            <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+            <h4 class="text-2xl font-bold mb-2">Prefer to speak directly?</h4>
+            <p class="text-blue-100 mb-8 text-[15px]">Speak to our team and get a clear plan tailored to your business.</p>
+            <div class="space-y-6">
+              <a href="tel:+27642903654" class="flex items-center gap-4 group">
+                <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm text-white">
+                  <i class="fas fa-phone text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-blue-200 text-sm">Call us</p>
+                  <p class="font-semibold text-lg group-hover:underline">+27 64 290 3654</p>
+                  <p class="font-semibold text-lg group-hover:underline">+27 12 004 8359</p>
+                </div>
+              </a>
+
+              <a href="mailto:info@nhx.co.za" class="flex items-center gap-4 group">
+                <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm text-white">
+                  <i class="fas fa-envelope text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-blue-200 text-sm">Email us</p>
+                  <p class="font-semibold text-lg group-hover:underline">info@nhx.co.za</p>
+                </div>
+              </a>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm text-white">
+                  <i class="fas fa-map-marker-alt text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-blue-200 text-sm">Our Office</p>
+                  <p class="font-semibold leading-tight">1 Sullivan Street,<br>Die Hoewes, Centurion<br>Gauteng</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10">
+              <a href="tel:+27642903654" class="block w-full text-center bg-white text-blue-700 py-4 rounded-2xl font-semibold hover:bg-gray-100 transition-colors">
+                Call Now
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-  <!-- SERVICES -->
-    <div id="services-container"></div>
-
-    <!-- PRICING -->
-    <div id="pricing-container"></div>
-
-    <!-- TRUST / REAL RESULTS -->
-    <div id="trust-container"></div>
-
-    <!-- SLA SECTION -->
-    <div id="sla-container"></div> 
-
-    <!-- Contact Section -->
-    <div id="contact-container"></div> 
-
-    <!-- Blog Teaser -->
+    </div>
+  </div>
+</section><!-- Blog Teaser -->
     <section id="blog" class="py-16 bg-white">
       <div class="container mx-auto px-4" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-center mb-8">Latest Insights</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300" data-aos="zoom-in">
+          <div class="bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in">
             <h3 class="text-xl font-semibold mb-2">Top Cybersecurity Tips for 2025</h3>
             <p class="text-gray-600 mb-4">Stay ahead of threats with our expert advice.</p>
-            <a href="https://www.cisa.gov/topics/cybersecurity-best-practices" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-medium inline-block">Read More →</a>
+            <a href="https://www.cisa.gov/topics/cybersecurity-best-practices" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-medium inline-block">Read More &rarr;</a>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+          <div class="bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="100">
             <h3 class="text-xl font-semibold mb-2">Why Your Business Needs Automation</h3>
             <p class="text-gray-600 mb-4">Boost efficiency with our automation solutions.</p>
-            <a href="https://slack.com/blog/productivity/why-every-business-needs-process-automation-and-how-to-implement-it" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-medium inline-block">Read More →</a>
+            <a href="https://slack.com/blog/productivity/why-every-business-needs-process-automation-and-how-to-implement-it" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-medium inline-block">Read More &rarr;</a>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+          <div class="bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="200">
             <h3 class="text-xl font-semibold mb-2">Building a Website That Converts</h3>
             <p class="text-gray-600 mb-4">Learn the secrets to a high-performing website.</p>
-            <a href="https://www.leadpages.com/blog/how-to-design-a-website-that-converts" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-medium inline-block">Read More →</a>
+            <a href="https://www.leadpages.com/blog/how-to-design-a-website-that-converts" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-medium inline-block">Read More &rarr;</a>
           </div>
         </div>
       </div>
@@ -436,15 +1344,15 @@
         <p class="text-center text-lg mb-8">Proudly serving clients across industries with innovative IT solutions.</p>
         <div class="swiper-container-clients">
           <div class="swiper-wrapper">
-            <div class="swiper-slide text-center"><a href="/portfolio/ace"><img src="images/client-logos/ace.png" alt="Ace Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
-            <div class="swiper-slide text-center"><a href="/portfolio/bullion"><img src="images/client-logos/bullion.png" alt="Bullion Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
-            <div class="swiper-slide text-center"><a href="/portfolio/eventsboard"><img src="images/client-logos/eventsboard.jpeg" alt="EventsBoard Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
-            <div class="swiper-slide text-center"><a href="/portfolio/logo-black"><img src="images/client-logos/logo-black.jpg" alt="Logo Black Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
-            <div class="swiper-slide text-center"><a href="/portfolio/minerra"><img src="images/client-logos/minerra.png" alt="Minerra Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
-            <div class="swiper-slide text-center"><a href="/portfolio/ice-cream"><img src="images/client-logos/ice-cream.jpg" alt="Ice Cream Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
-            <div class="swiper-slide text-center"><a href="/portfolio/coffee"><img src="images/client-logos/phoenixplus.png" alt="phoenixplus Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
-            <div class="swiper-slide text-center"><a href="/portfolio/myfixer"><img src="images/client-logos/myfixer_logo.png" alt="myfixer Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
-            <div class="swiper-slide text-center"><a href="/portfolio/iba beauty spa"><img src="images/client-logos/iba.png" alt="IBA Beauty Spa Client Logo" class="client-logo mx-auto" loading="lazy"></a></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/Ace.png" alt="Ace Client Logo" class="client-logo mx-auto" loading="lazy"></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/bullion.png" alt="Bullion Client Logo" class="client-logo mx-auto" loading="lazy"></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/eventsboard.jpeg" alt="EventsBoard Client Logo" class="client-logo mx-auto" loading="lazy"></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/logo-black.jpg" alt="Logo Black Client Logo" class="client-logo mx-auto" loading="lazy"></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/minerra.png" alt="Minerra Client Logo" class="client-logo mx-auto" loading="lazy"></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/ice-cream.jpg" alt="Ice Cream Client Logo" class="client-logo mx-auto" loading="lazy"></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/phoenixplus.png" alt="phoenixplus Client Logo" class="client-logo mx-auto" loading="lazy"></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/myfixer_logo.png" alt="myfixer Client Logo" class="client-logo mx-auto" loading="lazy"></div>
+            <div class="swiper-slide text-center"><img src="images/client-logos/iba.png" alt="IBA Beauty Spa Client Logo" class="client-logo mx-auto" loading="lazy"></div>
           </div>
         </div>
       </div>
@@ -454,20 +1362,20 @@
 
   <!-- Sticky Get Started Button -->
   <button id="sticky-quote-btn" type="button" 
-          class="fixed bottom-5 right-5 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-7 py-3.5 rounded-full shadow-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 z-50 flex items-center gap-2 font-semibold">
+          class="fixed bottom-5 right-5 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-7 py-3.5 rounded-full shadow-2xl z-50 flex items-center gap-2 font-semibold">
     <i class="fas fa-rocket"></i> Get Started / Request a Quote
   </button>
 
   <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/27642903654?text=Hello%20NHX%20IT%20Services%2C%20I%20would%20like%20to%20enquire%20about%20your%20Managed%20IT%20Support."
-     target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Chat with us on WhatsApp – we usually reply very quickly">
+     target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Chat with us on WhatsApp - we usually reply very quickly">
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <!-- Contact Modal -->
   <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
     <div class="bg-white p-8 rounded-lg max-w-md mx-auto text-center relative">
-      <button type="button" class="modal-close-btn" id="contact-modal-close">×</button>
+      <button type="button" class="modal-close-btn" id="contact-modal-close">&times;</button>
       <h3 id="contact-modal-title" class="text-xl font-semibold mb-4"></h3>
       <p id="contact-modal-message" class="mb-4"></p>
     </div>
@@ -491,18 +1399,18 @@
       pagination: { el: '.swiper-pagination', clickable: true },
     });
 
-    const clientsSwiper = new Swiper('.swiper-container-clients', {
-      slidesPerView: 2,
-      spaceBetween: 5,
-      loop: true,
-      speed: 800,
-      autoplay: { delay: 3000, disableOnInteraction: false, reverseDirection: true },
-      slidesPerGroup: 2,
-      breakpoints: {
-        640: { slidesPerView: 3, slidesPerGroup: 3 },
-        1024: { slidesPerView: 4, slidesPerGroup: 4 },
-      },
-    });
+      const clientsSwiper = new Swiper('.swiper-container-clients', {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        loop: true,
+        speed: 1800,
+        autoplay: { delay: 3500, disableOnInteraction: false, reverseDirection: true },
+        slidesPerGroup: 1,
+        breakpoints: {
+          640: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 24 },
+          1024: { slidesPerView: 4, slidesPerGroup: 1, spaceBetween: 28 },
+        },
+      });
 
     // Modal handlers
     const contactModal = document.getElementById('contact-modal');
@@ -535,16 +1443,31 @@
   </script>
 
   <!-- Tawk.to -->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/699edef266da471c3290276b/1jia9dpn9';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
+  <script>
+    window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_LoadStart = new Date();
+    const isLocalPreview = ['localhost', '127.0.0.1'].includes(window.location.hostname) || window.location.protocol === 'file:';
+
+    function loadTawkChat() {
+      if (isLocalPreview) return;
+      if (document.getElementById('tawk-chat-script')) return;
+
+      const script = document.createElement('script');
+      script.id = 'tawk-chat-script';
+      script.async = true;
+      script.src = 'https://embed.tawk.to/699edef266da471c3290276b/1jia9dpn9';
+      script.charset = 'UTF-8';
+      script.setAttribute('crossorigin', '*');
+      document.body.appendChild(script);
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadTawkChat, { timeout: 4000 });
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(loadTawkChat, 1500);
+      }, { once: true });
+    }
   </script>
 
  
@@ -553,3 +1476,8 @@
   <script src="js/loader.js"></script>
 </body>
 </html>
+
+
+
+
+

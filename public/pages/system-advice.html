@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="nhx-api-base" content="" />
+  <meta name="description" content="Request system advice from NewHaus IT Services and get a recommendation for the right communication, CRM, automation, IT support, or cybersecurity system." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://nhx.co.za/pages/system-advice.html" />
+  <meta property="og:title" content="Request System Advice | NewHaus IT Services" />
+  <meta property="og:description" content="Tell us what you want to improve and we will recommend the right system for your business." />
+  <meta property="og:url" content="https://nhx.co.za/pages/system-advice.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NewHaus IT Services" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Request System Advice | NewHaus IT Services" />
+  <meta name="twitter:description" content="Get advice on the right business system for communication, customers, automation, IT, or cybersecurity." />
+
+  <title>Request System Advice | NewHaus IT Services</title>
+
+  <link rel="shortcut icon" href="/favicon_io/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="bg-gray-100 font-inter">
+  <div id="nav-container"></div>
+
+  <main class="pt-28 pb-16">
+    <section class="bg-gradient-to-r from-indigo-700 to-purple-800 text-white py-16">
+      <div class="container mx-auto px-6 max-w-4xl text-center">
+        <p class="text-sm uppercase tracking-widest text-indigo-200 font-semibold mb-4">
+          System Advice Request
+        </p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-5 leading-tight">
+          Get the Right System Recommendation
+        </h1>
+        <p class="text-lg md:text-xl text-indigo-100 max-w-3xl mx-auto">
+          Tell us what you want to improve and we will help you choose the right setup for your business.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-14">
+      <div class="container mx-auto px-6 max-w-3xl">
+        <div class="bg-white rounded-3xl shadow-xl p-8">
+          <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5 mb-8">
+            <p class="text-sm text-gray-500 mb-1">Selected System</p>
+            <p id="selectedSystemName" class="font-bold text-indigo-700 text-xl"></p>
+            <p id="selectedSystemPrice" class="text-sm text-gray-600 mt-1"></p>
+          </div>
+
+          <form id="systemAdviceForm" class="space-y-5">
+            <div>
+              <label for="adviceFullName" class="block text-sm font-semibold mb-2">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="adviceFullName"
+                type="text"
+                required
+                class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                placeholder="Your full name"
+              />
+            </div>
+
+            <div>
+              <label for="adviceEmail" class="block text-sm font-semibold mb-2">
+                Email <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="adviceEmail"
+                type="email"
+                required
+                class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                placeholder="you@company.com"
+              />
+            </div>
+
+            <div>
+              <label for="advicePhone" class="block text-sm font-semibold mb-2">
+                Phone Number <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="advicePhone"
+                type="text"
+                required
+                class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                placeholder="+27 64 290 3654"
+              />
+            </div>
+
+            <div>
+              <label for="adviceCompany" class="block text-sm font-semibold mb-2">
+                Company <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="adviceCompany"
+                type="text"
+                required
+                class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                placeholder="Company name"
+              />
+            </div>
+
+            <div>
+              <label for="adviceWebsite" class="block text-sm font-semibold mb-2">
+                Business Website
+              </label>
+              <input
+                id="adviceWebsite"
+                type="text"
+                class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                placeholder="https://yourcompany.com"
+              />
+            </div>
+
+            <div>
+              <label for="adviceMainChallenge" class="block text-sm font-semibold mb-2">
+                What do you want to improve most? <span class="text-red-500">*</span>
+              </label>
+              <select
+                id="adviceMainChallenge"
+                required
+                class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              >
+                <option value="">Select one</option>
+                <option value="Generate more leads">Generate more leads</option>
+                <option value="Track customers and follow-ups">Track customers and follow-ups</option>
+                <option value="Automate manual work">Automate manual work</option>
+                <option value="Improve communication and calls">Improve communication and calls</option>
+                <option value="Improve IT reliability and security">Improve IT reliability and security</option>
+                <option value="Build a complete connected system">Build a complete connected system</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="adviceBusinessSize" class="block text-sm font-semibold mb-2">
+                Business Size
+              </label>
+              <select
+                id="adviceBusinessSize"
+                class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              >
+                <option value="">Select business size</option>
+                <option value="1-5 users">1-5 users</option>
+                <option value="6-15 users">6-15 users</option>
+                <option value="16-50 users">16-50 users</option>
+                <option value="50+ users">50+ users</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="adviceNotes" class="block text-sm font-semibold mb-2">
+                Notes
+              </label>
+              <textarea
+                id="adviceNotes"
+                class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                rows="5"
+                placeholder="Tell us briefly what is happening in your business"
+              ></textarea>
+            </div>
+
+            <div id="systemAdviceStatus" class="hidden rounded-xl p-4 text-sm font-medium"></div>
+
+            <button
+              id="systemAdviceSubmit"
+              type="submit"
+              class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold transition disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              Submit System Advice Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../js/loader.js"></script>
+  <script>
+    const systemPackages = {
+      "communication": {
+        name: "Business Communication System",
+        price: "Starting from R999/month",
+        challenge: "Improve communication and calls"
+      },
+      "customer-sales-automation": {
+        name: "Customer, Sales & Automation System",
+        price: "Starting from R1,499/month",
+        challenge: "Track customers and follow-ups"
+      },
+      "managed-it-support": {
+        name: "Managed IT & Support",
+        price: "Starting from R2,499/month",
+        challenge: "Improve IT reliability and security"
+      },
+      "complete-business-operating-system": {
+        name: "Complete Business Operating System",
+        price: "Starting from R4,999/month",
+        challenge: "Build a complete connected system"
+      },
+      "cybersecurity-compliance": {
+        name: "Cybersecurity & Compliance System",
+        price: "Custom Pricing",
+        challenge: "Improve IT reliability and security"
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const packageKey = params.get("package") || "complete-business-operating-system";
+    const selectedSystem = systemPackages[packageKey] || systemPackages["complete-business-operating-system"];
+
+    const systemAdviceForm = document.getElementById("systemAdviceForm");
+    const systemAdviceSubmit = document.getElementById("systemAdviceSubmit");
+    const systemAdviceStatus = document.getElementById("systemAdviceStatus");
+    const selectedSystemName = document.getElementById("selectedSystemName");
+    const selectedSystemPrice = document.getElementById("selectedSystemPrice");
+    const adviceMainChallenge = document.getElementById("adviceMainChallenge");
+
+    selectedSystemName.textContent = selectedSystem.name;
+    selectedSystemPrice.textContent = selectedSystem.price;
+    adviceMainChallenge.value = selectedSystem.challenge;
+
+    function getSystemAdviceApiBaseUrl() {
+      if (typeof getApiBaseUrl === "function") {
+        return getApiBaseUrl();
+      }
+
+      if (window.location.protocol === "file:") {
+        return "http://localhost:3000";
+      }
+
+      return window.location.origin.replace(/\/$/, "");
+    }
+
+    function showAdviceStatus(message, type = "info") {
+      systemAdviceStatus.classList.remove(
+        "hidden",
+        "bg-red-100", "text-red-700",
+        "bg-green-100", "text-green-700",
+        "bg-blue-100", "text-blue-700"
+      );
+
+      if (type === "error") {
+        systemAdviceStatus.classList.add("bg-red-100", "text-red-700");
+      } else if (type === "success") {
+        systemAdviceStatus.classList.add("bg-green-100", "text-green-700");
+      } else {
+        systemAdviceStatus.classList.add("bg-blue-100", "text-blue-700");
+      }
+
+      systemAdviceStatus.innerHTML = message;
+    }
+
+    function setAdviceSubmitting(isSubmitting) {
+      systemAdviceSubmit.disabled = isSubmitting;
+      systemAdviceSubmit.textContent = isSubmitting ? "Submitting..." : "Submit System Advice Request";
+    }
+
+    systemAdviceForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const payload = {
+        formType: "System Advice Request",
+        crmLeadSource: "Website System Advice",
+        fullName: document.getElementById("adviceFullName").value.trim(),
+        email: document.getElementById("adviceEmail").value.trim(),
+        phone: document.getElementById("advicePhone").value.trim(),
+        company: document.getElementById("adviceCompany").value.trim(),
+        website: document.getElementById("adviceWebsite").value.trim(),
+        mainChallenge: adviceMainChallenge.value,
+        businessSize: document.getElementById("adviceBusinessSize").value,
+        selectedPackage: selectedSystem.name,
+        selectedPrice: selectedSystem.price,
+        packageKey,
+        notes: document.getElementById("adviceNotes").value.trim(),
+        pageUrl: window.location.href
+      };
+
+      payload.message = [
+        `Selected System: ${payload.selectedPackage}`,
+        `Selected Price: ${payload.selectedPrice}`,
+        `Main Challenge: ${payload.mainChallenge}`,
+        `Business Size: ${payload.businessSize || "Not provided"}`,
+        `Website: ${payload.website || "Not provided"}`,
+        `Notes: ${payload.notes || "Not provided"}`
+      ].join("\n");
+
+      if (!payload.fullName || !payload.email || !payload.phone || !payload.company || !payload.mainChallenge) {
+        showAdviceStatus("Please fill in your full name, email address, phone number, company, and main improvement area.", "error");
+        return;
+      }
+
+      try {
+        setAdviceSubmitting(true);
+        showAdviceStatus("Submitting your request...", "info");
+
+        const response = await fetch(`${getSystemAdviceApiBaseUrl()}/api/create-lead`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Failed to submit system advice request");
+        }
+
+        systemAdviceForm.classList.add("hidden");
+        showAdviceStatus(
+          `<div class="text-center">
+            <div class="text-xl font-bold mb-2">Thank you</div>
+            <div class="mb-2">Your system advice request has been submitted successfully.</div>
+            <div class="text-sm opacity-90 mb-5">Our team will review your details and contact you shortly.</div>
+            <a href="../index.html#pricing" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Back to Packages</a>
+          </div>`,
+          "success"
+        );
+      } catch (error) {
+        console.error("System advice submit error:", error);
+        showAdviceStatus("There was a problem submitting your request. Please try again or contact us directly.", "error");
+      } finally {
+        setAdviceSubmitting(false);
+      }
+    });
+  </script>
+</body>
+</html>
