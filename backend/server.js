@@ -1131,6 +1131,14 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    service: "newhaus-backend-api",
+    health: "/api/health"
+  });
+});
+
 /* =========================================================
    TEST ZOHO TOKEN
 ========================================================= */
