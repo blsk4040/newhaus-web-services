@@ -1,0 +1,10 @@
+[build]
+  base = "public"
+  publish = "."
+  functions = "validator"
+
+[[redirects]]
+  from = "/validator/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
