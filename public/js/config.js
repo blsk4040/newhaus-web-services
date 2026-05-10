@@ -5,7 +5,7 @@
     window.location.hostname === "127.0.0.1" ||
     window.location.protocol === "file:";
 
-  window.NHX_API_BASE = window.NHX_API_BASE || (isLocalhost ? "http://localhost:3000" : "");
+  window.NHX_API_BASE = window.NHX_API_BASE || (isLocalhost ? "http://localhost:3000" : "https://newhaus-web-services.vercel.app");
   window.NHX_STRAPI_BASE = window.NHX_STRAPI_BASE || (isLocalhost ? "http://localhost:1337" : "");
 
   window.__NHX_SERVER_URL__ = window.__NHX_SERVER_URL__ || window.NHX_API_BASE;
