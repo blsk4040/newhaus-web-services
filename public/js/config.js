@@ -6,7 +6,7 @@
     window.location.protocol === "file:";
 
   window.NHX_API_BASE = window.NHX_API_BASE || (isLocalhost ? "http://localhost:3000" : "https://newhaus-web-services.vercel.app");
-  window.NHX_STRAPI_BASE = window.NHX_STRAPI_BASE || (isLocalhost ? "http://localhost:1337" : "");
+  window.NHX_STRAPI_BASE = window.NHX_STRAPI_BASE || (isLocalhost ? "http://localhost:1337" : "https://passionate-fitness-890c46aa2c.strapiapp.com");
 
   window.__NHX_SERVER_URL__ = window.__NHX_SERVER_URL__ || window.NHX_API_BASE;
   window.__NHX_STRAPI_URL__ = window.__NHX_STRAPI_URL__ || window.NHX_STRAPI_BASE;
