@@ -1122,6 +1122,16 @@ async function saveStrapiOrderHistory(orderPayload = {}) {
 }
 
 /* =========================================================
+   HEALTH
+========================================================= */
+app.get("/api/health", (req, res) => {
+  res.json({
+    success: true,
+    service: "newhaus-backend-api"
+  });
+});
+
+/* =========================================================
    TEST ZOHO TOKEN
 ========================================================= */
 app.get("/api/test-zoho-token", async (req, res) => {
@@ -1394,6 +1404,10 @@ app.post("/api/create-order", createRateLimitMiddleware({
 ========================================================= */
 app.post("/api/shipping", shippingHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

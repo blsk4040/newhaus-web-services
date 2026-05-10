@@ -870,6 +870,7 @@
     </div>
   </div>
 
+  <script src="js/config.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
@@ -894,12 +895,14 @@
 
     const STRAPI_URL = (
       window.__NHX_STRAPI_URL__ ||
+      window.NHX_STRAPI_BASE ||
       getShopMetaContent("nhx-strapi-base") ||
       (isLocalhost ? "http://localhost:1337" : window.location.origin)
     ).replace(/\/$/, "");
 
     const SERVER_URL = (
       window.__NHX_SERVER_URL__ ||
+      window.NHX_API_BASE ||
       getShopMetaContent("nhx-api-base") ||
       (isLocalhost ? "http://localhost:3000" : window.location.origin)
     ).replace(/\/$/, "");

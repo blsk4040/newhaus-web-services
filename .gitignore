@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+
+# Build output and local tool caches
+build/
+dist/
+.cache/
+.tmp/

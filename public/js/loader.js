@@ -42,7 +42,7 @@ function getComponentVersion() {
 function getApiBaseUrl() {
   const metaValue = document.querySelector('meta[name="nhx-api-base"]')?.content?.trim();
   const runtimeValue = typeof window.NHX_API_BASE === "string" ? window.NHX_API_BASE.trim() : "";
-  const baseUrl = metaValue || runtimeValue || "";
+  const baseUrl = runtimeValue || metaValue || "";
   return baseUrl.replace(/\/$/, "");
 }
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "check": "node --check server.js && node --check routes/shipping.js"
+    "check": "node --check server.js && node --check routes/shipping.js && node --check api/index.js"
   },
   "engines": {
     "node": ">=20.0.0 <=24.x.x"
