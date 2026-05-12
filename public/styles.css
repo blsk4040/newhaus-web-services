@@ -3693,6 +3693,7 @@ body.pricing-modal-open .whatsapp-float {
   z-index: 10050 !important;
 }
 
+.shop-page #cart-panel,
 .shop-page #cart-drawer aside {
   width: min(100vw, 520px);
   max-width: 520px;
@@ -3788,6 +3789,7 @@ body.pricing-modal-open .whatsapp-float {
   inset: 0 !important;
 }
 
+.shop-page #cart-panel,
 .shop-page #cart-drawer aside {
   position: relative !important;
   right: auto !important;
@@ -3804,6 +3806,7 @@ body.pricing-modal-open .whatsapp-float {
   flex: 0 0 auto;
 }
 
+.shop-page #cart-scroll,
 .shop-page #cart-drawer aside > .flex-1,
 .shop-page #cart-drawer .flex-1.overflow-y-auto {
   flex: 1 1 auto;
@@ -3826,6 +3829,7 @@ body.pricing-modal-open .whatsapp-float {
     height: 100dvh !important;
   }
 
+  .shop-page #cart-panel,
   .shop-page #cart-drawer aside {
     width: 100vw !important;
     max-width: 100vw !important;
@@ -3838,6 +3842,7 @@ body.pricing-modal-open .whatsapp-float {
     padding: 0.95rem 1rem !important;
   }
 
+  .shop-page #cart-scroll,
   .shop-page #cart-drawer aside > .flex-1,
   .shop-page #cart-drawer .flex-1.overflow-y-auto {
     padding: 0.9rem 1rem calc(1.25rem + env(safe-area-inset-bottom)) !important;

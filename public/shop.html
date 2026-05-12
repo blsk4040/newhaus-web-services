@@ -30,7 +30,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=14" />
 
 
   <style>
@@ -736,7 +736,7 @@
 
   <div id="cart-drawer" class="fixed inset-0 z-[10020] hidden" aria-hidden="true">
     <div id="cart-overlay" class="absolute inset-0 bg-black bg-opacity-60"></div>
-    <aside class="absolute right-0 top-0 h-full w-full sm:max-w-lg bg-white shadow-2xl flex flex-col">
+    <aside id="cart-panel" class="absolute right-0 top-0 h-full w-full sm:max-w-lg bg-white shadow-2xl flex flex-col">
       <div class="p-5 border-b border-gray-200 flex items-center justify-between">
         <div>
           <h2 class="text-2xl font-bold text-gray-900">Your Cart</h2>
@@ -747,7 +747,7 @@
         </button>
       </div>
 
-      <div class="flex-1 overflow-y-auto p-5">
+      <div id="cart-scroll" class="flex-1 overflow-y-auto p-5">
         <div id="cart-items" class="space-y-4"></div>
 
         <div id="cart-empty" class="hidden text-center py-14">
@@ -1009,6 +1009,8 @@
     const floatingCartBtn = document.getElementById('floating-cart-btn');
     const cartDrawer = document.getElementById('cart-drawer');
     const cartOverlay = document.getElementById('cart-overlay');
+    const cartPanel = document.getElementById('cart-panel');
+    const cartScroll = document.getElementById('cart-scroll');
     const cartClose = document.getElementById('cart-close');
     const cartCount = document.getElementById('cart-count');
     const cartItems = document.getElementById('cart-items');
@@ -1397,7 +1399,9 @@
 
       renderCart();
       cartDrawer.classList.remove('hidden');
+      cartDrawer.style.display = 'block';
       cartDrawer.setAttribute('aria-hidden', 'false');
+      forceCartDrawerLayout();
       document.documentElement.classList.add('overflow-hidden');
       document.body.classList.add('overflow-hidden');
 
@@ -1410,9 +1414,60 @@
 
     function closeCartDrawer() {
       cartDrawer.classList.add('hidden');
+      cartDrawer.style.display = '';
       cartDrawer.setAttribute('aria-hidden', 'true');
       document.documentElement.classList.remove('overflow-hidden');
       document.body.classList.remove('overflow-hidden');
+    }
+
+    function forceCartDrawerLayout() {
+      if (!cartDrawer || !cartPanel) return;
+
+      Object.assign(cartDrawer.style, {
+        position: 'fixed',
+        inset: '0',
+        width: '100vw',
+        height: '100dvh',
+        zIndex: '10080',
+        overflow: 'hidden'
+      });
+
+      if (cartOverlay) {
+        Object.assign(cartOverlay.style, {
+          position: 'fixed',
+          inset: '0',
+          zIndex: '10081'
+        });
+      }
+
+      Object.assign(cartPanel.style, {
+        position: 'fixed',
+        top: '0',
+        right: '0',
+        bottom: '0',
+        width: window.matchMedia('(max-width: 768px)').matches ? '100vw' : 'min(100vw, 520px)',
+        maxWidth: '100vw',
+        height: '100dvh',
+        maxHeight: '100dvh',
+        background: '#ffffff',
+        zIndex: '10082',
+        display: 'flex',
+        flexDirection: 'column',
+        opacity: '1',
+        visibility: 'visible',
+        transform: 'none',
+        overflow: 'hidden'
+      });
+
+      if (cartScroll) {
+        Object.assign(cartScroll.style, {
+          flex: '1 1 auto',
+          minHeight: '0',
+          overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          overscrollBehavior: 'contain'
+        });
+      }
     }
 
     function initNavCartSync() {
