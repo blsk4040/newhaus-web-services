@@ -203,11 +203,15 @@ function getLeadTemperature(score = 0) {
 
 function calculateWebsiteLeadScore(payload = {}) {
   let score = 0;
+  const formType = normalizeLeadValue(payload.formType);
 
-  if (payload.formType === "System Assessment") score += 2;
-  if (payload.formType === "Pricing CTA") score += 1;
-  if (payload.formType === "System Advice Request") score += 1;
-  if (payload.formType === "Contact Us") score += 1;
+  if (formType === "system assessment") score += 2;
+  if (formType === "package enquiry") score += 1;
+  if (formType === "pricing cta") score += 1;
+  if (formType === "system advice request") score += 1;
+  if (formType === "contact enquiry") score += 1;
+  if (formType === "contact us") score += 1;
+  if (formType === "shop order") score += 4;
 
   score += getPackageLeadScore(payload.selectedPackage);
   score += getContactServiceLeadScore(payload.businessType);
@@ -598,28 +602,50 @@ async function sendOrderEmailsSafe(order = {}, requestId = "NO_REQ") {
 /* =========================================================
    ZOHO LEADS - FOR INDEX.HTML / WEBSITE FORMS ONLY
 ========================================================= */
-async function createZohoLead(payload) {
-  const token = await getZohoAccessToken();
+function assignZohoField(record, fieldName, value) {
+  const cleaned = cleanText(value);
+  if (cleaned) record[fieldName] = cleaned;
+}
+
+function buildZohoLeadRecord(payload, { includeCustomFields = true } = {}) {
   const { firstName, lastName } = splitFullName(payload.fullName);
 
-  const response = await axios.post(
+  const record = {
+    First_Name: firstName,
+    Last_Name: lastName || "Lead",
+    Email: payload.email,
+    Phone: payload.phone,
+    Company: payload.company || "Website Lead",
+    Lead_Source: payload.crmLeadSource || "Website",
+    Lead_Status: payload.leadStatus || "Not Contacted",
+    Lead_Temperature: payload.leadTemperature,
+    Score: payload.leadScore,
+    Description: payload.message
+  };
+
+  if (includeCustomFields) {
+    assignZohoField(record, "Form_Type", payload.formType);
+    assignZohoField(record, "Business_Type", payload.businessType);
+    assignZohoField(record, "Lead_Tracking_Method", payload.leadTracking);
+    assignZohoField(record, "Communication_Setup", payload.communication);
+    assignZohoField(record, "Automation_Level", payload.automation);
+    assignZohoField(record, "Budget_Range", payload.budget);
+    assignZohoField(record, "Urgency", payload.urgency);
+    assignZohoField(record, "Current_Tools", payload.tools);
+    assignZohoField(record, "Biggest_Challenge", payload.challenge || payload.mainChallenge || payload.problems);
+    assignZohoField(record, "Selected_Package", payload.selectedPackage);
+    assignZohoField(record, "Selected_Price", payload.selectedPrice);
+    assignZohoField(record, "Annual_Revenue", payload.revenue);
+    assignZohoField(record, "Industry", payload.industry);
+  }
+
+  return record;
+}
+
+async function postZohoLeadRecord(record, token) {
+  return axios.post(
     `${ZOHO_API_DOMAIN}/crm/v2/Leads`,
-    {
-      data: [
-        {
-          First_Name: firstName,
-          Last_Name: lastName || "Lead",
-          Email: payload.email,
-          Phone: payload.phone,
-          Company: payload.company || "Website Lead",
-          Lead_Source: payload.crmLeadSource || "Website",
-          Lead_Status: payload.leadStatus || "Not Contacted",
-          Lead_Temperature: payload.leadTemperature,
-          Score: payload.leadScore,
-          Description: payload.message
-        }
-      ]
-    },
+    { data: [record] },
     {
       headers: {
         Authorization: `Zoho-oauthtoken ${token}`,
@@ -627,8 +653,30 @@ async function createZohoLead(payload) {
       }
     }
   );
+}
 
-  return response.data;
+async function createZohoLead(payload) {
+  const token = await getZohoAccessToken();
+  const record = buildZohoLeadRecord(payload);
+
+  try {
+    const response = await postZohoLeadRecord(record, token);
+    return response.data;
+  } catch (error) {
+    const fallbackRecord = buildZohoLeadRecord(payload, { includeCustomFields: false });
+
+    if (JSON.stringify(record) === JSON.stringify(fallbackRecord)) {
+      throw error;
+    }
+
+    console.warn(
+      "Zoho lead custom fields failed. Retrying with base fields only:",
+      error?.response?.data || error.message
+    );
+
+    const response = await postZohoLeadRecord(fallbackRecord, token);
+    return response.data;
+  }
 }
 
 /* =========================================================
@@ -1409,6 +1457,9 @@ app.post("/api/create-order", createRateLimitMiddleware({
         desc += `\nSubtotal: R${formatMoney(subtotal)}`;
         desc += `\nShipping: R${formatMoney(shipping)}`;
         desc += `\nTotal: R${formatMoney(total)}`;
+        const orderedProductNames = authoritativeItems
+          .map(item => `${item.name} x${item.quantity}`)
+          .join(", ");
 
         logInfo(requestId, "Creating Zoho shop order lead", { orderNumber, email: p.email, total });
 
@@ -1427,6 +1478,8 @@ app.post("/api/create-order", createRateLimitMiddleware({
           leadTemperature: "HOT",
           leadScore: 15,
           company: p.company || "Website Shop Customer",
+          selectedPackage: orderedProductNames || "Shop Order",
+          selectedPrice: `R${formatMoney(total)}`,
           message: [
             "SHOP ORDER REQUEST - follow up as a sales opportunity.",
             "",

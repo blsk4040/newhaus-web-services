@@ -305,8 +305,8 @@ function initPricingLeadModal() {
     event.preventDefault();
 
     const payload = {
-      formType: "Pricing CTA",
-      crmLeadSource: "Website Pricing",
+      formType: "Package Enquiry",
+      crmLeadSource: "Website Package",
       fullName: document.getElementById("pricingFullName").value.trim(),
       email: document.getElementById("pricingEmail").value.trim(),
       phone: document.getElementById("pricingPhone").value.trim(),
@@ -426,7 +426,7 @@ function initContactLeadForm() {
     event.preventDefault();
 
     const payload = {
-      formType: "Contact Us",
+      formType: "Contact Enquiry",
       crmLeadSource: "Website Contact",
       fullName: document.getElementById("contactFullName").value.trim(),
       email: document.getElementById("contactEmail").value.trim(),
