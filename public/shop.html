@@ -3086,7 +3086,9 @@
           renderCart();
           cartCheckoutForm.reset();
         } else {
-          showCartStatus(escapeHtml(data.message || "Failed to submit order."), "error");
+          console.error("Checkout API error:", data);
+          const supportRef = data.requestId ? ` Reference: ${data.requestId}` : "";
+          showCartStatus(escapeHtml(`${data.message || "Failed to submit order."}${supportRef}`), "error");
         }
 
       } catch (err) {
