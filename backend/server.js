@@ -1332,11 +1332,14 @@ app.post("/api/create-order", createRateLimitMiddleware({
   maxRequests: Number(process.env.ORDER_RATE_LIMIT_MAX || 5)
 }), async (req, res) => {
   const requestId = createRequestId();
+  let checkoutStage = "received";
 
   try {
     const responsePayload = await runOrderWorkflowExclusive(async () => {
       const p = req.body || {};
       const items = Array.isArray(p.items) ? p.items : [];
+
+      checkoutStage = "validating_checkout";
 
       if (!items.length) {
         return {
@@ -1360,7 +1363,10 @@ app.post("/api/create-order", createRateLimitMiddleware({
         throw createPublicError("A valid email address is required");
       }
 
+      checkoutStage = "loading_strapi_products";
       const authoritativeItems = await buildAuthoritativeOrderItems(items);
+
+      checkoutStage = "resolving_shipping";
       const shippingSelection = resolveShippingSelection(p);
       const subtotal = authoritativeItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       const shipping = shippingSelection.shippingAmount;
@@ -1372,6 +1378,7 @@ app.post("/api/create-order", createRateLimitMiddleware({
       assertNotDuplicateOrder(fingerprint);
 
       try {
+        checkoutStage = "reserving_strapi_stock";
         stockReservations = await reserveStrapiStock(authoritativeItems);
         logInfo(requestId, "Stock reserved before downstream order processing", {
           orderNumber,
@@ -1400,6 +1407,7 @@ app.post("/api/create-order", createRateLimitMiddleware({
 
         logInfo(requestId, "Creating Zoho Sales Order", { orderNumber, email: p.email, total });
 
+        checkoutStage = "creating_zoho_sales_order";
         const result = await createZohoSalesOrder({
           ...p,
           items: authoritativeItems,
@@ -1415,6 +1423,7 @@ app.post("/api/create-order", createRateLimitMiddleware({
 
         const zohoSalesOrderId = result.salesOrder?.data?.[0]?.details?.id || "";
 
+        checkoutStage = "saving_strapi_order_history";
         const strapiOrderHistory = await saveStrapiOrderHistory({
           ...p,
           items: authoritativeItems,
@@ -1432,6 +1441,7 @@ app.post("/api/create-order", createRateLimitMiddleware({
 
         rememberOrderFingerprint(fingerprint, orderNumber);
 
+        checkoutStage = "sending_order_emails";
         const emailResults = await sendOrderEmailsSafe({
           ...p,
           items: authoritativeItems,
@@ -1444,6 +1454,7 @@ app.post("/api/create-order", createRateLimitMiddleware({
           message: desc
         }, requestId);
 
+        checkoutStage = "completed";
         logInfo(requestId, "Order completed successfully", { orderNumber, zohoSalesOrderId });
 
         return {
@@ -1474,13 +1485,14 @@ app.post("/api/create-order", createRateLimitMiddleware({
     return res.status(responsePayload.statusCode).json(responsePayload.body);
 
   } catch (err) {
-    logError(requestId, "ORDER ERROR", err);
+    logError(requestId, `ORDER ERROR at ${checkoutStage}`, err);
 
     const statusCode = err.statusCode || 500;
 
     return res.status(statusCode).json({
       success: false,
       requestId,
+      stage: checkoutStage,
       message: err.publicMessage || "Failed to submit order",
       error: getZohoErrorMessage(err)
     });

@@ -3088,7 +3088,8 @@
         } else {
           console.error("Checkout API error:", data);
           const supportRef = data.requestId ? ` Reference: ${data.requestId}` : "";
-          showCartStatus(escapeHtml(`${data.message || "Failed to submit order."}${supportRef}`), "error");
+          const failedStage = data.stage ? ` Stage: ${data.stage}.` : "";
+          showCartStatus(escapeHtml(`${data.message || "Failed to submit order."}${failedStage}${supportRef}`), "error");
         }
 
       } catch (err) {
