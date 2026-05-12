@@ -201,6 +201,85 @@ function getLeadTemperature(score = 0) {
   return "COLD";
 }
 
+function calculateWebsiteLeadScore(payload = {}) {
+  let score = 0;
+
+  if (payload.formType === "System Assessment") score += 2;
+  if (payload.formType === "Pricing CTA") score += 1;
+  if (payload.formType === "System Advice Request") score += 1;
+  if (payload.formType === "Contact Us") score += 1;
+
+  score += getPackageLeadScore(payload.selectedPackage);
+  score += getContactServiceLeadScore(payload.businessType);
+
+  const budget = normalizeLeadValue(payload.budget);
+  if (budget === "r50k+") score += 4;
+  else if (budget === "r15k - r50k") score += 3;
+  else if (budget === "r5k - r15k") score += 2;
+  else if (budget === "r1k - r5k") score += 1;
+
+  const urgency = normalizeLeadValue(payload.urgency);
+  if (urgency === "immediately") score += 4;
+  else if (urgency === "within 1 month") score += 3;
+  else if (urgency === "1-3 months") score += 2;
+
+  const companySize = normalizeLeadValue(payload.companySize);
+  if (companySize === "50+ employees") score += 4;
+  else if (companySize === "21-50 employees") score += 3;
+  else if (companySize === "11-20 employees") score += 2;
+  else if (companySize === "6-10 employees") score += 1;
+
+  const revenue = normalizeLeadValue(payload.revenue);
+  if (revenue === "r1m+") score += 4;
+  else if (revenue === "r500k - r1m") score += 3;
+  else if (revenue === "r200k - r500k") score += 2;
+  else if (revenue === "r50k - r200k") score += 1;
+
+  return score;
+}
+
+function normalizeLeadValue(value = "") {
+  return String(value || "")
+    .trim()
+    .replace(/[–—]/g, "-")
+    .replace(/\s*-\s*/g, " - ")
+    .replace(/\s+/g, " ")
+    .toLowerCase();
+}
+
+function getPackageLeadScore(selectedPackage = "") {
+  const packageName = normalizeLeadValue(selectedPackage);
+
+  const packageScores = new Map([
+    ["complete business operating system", 11],
+    ["full business os", 11],
+    ["cybersecurity & compliance system", 8],
+    ["customer, sales & automation system", 7],
+    ["business operating system", 7],
+    ["managed it & support", 7],
+    ["operations layer", 6],
+    ["business communication system", 6],
+    ["communication layer", 6]
+  ]);
+
+  return packageScores.get(packageName) || 0;
+}
+
+function getContactServiceLeadScore(service = "") {
+  const serviceName = normalizeLeadValue(service);
+
+  const serviceScores = new Map([
+    ["cybersecurity", 5],
+    ["automation", 5],
+    ["zoho crm", 5],
+    ["it support", 4],
+    ["voip", 3],
+    ["general enquiry", 0]
+  ]);
+
+  return serviceScores.get(serviceName) || 0;
+}
+
 function formatMoney(value = 0) {
   return Number(value || 0).toFixed(2);
 }
@@ -534,6 +613,7 @@ async function createZohoLead(payload) {
           Phone: payload.phone,
           Company: payload.company || "Website Lead",
           Lead_Source: payload.crmLeadSource || "Website",
+          Lead_Status: payload.leadStatus || "Not Contacted",
           Lead_Temperature: payload.leadTemperature,
           Score: payload.leadScore,
           Description: payload.message
@@ -1206,7 +1286,7 @@ app.post("/api/create-lead", createRateLimitMiddleware({
       throw createPublicError("A valid email address is required");
     }
 
-    const leadScore = calculateLeadScore(payload);
+    const leadScore = calculateWebsiteLeadScore(payload);
     const leadTemperature = getLeadTemperature(leadScore);
 
     const leadResult = await createZohoLead({
