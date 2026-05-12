@@ -1410,25 +1410,31 @@ app.post("/api/create-order", createRateLimitMiddleware({
         desc += `\nShipping: R${formatMoney(shipping)}`;
         desc += `\nTotal: R${formatMoney(total)}`;
 
-        logInfo(requestId, "Creating Zoho Sales Order", { orderNumber, email: p.email, total });
+        logInfo(requestId, "Creating Zoho shop order lead", { orderNumber, email: p.email, total });
 
-        checkoutStage = "creating_zoho_sales_order";
-        const result = await createZohoSalesOrder({
+        checkoutStage = "creating_zoho_order_lead";
+        const leadResult = await createZohoLead({
           ...p,
           items: authoritativeItems,
           subtotal,
           shippingAmount: shipping,
           total,
           orderNumber,
-          carrier: p.carrier || "FedEX",
           shippingMethod: shippingSelection.shippingMethodLabel,
           country: shippingSelection.country,
-          message: desc
-        }, stage => {
-          checkoutStage = stage;
+          crmLeadSource: p.crmLeadSource || "Website Shop",
+          leadStatus: "Not Contacted",
+          leadTemperature: "HOT",
+          leadScore: 15,
+          company: p.company || "Website Shop Customer",
+          message: [
+            "SHOP ORDER REQUEST - follow up as a sales opportunity.",
+            "",
+            desc
+          ].join("\n")
         });
 
-        const zohoSalesOrderId = result.salesOrder?.data?.[0]?.details?.id || "";
+        const zohoLeadId = leadResult?.data?.[0]?.details?.id || "";
 
         checkoutStage = "saving_strapi_order_history";
         const strapiOrderHistory = await saveStrapiOrderHistory({
@@ -1440,10 +1446,14 @@ app.post("/api/create-order", createRateLimitMiddleware({
           orderNumber,
           shippingMethod: shippingSelection.shippingMethodLabel,
           country: shippingSelection.country,
-          message: desc,
-          zohoAccountId: result.account?.id || "",
-          zohoContactId: result.contact?.id || "",
-          zohoSalesOrderId
+          message: [
+            desc,
+            "",
+            zohoLeadId ? `Zoho Lead ID: ${zohoLeadId}` : "Zoho Lead ID: Not returned"
+          ].join("\n"),
+          zohoAccountId: "",
+          zohoContactId: "",
+          zohoSalesOrderId: ""
         });
 
         rememberOrderFingerprint(fingerprint, orderNumber);
@@ -1462,7 +1472,7 @@ app.post("/api/create-order", createRateLimitMiddleware({
         }, requestId);
 
         checkoutStage = "completed";
-        logInfo(requestId, "Order completed successfully", { orderNumber, zohoSalesOrderId });
+        logInfo(requestId, "Order completed successfully", { orderNumber, zohoLeadId });
 
         return {
           statusCode: 200,
@@ -1470,14 +1480,12 @@ app.post("/api/create-order", createRateLimitMiddleware({
             success: true,
             requestId,
             orderNumber,
-            zohoLeadCreated: false,
-            zohoSalesOrderCreated: true,
-            zohoAccount: result.account,
-            zohoContact: result.contact,
-            zohoSalesOrderId,
+            zohoLeadCreated: true,
+            zohoSalesOrderCreated: false,
+            zohoLeadId,
             strapiOrderHistory,
             emailResults,
-            result: result.salesOrder
+            result: leadResult
           }
         };
       } catch (error) {
