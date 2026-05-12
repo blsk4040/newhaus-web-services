@@ -599,6 +599,117 @@ async function sendOrderEmailsSafe(order = {}, requestId = "NO_REQ") {
   return results;
 }
 
+function getLeadTypeLabel(lead = {}) {
+  return cleanText(lead.formType) || cleanText(lead.crmLeadSource) || "Website Enquiry";
+}
+
+function buildLeadSummaryText(lead = {}) {
+  const type = getLeadTypeLabel(lead);
+  const lines = [
+    `${type}`,
+    "",
+    `Name: ${lead.fullName || "Not provided"}`,
+    `Email: ${lead.email || "Not provided"}`,
+    `Phone: ${lead.phone || "Not provided"}`,
+    `Company: ${lead.company || "Not provided"}`,
+    `Lead Source: ${lead.crmLeadSource || "Website"}`,
+    `Lead Temperature: ${lead.leadTemperature || "Not scored"}`,
+    `Lead Score: ${Number.isFinite(Number(lead.leadScore)) ? lead.leadScore : "Not scored"}`,
+    lead.selectedPackage ? `Selected Package/Product: ${lead.selectedPackage}` : null,
+    lead.selectedPrice ? `Selected Price: ${lead.selectedPrice}` : null,
+    lead.businessType ? `Business Type/Service: ${lead.businessType}` : null,
+    lead.urgency ? `Urgency: ${lead.urgency}` : null,
+    lead.budget ? `Budget: ${lead.budget}` : null,
+    lead.pageUrl ? `Page URL: ${lead.pageUrl}` : null,
+    "",
+    "Message / Details:",
+    lead.message || lead.notes || lead.description || "No message provided"
+  ];
+
+  return lines.filter(line => line !== null && line !== undefined).join("\n");
+}
+
+function buildCustomerLeadEmailHtml(lead = {}) {
+  const type = getLeadTypeLabel(lead);
+
+  return `
+    <div style="font-family:Arial,sans-serif;color:#111;line-height:1.5;max-width:680px;margin:auto;">
+      <h2 style="color:#1e40af;">We received your ${type.toLowerCase()}</h2>
+      <p>Hello ${lead.fullName || "there"},</p>
+      <p>Thank you for contacting NewHaus IT Services. Our team has received your request and will get back to you shortly.</p>
+      ${lead.selectedPackage ? `<p><strong>Selected:</strong> ${lead.selectedPackage}</p>` : ""}
+      ${lead.selectedPrice ? `<p><strong>Price:</strong> ${lead.selectedPrice}</p>` : ""}
+      <p>Need urgent help? You can reply to this email or chat to us on WhatsApp.</p>
+      <p style="margin-top:24px;">Regards,<br><strong>NewHaus IT Services</strong><br>simplifying IT</p>
+    </div>
+  `;
+}
+
+async function sendCustomerLeadConfirmation(lead = {}, requestId = "NO_REQ") {
+  if (!emailEnabled()) {
+    logWarn(requestId, "Customer lead email skipped because SMTP is not configured");
+    return { sent: false, skipped: true, reason: "SMTP not configured" };
+  }
+
+  const mailer = getMailer();
+  const type = getLeadTypeLabel(lead);
+
+  const info = await mailer.sendMail({
+    from: process.env.MAIL_FROM || process.env.SMTP_USER,
+    to: lead.email,
+    subject: `NewHaus received your ${type}`,
+    text: buildLeadSummaryText(lead),
+    html: buildCustomerLeadEmailHtml(lead)
+  });
+
+  logInfo(requestId, "Customer lead confirmation email sent", { messageId: info.messageId });
+  return { sent: true, messageId: info.messageId };
+}
+
+async function sendAdminLeadNotification(lead = {}, requestId = "NO_REQ") {
+  if (!emailEnabled()) {
+    logWarn(requestId, "Admin lead email skipped because SMTP is not configured");
+    return { sent: false, skipped: true, reason: "SMTP not configured" };
+  }
+
+  const adminEmail = process.env.ADMIN_ORDER_EMAIL || process.env.SMTP_USER;
+  const mailer = getMailer();
+  const type = getLeadTypeLabel(lead);
+
+  const info = await mailer.sendMail({
+    from: process.env.MAIL_FROM || process.env.SMTP_USER,
+    to: adminEmail,
+    subject: `New Website Lead - ${type} - ${lead.fullName || lead.company || "New Lead"}`,
+    text: buildLeadSummaryText(lead)
+  });
+
+  logInfo(requestId, "Admin lead notification email sent", { messageId: info.messageId });
+  return { sent: true, messageId: info.messageId };
+}
+
+async function sendLeadEmailsSafe(lead = {}, requestId = "NO_REQ") {
+  const results = {
+    customer: null,
+    admin: null
+  };
+
+  try {
+    results.customer = await sendCustomerLeadConfirmation(lead, requestId);
+  } catch (error) {
+    logError(requestId, "Customer lead confirmation email failed", error);
+    results.customer = { sent: false, error: error.message };
+  }
+
+  try {
+    results.admin = await sendAdminLeadNotification(lead, requestId);
+  } catch (error) {
+    logError(requestId, "Admin lead notification email failed", error);
+    results.admin = { sent: false, error: error.message };
+  }
+
+  return results;
+}
+
 /* =========================================================
    ZOHO LEADS - FOR INDEX.HTML / WEBSITE FORMS ONLY
 ========================================================= */
@@ -1341,8 +1452,7 @@ app.post("/api/create-lead", createRateLimitMiddleware({
 
     const leadScore = calculateWebsiteLeadScore(payload);
     const leadTemperature = getLeadTemperature(leadScore);
-
-    const leadResult = await createZohoLead({
+    const leadPayload = {
       ...payload,
       fullName,
       email,
@@ -1352,7 +1462,10 @@ app.post("/api/create-lead", createRateLimitMiddleware({
       leadTemperature,
       crmLeadSource: payload.crmLeadSource || "Website",
       message: payload.message || payload.description || "Website form submission"
-    });
+    };
+
+    const leadResult = await createZohoLead(leadPayload);
+    const emailResults = await sendLeadEmailsSafe(leadPayload, requestId);
 
     logInfo(requestId, "Lead created successfully", { email, company });
 
@@ -1361,6 +1474,7 @@ app.post("/api/create-lead", createRateLimitMiddleware({
       requestId,
       message: "Lead created successfully",
       zohoLeadCreated: true,
+      emailResults,
       leadResult
     });
 
