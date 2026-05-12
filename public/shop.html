@@ -3089,7 +3089,8 @@
           console.error("Checkout API error:", data);
           const supportRef = data.requestId ? ` Reference: ${data.requestId}` : "";
           const failedStage = data.stage ? ` Stage: ${data.stage}.` : "";
-          showCartStatus(escapeHtml(`${data.message || "Failed to submit order."}${failedStage}${supportRef}`), "error");
+          const failedDetail = data.error ? ` Detail: ${data.error}.` : "";
+          showCartStatus(escapeHtml(`${data.message || "Failed to submit order."}${failedStage}${failedDetail}${supportRef}`), "error");
         }
 
       } catch (err) {

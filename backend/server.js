@@ -936,12 +936,16 @@ async function buildZohoProductDetails(items, token, shipping = 0) {
 /* =========================================================
    ZOHO SALES ORDER - LINKED TO ACCOUNT + CONTACT
 ========================================================= */
-async function createZohoSalesOrder(payload) {
+async function createZohoSalesOrder(payload, setStage = () => {}) {
   const token = await getZohoAccessToken();
 
+  setStage("creating_zoho_account");
   const account = await findOrCreateZohoAccount(payload, token);
+
+  setStage("creating_zoho_contact");
   const contact = await findOrCreateZohoContact(payload, account, token);
 
+  setStage("preparing_zoho_products");
   const productDetails = await buildZohoProductDetails(
     payload.items || [],
     token,
@@ -971,6 +975,7 @@ async function createZohoSalesOrder(payload) {
     Description: payload.message
   };
 
+  setStage("creating_zoho_sales_order_record");
   const res = await axios.post(
     `${ZOHO_API_DOMAIN}/crm/v2/Sales_Orders`,
     { data: [order] },
@@ -1419,6 +1424,8 @@ app.post("/api/create-order", createRateLimitMiddleware({
           shippingMethod: shippingSelection.shippingMethodLabel,
           country: shippingSelection.country,
           message: desc
+        }, stage => {
+          checkoutStage = stage;
         });
 
         const zohoSalesOrderId = result.salesOrder?.data?.[0]?.details?.id || "";
