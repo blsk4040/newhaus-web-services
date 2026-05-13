@@ -2129,7 +2129,7 @@
           </div>
 
           <div class="space-y-3">
-            <p class="text-3xl font-bold text-blue-800">R${product.price.toLocaleString()}</p>
+            <p class="product-card-price text-3xl font-bold text-blue-800">R${product.price.toLocaleString()}</p>
 
             <div class="grid grid-cols-1 gap-3">
               <button
@@ -2616,7 +2616,7 @@
           <div class="flex-1 min-w-0">
             <h3 class="font-semibold text-gray-900 line-clamp-2 mb-1">${escapeHtml(item.name)}</h3>
             <p class="text-sm text-gray-500 mb-2">${escapeHtml(item.brand)}</p>
-            <p class="font-bold text-blue-800 mb-3">R${item.price.toLocaleString()}</p>
+            <p class="related-product-price font-bold text-blue-800 mb-3">R${item.price.toLocaleString()}</p>
             <button type="button" class="related-open-btn" data-related-id="${item.id}">
               View Product
             </button>

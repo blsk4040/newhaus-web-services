@@ -198,6 +198,7 @@ function initPricingLeadModal() {
   const modal = document.getElementById("pricingLeadModal");
   const modalClose = document.getElementById("pricingLeadModalClose");
   const pricingButtons = document.querySelectorAll(".pricing-lead-btn");
+  const selectedPackageSummary = document.getElementById("selectedPackageSummary");
   const selectedPackageName = document.getElementById("selectedPackageName");
   const selectedPackagePrice = document.getElementById("selectedPackagePrice");
   const pricingLeadForm = document.getElementById("pricingLeadForm");
@@ -209,9 +210,48 @@ function initPricingLeadModal() {
     "Business Communication System": "Improve communication and calls",
     "Customer, Sales & Automation System": "Track customers and follow-ups",
     "Managed IT & Support": "Improve IT reliability and security",
+    "Strategic IT Advisory / vCIO": "Plan IT strategy and budget",
     "Complete Business Operating System": "Build a complete connected system",
     "Cybersecurity & Compliance System": "Improve IT reliability and security"
   };
+
+  const packageAccentMap = {
+    "Business Communication System": {
+      summary: ["bg-green-50", "border-green-100"],
+      name: ["text-green-700"]
+    },
+    "Managed IT & Support": {
+      summary: ["bg-red-50", "border-red-100"],
+      name: ["text-red-700"]
+    },
+    "Strategic IT Advisory / vCIO": {
+      summary: ["bg-pink-50", "border-pink-100"],
+      name: ["text-pink-700"]
+    },
+    "Customer, Sales & Automation System": {
+      summary: ["bg-blue-50", "border-blue-100"],
+      name: ["text-blue-700"]
+    },
+    "Complete Business Operating System": {
+      summary: ["bg-purple-50", "border-purple-100"],
+      name: ["text-purple-700"]
+    },
+    "Cybersecurity & Compliance System": {
+      summary: ["bg-gray-50", "border-gray-200"],
+      name: ["text-gray-900"]
+    }
+  };
+
+  const packageAccentClasses = [
+    "bg-indigo-50", "border-indigo-100", "text-indigo-700",
+    "bg-green-50", "border-green-100", "text-green-700",
+    "bg-red-50", "border-red-100", "text-red-700",
+    "bg-pink-50", "border-pink-100", "text-pink-700",
+    "bg-teal-50", "border-teal-100", "text-teal-700",
+    "bg-blue-50", "border-blue-100", "text-blue-700",
+    "bg-purple-50", "border-purple-100", "text-purple-700",
+    "bg-gray-50", "border-gray-200", "text-gray-900"
+  ];
 
   if (!modal || !pricingLeadForm || pricingButtons.length === 0) {
     return;
@@ -266,6 +306,23 @@ function initPricingLeadModal() {
     pricingLeadSubmit.textContent = isSubmitting ? "Submitting..." : "Submit System Advice Request";
   }
 
+  function applyPackageAccent(packageName) {
+    const accent = packageAccentMap[packageName] || {
+      summary: ["bg-indigo-50", "border-indigo-100"],
+      name: ["text-indigo-700"]
+    };
+
+    if (selectedPackageSummary) {
+      selectedPackageSummary.classList.remove(...packageAccentClasses);
+      selectedPackageSummary.classList.add(...accent.summary);
+    }
+
+    if (selectedPackageName) {
+      selectedPackageName.classList.remove(...packageAccentClasses);
+      selectedPackageName.classList.add(...accent.name);
+    }
+  }
+
   pricingButtons.forEach((button) => {
     button.addEventListener("click", () => {
       selectedPackage = button.dataset.package || "";
@@ -273,6 +330,7 @@ function initPricingLeadModal() {
 
       if (selectedPackageName) selectedPackageName.textContent = selectedPackage;
       if (selectedPackagePrice) selectedPackagePrice.textContent = selectedPrice;
+      applyPackageAccent(selectedPackage);
 
       pricingLeadStatus.classList.add("hidden");
       pricingLeadForm.reset();

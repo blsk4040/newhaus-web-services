@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="nhx-api-base" content="" />
-  <meta name="description" content="Complete a free business system assessment and get a tailored recommendation for CRM, VoIP, IT support, automation, and business operations." />
+  <meta name="description" content="Complete a free business system assessment and get a tailored recommendation for CRM, VoIP, Microsoft 365, Azure, backups, IT support, cybersecurity, automation, and business operations." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nhx.co.za/pages/system-assessment.html" />
   <meta property="og:title" content="Free Business System Assessment | NewHaus IT Services" />
-  <meta property="og:description" content="Get a tailored recommendation for your business systems, communication, IT support, and automation needs." />
+  <meta property="og:description" content="Get a tailored recommendation for your business systems, communication, Microsoft 365, IT support, backups, cybersecurity, and automation needs." />
   <meta property="og:url" content="https://nhx.co.za/pages/system-assessment.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="NewHaus IT Services" />
@@ -38,7 +38,7 @@
       </h1>
 
       <p class="text-lg md:text-xl text-indigo-100 mb-6">
-        We design the right setup for your communication, customers, IT, and automation so your business runs smoothly and grows faster.
+        We design the right setup for your communication, customers, Microsoft 365, backups, IT, security, and automation so your business runs smoothly and grows faster.
       </p>
 
       <p class="text-sm text-indigo-200">
@@ -185,6 +185,10 @@
                 <option>Not sure yet</option>
                 <option>VoIP / Business phone system</option>
                 <option>Zoho setup and support</option>
+                <option>Microsoft 365 / Azure management</option>
+                <option>Backup and disaster recovery</option>
+                <option>Strategic IT advisory / vCIO</option>
+                <option>Security awareness training</option>
                 <option>Customer and sales management</option>
                 <option>Automation and workflows</option>
                 <option>General IT support</option>
@@ -247,6 +251,54 @@
                 <option>We use an external IT provider</option>
                 <option>We need better IT support</option>
                 <option>Not sure</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="cloudTools" class="block text-sm font-semibold mb-2">Which cloud or business tools do you currently use?</label>
+              <select id="cloudTools" class="w-full border rounded-xl p-3">
+                <option>Microsoft 365 / Outlook / Teams</option>
+                <option>Google Workspace / Gmail</option>
+                <option>Zoho</option>
+                <option>SharePoint / OneDrive</option>
+                <option>Azure</option>
+                <option>Mix of different tools</option>
+                <option>None / Not sure</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="backupStatus" class="block text-sm font-semibold mb-2">Do you currently have backups in place?</label>
+              <select id="backupStatus" class="w-full border rounded-xl p-3">
+                <option>Not sure</option>
+                <option>No backups</option>
+                <option>Cloud backups only</option>
+                <option>Server / device backups</option>
+                <option>We have backups but do not test them</option>
+                <option>Backups are tested regularly</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="itPlanning" class="block text-sm font-semibold mb-2">Do you need help with IT planning or budgeting?</label>
+              <select id="itPlanning" class="w-full border rounded-xl p-3">
+                <option>Not sure</option>
+                <option>Yes, we need strategic IT guidance</option>
+                <option>We need vendor and licence cost control</option>
+                <option>We need a technology roadmap</option>
+                <option>We need risk and continuity planning</option>
+                <option>Not right now</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="securityTraining" class="block text-sm font-semibold mb-2">Do your staff receive cybersecurity awareness training?</label>
+              <select id="securityTraining" class="w-full border rounded-xl p-3">
+                <option>Not sure</option>
+                <option>No training</option>
+                <option>Once-off training</option>
+                <option>Regular training</option>
+                <option>Only when there is a security issue</option>
               </select>
             </div>
 
@@ -377,6 +429,10 @@
         `Lead Tracking: ${payload.leadTracking}`,
         `Communication Setup: ${payload.communication}`,
         `IT Support: ${payload.itSupport}`,
+        `Cloud / Business Tools: ${payload.cloudTools}`,
+        `Backup Status: ${payload.backupStatus}`,
+        `IT Planning / Budgeting: ${payload.itPlanning}`,
+        `Security Awareness Training: ${payload.securityTraining}`,
         `Automation Level: ${payload.automation}`,
         `Budget: ${payload.budget}`,
         `Urgency: ${payload.urgency}`,
@@ -466,6 +522,10 @@
         leadTracking: document.getElementById("leadTracking").value,
         communication: document.getElementById("communication").value,
         itSupport: document.getElementById("itSupport").value,
+        cloudTools: document.getElementById("cloudTools").value,
+        backupStatus: document.getElementById("backupStatus").value,
+        itPlanning: document.getElementById("itPlanning").value,
+        securityTraining: document.getElementById("securityTraining").value,
         automation: document.getElementById("automation").value,
         budget: document.getElementById("budget").value,
         urgency: document.getElementById("urgency").value,

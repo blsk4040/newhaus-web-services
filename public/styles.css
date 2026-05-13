@@ -3518,6 +3518,18 @@ body.pricing-modal-open .whatsapp-float {
   min-height: 340px;
 }
 
+.shop-page .product-card-price {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.shop-page .related-product-price {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
 .shop-page .product-chip {
   max-width: 100%;
   white-space: nowrap;
