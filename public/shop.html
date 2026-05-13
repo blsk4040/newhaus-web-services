@@ -34,7 +34,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="styles.css?v=20" />
 
 
   <style>
@@ -60,11 +60,15 @@
 
       <!-- SLIDE 1 -->
       <div class="swiper-slide relative h-full">
-        <img
-          src="/assets/images/shop-hero/shop-hero-laptops.png"
-          alt="Refurbished Laptops"
-          class="shop-hero-img shop-hero-img-1"
-        >
+        <picture class="shop-hero-picture">
+          <source media="(max-width: 768px)" srcset="assets/images/shop-hero/shop-hero-laptops-mobile.png">
+          <img
+            src="assets/images/shop-hero/shop-hero-laptops.png"
+            alt="Refurbished Laptops"
+            class="shop-hero-img shop-hero-img-1"
+            fetchpriority="high"
+          >
+        </picture>
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="text-center px-6 hero-text">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Refurbished Laptops</h1>
@@ -77,11 +81,15 @@
 
       <!-- SLIDE 2 -->
       <div class="swiper-slide relative h-full">
-        <img
-          src="/assets/images/shop-hero/shop-hero-accessories.png"
-          alt="Accessories"
-          class="shop-hero-img shop-hero-img-2"
-        >
+        <picture class="shop-hero-picture">
+          <source media="(max-width: 768px)" srcset="assets/images/shop-hero/shop-hero-accessories-mobile.png">
+          <img
+            src="assets/images/shop-hero/shop-hero-accessories.png"
+            alt="Accessories"
+            class="shop-hero-img shop-hero-img-2"
+            loading="lazy"
+          >
+        </picture>
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="text-center px-6 hero-text">
             <h2 class="text-4xl md:text-6xl font-bold mb-4">High-Quality Accessories</h2>
@@ -94,11 +102,15 @@
 
       <!-- SLIDE 3 -->
       <div class="swiper-slide relative h-full">
-        <img
-          src="/assets/images/shop-hero/shop-hero-conference.png"
-          alt="Conference Phones"
-          class="shop-hero-img shop-hero-img-3"
-        >
+        <picture class="shop-hero-picture">
+          <source media="(max-width: 768px)" srcset="assets/images/shop-hero/shop-hero-conference-mobile.png">
+          <img
+            src="assets/images/shop-hero/shop-hero-conference.png"
+            alt="Conference Phones"
+            class="shop-hero-img shop-hero-img-3"
+            loading="lazy"
+          >
+        </picture>
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="text-center px-6 hero-text">
             <h2 class="text-4xl md:text-6xl font-bold mb-4">Conference Phones</h2>
@@ -111,11 +123,15 @@
 
       <!-- SLIDE 4 -->
       <div class="swiper-slide relative h-full">
-        <img
-          src="/assets/images/shop-hero/shop-hero-voip.png"
-          alt="Business VoIP Communication"
-          class="shop-hero-img shop-hero-img-4"
-        >
+        <picture class="shop-hero-picture">
+          <source media="(max-width: 768px)" srcset="assets/images/shop-hero/shop-hero-voip-mobile.png">
+          <img
+            src="assets/images/shop-hero/shop-hero-voip.png"
+            alt="Business VoIP Communication"
+            class="shop-hero-img shop-hero-img-4"
+            loading="lazy"
+          >
+        </picture>
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="text-center px-6 hero-text">
             <h2 class="text-4xl md:text-6xl font-bold mb-4">Business VoIP Solutions</h2>
@@ -128,11 +144,15 @@
 
       <!-- SLIDE 5 -->
       <div class="swiper-slide relative h-full">
-        <img
-          src="/assets/images/shop-hero/shop-hero-headsets.png"
-          alt="Professional Headsets"
-          class="shop-hero-img shop-hero-img-5"
-        >
+        <picture class="shop-hero-picture">
+          <source media="(max-width: 768px)" srcset="assets/images/shop-hero/shop-hero-headsets-mobile.png">
+          <img
+            src="assets/images/shop-hero/shop-hero-headsets.png"
+            alt="Professional Headsets"
+            class="shop-hero-img shop-hero-img-5"
+            loading="lazy"
+          >
+        </picture>
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="text-center px-6 hero-text">
             <h2 class="text-4xl md:text-6xl font-bold mb-4">Professional Headsets</h2>
