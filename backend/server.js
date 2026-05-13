@@ -18,6 +18,12 @@ const DUPLICATE_ORDER_WINDOW_MS = Number(process.env.DUPLICATE_ORDER_WINDOW_MS |
 const recentOrders = new Map();
 let orderWorkflowQueue = Promise.resolve();
 const rateLimitBuckets = new Map();
+const SHOP_CACHE_TTL_MS = Number(process.env.SHOP_CACHE_TTL_MS || 5 * 60 * 1000);
+const SHOP_CACHE_STALE_SECONDS = Number(process.env.SHOP_CACHE_STALE_SECONDS || 10 * 60);
+const shopDataCache = {
+  products: { data: null, expiresAt: 0, promise: null },
+  categories: { data: null, expiresAt: 0, promise: null }
+};
 
 /* =========================================================
    CORS
@@ -111,6 +117,71 @@ function getClientIp(req) {
     req.socket?.remoteAddress ||
     "unknown"
   );
+}
+
+function getShopStrapiUrl() {
+  const strapiUrl = process.env.STRAPI_URL;
+
+  if (!strapiUrl) {
+    throw new Error("Missing STRAPI_URL in environment");
+  }
+
+  return strapiUrl.replace(/\/$/, "");
+}
+
+function getShopStrapiHeaders() {
+  const token = process.env.STRAPI_API_TOKEN;
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+async function fetchCachedShopData(cacheKey, strapiPath) {
+  const cacheEntry = shopDataCache[cacheKey];
+  const now = Date.now();
+
+  if (cacheEntry.data && cacheEntry.expiresAt > now) {
+    return {
+      cacheStatus: "HIT",
+      data: cacheEntry.data
+    };
+  }
+
+  if (!cacheEntry.promise) {
+    const strapiUrl = getShopStrapiUrl();
+
+    cacheEntry.promise = axios.get(`${strapiUrl}${strapiPath}`, {
+      headers: getShopStrapiHeaders(),
+      timeout: Number(process.env.SHOP_CACHE_FETCH_TIMEOUT_MS || 15000)
+    }).then(response => {
+      cacheEntry.data = response.data;
+      cacheEntry.expiresAt = Date.now() + SHOP_CACHE_TTL_MS;
+      return cacheEntry.data;
+    }).finally(() => {
+      cacheEntry.promise = null;
+    });
+  }
+
+  try {
+    const data = await cacheEntry.promise;
+    return {
+      cacheStatus: "MISS",
+      data
+    };
+  } catch (error) {
+    if (cacheEntry.data) {
+      return {
+        cacheStatus: "STALE",
+        data: cacheEntry.data
+      };
+    }
+
+    throw error;
+  }
+}
+
+function sendShopCacheResponse(res, result) {
+  res.setHeader("Cache-Control", `public, max-age=60, s-maxage=${Math.round(SHOP_CACHE_TTL_MS / 1000)}, stale-while-revalidate=${SHOP_CACHE_STALE_SECONDS}`);
+  res.setHeader("X-NHX-Cache", result.cacheStatus);
+  return res.json(result.data);
 }
 
 function createRateLimitMiddleware({ key, windowMs, maxRequests }) {
@@ -1381,6 +1452,43 @@ app.get("/", (req, res) => {
     service: "newhaus-backend-api",
     health: "/api/health"
   });
+});
+
+/* =========================================================
+   SHOP CACHE ENDPOINTS
+========================================================= */
+app.get("/api/products-cache", async (req, res) => {
+  const requestId = createRequestId();
+
+  try {
+    const result = await fetchCachedShopData("products", "/api/products?populate=*");
+    return sendShopCacheResponse(res, result);
+  } catch (error) {
+    logError(requestId, "PRODUCTS CACHE ERROR", error);
+
+    return res.status(502).json({
+      success: false,
+      requestId,
+      message: "Failed to load cached products"
+    });
+  }
+});
+
+app.get("/api/categories-cache", async (req, res) => {
+  const requestId = createRequestId();
+
+  try {
+    const result = await fetchCachedShopData("categories", "/api/categories");
+    return sendShopCacheResponse(res, result);
+  } catch (error) {
+    logError(requestId, "CATEGORIES CACHE ERROR", error);
+
+    return res.status(502).json({
+      success: false,
+      requestId,
+      message: "Failed to load cached categories"
+    });
+  }
 });
 
 /* =========================================================

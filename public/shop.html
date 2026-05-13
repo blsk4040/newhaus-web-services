@@ -24,6 +24,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="/favicon_io/site.webmanifest">
+  <link rel="preconnect" href="https://api.nhx.co.za" crossorigin>
+  <link rel="dns-prefetch" href="//api.nhx.co.za">
+  <link rel="preconnect" href="https://passionate-fitness-890c46aa2c.strapiapp.com" crossorigin>
+  <link rel="dns-prefetch" href="//passionate-fitness-890c46aa2c.strapiapp.com">
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -907,7 +911,13 @@
       (isLocalhost ? "http://localhost:3000" : window.location.origin)
     ).replace(/\/$/, "");
 
-    const PRODUCTS_API = `${STRAPI_URL}/api/products?populate=*`;
+    const PRODUCTS_DIRECT_API = `${STRAPI_URL}/api/products?populate=*`;
+    const CATEGORIES_DIRECT_API = `${STRAPI_URL}/api/categories`;
+    const PRODUCTS_API = `${SERVER_URL}/api/products-cache`;
+    const CATEGORIES_API = `${SERVER_URL}/api/categories-cache`;
+    const SHOP_PRODUCTS_CACHE_KEY = 'newhaus_shop_products_cache_v2';
+    const SHOP_CATEGORIES_CACHE_KEY = 'newhaus_shop_categories_cache_v2';
+    const SHOP_BROWSER_CACHE_MAX_AGE_MS = 6 * 60 * 60 * 1000;
 
     const productGrid = document.getElementById('product-grid');
     const searchInput = document.getElementById('search');
@@ -1151,6 +1161,51 @@
     function getCategoryNames(product, categoryMap) {
       const slugs = getCategorySlugs(product);
       return slugs.map(slug => categoryMap.get(slug) || slug);
+    }
+
+    function readShopCache(key) {
+      try {
+        const cached = JSON.parse(localStorage.getItem(key) || "null");
+        if (!cached || !cached.savedAt || !cached.data) return null;
+        if (Date.now() - Number(cached.savedAt) > SHOP_BROWSER_CACHE_MAX_AGE_MS) return null;
+        return cached.data;
+      } catch (error) {
+        console.warn("Failed to read shop cache:", error);
+        return null;
+      }
+    }
+
+    function writeShopCache(key, data) {
+      try {
+        localStorage.setItem(key, JSON.stringify({
+          savedAt: Date.now(),
+          data
+        }));
+      } catch (error) {
+        console.warn("Failed to write shop cache:", error);
+      }
+    }
+
+    async function fetchJsonWithFallback(primaryUrl, fallbackUrl) {
+      try {
+        const primaryResponse = await fetch(primaryUrl);
+
+        if (!primaryResponse.ok) {
+          throw new Error(`Primary request failed with status ${primaryResponse.status}`);
+        }
+
+        return await primaryResponse.json();
+      } catch (primaryError) {
+        console.warn("Primary shop API failed, falling back to Strapi:", primaryError);
+
+        const fallbackResponse = await fetch(fallbackUrl);
+
+        if (!fallbackResponse.ok) {
+          throw new Error(`Fallback request failed with status ${fallbackResponse.status}`);
+        }
+
+        return await fallbackResponse.json();
+      }
     }
 
     function escapeHtml(value = "") {
@@ -1710,19 +1765,42 @@
       `;
     }
 
+    function normalizeCategories(json) {
+      return (json.data || []).map(cat => ({
+        id: cat.id,
+        name: cat.name || cat.attributes?.name || "Unnamed Category",
+        slug: cat.slug || cat.attributes?.slug || "uncategorized",
+        count: 0
+      }));
+    }
+
+    function applyCategoriesData(nextCategories = []) {
+      categoriesData = nextCategories;
+      renderCategoryFilters();
+
+      if (productData.length) {
+        updateCategoryCounts();
+      }
+    }
+
+    function loadCachedCategories() {
+      const cachedCategories = readShopCache(SHOP_CATEGORIES_CACHE_KEY);
+
+      if (!Array.isArray(cachedCategories) || cachedCategories.length === 0) {
+        return false;
+      }
+
+      applyCategoriesData(cachedCategories);
+      return true;
+    }
+
     async function fetchCategories() {
       try {
-        const res = await fetch(`${STRAPI_URL}/api/categories`);
-        const json = await res.json();
+        const json = await fetchJsonWithFallback(CATEGORIES_API, CATEGORIES_DIRECT_API);
+        const nextCategories = normalizeCategories(json);
 
-        categoriesData = (json.data || []).map(cat => ({
-          id: cat.id,
-          name: cat.name || cat.attributes?.name || "Unnamed Category",
-          slug: cat.slug || cat.attributes?.slug || "uncategorized",
-          count: 0
-        }));
-
-        renderCategoryFilters();
+        applyCategoriesData(nextCategories);
+        writeShopCache(SHOP_CATEGORIES_CACHE_KEY, nextCategories);
       } catch (err) {
         console.error("Failed to load categories:", err);
       }
@@ -1877,7 +1955,46 @@
       );
     }
 
-    async function smartFetchProducts(force = false) {
+    function applyProductData(nextProducts = [], options = {}) {
+      const {
+        resetPage = true,
+        openUrlProduct = true
+      } = options;
+
+      productData = nextProducts;
+      lastProductSnapshot = buildProductSnapshot(nextProducts);
+
+      updateCategoryCounts();
+      buildBrandData();
+      applyFiltersAndSort(resetPage);
+
+      if (openUrlProduct) {
+        const productIdFromUrl = getProductIdFromUrl();
+        if (productIdFromUrl) {
+          const matched = productData.find(p => String(p.id) === String(productIdFromUrl));
+          if (matched) {
+            openProductDetail(matched, false);
+          }
+        }
+      }
+    }
+
+    function loadCachedProducts() {
+      const cachedProducts = readShopCache(SHOP_PRODUCTS_CACHE_KEY);
+
+      if (!Array.isArray(cachedProducts) || cachedProducts.length === 0) {
+        return false;
+      }
+
+      applyProductData(cachedProducts, {
+        resetPage: true,
+        openUrlProduct: true
+      });
+
+      return true;
+    }
+
+    async function smartFetchProducts(force = false, preloadedProductsJson = null) {
       const hasExistingProducts = Array.isArray(productData) && productData.length > 0;
       const shouldRespectRefreshWindow = !force && hasExistingProducts && Date.now() - lastFetchTime < MIN_REFRESH;
 
@@ -1893,13 +2010,7 @@
           showLoading();
         }
 
-        const res = await fetch(PRODUCTS_API, { cache: "no-store" });
-
-        if (!res.ok) {
-          throw new Error(`Products API failed with status ${res.status}`);
-        }
-
-        const json = await res.json();
+        const json = preloadedProductsJson || await fetchJsonWithFallback(PRODUCTS_API, PRODUCTS_DIRECT_API);
         const categoryMap = new Map(categoriesData.map(cat => [cat.slug, cat.name]));
 
         const newData = (json.data || []).map((item, index) => {
@@ -2022,8 +2133,11 @@
           return;
         }
 
-        productData = newData;
-        lastProductSnapshot = newSnapshot;
+        writeShopCache(SHOP_PRODUCTS_CACHE_KEY, newData);
+        applyProductData(newData, {
+          resetPage: !hasExistingProducts,
+          openUrlProduct: true
+        });
 
         console.table(productData.map(product => ({
           id: product.id,
@@ -2033,17 +2147,6 @@
           stockState: getStockState(product).key
         })));
 
-        updateCategoryCounts();
-        buildBrandData();
-        applyFiltersAndSort(!hasExistingProducts);
-
-        const productIdFromUrl = getProductIdFromUrl();
-        if (productIdFromUrl) {
-          const matched = productData.find(p => String(p.id) === String(productIdFromUrl));
-          if (matched) {
-            openProductDetail(matched, false);
-          }
-        }
       } catch (err) {
         console.error("Smart fetch error:", err);
 
@@ -3460,7 +3563,26 @@
       }
     });
 
-    fetchCategories().then(() => smartFetchProducts(true));
+    async function initializeShopData() {
+      loadCachedCategories();
+      const renderedCachedProducts = loadCachedProducts();
+
+      if (!renderedCachedProducts) {
+        showLoading();
+      }
+
+      const categoriesPromise = fetchCategories();
+      const productsPromise = fetchJsonWithFallback(PRODUCTS_API, PRODUCTS_DIRECT_API)
+        .catch(error => {
+          console.warn("Initial products warmup failed, smart fetch will retry:", error);
+          return null;
+        });
+
+      await categoriesPromise;
+      await smartFetchProducts(true, await productsPromise);
+    }
+
+    initializeShopData();
 
   </script>
   
