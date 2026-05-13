@@ -3298,8 +3298,8 @@ body.pricing-modal-open .whatsapp-float {
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(circle at center, rgba(15, 23, 42, 0.18), rgba(0, 0, 0, 0.66)),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.7));
+    radial-gradient(circle at center, rgba(15, 23, 42, 0.04), rgba(0, 0, 0, 0.26)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.34));
   pointer-events: none;
 }
 
@@ -3322,26 +3322,27 @@ body.pricing-modal-open .whatsapp-float {
   margin: 0 auto;
   padding: clamp(1.25rem, 4vw, 2.5rem);
   border-radius: clamp(18px, 3vw, 30px);
-  background: rgba(2, 6, 23, 0.64);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.36);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: rgba(2, 6, 23, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.24);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
-.shop-page #shop-hero h1 {
+.shop-page #shop-hero h1,
+.shop-page #shop-hero h2 {
   font-size: clamp(2rem, 5vw, 4rem) !important;
   line-height: 1.08 !important;
   margin-bottom: 0.75rem;
-  color: #fff !important;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.85);
+  color: #ffffff !important;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.72);
 }
 
 .shop-page #shop-hero p {
   font-size: clamp(1rem, 2vw, 1.35rem) !important;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.95) !important;
-  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.8);
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 /* ---------- TRUST STRIP ---------- */
@@ -3375,6 +3376,9 @@ body.pricing-modal-open .whatsapp-float {
 }
 
 .shop-page .featured-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   min-height: 230px;
   height: 100%;
   padding: clamp(1.35rem, 3vw, 2rem);
@@ -3392,6 +3396,11 @@ body.pricing-modal-open .whatsapp-float {
 
 .shop-page .featured-banner p {
   font-size: clamp(0.95rem, 1.5vw, 1rem);
+}
+
+.shop-page .featured-banner-link {
+  align-self: center;
+  margin-top: auto;
 }
 
 /* ---------- SEARCH / SORT / SUMMARY ---------- */
@@ -3940,8 +3949,31 @@ body.pricing-modal-open .whatsapp-float {
   }
 
   .shop-page #shop-hero {
-    height: 560px;
-    min-height: 560px;
+    height: clamp(380px, 58vw, 520px);
+    min-height: clamp(380px, 58vw, 520px);
+  }
+
+  .shop-page #shop-hero .swiper-slide {
+    background: #07111f;
+  }
+
+  .shop-page #shop-hero .shop-hero-img {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .shop-page #shop-hero .shop-hero-img-1 {
+    object-position: 48% center;
+  }
+
+  .shop-page #shop-hero .shop-hero-img-2 {
+    object-position: 52% center;
+  }
+
+  .shop-page #shop-hero .shop-hero-img-3,
+  .shop-page #shop-hero .shop-hero-img-4,
+  .shop-page #shop-hero .shop-hero-img-5 {
+    object-position: center center;
   }
 
   .shop-page #shop-hero .hero-text {
@@ -3950,7 +3982,8 @@ body.pricing-modal-open .whatsapp-float {
     border-radius: 22px;
   }
 
-  .shop-page #shop-hero h1 {
+  .shop-page #shop-hero h1,
+  .shop-page #shop-hero h2 {
     font-size: 2rem !important;
   }
 
@@ -4164,8 +4197,8 @@ body.pricing-modal-open .whatsapp-float {
   }
 
   .shop-page #shop-hero {
-    height: 500px;
-    min-height: 500px;
+    height: clamp(340px, 92vw, 430px);
+    min-height: clamp(340px, 92vw, 430px);
   }
 
   .shop-page #shop-hero .hero-text {
@@ -4173,7 +4206,8 @@ body.pricing-modal-open .whatsapp-float {
     border-radius: 18px;
   }
 
-  .shop-page #shop-hero h1 {
+  .shop-page #shop-hero h1,
+  .shop-page #shop-hero h2 {
     font-size: 1.65rem !important;
   }
 
@@ -4344,7 +4378,8 @@ body.pricing-modal-open .whatsapp-float {
 
 /* ---------- VERY SMALL MOBILE ---------- */
 @media (max-width: 360px) {
-  .shop-page #shop-hero h1 {
+  .shop-page #shop-hero h1,
+  .shop-page #shop-hero h2 {
     font-size: 1.45rem !important;
   }
 
