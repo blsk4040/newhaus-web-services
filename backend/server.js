@@ -375,6 +375,15 @@ function cleanText(value = "") {
   return String(value || "").trim();
 }
 
+function escapeHtml(value = "") {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function isValidEmail(value = "") {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
 }
@@ -700,20 +709,147 @@ function buildLeadSummaryText(lead = {}) {
   return lines.filter(line => line !== null && line !== undefined).join("\n");
 }
 
-function buildCustomerLeadEmailHtml(lead = {}) {
-  const type = getLeadTypeLabel(lead);
+function getLeadEmailValue(value, fallback = "Not provided") {
+  let normalized = value;
 
+  if (Array.isArray(value)) {
+    normalized = value.map(item => getLeadEmailValue(item, "")).filter(Boolean).join(", ");
+  } else if (value && typeof value === "object") {
+    normalized = value.name || value.title || value.label || value.value || "";
+
+    if (!normalized) {
+      try {
+        normalized = JSON.stringify(value, null, 2);
+      } catch {
+        normalized = "";
+      }
+    }
+  }
+
+  const cleaned = cleanText(normalized);
+  return cleaned || fallback;
+}
+
+function buildEmailFieldRows(fields = []) {
+  return fields
+    .filter(field => field && field.value !== null && field.value !== undefined && getLeadEmailValue(field.value, ""))
+    .map(field => `
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid #e5e7eb;color:#64748b;font-size:13px;width:38%;">${escapeHtml(field.label)}</td>
+        <td style="padding:10px 12px;border-bottom:1px solid #e5e7eb;color:#0f172a;font-size:14px;font-weight:600;">${escapeHtml(getLeadEmailValue(field.value))}</td>
+      </tr>
+    `)
+    .join("");
+}
+
+function buildLeadEmailShell({ title, preheader, intro, accent = "#1e40af", bodyHtml = "" } = {}) {
   return `
-    <div style="font-family:Arial,sans-serif;color:#111;line-height:1.5;max-width:680px;margin:auto;">
-      <h2 style="color:#1e40af;">We received your ${type.toLowerCase()}</h2>
-      <p>Hello ${lead.fullName || "there"},</p>
-      <p>Thank you for contacting NewHaus IT Services. Our team has received your request and will get back to you shortly.</p>
-      ${lead.selectedPackage ? `<p><strong>Selected:</strong> ${lead.selectedPackage}</p>` : ""}
-      ${lead.selectedPrice ? `<p><strong>Price:</strong> ${lead.selectedPrice}</p>` : ""}
-      <p>Need urgent help? You can reply to this email or chat to us on WhatsApp.</p>
-      <p style="margin-top:24px;">Regards,<br><strong>NewHaus IT Services</strong><br>simplifying IT</p>
+    <div style="margin:0;padding:0;background:#f4f7fb;">
+      <span style="display:none!important;visibility:hidden;opacity:0;color:transparent;height:0;width:0;overflow:hidden;">${escapeHtml(preheader || title || "NewHaus IT Services")}</span>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:#f4f7fb;margin:0;padding:24px 12px;">
+        <tr>
+          <td align="center">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;max-width:680px;background:#ffffff;border:1px solid #dbe3ef;border-radius:12px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;">
+              <tr>
+                <td style="background:${accent};padding:22px 26px;color:#ffffff;">
+                  <div style="font-size:12px;line-height:1.4;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">NewHaus IT Services</div>
+                  <h1 style="margin:8px 0 0;font-size:24px;line-height:1.25;font-weight:700;">${escapeHtml(title || "Website Notification")}</h1>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:24px 26px;color:#0f172a;font-size:15px;line-height:1.6;">
+                  ${intro ? `<p style="margin:0 0 18px;">${escapeHtml(intro)}</p>` : ""}
+                  ${bodyHtml}
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:16px 26px;background:#f8fafc;border-top:1px solid #e5e7eb;color:#64748b;font-size:12px;line-height:1.5;">
+                  NewHaus IT Services<br>
+                  simplifying IT
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
     </div>
   `;
+}
+
+function buildCustomerLeadEmailHtml(lead = {}) {
+  const type = getLeadTypeLabel(lead);
+  const detailRows = buildEmailFieldRows([
+    { label: "Selected", value: lead.selectedPackage },
+    { label: "Price", value: lead.selectedPrice },
+    { label: "Service", value: lead.businessType },
+    { label: "Urgency", value: lead.urgency }
+  ]);
+
+  return buildLeadEmailShell({
+    title: `We received your ${type.toLowerCase()}`,
+    preheader: "Thank you for contacting NewHaus IT Services.",
+    intro: `Hello ${lead.fullName || "there"}, thank you for contacting NewHaus IT Services. Our team has received your request and will get back to you shortly.`,
+    bodyHtml: `
+      ${detailRows ? `
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:10px 0 18px;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
+          ${detailRows}
+        </table>
+      ` : ""}
+      <p style="margin:0 0 18px;">Need urgent help? You can reply to this email or chat to us on WhatsApp.</p>
+      <p style="margin:0;">Regards,<br><strong>NewHaus IT Services</strong></p>
+    `
+  });
+}
+
+function buildAdminLeadEmailHtml(lead = {}) {
+  const type = getLeadTypeLabel(lead);
+  const message = getLeadEmailValue(lead.message || lead.notes || lead.description, "No message provided");
+  const contactRows = buildEmailFieldRows([
+    { label: "Name", value: lead.fullName },
+    { label: "Company", value: lead.company },
+    { label: "Email", value: lead.email },
+    { label: "Phone", value: lead.phone }
+  ]);
+  const requestRows = buildEmailFieldRows([
+    { label: "Lead Type", value: type },
+    { label: "Lead Source", value: lead.crmLeadSource || "Website" },
+    { label: "Selected Package/Product", value: lead.selectedPackage },
+    { label: "Selected Price", value: lead.selectedPrice },
+    { label: "Business Type/Service", value: lead.businessType },
+    { label: "Urgency", value: lead.urgency },
+    { label: "Budget", value: lead.budget },
+    { label: "Page URL", value: lead.pageUrl }
+  ]);
+  const scoreRows = buildEmailFieldRows([
+    { label: "Lead Temperature", value: lead.leadTemperature || "Not scored" },
+    { label: "Lead Score", value: Number.isFinite(Number(lead.leadScore)) ? lead.leadScore : "Not scored" }
+  ]);
+
+  return buildLeadEmailShell({
+    title: `New Website Lead: ${type}`,
+    preheader: `${type} from ${lead.fullName || lead.company || "website visitor"}`,
+    intro: "A new website lead has been submitted and saved to Zoho CRM.",
+    accent: "#0f766e",
+    bodyHtml: `
+      <h2 style="margin:0 0 10px;color:#0f172a;font-size:17px;line-height:1.3;">Contact Details</h2>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:0 0 20px;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
+        ${contactRows}
+      </table>
+
+      <h2 style="margin:0 0 10px;color:#0f172a;font-size:17px;line-height:1.3;">Request Details</h2>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:0 0 20px;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
+        ${requestRows}
+      </table>
+
+      <h2 style="margin:0 0 10px;color:#0f172a;font-size:17px;line-height:1.3;">Lead Score</h2>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:0 0 20px;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
+        ${scoreRows}
+      </table>
+
+      <h2 style="margin:0 0 10px;color:#0f172a;font-size:17px;line-height:1.3;">Message / Details</h2>
+      <div style="padding:14px 16px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;color:#0f172a;white-space:pre-line;">${escapeHtml(message)}</div>
+    `
+  });
 }
 
 async function sendCustomerLeadConfirmation(lead = {}, requestId = "NO_REQ") {
@@ -751,7 +887,8 @@ async function sendAdminLeadNotification(lead = {}, requestId = "NO_REQ") {
     from: process.env.MAIL_FROM || process.env.SMTP_USER,
     to: adminEmail,
     subject: `New Website Lead - ${type} - ${lead.fullName || lead.company || "New Lead"}`,
-    text: buildLeadSummaryText(lead)
+    text: buildLeadSummaryText(lead),
+    html: buildAdminLeadEmailHtml(lead)
   });
 
   logInfo(requestId, "Admin lead notification email sent", { messageId: info.messageId });
