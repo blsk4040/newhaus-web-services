@@ -3956,8 +3956,8 @@ body.pricing-modal-open .whatsapp-float {
   }
 
   .shop-page #shop-hero {
-    height: clamp(340px, 82vw, 460px);
-    min-height: clamp(340px, 82vw, 460px);
+    height: clamp(300px, 75vw, 430px);
+    min-height: clamp(300px, 75vw, 430px);
   }
 
   .shop-page #shop-hero .swiper-slide::after {
@@ -4210,8 +4210,8 @@ body.pricing-modal-open .whatsapp-float {
   }
 
   .shop-page #shop-hero {
-    height: clamp(320px, 86vw, 400px);
-    min-height: clamp(320px, 86vw, 400px);
+    height: clamp(280px, 75vw, 360px);
+    min-height: clamp(280px, 75vw, 360px);
   }
 
   .shop-page #shop-hero .hero-text {
