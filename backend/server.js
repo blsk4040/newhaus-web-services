@@ -743,7 +743,7 @@ async function sendAdminLeadNotification(lead = {}, requestId = "NO_REQ") {
     return { sent: false, skipped: true, reason: "SMTP not configured" };
   }
 
-  const adminEmail = process.env.ADMIN_ORDER_EMAIL || process.env.SMTP_USER;
+  const adminEmail = process.env.ADMIN_LEAD_EMAIL || "info@nhx.co.za";
   const mailer = getMailer();
   const type = getLeadTypeLabel(lead);
 
