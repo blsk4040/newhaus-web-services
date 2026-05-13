@@ -913,10 +913,12 @@
 
     const PRODUCTS_DIRECT_API = `${STRAPI_URL}/api/products?populate=*`;
     const CATEGORIES_DIRECT_API = `${STRAPI_URL}/api/categories`;
-    const PRODUCTS_API = `${SERVER_URL}/api/products-cache`;
-    const CATEGORIES_API = `${SERVER_URL}/api/categories-cache`;
-    const SHOP_PRODUCTS_CACHE_KEY = 'newhaus_shop_products_cache_v2';
-    const SHOP_CATEGORIES_CACHE_KEY = 'newhaus_shop_categories_cache_v2';
+    const PRODUCTS_CACHE_API = `${SERVER_URL}/api/products-cache`;
+    const CATEGORIES_CACHE_API = `${SERVER_URL}/api/categories-cache`;
+    const PRODUCTS_API = PRODUCTS_DIRECT_API;
+    const CATEGORIES_API = CATEGORIES_DIRECT_API;
+    const SHOP_PRODUCTS_CACHE_KEY = 'newhaus_shop_products_cache_v3';
+    const SHOP_CATEGORIES_CACHE_KEY = 'newhaus_shop_categories_cache_v3';
     const SHOP_BROWSER_CACHE_MAX_AGE_MS = 6 * 60 * 60 * 1000;
 
     const productGrid = document.getElementById('product-grid');
@@ -1066,17 +1068,75 @@
     function richTextToPlainText(value) {
       if (!value) return "";
       if (typeof value === "string") return value;
+      if (typeof value === "number" || typeof value === "boolean") return String(value);
 
       if (Array.isArray(value)) {
         return value.map(block => {
           if (block.children && Array.isArray(block.children)) {
             return block.children.map(child => child.text || "").join("");
           }
-          return "";
+          return valueToPlainText(block);
         }).join(" ").trim();
       }
 
       return "";
+    }
+
+    function valueToPlainText(value, fallback = "") {
+      if (value === null || value === undefined) return fallback;
+      if (typeof value === "string") return value.trim() || fallback;
+      if (typeof value === "number" || typeof value === "boolean") return String(value);
+
+      if (Array.isArray(value)) {
+        const text = value
+          .map(item => valueToPlainText(item))
+          .filter(Boolean)
+          .join(" ")
+          .trim();
+        return text || fallback;
+      }
+
+      if (typeof value === "object") {
+        const attributes = value.attributes || {};
+        const candidates = [
+          value.name,
+          value.title,
+          value.label,
+          value.slug,
+          value.value,
+          value.text,
+          attributes.name,
+          attributes.title,
+          attributes.label,
+          attributes.slug,
+          attributes.value,
+          attributes.text
+        ];
+
+        for (const candidate of candidates) {
+          const text = valueToPlainText(candidate);
+          if (text) return text;
+        }
+      }
+
+      return fallback;
+    }
+
+    function slugifyShopValue(value, fallback = "") {
+      const text = valueToPlainText(value, fallback);
+      return text
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, " and ")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "") || fallback;
+    }
+
+    function titleFromSlug(slug = "") {
+      return valueToPlainText(slug)
+        .replace(/[-_]+/g, " ")
+        .replace(/\b\w/g, letter => letter.toUpperCase())
+        .trim();
     }
 
     function normalizeMediaUrl(url) {
@@ -1132,25 +1192,33 @@
 
         if (source.data && Array.isArray(source.data)) {
           const result = source.data
-            .map(c => c?.slug || c?.attributes?.slug)
+            .map(c => slugifyShopValue(c?.slug || c?.attributes?.slug || c?.name || c?.attributes?.name))
             .filter(Boolean);
           if (result.length) return result;
         }
 
         if (source.data && !Array.isArray(source.data)) {
-          const single = source.data?.slug || source.data?.attributes?.slug;
+          const single = slugifyShopValue(
+            source.data?.slug ||
+            source.data?.attributes?.slug ||
+            source.data?.name ||
+            source.data?.attributes?.name
+          );
           if (single) return [single];
         }
 
         if (Array.isArray(source)) {
           const result = source
-            .map(c => c?.slug || c?.attributes?.slug)
+            .map(c => slugifyShopValue(c?.slug || c?.attributes?.slug || c?.name || c?.attributes?.name || c))
             .filter(Boolean);
           if (result.length) return result;
         }
 
         if (typeof source === "object") {
-          const single = source.slug || source.attributes?.slug;
+          const single = slugifyShopValue(source.slug || source.attributes?.slug || source.name || source.attributes?.name);
+          if (single) return [single];
+        } else if (typeof source === "string") {
+          const single = slugifyShopValue(source);
           if (single) return [single];
         }
       }
@@ -1160,7 +1228,25 @@
 
     function getCategoryNames(product, categoryMap) {
       const slugs = getCategorySlugs(product);
-      return slugs.map(slug => categoryMap.get(slug) || slug);
+      const sources = [product.category, product.categories, product.product_category];
+      const directNames = [];
+
+      sources.forEach(source => {
+        if (!source) return;
+
+        const items = source.data
+          ? (Array.isArray(source.data) ? source.data : [source.data])
+          : (Array.isArray(source) ? source : [source]);
+
+        items.forEach(item => {
+          const name = valueToPlainText(item?.name || item?.attributes?.name || item?.title || item?.attributes?.title);
+          if (name) directNames.push(name);
+        });
+      });
+
+      if (directNames.length) return [...new Set(directNames)];
+
+      return slugs.map(slug => categoryMap.get(slug) || titleFromSlug(slug) || "Uncategorized");
     }
 
     function readShopCache(key) {
@@ -1196,7 +1282,7 @@
 
         return await primaryResponse.json();
       } catch (primaryError) {
-        console.warn("Primary shop API failed, falling back to Strapi:", primaryError);
+        console.warn("Primary shop API failed, falling back to secondary source:", primaryError);
 
         const fallbackResponse = await fetch(fallbackUrl);
 
@@ -1766,12 +1852,26 @@
     }
 
     function normalizeCategories(json) {
-      return (json.data || []).map(cat => ({
-        id: cat.id,
-        name: cat.name || cat.attributes?.name || "Unnamed Category",
-        slug: cat.slug || cat.attributes?.slug || "uncategorized",
-        count: 0
-      }));
+      const seen = new Set();
+
+      return (json.data || []).map(cat => {
+        const id = cat.id || cat.documentId || cat.attributes?.documentId || "";
+        const rawName = cat.name || cat.attributes?.name || cat.title || cat.attributes?.title;
+        const rawSlug = cat.slug || cat.attributes?.slug || rawName;
+        const slug = slugifyShopValue(rawSlug, id ? `category-${id}` : "uncategorized");
+        const name = valueToPlainText(rawName, titleFromSlug(slug) || "Unnamed Category");
+
+        return {
+          id,
+          name,
+          slug,
+          count: 0
+        };
+      }).filter(cat => {
+        if (!cat.slug || seen.has(cat.slug)) return false;
+        seen.add(cat.slug);
+        return true;
+      });
     }
 
     function applyCategoriesData(nextCategories = []) {
@@ -1796,7 +1896,7 @@
 
     async function fetchCategories() {
       try {
-        const json = await fetchJsonWithFallback(CATEGORIES_API, CATEGORIES_DIRECT_API);
+        const json = await fetchJsonWithFallback(CATEGORIES_API, CATEGORIES_CACHE_API);
         const nextCategories = normalizeCategories(json);
 
         applyCategoriesData(nextCategories);
@@ -1808,9 +1908,12 @@
 
     function updateCategoryCounts() {
       categoriesData.forEach(cat => {
+        const categorySlug = slugifyShopValue(cat.slug || cat.name, "uncategorized");
         cat.count = productData.filter(p => {
-          const productCats = Array.isArray(p.category) ? p.category : [p.category];
-          return productCats.includes(cat.slug);
+          const productCats = (Array.isArray(p.category) ? p.category : [p.category])
+            .map(value => slugifyShopValue(value))
+            .filter(Boolean);
+          return productCats.includes(categorySlug);
         }).length;
       });
 
@@ -1830,16 +1933,19 @@
     }
 
     function createFilterCheckbox(cat, prefix = "desktop") {
+      const name = valueToPlainText(cat.name, "Unnamed Category");
+      const slug = slugifyShopValue(cat.slug || name, "uncategorized");
+
       return `
         <label class="flex items-center justify-between cursor-pointer py-1">
           <div class="flex items-center">
             <input
               type="checkbox"
               class="filter-checkbox ${prefix}-filter-checkbox mr-3 h-5 w-5 text-blue-700 rounded"
-              data-category="${cat.slug}"
+              data-category="${slug}"
               checked
             >
-            <span>${escapeHtml(cat.name)}</span>
+            <span>${escapeHtml(name)}</span>
           </div>
           <span class="text-xs text-gray-500">(${cat.count})</span>
         </label>
@@ -2010,7 +2116,7 @@
           showLoading();
         }
 
-        const json = preloadedProductsJson || await fetchJsonWithFallback(PRODUCTS_API, PRODUCTS_DIRECT_API);
+        const json = preloadedProductsJson || await fetchJsonWithFallback(PRODUCTS_API, PRODUCTS_CACHE_API);
         const categoryMap = new Map(categoriesData.map(cat => [cat.slug, cat.name]));
 
         const newData = (json.data || []).map((item, index) => {
@@ -2022,13 +2128,15 @@
           const categorySlugs = getCategorySlugs(item);
           const categoryNames = getCategoryNames(item, categoryMap);
 
-          const rawBrand =
+          const rawBrand = valueToPlainText(
             item.brand ||
             item.attributes?.brand ||
             item.manufacturer ||
             item.attributes?.manufacturer ||
             categoryNames[0] ||
-            "General";
+            "General",
+            "General"
+          );
 
           const condition = normalizeCondition(
             item.condition ||
@@ -2389,7 +2497,9 @@
           (product.categoryNames || []).some(name => name.toLowerCase().includes(query)) ||
           (product.brand || '').toLowerCase().includes(query);
 
-        const productCats = Array.isArray(product.category) ? product.category : [product.category];
+        const productCats = (Array.isArray(product.category) ? product.category : [product.category])
+          .map(value => slugifyShopValue(value))
+          .filter(Boolean);
 
         const matchesCategory =
           selectedCategories.length === 0 ||
@@ -3572,7 +3682,7 @@
       }
 
       const categoriesPromise = fetchCategories();
-      const productsPromise = fetchJsonWithFallback(PRODUCTS_API, PRODUCTS_DIRECT_API)
+      const productsPromise = fetchJsonWithFallback(PRODUCTS_API, PRODUCTS_CACHE_API)
         .catch(error => {
           console.warn("Initial products warmup failed, smart fetch will retry:", error);
           return null;
